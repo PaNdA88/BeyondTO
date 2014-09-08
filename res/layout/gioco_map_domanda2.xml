@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#222222"
+    android:orientation="vertical" >
+    
+    <ProgressBar
+       android:id="@+id/progressbar_Horizontal"
+       style="?android:attr/progressBarStyleHorizontal"
+       android:layout_width="match_parent"
+       android:layout_margin="20dip"
+       android:layout_height="wrap_content"
+       android:max="100" />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="60dp"
+        android:gravity="center"
+        android:text="DOMANDA 2"
+        android:textColor="#ffffff"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/question2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="100dp"
+        android:gravity="center"
+        android:text="Di che colore è il cavallo bianco di Napoleone?"
+        android:textColor="#ffffff"
+        android:textSize="20dp" />
+
+    <Button
+        android:id="@+id/risp2A"
+        android:layout_width="300px"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:text="Magenta" />
+
+    <Button
+        android:id="@+id/risp2B"
+        android:layout_width="300px"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/risp2A"
+        android:layout_below="@+id/risp2A"
+        android:layout_marginTop="15dp"
+        android:text="Bianco" />
+
+    <Button
+        android:id="@+id/risp2C"
+        android:layout_width="300px"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/risp2B"
+        android:layout_below="@+id/risp2B"
+        android:layout_marginTop="15dp"
+        android:text="Napoleone non aveva cavalli" />
+    
+</RelativeLayout>

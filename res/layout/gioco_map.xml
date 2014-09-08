@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#222222"
+    android:orientation="vertical" >
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="60dp"
+        android:gravity="center"
+        android:text="SFIDA A QUIZ"
+        android:textColor="#ffffff"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="100dp"
+        android:gravity="center"
+        android:text="Hai 30 secondi di tempo per conquistare l&apos;edificio rispondendo correttamente a tre domande... Sei pronto?"
+        android:textColor="#ffffff"
+        android:textSize="20dp" />
+
+    <Button
+        android:id="@+id/quitButton"
+        android:layout_width="300px"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="86dp"
+        android:text="TORNA INDIETRO" />
+
+    <Button
+        android:id="@+id/startButton"
+        android:layout_width="300px"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/quitButton"
+        android:layout_below="@+id/textView1"
+        android:layout_marginTop="28dp"
+        android:text="INIZIA ORA!" />
+    
+</RelativeLayout>

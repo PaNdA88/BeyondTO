@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">BeyondTO</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_news">NewsActivity</string>
+    <string name="title_activity_details">DetailsActivity</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="title_activity_medal">MedalActivity</string>
+    <string name="app_id">513404242105233</string>
+    
+</resources>

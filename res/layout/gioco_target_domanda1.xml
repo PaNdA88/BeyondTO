@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#222222"
+    android:orientation="vertical" >
+
+    <ProgressBar
+        android:id="@+id/progressbar_Horizontal"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dip"
+        android:max="100" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="60dp"
+        android:gravity="center"
+        android:text="DOMANDA 1"
+        android:textColor="#ffffff"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/rispA1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="100dp"
+        android:gravity="center"
+        android:text="Quanti sono i sette nani?"
+        android:textColor="#ffffff"
+        android:textSize="20dp" />
+
+    <Button
+        android:id="@+id/risp1A"
+        android:layout_width="300px"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:text="7" />
+
+    <Button
+        android:id="@+id/risp1B"
+        android:layout_width="300px"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/risp1A"
+        android:layout_below="@+id/risp1A"
+        android:layout_marginTop="14dp"
+        android:text="101" />
+
+    <Button
+        android:id="@+id/risp1C"
+        android:layout_width="300px"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/risp1B"
+        android:layout_below="@+id/risp1B"
+        android:layout_marginTop="14dp"
+        android:text="Tanti" />
+
+</RelativeLayout>
