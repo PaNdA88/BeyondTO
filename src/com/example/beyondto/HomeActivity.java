@@ -22,6 +22,10 @@ public class HomeActivity extends Activity implements ActionBar.TabListener {
 	private String[] tabsHome = { "Utente", "Scheda Clan", "Chat" };
 	Intent intent = new Intent();
 
+	
+	
+	
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
