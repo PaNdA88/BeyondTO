@@ -15,6 +15,7 @@ import com.example.beyondto.adapter.TabsPagerAdapterHome;
 
 public class HomeActivity extends Activity implements ActionBar.TabListener {
 
+	
 	private ViewPager viewPager;
 	private TabsPagerAdapterHome mAdapterHome;
 	private ActionBar actionBar;
