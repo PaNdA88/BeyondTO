@@ -5,13 +5,53 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#222222" >
-     
-    <TextView android:layout_width="fill_parent"
+
+    <TextView
+        android:id="@+id/nomeUtente"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="28dp"
         android:gravity="center"
-        android:text="SEZIONE UTENTE"
+        android:text="NOME UTENTE"
         android:textColor="#ffffff"
-        android:textSize="20dp"
-        android:layout_centerInParent="true"/>
+        android:textSize="20dp" />
+
+     <TextView
+         android:id="@+id/clanAppartenenza"
+         android:layout_width="fill_parent"
+         android:layout_height="wrap_content"
+         android:layout_alignParentLeft="true"
+         android:layout_alignParentTop="true"
+         android:layout_marginTop="62dp"
+         android:gravity="center"
+         android:text="Clan Alchimisti"
+         android:textColor="#ffffff"
+         android:textSize="20dp" />
+
+      <TextView
+          android:id="@+id/edificiConquistati"
+          android:layout_width="fill_parent"
+          android:layout_height="wrap_content"
+          android:layout_alignParentLeft="true"
+          android:layout_below="@+id/clanAppartenenza"
+          android:layout_marginTop="90dp"
+          android:gravity="center"
+          android:text="Edifici conquistati: 3"
+          android:textColor="#ffffff"
+          android:textSize="20dp" />
+
+      <TextView
+          android:id="@+id/puntiUtente"
+          android:layout_width="fill_parent"
+          android:layout_height="wrap_content"
+          android:layout_alignBottom="@+id/edificiConquistati"
+          android:layout_alignParentLeft="true"
+          android:layout_marginBottom="31dp"
+          android:gravity="center"
+          android:text="Punti Utente: 340"
+          android:textColor="#ffffff"
+          android:textSize="20dp" />
     
 </RelativeLayout>    

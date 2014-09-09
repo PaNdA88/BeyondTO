@@ -63,13 +63,6 @@ public class NewsSelectedActivity extends Activity {
 			startActivity(intent);
 			return true;
 
-		case R.id.menu_target:
-
-			intent.setClass(getApplicationContext(), TargetActivity.class);
-
-			startActivity(intent);
-			return true;
-
 		case R.id.menu_medal:
 			intent.setClass(getApplicationContext(), MedalActivity.class);
 

@@ -81,7 +81,6 @@ public class MainActivity extends Activity implements ActionBar.TabListener {
 			intent.setClass(getApplicationContext(), HomeActivity.class);
 
 			startActivity(intent);
-
 			return true;
 
 		case R.id.menu_map:
@@ -91,18 +90,10 @@ public class MainActivity extends Activity implements ActionBar.TabListener {
 			startActivity(intent);
 			return true;
 
-		case R.id.menu_target:
-
-			intent.setClass(getApplicationContext(), TargetActivity.class);
-
-			startActivity(intent);
-			return true;
-
 		case R.id.menu_medal:
 			intent.setClass(getApplicationContext(), MedalActivity.class);
 
 			startActivity(intent);
-
 			return true;
 
 		case R.id.menu_news:

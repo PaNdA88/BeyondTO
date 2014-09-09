@@ -15,7 +15,6 @@ import com.example.beyondto.adapter.TabsPagerAdapterHome;
 
 public class HomeActivity extends Activity implements ActionBar.TabListener {
 
-	
 	private ViewPager viewPager;
 	private TabsPagerAdapterHome mAdapterHome;
 	private ActionBar actionBar;
@@ -104,13 +103,6 @@ public class HomeActivity extends Activity implements ActionBar.TabListener {
 		case R.id.menu_map:
 
 			intent.setClass(getApplicationContext(), MapActivity.class);
-
-			startActivity(intent);
-			return true;
-
-		case R.id.menu_target:
-
-			intent.setClass(getApplicationContext(), TargetActivity.class);
 
 			startActivity(intent);
 			return true;

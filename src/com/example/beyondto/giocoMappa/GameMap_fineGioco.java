@@ -6,7 +6,6 @@ import com.example.beyondto.MedalActivity;
 import com.example.beyondto.NewsFragment;
 import com.example.beyondto.R;
 import com.example.beyondto.SettingsActivity;
-import com.example.beyondto.TargetActivity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -76,16 +75,6 @@ public class GameMap_fineGioco extends Activity {
 						MapActivity.class
 					);
 				startActivity(intentMap);
-				finish();
-	            return true;
-	 
-	        case R.id.menu_target:
-	            //Toast.makeText(MainActivity.this, "Target is Selected", Toast.LENGTH_SHORT).show();
-	        	Intent intentTarget = new Intent(
-						getApplicationContext(),
-						TargetActivity.class
-					);
-				startActivity(intentTarget);
 				finish();
 	            return true;
 	 
