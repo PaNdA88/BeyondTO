@@ -42,6 +42,7 @@ public class MapActivity extends Activity implements OnMarkerClickListener {
 	final Context context = this;
 	public Intent intent = new Intent();
 	private MarkerOptions options = null;
+	Connector con;
 	
 	
 	@Override
@@ -50,7 +51,7 @@ public class MapActivity extends Activity implements OnMarkerClickListener {
 		setContentView(R.layout.activity_map);
 		try {
 			drawMap();
-			InPlace(boundPlaces, listPlaces, myPosition);
+			//InPlace(boundPlaces, listPlaces, myPosition);
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -95,7 +96,7 @@ public class MapActivity extends Activity implements OnMarkerClickListener {
 			listPlaces = con.getLocations();
 			if (listPlaces != null) {
 				if (!listPlaces.isEmpty()) {
-					drawMarkers(listPlaces, googleMap);
+					//drawMarkers(listPlaces, googleMap);
 				} else {
 					Toast toast = Toast.makeText(getApplicationContext(),
 							"ArrayList vuoto", Toast.LENGTH_SHORT);
@@ -130,16 +131,14 @@ public class MapActivity extends Activity implements OnMarkerClickListener {
 			boundPlaces = new ArrayList<LatLngBounds>();
 			boundPlaces.add(boundPlace);
 
-			if (((String) ((listPlaces.get(i)).getProprietaFazione()))
-					.equals("alchimisti")) {
+			if (((String) ((listPlaces.get(i)).getProprietaFazione())).equals("alchimisti")) {
 				options = new MarkerOptions()
 						.position(boundPlace.getCenter())
 						.title((listPlaces.get(i)).getNomeLuogo())
 						.icon(BitmapDescriptorFactory
 								.defaultMarker(BitmapDescriptorFactory.HUE_AZURE));
 			}
-			if (((String) ((listPlaces.get(i)).getProprietaFazione()))
-					.equals("rinnegati")) {
+			if (((String) ((listPlaces.get(i)).getProprietaFazione())).equals("rinnegati")) {
 
 				options = new MarkerOptions()
 						.position(boundPlace.getCenter())
@@ -148,8 +147,7 @@ public class MapActivity extends Activity implements OnMarkerClickListener {
 								.defaultMarker(BitmapDescriptorFactory.HUE_RED));
 
 			}
-			if (((String) ((listPlaces.get(i)).getProprietaFazione()))
-					.equals("neutro")) {
+			if (((String) ((listPlaces.get(i)).getProprietaFazione())).equals("neutro")) {
 
 				options = new MarkerOptions()
 						.position(boundPlace.getCenter())
@@ -162,30 +160,21 @@ public class MapActivity extends Activity implements OnMarkerClickListener {
 	}
 	
 
-	public void InPlace(ArrayList<LatLngBounds> boundPlaces,
+	/*public void InPlace(ArrayList<LatLngBounds> boundPlaces,
 			ArrayList<Place> listPlaces, LatLng myPosition) {
 
-		// DEVO AGGIUNGERE ALLA TABELLA TABELLA UTENTE IL CAMPO FAZIONE
 		for (int i = 0; i < boundPlaces.size(); i++) {
 
 			if (boundPlaces.get(i).contains(myPosition)) {
+				
 				if (!((listPlaces.get(i)).getProprietaFazione()).equals(myClan)
-						|| ((listPlaces.get(i)).getProprietaFazione())
-								.equals("neutro")) {
-
-					/*Toast toast = Toast.makeText(getApplicationContext(),
-							"Vuoi attaccare?", Toast.LENGTH_SHORT);
-					toast.show();*/
+						|| ((listPlaces.get(i)).getProprietaFazione()).equals("neutro")) {
+					
 				}
-				/*
-				 * else
-				 * if(!((listPlaces.get(i)).getProprietaFazione()).equals(myClan
-				 * )){ Toast toast = Toast.makeText(getApplicationContext(),
-				 * "Vuoi difendere?", Toast.LENGTH_SHORT); toast.show(); }
-				 */
 			}
 		}
-	}
+	}*/
+
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -194,8 +183,6 @@ public class MapActivity extends Activity implements OnMarkerClickListener {
 		return true;
 	}
 
-	
-
 	@Override
 	public boolean onMarkerClick(Marker marker) {
 
@@ -203,7 +190,7 @@ public class MapActivity extends Activity implements OnMarkerClickListener {
 				Toast.LENGTH_SHORT);
 		toast.show();
 		
-		/*final Dialog dialog = new Dialog(context);
+	/*	final Dialog dialog = new Dialog(context);
 		dialog.setContentView(R.layout.dialog_map);
 		dialog.setTitle("ZONA NEUTRA");
 		TextView text = (TextView) dialog.findViewById(R.id.textDialog);

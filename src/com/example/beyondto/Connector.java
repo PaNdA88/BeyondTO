@@ -101,12 +101,33 @@ public class Connector extends AsyncTask<JSONObject, Void, JSONObject> {
 		return listLocations;
 	}
 	
-	public void checkPlaceState(){
+	/*public String checkPlaceState(String nomeLuogo){
+		
+		setPath("/checkPlaceState.php");
+		JSONObject json = new JSONObject();
+		try {
+			json.put("nomeLuogo", nomeLuogo);
+		
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}JSONObject result = new JSONObject();
+		try {
+			result = this.execute(json).get();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		} catch (ExecutionException e) {
+			e.printStackTrace();
+		}
+		String message = null;
+		try {
+			message = result.getString("message");
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		return message;
 		
 		
-	}
-	
-	
+	}*/
 	
 	@Override
 	protected JSONObject doInBackground(JSONObject... params) {
