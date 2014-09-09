@@ -60,6 +60,9 @@ public class Connector extends AsyncTask<JSONObject, Void, JSONObject> {
 		return success;
 	}
 	
+	/*
+	 * Get information about places 
+	 */
 	public ArrayList<Place> getLocations(){
 		setPath("/getLocations.php");
 		JSONObject json = new JSONObject();
@@ -97,6 +100,13 @@ public class Connector extends AsyncTask<JSONObject, Void, JSONObject> {
 		}	
 		return listLocations;
 	}
+	
+	public void checkPlaceState(){
+		
+		
+	}
+	
+	
 	
 	@Override
 	protected JSONObject doInBackground(JSONObject... params) {

@@ -38,11 +38,12 @@ public class MapActivity extends Activity implements OnMarkerClickListener {
 	public LatLng myPosition;
 	public ArrayList<Place> listPlaces;
 	public ArrayList<LatLngBounds> boundPlaces;
-	public ArrayList<Marker> mMarkers;
-
 	public String myClan = "rinnegati";
 	final Context context = this;
 	public Intent intent = new Intent();
+	private MarkerOptions options = null;
+	
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -56,6 +57,9 @@ public class MapActivity extends Activity implements OnMarkerClickListener {
 		}
 	}
 
+	/*
+	 * Get user position
+	 */
 	public LatLng findMyPosition() {
 
 		LatLng myPosition = null;
@@ -70,10 +74,13 @@ public class MapActivity extends Activity implements OnMarkerClickListener {
 		}
 		return myPosition;
 	}
-
+	
+	/*
+	 * Draw a map in MapActivity
+	 */
 	private void drawMap() {
 		if (googleMap == null) {
-
+			
 			googleMap = ((MapFragment) getFragmentManager().findFragmentById(
 					R.id.map)).getMap();
 			googleMap.setMyLocationEnabled(true);
@@ -107,9 +114,10 @@ public class MapActivity extends Activity implements OnMarkerClickListener {
 		}
 	}
 
+	/*
+	 * Draw markers in googleMap
+	 */
 	public void drawMarkers(ArrayList<Place> listPlaces, GoogleMap googleMap) {
-
-		mMarkers = new ArrayList<Marker>();
 
 		for (int i = 0; i < listPlaces.size(); i++) {
 
@@ -121,9 +129,6 @@ public class MapActivity extends Activity implements OnMarkerClickListener {
 			LatLngBounds boundPlace = new LatLngBounds(SO, NE);
 			boundPlaces = new ArrayList<LatLngBounds>();
 			boundPlaces.add(boundPlace);
-
-			MarkerOptions options = null;
-			Marker marker = null;
 
 			if (((String) ((listPlaces.get(i)).getProprietaFazione()))
 					.equals("alchimisti")) {
@@ -152,25 +157,25 @@ public class MapActivity extends Activity implements OnMarkerClickListener {
 						.icon(BitmapDescriptorFactory
 								.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
 			}
-			marker = googleMap.addMarker(options);
-			mMarkers.add(marker);
+			googleMap.addMarker(options);
 		}
 	}
+	
 
 	public void InPlace(ArrayList<LatLngBounds> boundPlaces,
 			ArrayList<Place> listPlaces, LatLng myPosition) {
 
-		// DEVO AGGIUNGERE ALLA TABELLA TABELLA UTENTE UL CAMPO FAZIONE
+		// DEVO AGGIUNGERE ALLA TABELLA TABELLA UTENTE IL CAMPO FAZIONE
 		for (int i = 0; i < boundPlaces.size(); i++) {
 
 			if (boundPlaces.get(i).contains(myPosition)) {
-				if (((listPlaces.get(i)).getProprietaFazione()).equals(myClan)
+				if (!((listPlaces.get(i)).getProprietaFazione()).equals(myClan)
 						|| ((listPlaces.get(i)).getProprietaFazione())
 								.equals("neutro")) {
 
-					Toast toast = Toast.makeText(getApplicationContext(),
+					/*Toast toast = Toast.makeText(getApplicationContext(),
 							"Vuoi attaccare?", Toast.LENGTH_SHORT);
-					toast.show();
+					toast.show();*/
 				}
 				/*
 				 * else
@@ -189,58 +194,7 @@ public class MapActivity extends Activity implements OnMarkerClickListener {
 		return true;
 	}
 
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		switch (item.getItemId()) {
-
-		case R.id.menu_home:
-
-			intent.setClass(getApplicationContext(), HomeActivity.class);
-
-			startActivity(intent);
-
-			return true;
-
-		case R.id.menu_map:
-
-			intent.setClass(getApplicationContext(), MapActivity.class);
-
-			startActivity(intent);
-			return true;
-
-		case R.id.menu_target:
-
-			intent.setClass(getApplicationContext(), TargetActivity.class);
-
-			startActivity(intent);
-			return true;
-
-		case R.id.menu_medal:
-			intent.setClass(getApplicationContext(), MedalActivity.class);
-
-			startActivity(intent);
-
-			return true;
-
-		case R.id.menu_news:
-
-			intent.setClass(getApplicationContext(), NewsActivity.class);
-
-			startActivity(intent);
-			return true;
-
-		case R.id.menu_settings:
-
-			intent.setClass(getApplicationContext(), SettingsActivity.class);
-
-			startActivity(intent);
-			return true;
-
-		default:
-			return super.onOptionsItemSelected(item);
-
-		}
-	}
+	
 
 	@Override
 	public boolean onMarkerClick(Marker marker) {
@@ -248,16 +202,10 @@ public class MapActivity extends Activity implements OnMarkerClickListener {
 		Toast toast = Toast.makeText(getApplicationContext(), "Click marker",
 				Toast.LENGTH_SHORT);
 		toast.show();
-		Log.d("CLICCATO MARKER", "MARKER");
 		
-		final Dialog dialog = new Dialog(context);
-		// Include dialog.xml file
+		/*final Dialog dialog = new Dialog(context);
 		dialog.setContentView(R.layout.dialog_map);
-		// Set dialog title
 		dialog.setTitle("ZONA NEUTRA");
-
-		// set values for custom dialog components - text, image and
-		// button
 		TextView text = (TextView) dialog.findViewById(R.id.textDialog);
 		text.setText("Questa zona appartiene a NESSUNO. Vuoi conquistare questo obiettivo?");
 		ImageView image = (ImageView) dialog
@@ -269,7 +217,6 @@ public class MapActivity extends Activity implements OnMarkerClickListener {
 		yesButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				// Close dialog
 				dialog.hide();
 				Intent intentGame = new Intent(getApplicationContext(),
 						GameMap.class);
@@ -283,12 +230,60 @@ public class MapActivity extends Activity implements OnMarkerClickListener {
 		noButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				// Close dialog
 				dialog.hide();
 			}
 		});
-		dialog.show();
+		dialog.show();*/
 	
 		return false;
 	}	
+	
+	/*
+	 * Menu application
+	 */	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+
+		case R.id.menu_home:
+			
+			intent.setClass(getApplicationContext(), HomeActivity.class);
+			startActivity(intent);
+			return true;
+
+		case R.id.menu_map:
+			
+			intent.setClass(getApplicationContext(), MapActivity.class);
+			startActivity(intent);
+			return true;
+
+		case R.id.menu_target:
+			
+			intent.setClass(getApplicationContext(), TargetActivity.class);
+			startActivity(intent);
+			return true;
+
+		case R.id.menu_medal:
+			
+			intent.setClass(getApplicationContext(), MedalActivity.class);
+			startActivity(intent);
+			return true;
+
+		case R.id.menu_news:
+
+			intent.setClass(getApplicationContext(), NewsActivity.class);
+			startActivity(intent);
+			return true;
+
+		case R.id.menu_settings:
+
+			intent.setClass(getApplicationContext(), SettingsActivity.class);
+			startActivity(intent);
+			return true;
+
+		default:
+			return super.onOptionsItemSelected(item);
+
+		}
+	}
 }
