@@ -38,7 +38,7 @@ public class LoginFragment extends Fragment {
 		LoginButton authButton = (LoginButton) view
 				.findViewById(R.id.authButton);
 		// richiedo i permessi 
-		authButton.setReadPermissions(Arrays.asList("public_profile","email"));
+		authButton.setReadPermissions(Arrays.asList("basic_info","email"));
 		authButton.setFragment(this);
 		return view;
 	}
