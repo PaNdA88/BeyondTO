@@ -13,11 +13,6 @@
           android:showAsAction="always"
           android:title="Map" />
  
-    <item android:id="@+id/menu_target"
-          android:icon="@drawable/iconatarget"
-          android:showAsAction="always"
-          android:title="Target" />
- 
     <item android:id="@+id/menu_medal"
           android:icon="@drawable/iconamedal"
           android:showAsAction="always"
