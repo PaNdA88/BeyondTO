@@ -83,15 +83,12 @@
             android:textColor="#ffffff"
             android:textSize="20dp" />
 
-        <!-- i metodi onMedalClick non funzionano ancora!  -->
-        
         <ImageView
             android:id="@+id/med1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignLeft="@+id/divisore2"
             android:layout_below="@+id/medaglieOttenute"
-            android:onClick="onMedal1Click"
             android:layout_marginTop="38dp"
             android:src="@drawable/medaglia1" />
 
@@ -101,7 +98,6 @@
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/med1"
             android:layout_centerHorizontal="true"
-            android:onClick="onMedal2Click"
             android:src="@drawable/medaglia2" />
 
         <ImageView
@@ -110,7 +106,6 @@
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/med2"
             android:layout_alignRight="@+id/divisore2"
-            android:onClick="onMedal3Click"
             android:src="@drawable/medaglia3" />
         
 </RelativeLayout>    

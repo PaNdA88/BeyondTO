@@ -10,6 +10,9 @@ import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.example.beyondto.adapter.TabsPagerAdapterHome;
 
@@ -26,7 +29,7 @@ public class HomeActivity extends Activity implements ActionBar.TabListener {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_home);
-
+        
 		// Initialization
 		viewPager = (ViewPager) findViewById(R.id.pager);
 		actionBar = getActionBar();
