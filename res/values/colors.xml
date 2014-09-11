@@ -2,5 +2,6 @@
 <resources>
   <color name="sa_black">#000000</color>
     <color name="stacked_black">#000000</color>
-    <color name="accent_orange">#f85700</color>   
+    <color name="accent_orange">#f85700</color> 
+   <color name="theme_yellow">#fbf317</color>  
 </resources>
