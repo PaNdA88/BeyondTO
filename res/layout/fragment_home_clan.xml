@@ -6,12 +6,79 @@
     android:orientation="vertical"
     android:background="#222222" >
      
-    <TextView android:layout_width="fill_parent"
+    <TextView
+        android:id="@+id/nomeClan"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="28dp"
         android:gravity="center"
-        android:text="SEZIONE CLAN"
+        android:text="CLAN ALCHIMISTI"
         android:textColor="#ffffff"
-        android:textSize="20dp"
-        android:layout_centerInParent="true"/>
-    
+        android:textSize="20dp" />
+
+    <ImageView
+        android:id="@+id/logoAlchimisti"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/nomeClan"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/alchimisti" />
+
+    <View
+        android:id="@+id/divisore1"
+        android:layout_width="200dp"
+        android:layout_height="1dp"
+        android:layout_below="@+id/logoAlchimisti"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="14dp"
+        android:background="@android:color/white" />
+
+    <TextView
+        android:id="@+id/numeroVittorie"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/divisore1"
+        android:layout_marginTop="48dp"
+        android:gravity="center"
+        android:text="Vittorie: 18"
+        android:textColor="#ffffff"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/membriClan"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/divisore1"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:text="Membri: 80"
+        android:textColor="#ffffff"
+        android:textSize="20dp" />
+
+     <View
+         android:id="@+id/divisore2"
+         android:layout_width="200dp"
+         android:layout_height="1dp"
+         android:layout_alignLeft="@+id/divisore1"
+         android:layout_below="@+id/numeroVittorie"
+         android:layout_marginTop="18dp"
+         android:background="@android:color/white" />
+
+     <TextView
+         android:id="@+id/ultimeNotifiche"
+         android:layout_width="fill_parent"
+         android:layout_height="wrap_content"
+         android:layout_alignParentLeft="true"
+         android:layout_below="@+id/divisore2"
+         android:layout_marginTop="15dp"
+         android:gravity="center"
+         android:text="Ultime Notifiche:"
+         android:textColor="#ffffff"
+         android:textSize="20dp" />
+     
 </RelativeLayout>    

@@ -16,8 +16,9 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginRight="5dp"
-        android:textColor="#FFF"
-        android:layout_toRightOf="@+id/imageDialog"/>
+        android:text="Questa zona appartiene a NESSUNO. vuoi attaccare questo edificio?"
+        android:layout_toRightOf="@+id/imageDialog"
+        android:textColor="#FFF" />
  
      <Button
         android:id="@+id/yesButton"

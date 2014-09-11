@@ -10,9 +10,6 @@ import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.example.beyondto.adapter.TabsPagerAdapterHome;
 
@@ -98,7 +95,6 @@ public class HomeActivity extends Activity implements ActionBar.TabListener {
 		case R.id.menu_home:
 
 			intent.setClass(getApplicationContext(), HomeActivity.class);
-
 			startActivity(intent);
 
 			return true;
@@ -136,5 +132,15 @@ public class HomeActivity extends Activity implements ActionBar.TabListener {
 
 		}
 
+	}
+
+	private void setIcon(Object drawable) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void setIcon() {
+		// TODO Auto-generated method stub
+		
 	}
 }

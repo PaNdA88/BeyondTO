@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <RelativeLayout 
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#222222" >
-
+           
     <TextView
         android:id="@+id/nomeUtente"
         android:layout_width="fill_parent"
@@ -107,5 +106,5 @@
             android:layout_alignBottom="@+id/med2"
             android:layout_alignRight="@+id/divisore2"
             android:src="@drawable/medaglia3" />
-        
+      
 </RelativeLayout>    
