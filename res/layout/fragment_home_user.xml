@@ -1,17 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#222222" >
-     
-    <TextView android:layout_width="fill_parent"
+           
+    <TextView
+        android:id="@+id/nomeUtente"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="28dp"
         android:gravity="center"
-        android:text="SEZIONE UTENTE"
+        android:text="NOME UTENTE"
         android:textColor="#ffffff"
-        android:textSize="20dp"
-        android:layout_centerInParent="true"/>
-    
+        android:textSize="20dp" />
+
+       <TextView
+           android:id="@+id/edificiConquistati"
+           android:layout_width="fill_parent"
+           android:layout_height="wrap_content"
+           android:layout_alignParentLeft="true"
+           android:layout_below="@+id/puntiUtente"
+           android:gravity="center"
+           android:text="Edifici conquistati: 13"
+           android:textColor="#ffffff"
+           android:textSize="20dp" />
+
+       <TextView
+           android:id="@+id/clanAppartenenza"
+           android:layout_width="fill_parent"
+           android:layout_height="wrap_content"
+           android:layout_alignParentLeft="true"
+           android:layout_below="@+id/nomeUtente"
+           android:gravity="center"
+           android:text="Clan Alchimisti"
+           android:textColor="#ffffff"
+           android:textSize="20dp" />
+
+       <View
+           android:id="@+id/divisore1"
+           android:layout_width="200dp"
+           android:layout_height="1dp"
+           android:layout_alignLeft="@+id/divisore2"
+           android:layout_below="@+id/clanAppartenenza"
+           android:layout_marginTop="18dp"
+           android:background="@android:color/white" />
+
+       <TextView
+           android:id="@+id/puntiUtente"
+           android:layout_width="fill_parent"
+           android:layout_height="wrap_content"
+           android:layout_alignParentLeft="true"
+           android:layout_below="@+id/divisore1"
+           android:layout_marginTop="22dp"
+           android:gravity="center"
+           android:text="Punti Utente: 3400"
+           android:textColor="#ffffff"
+           android:textSize="20dp" />
+
+       <View
+           android:id="@+id/divisore2"
+           android:layout_width="200dp"
+           android:layout_height="1dp"
+           android:layout_below="@+id/edificiConquistati"
+           android:layout_centerHorizontal="true"
+           android:layout_marginTop="17dp"
+           android:background="@android:color/white" />
+
+        <TextView
+            android:id="@+id/medaglieOttenute"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/divisore2"
+            android:layout_marginTop="18dp"
+            android:gravity="center"
+            android:text="Medaglie ottenute:"
+            android:textColor="#ffffff"
+            android:textSize="20dp" />
+
+        <ImageView
+            android:id="@+id/med1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/divisore2"
+            android:layout_below="@+id/medaglieOttenute"
+            android:layout_marginTop="38dp"
+            android:src="@drawable/medaglia1" />
+
+        <ImageView
+            android:id="@+id/med2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/med1"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/medaglia2" />
+
+        <ImageView
+            android:id="@+id/med3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/med2"
+            android:layout_alignRight="@+id/divisore2"
+            android:src="@drawable/medaglia3" />
+      
 </RelativeLayout>    

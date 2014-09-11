@@ -106,13 +106,6 @@ public class MedalActivity extends Activity implements ActionBar.TabListener {
 			startActivity(intent);
 			return true;
 
-		case R.id.menu_target:
-
-			intent.setClass(getApplicationContext(), TargetActivity.class);
-
-			startActivity(intent);
-			return true;
-
 		case R.id.menu_medal:
 			intent.setClass(getApplicationContext(), MedalActivity.class);
 

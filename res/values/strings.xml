@@ -9,5 +9,10 @@
     <string name="title_activity_home">HomeActivity</string>
     <string name="title_activity_medal">MedalActivity</string>
     <string name="app_id">513404242105233</string>
+    <string name="action">Vuoi %1$s questo luogo?</string>
+    <string name="proprierty">Questo luogo appartiene a: %1$s</string>
+    <string name="statePlace">Stato luogo: %1$s</string>
+    <string name="numberAtt">Attaccanti: %1$s</string>
+    <string name="numberDif">Difensori: %1$s</string>
     
 </resources>
