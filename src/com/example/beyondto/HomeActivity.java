@@ -131,16 +131,5 @@ public class HomeActivity extends Activity implements ActionBar.TabListener {
 			return super.onOptionsItemSelected(item);
 
 		}
-
-	}
-
-	private void setIcon(Object drawable) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	private void setIcon() {
-		// TODO Auto-generated method stub
-		
 	}
 }
