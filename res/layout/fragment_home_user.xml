@@ -18,28 +18,6 @@
         android:textColor="#ffffff"
         android:textSize="20dp" />
 
-       <TextView
-           android:id="@+id/edificiConquistati"
-           android:layout_width="fill_parent"
-           android:layout_height="wrap_content"
-           android:layout_alignParentLeft="true"
-           android:layout_below="@+id/puntiUtente"
-           android:gravity="center"
-           android:text="Edifici conquistati: 13"
-           android:textColor="#ffffff"
-           android:textSize="20dp" />
-
-       <TextView
-           android:id="@+id/clanAppartenenza"
-           android:layout_width="fill_parent"
-           android:layout_height="wrap_content"
-           android:layout_alignParentLeft="true"
-           android:layout_below="@+id/nomeUtente"
-           android:gravity="center"
-           android:text="Clan Alchimisti"
-           android:textColor="#ffffff"
-           android:textSize="20dp" />
-
        <View
            android:id="@+id/divisore1"
            android:layout_width="200dp"
@@ -48,18 +26,6 @@
            android:layout_below="@+id/clanAppartenenza"
            android:layout_marginTop="18dp"
            android:background="@android:color/white" />
-
-       <TextView
-           android:id="@+id/puntiUtente"
-           android:layout_width="fill_parent"
-           android:layout_height="wrap_content"
-           android:layout_alignParentLeft="true"
-           android:layout_below="@+id/divisore1"
-           android:layout_marginTop="22dp"
-           android:gravity="center"
-           android:text="Punti Utente: 3400"
-           android:textColor="#ffffff"
-           android:textSize="20dp" />
 
        <View
            android:id="@+id/divisore2"
@@ -80,7 +46,7 @@
             android:gravity="center"
             android:text="Medaglie ottenute:"
             android:textColor="#ffffff"
-            android:textSize="20dp" />
+            android:textSize="16dp" />
 
         <ImageView
             android:id="@+id/med1"
@@ -106,5 +72,41 @@
             android:layout_alignBottom="@+id/med2"
             android:layout_alignRight="@+id/divisore2"
             android:src="@drawable/medaglia3" />
+
+        <TextView
+            android:id="@+id/puntiUtente"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/divisore1"
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            android:text="Punti Utente: 3400"
+            android:textColor="#ffffff"
+            android:textSize="16dp" />
+
+        <TextView
+            android:id="@+id/edificiConquistati"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/puntiUtente"
+            android:layout_marginTop="14dp"
+            android:gravity="center"
+            android:text="Edifici conquistati: 13"
+            android:textColor="#ffffff"
+            android:textSize="16dp" />
+
+        <TextView
+            android:id="@+id/clanAppartenenza"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/nomeUtente"
+            android:layout_marginTop="14dp"
+            android:gravity="center"
+            android:text="Clan Alchimisti"
+            android:textColor="#ffffff"
+            android:textSize="20dp" />
       
 </RelativeLayout>    

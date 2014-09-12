@@ -6,12 +6,16 @@
     android:orientation="vertical"
     android:background="#222222" >
      
-    <TextView android:layout_width="fill_parent"
+    <TextView
+        android:id="@+id/titClassifica"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="28dp"
         android:gravity="center"
-        android:text="SEZIONE CLASSIFICA"
+        android:text="CLASSIFICA GENERALE"
         android:textColor="#ffffff"
-        android:textSize="20dp"
-        android:layout_centerInParent="true"/>
+        android:textSize="20dp" />
     
 </RelativeLayout>    

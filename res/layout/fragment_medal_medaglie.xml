@@ -1,17 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="#222222" >
-     
-    <TextView android:layout_width="fill_parent"
+    android:background="#222222"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/titMedaglie"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="28dp"
         android:gravity="center"
-        android:text="SEZIONE MEDAGLIE"
+        android:text="LE MIE MEDAGLIE"
         android:textColor="#ffffff"
-        android:textSize="20dp"
-        android:layout_centerInParent="true"/>
-    
-</RelativeLayout>    
+        android:textSize="20dp" />
+
+    <View
+        android:id="@+id/divisore1"
+        android:layout_width="200dp"
+        android:layout_height="1dp"
+        android:layout_below="@+id/titMedaglie"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:background="@android:color/white" />
+
+    <ImageView
+        android:id="@+id/med1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/divisore1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="19dp"
+        android:src="@drawable/medaglia1" />
+
+    <TextView
+        android:id="@+id/nome_med1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/med1"
+        android:layout_marginTop="14dp"
+        android:gravity="center"
+        android:text="DUELLANTE"
+        android:textColor="#ffffff"
+        android:textSize="16dp" />
+
+    <ImageView
+        android:id="@+id/med2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/med1"
+        android:layout_centerVertical="true"
+        android:src="@drawable/medaglia2" />
+
+    <View
+        android:id="@+id/divisore2"
+        android:layout_width="200dp"
+        android:layout_height="0.5dp"
+        android:layout_alignLeft="@+id/divisore1"
+        android:layout_below="@+id/nome_med1"
+        android:layout_marginTop="14dp"
+        android:background="@android:color/white" />
+
+    <TextView
+        android:id="@+id/nome_med2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/med2"
+        android:layout_marginTop="14dp"
+        android:gravity="center"
+        android:text="CONQUISTATORE"
+        android:textColor="#ffffff"
+        android:textSize="16dp" />
+
+    <View
+        android:id="@+id/divisore3"
+        android:layout_width="200dp"
+        android:layout_height="0.5dp"
+        android:layout_alignLeft="@+id/divisore1"
+        android:layout_below="@+id/nome_med2"
+        android:layout_marginTop="14dp"
+        android:background="@android:color/white" />
+
+
+    <TextView
+        android:id="@+id/nome_med3"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="52dp"
+        android:gravity="center"
+        android:text="PREMIO FEDELTA&apos;"
+        android:textColor="#ffffff"
+        android:textSize="16dp" />
+
+    <ImageView
+        android:id="@+id/med3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/nome_med3"
+        android:layout_alignLeft="@+id/med2"
+        android:layout_marginBottom="14dp"
+        android:src="@drawable/medaglia3" />
+
+</RelativeLayout>
