@@ -62,7 +62,6 @@ public class MedalActivity extends Activity implements ActionBar.TabListener {
 			public void onPageScrollStateChanged(int arg0) {
 			}
 		});
-
 	}
 
 	@Override
