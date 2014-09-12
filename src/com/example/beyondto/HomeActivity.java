@@ -134,13 +134,4 @@ public class HomeActivity extends Activity implements ActionBar.TabListener {
 
 	}
 
-	private void setIcon(Object drawable) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	private void setIcon() {
-		// TODO Auto-generated method stub
-		
-	}
 }
