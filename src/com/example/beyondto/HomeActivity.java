@@ -131,7 +131,5 @@ public class HomeActivity extends Activity implements ActionBar.TabListener {
 			return super.onOptionsItemSelected(item);
 
 		}
-
 	}
-
 }
