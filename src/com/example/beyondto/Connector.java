@@ -23,6 +23,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.os.AsyncTask;
+import android.util.Log;
 
 public class Connector extends AsyncTask<JSONObject, Void, JSONObject> {
 
@@ -59,7 +60,7 @@ public class Connector extends AsyncTask<JSONObject, Void, JSONObject> {
 		}
 		return success;
 	}
-	
+
 	/*
 	 * Get information about places 
 	 */
@@ -101,13 +102,40 @@ public class Connector extends AsyncTask<JSONObject, Void, JSONObject> {
 		return listLocations;
 	}
 	
-	public void checkPlaceState(){
+	public String[] checkPlaceState(String nomeLuogo) {
 		
+		setPath("/checkPlaceState.php");
+		JSONObject json = new JSONObject();
+		try {
+			json.put("nomeLuogo", nomeLuogo);
+		} catch (JSONException e) {			
+			e.printStackTrace();
+		}		
+		JSONObject result = new JSONObject();		
+		try {
+			result = this.execute(json).get();			
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		} catch (ExecutionException e) {
+			e.printStackTrace();
+		}
+		String[] dati = new String[6];
 		
+		try {
+			dati[0] = result.getString("proprietaFazione");
+			dati[1] = result.getString("latSO");
+			dati[2] = result.getString("lngSO");
+			dati[3] = result.getString("latNE");
+			dati[4] = result.getString("lngNE");
+			dati[5] = result.getString("statoLuogo");	
+			
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		return dati;
+
 	}
-	
-	
-	
+
 	@Override
 	protected JSONObject doInBackground(JSONObject... params) {
 		HttpClient httpClient = new DefaultHttpClient();
@@ -138,17 +166,17 @@ public class Connector extends AsyncTask<JSONObject, Void, JSONObject> {
 			}
 			// GET JSON
 			HttpResponse response = httpClient.execute(post);
-			// prendo l'identitˆ della mia risposta
+			// prendo l'identitš della mia risposta
 			HttpEntity REntity = response.getEntity();
 			if (REntity != null) {
 				InputStream instream = REntity.getContent();
 				String resultString = convertStreamToString(instream);
 				instream.close();
+				Log.d("RISULT STRING", resultString );
 				jsonObjRecv = new JSONObject(resultString);
 			} else {
 				try {
-					jsonObjRecv.put("Error",
-							"Il server ha risposto con un JSON vuoto");
+					jsonObjRecv.put("Error", "Il server ha risposto con un JSON vuoto");
 				} catch (JSONException e2) {
 					e2.printStackTrace();
 				}
@@ -159,6 +187,9 @@ public class Connector extends AsyncTask<JSONObject, Void, JSONObject> {
 		return jsonObjRecv;
 	}
 	
+	/*
+	 * JSON reader
+	 */
 	private static String convertStreamToString(InputStream is) {
 
 		BufferedReader reader = new BufferedReader(new InputStreamReader(is));
@@ -181,8 +212,38 @@ public class Connector extends AsyncTask<JSONObject, Void, JSONObject> {
 		return sb.toString();
 	}
 	
+	/* PHP path*/
 	public void setPath(String newPath) {
 		path = newPath;
 	}
+		
+	/*user's clan choice*/
+	public String setClan(String clan, String tokenFacebook){
+		setPath("/setClan.php");
+		JSONObject json = new JSONObject();
+		try {
+			json.put("tokenFacebook", tokenFacebook);
+			json.put("fazioneAppartenenza", clan);		
+			
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		JSONObject result = new JSONObject();
+		try {
+			result = this.execute(json).get();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		} catch (ExecutionException e) {
+			e.printStackTrace();
+		}
+		String message = "";
+		try {
+			message = result.getString("message");
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		return message;				
+	}
+	
 
 }

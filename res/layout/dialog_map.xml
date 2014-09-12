@@ -4,41 +4,110 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="#222222">
- 
-    <ImageView
-        android:id="@+id/imageDialog"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/frejus" />
     
     <TextView
         android:id="@+id/textDialog"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginRight="5dp"
-        android:text="Questa zona appartiene a NESSUNO. vuoi attaccare questo edificio?"
-        android:layout_toRightOf="@+id/imageDialog"
-        android:textColor="#FFF" />
- 
-     <Button
-        android:id="@+id/yesButton"
-        android:layout_width="100px"
-        android:layout_height="wrap_content"
-        android:text="SI"
-        android:layout_marginTop="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_below="@+id/textDialog"
+        android:textColor="#FFF"
         android:layout_toRightOf="@+id/imageDialog"
         />
+
+     <TextView
+         android:id="@+id/textView1"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_below="@+id/textDialog"
+         android:layout_centerHorizontal="true"
+         android:textAppearance="?android:attr/textAppearanceLarge" />
      
+
+
+     <ImageView
+         android:id="@+id/imageDialog"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_alignParentLeft="true"
+         android:layout_below="@+id/textView1"
+         android:layout_marginLeft="16dp"
+         android:layout_marginTop="15dp"
+         android:src="@drawable/frejus" />
+
      <Button
-        android:id="@+id/noButton"
-        android:layout_width="100px"
-        android:layout_height="wrap_content"
-        android:text="NO"
-        android:layout_marginTop="5dp"
-        android:layout_below="@+id/textDialog"
-        android:layout_toRightOf="@+id/yesButton"
-        />
+         android:id="@+id/noButton"
+         android:layout_width="100px"
+         android:layout_height="wrap_content"
+         android:layout_alignParentBottom="true"
+         android:layout_marginBottom="64dp"
+         android:layout_marginLeft="35dp"
+         android:layout_toRightOf="@+id/textView1"
+         android:text="NO" />
+
+     <Button
+         android:id="@+id/yesButton"
+         android:layout_width="100px"
+         android:layout_height="wrap_content"
+         android:layout_alignBaseline="@+id/noButton"
+         android:layout_alignBottom="@+id/noButton"
+         android:layout_alignRight="@+id/imageDialog"
+         android:text="SI" />
      
+      <!-- Stringa per segnlalare la proprietà dell'azione -->
+     
+     <!-- Stringa per la scelta dell'azione --> 
+
+     <TextView
+         android:id="@+id/textProp"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_alignRight="@+id/noButton"
+         android:layout_below="@+id/imageDialog"
+         android:layout_marginTop="36dp"
+         android:text="@string/proprierty" />
+
+     <TextView
+         android:id="@+id/textStatePlace"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_alignLeft="@+id/textView1"
+         android:layout_alignTop="@+id/imageDialog"
+         android:text="@string/statePlace" />
+     
+     <TextView
+         android:id="@+id/textFirstAtt"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_alignLeft="@+id/textView2"
+         android:layout_below="@+id/textView2"
+         android:layout_marginTop="18dp"
+         android:text="Orario primo attacco:" />
+
+     <TextView
+         android:id="@+id/textNumberAtt"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_alignLeft="@+id/textView2"
+         android:layout_below="@+id/textView2"
+         android:layout_marginTop="18dp"
+         android:text="@string/numberAtt" />
+     
+     <TextView
+         android:id="@+id/textNumberDif"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_alignLeft="@+id/textView2"
+         android:layout_below="@+id/textView2"
+         android:layout_marginTop="18dp"
+         android:text="@string/numberDif" />
+     
+     <TextView
+         android:id="@+id/textAction"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_alignTop="@+id/textView1"
+         android:layout_centerHorizontal="true"
+         android:text="@string/action" />
+     
+
 </RelativeLayout>

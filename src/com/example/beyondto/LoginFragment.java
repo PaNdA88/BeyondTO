@@ -74,7 +74,7 @@ public class LoginFragment extends Fragment {
 	        @Override
 	        public void onCompleted(GraphUser user, Response response) {
 	            if (session == Session.getActiveSession()) {
-	                if (user != null) {
+	                if (user != null) {	                	
 	                	
 	                    String USER_ID = user.getId();
 	                    Log.d("USER ID", USER_ID);
@@ -85,7 +85,12 @@ public class LoginFragment extends Fragment {
 	            		Connector con = new Connector();
 	            		String result = con.doLoginFromFacebook(USER_ID, USER_TOKEN, EXPIRATION,USER_EMAIL, USER_NAME );
 	            		Log.d("RISULTATO:",result);
-	            			goToTorinoHome();            		
+	            		/*if(result.equals("0")){
+	            			goToChoiseClan(); 
+	            		}*/
+	            		if(result.equals("1")){
+	            			goToTorinoHome();  
+	            		}
 	                }
 	            }
 	            if (response.getError() != null) {
@@ -99,6 +104,13 @@ public class LoginFragment extends Fragment {
 	
 	public void goToTorinoHome(){
 		Intent i = new Intent((LoginActivity)getActivity(), HomeActivity.class);
+		getActivity().startActivity(i); 
+		
+	}
+	
+	public void goToChoiseClan(){
+		Intent i = new Intent((LoginActivity)getActivity(),ChoiseClanActivity.class);
+		i.putExtra("tokenUser", USER_TOKEN);
 		getActivity().startActivity(i); 
 		
 	}

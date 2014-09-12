@@ -21,12 +21,12 @@ public class HomeActivity extends Activity implements ActionBar.TabListener {
 	// Tab titles
 	private String[] tabsHome = { "Utente", "Scheda Clan", "Chat" };
 	Intent intent = new Intent();
-		
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_home);
-        
+
 		// Initialization
 		viewPager = (ViewPager) findViewById(R.id.pager);
 		actionBar = getActionBar();
@@ -63,7 +63,6 @@ public class HomeActivity extends Activity implements ActionBar.TabListener {
 			public void onPageScrollStateChanged(int arg0) {
 			}
 		});
-
 	}
 
 	@Override
@@ -131,16 +130,6 @@ public class HomeActivity extends Activity implements ActionBar.TabListener {
 			return super.onOptionsItemSelected(item);
 
 		}
-
 	}
 
-	private void setIcon(Object drawable) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	private void setIcon() {
-		// TODO Auto-generated method stub
-		
-	}
 }
