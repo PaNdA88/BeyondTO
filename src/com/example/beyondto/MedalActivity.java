@@ -62,7 +62,6 @@ public class MedalActivity extends Activity implements ActionBar.TabListener {
 			public void onPageScrollStateChanged(int arg0) {
 			}
 		});
-
 	}
 
 	@Override
@@ -94,36 +93,30 @@ public class MedalActivity extends Activity implements ActionBar.TabListener {
 		case R.id.menu_home:
 
 			intent.setClass(getApplicationContext(), HomeActivity.class);
-
 			startActivity(intent);
-
 			return true;
 
 		case R.id.menu_map:
 
 			intent.setClass(getApplicationContext(), MapActivity.class);
-
 			startActivity(intent);
 			return true;
 
 		case R.id.menu_medal:
+			
 			intent.setClass(getApplicationContext(), MedalActivity.class);
-
 			startActivity(intent);
-
 			return true;
 
 		case R.id.menu_news:
 
 			intent.setClass(getApplicationContext(), NewsActivity.class);
-
 			startActivity(intent);
 			return true;
 
 		case R.id.menu_settings:
 
 			intent.setClass(getApplicationContext(), SettingsActivity.class);
-
 			startActivity(intent);
 			return true;
 
