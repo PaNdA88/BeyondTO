@@ -167,6 +167,7 @@ public class MapActivity extends Activity implements OnMarkerClickListener {
 		placeDialog.setContext(ctx);
 		placeDialog.setTitle(nomeLuogo);
 		placeDialog.setStatePlace(place[0]);
+		
 		placeDialog.setActivity(this);
 		
 		
@@ -265,36 +266,4 @@ public class MapActivity extends Activity implements OnMarkerClickListener {
 }
 
 
-
-/*final Dialog dialog = new Dialog(context);
-dialog.setContentView(R.layout.dialog_map);
-dialog.setTitle("ZONA NEUTRA");
-TextView text = (TextView) dialog.findViewById(R.id.textDialog);
-text.setText("Questa zona appartiene a NESSUNO. Vuoi conquistare questo obiettivo?");
-ImageView image = (ImageView) dialog
-		.findViewById(R.id.imageDialog);
-image.setImageResource(R.drawable.frejus);
-
-Button yesButton = (Button) dialog.findViewById(R.id.yesButton);
-
-yesButton.setOnClickListener(new OnClickListener() {
-	@Override
-	public void onClick(View v) {
-		dialog.hide();
-		Intent intentGame = new Intent(getApplicationContext(),
-				GameMap.class);
-		startActivity(intentGame);
-		finish();
-	}
-});
-
-Button noButton = (Button) dialog.findViewById(R.id.noButton);
-
-noButton.setOnClickListener(new OnClickListener() {
-	@Override
-	public void onClick(View v) {
-		dialog.hide();
-	}
-});
-dialog.show();*/
 

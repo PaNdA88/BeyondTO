@@ -133,7 +133,20 @@ public class Connector extends AsyncTask<JSONObject, Void, JSONObject> {
 			e.printStackTrace();
 		}
 		return dati;
-
+	}
+	
+	public void startNewAttack(int idUserFacebook, String nomeLuogo){
+		
+		setPath("/startNewAttack.php");
+		
+		JSONObject json = new JSONObject();
+		try {
+			json.put("idFacebook", idUserFacebook);
+			json.put("nomeLuogo", nomeLuogo);
+			
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}		
 	}
 
 	@Override

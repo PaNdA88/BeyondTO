@@ -144,7 +144,7 @@
         <!-- GOOGLE API KEY -->
         <meta-data 
             android:name="com.google.android.maps.v2.API_KEY"
-            android:value="AIzaSyDXxLv1DAQBAF1UaF55r1cGESQROWpP6xU" />
+            android:value="AIzaSyCaERaP_PNez7e4cMeGrwRFsn4SgEZqiJk" />
         
         <!-- FACEBOOK APP ID -->
         <meta-data 

@@ -136,6 +136,14 @@ public class PlaceDialog {
 			@Override
 			public void onClick(View v) {
 				dialog.hide();
+				
+				//if(place[0].equals("nessuno")){
+			//	con.startNewAttack(1, nomeLuogo);
+			//}
+				
+				
+				
+				
 				Intent intentGame = new Intent(context,
 						GameMap.class);
 				getActivity().startActivity(intentGame); 
