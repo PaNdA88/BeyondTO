@@ -13,7 +13,6 @@ import android.view.View.OnClickListener;
 
 public class GameMap_domanda1 extends Activity {
 	 
-
 	ProgressBar progressBar;
     public class BackgroundAsyncTask extends
        AsyncTask<Void, Integer, Void> {
