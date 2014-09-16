@@ -55,6 +55,7 @@ public class LoginFragment extends Fragment {
     		String sott = String.format(res2.getString(R.string.sottotitolo),testo2);
     		textSubtitle.setText(Html.fromHtml((String)  sott ));
         }
+		
         else{
         	String testo1 = "Attendere prego";
         	TextView textTitle = (TextView) view.findViewById(R.id.titoloLogin);
