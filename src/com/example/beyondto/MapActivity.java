@@ -35,7 +35,7 @@ public class MapActivity extends Activity implements OnMarkerClickListener {
 	public Intent intent = new Intent();
 	private MarkerOptions options = null;
 	final Context ctx = this;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -65,17 +65,17 @@ public class MapActivity extends Activity implements OnMarkerClickListener {
 		}
 		return myPosition;
 	}
-	
+
 	/*
 	 * Draw a map in MapActivity
 	 */
 	private void drawMap() {
 		if (googleMap == null) {
-			
-			Toast toast = Toast.makeText(getApplicationContext(),
-					"mappa", Toast.LENGTH_SHORT);
+
+			Toast toast = Toast.makeText(getApplicationContext(), "mappa",
+					Toast.LENGTH_SHORT);
 			toast.show();
-			
+
 			googleMap = ((MapFragment) getFragmentManager().findFragmentById(
 					R.id.map)).getMap();
 			googleMap.setMyLocationEnabled(true);
@@ -84,7 +84,8 @@ public class MapActivity extends Activity implements OnMarkerClickListener {
 			googleMap.setOnMarkerClickListener(this);
 
 			myPosition = findMyPosition();
-			googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(myPosition,15));
+			googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(myPosition,
+					15));
 			Connector con = new Connector();
 			listPlaces = con.getLocations();
 			if (listPlaces != null) {
@@ -114,19 +115,23 @@ public class MapActivity extends Activity implements OnMarkerClickListener {
 
 		for (int i = 0; i < listPlaces.size(); i++) {
 
-			LatLng SO = new LatLng((listPlaces.get(i)).getLatSO(),(listPlaces.get(i)).getLngSO());
-			LatLng NE = new LatLng((listPlaces.get(i)).getLatNE(),(listPlaces.get(i)).getLngNE());
+			LatLng SO = new LatLng((listPlaces.get(i)).getLatSO(),
+					(listPlaces.get(i)).getLngSO());
+			LatLng NE = new LatLng((listPlaces.get(i)).getLatNE(),
+					(listPlaces.get(i)).getLngNE());
 
 			LatLngBounds boundPlace = new LatLngBounds(SO, NE);
 
-			if (((String) ((listPlaces.get(i)).getProprietaFazione())).equals("alchimisti")) {
+			if (((String) ((listPlaces.get(i)).getProprietaFazione()))
+					.equals("alchimisti")) {
 				options = new MarkerOptions()
 						.position(boundPlace.getCenter())
 						.title((listPlaces.get(i)).getNomeLuogo())
 						.icon(BitmapDescriptorFactory
 								.defaultMarker(BitmapDescriptorFactory.HUE_AZURE));
 			}
-			if (((String) ((listPlaces.get(i)).getProprietaFazione())).equals("rinnegati")) {
+			if (((String) ((listPlaces.get(i)).getProprietaFazione()))
+					.equals("rinnegati")) {
 
 				options = new MarkerOptions()
 						.position(boundPlace.getCenter())
@@ -135,7 +140,8 @@ public class MapActivity extends Activity implements OnMarkerClickListener {
 								.defaultMarker(BitmapDescriptorFactory.HUE_RED));
 
 			}
-			if (((String) ((listPlaces.get(i)).getProprietaFazione())).equals("neutro")) {
+			if (((String) ((listPlaces.get(i)).getProprietaFazione()))
+					.equals("neutro")) {
 
 				options = new MarkerOptions()
 						.position(boundPlace.getCenter())
@@ -155,94 +161,85 @@ public class MapActivity extends Activity implements OnMarkerClickListener {
 	}
 
 	@Override
-	
 	public boolean onMarkerClick(Marker marker) {
-		
+
 		String nomeLuogo = marker.getTitle();
-			
+
 		Connector con = new Connector();
 		String[] place = con.checkPlaceState(nomeLuogo);
-		
+
 		PlaceDialog placeDialog = new PlaceDialog();
 		placeDialog.setContext(ctx);
 		placeDialog.setTitle(nomeLuogo);
 		placeDialog.setStatePlace(place[0]);
-		
+
 		placeDialog.setActivity(this);
-		
-		
-		if(place[0].equals(myClan)){
+
+		if (place[0].equals(myClan)) {
 			Toast toast = Toast.makeText(getApplicationContext(), "entrata",
 					Toast.LENGTH_SHORT);
 			toast.show();
 			placeDialog.setClan(myClan);
 			placeDialog.setAction("difendere");
-				
+
 		}
-		
-		else{	
+
+		else {
 			Toast toast = Toast.makeText(getApplicationContext(), "entrata",
 					Toast.LENGTH_SHORT);
 			toast.show();
 			placeDialog.setClan(otherClan);
 			placeDialog.setAction("attaccare");
-			
-		}
-		
-		placeDialog.showPlaceDialog();
-		/*boolean inPlace = InPlace(place);
-		
-		if(inPlace){
-			//devo controllare  il clan del luogo
-			
-			Toast toast = Toast.makeText(getApplicationContext(), "Sono nel luogo",
-					Toast.LENGTH_SHORT);
-			toast.show();	
-		}else{
-			Toast toast = Toast.makeText(getApplicationContext(), "Non sono nel luogo",
-					Toast.LENGTH_SHORT);
-			toast.show();		
-		}*/
-		return false;
-	}	
-	
-	/* check if the user is in Place*/
-	/*public boolean InPlace(String dati[]) {
 
-		LatLngBounds boundPlace = new LatLngBounds(new LatLng(
-				Double.parseDouble(dati[1]), Double.parseDouble(dati[2])),
-				new LatLng(Double.parseDouble(dati[3]), Double
-						.parseDouble(dati[4])));
-		
-		if (boundPlace.contains(myPosition)) {
-			return true;
-		}else{
-			return false;
-		}	
-	}*/
-	
-	
+		}
+
+		placeDialog.showPlaceDialog();
+		/*
+		 * boolean inPlace = InPlace(place);
+		 * 
+		 * if(inPlace){ //devo controllare il clan del luogo
+		 * 
+		 * Toast toast = Toast.makeText(getApplicationContext(),
+		 * "Sono nel luogo", Toast.LENGTH_SHORT); toast.show(); }else{ Toast
+		 * toast = Toast.makeText(getApplicationContext(), "Non sono nel luogo",
+		 * Toast.LENGTH_SHORT); toast.show(); }
+		 */
+		return false;
+	}
+
+	/* check if the user is in Place */
+	/*
+	 * public boolean InPlace(String dati[]) {
+	 * 
+	 * LatLngBounds boundPlace = new LatLngBounds(new LatLng(
+	 * Double.parseDouble(dati[1]), Double.parseDouble(dati[2])), new
+	 * LatLng(Double.parseDouble(dati[3]), Double .parseDouble(dati[4])));
+	 * 
+	 * if (boundPlace.contains(myPosition)) { return true; }else{ return false;
+	 * } }
+	 */
+
 	/*
 	 * Menu application
-	 */	
+	 */
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 
 		case R.id.menu_home:
-			
+
 			intent.setClass(getApplicationContext(), HomeActivity.class);
 			startActivity(intent);
 			return true;
 
 		case R.id.menu_map:
-			
+
 			intent.setClass(getApplicationContext(), MapActivity.class);
 			startActivity(intent);
 			return true;
 
 		case R.id.menu_medal:
-			
+
 			intent.setClass(getApplicationContext(), MedalActivity.class);
 			startActivity(intent);
 			return true;
@@ -264,6 +261,3 @@ public class MapActivity extends Activity implements OnMarkerClickListener {
 		}
 	}
 }
-
-
-

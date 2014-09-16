@@ -25,7 +25,7 @@
            android:layout_alignLeft="@+id/divisore2"
            android:layout_below="@+id/clanAppartenenza"
            android:layout_marginTop="18dp"
-           android:background="@android:color/white" />
+           android:background="@drawable/gradient" />
 
        <View
            android:id="@+id/divisore2"
@@ -34,7 +34,7 @@
            android:layout_below="@+id/edificiConquistati"
            android:layout_centerHorizontal="true"
            android:layout_marginTop="17dp"
-           android:background="@android:color/white" />
+           android:background="@drawable/gradient" />
 
         <TextView
             android:id="@+id/medaglieOttenute"

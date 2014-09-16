@@ -11,7 +11,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.facebook.Request;
@@ -28,7 +27,6 @@ public class LoginFragment extends Fragment {
 	private UiLifecycleHelper uiHelper;
 	private String USER_TOKEN, EXPIRATION;
 	private Session session;
-	private ProgressBar progress;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
