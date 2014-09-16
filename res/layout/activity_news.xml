@@ -1,7 +1,11 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+<FrameLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" 
+    android:layout_height="match_parent"
+    android:background="@drawable/granmadre" >
     
     <fragment class="com.example.beyondto.NewsFragment"
             android:id="@+id/news"
-            android:layout_width="match_parent" android:layout_height="match_parent" />
+            android:layout_width="match_parent" 
+            android:layout_height="match_parent" />
 </FrameLayout>

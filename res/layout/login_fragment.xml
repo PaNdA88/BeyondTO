@@ -1,35 +1,29 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" 
+<LinearLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android" 
     xmlns:tools="http://schemas.android.com/tools" 
     android:layout_width="match_parent" 
     android:layout_height="match_parent" 
-    android:background="#222222"
-     android:orientation="vertical">
+    android:orientation="vertical" >
 
-<TextView android:layout_width="fill_parent" 
+<TextView 
+    android:id="@+id/titoloLogin"
+    android:layout_width="fill_parent" 
     android:layout_height="wrap_content" 
     android:layout_marginTop="60dp" 
     android:gravity="center" 
-    android:text="Attendere prego" 
+    android:text="@string/titoloLogin" 
     android:textColor="#ffffff" 
     android:textSize="20dp" />
 
-<ProgressBar 
-    android:id="@+id/progressBar1" 
-    style="?android:attr/progressBarStyleLarge" 
-    android:layout_width="fill_parent" 
-    android:layout_height="wrap_content"
-     android:layout_marginTop="40dp" 
-     android:gravity="center_horizontal" />
-
 <TextView 
-    android:id="@+id/textView1"
-     android:layout_width="fill_parent" 
-     android:layout_height="wrap_content" 
-     android:layout_marginTop="40dp" 
-     android:gravity="center" 
-     android:text="Stiamo effettuando la connessione a Facebook" 
-     android:textColor="#ffffff" 
-     android:textSize="20dp" />
+    android:id="@+id/sottotitolo"
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:layout_marginTop="40dp" 
+    android:gravity="center" 
+    android:text="@string/sottotitolo" 
+    android:textColor="#ffffff" 
+    android:textSize="20dp" />
 
 <com.facebook.widget.LoginButton 
     android:id="@+id/authButton" 
