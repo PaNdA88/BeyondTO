@@ -16,9 +16,16 @@ android:padding="14dp" >
        >
         
 <RelativeLayout
+<<<<<<< HEAD
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
      >
+=======
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/valentino1"
+    android:orientation="vertical" >
+>>>>>>> origin/master
 
     <TextView
         android:id="@+id/titMedaglie"
@@ -132,6 +139,10 @@ android:padding="14dp" >
 
 </RelativeLayout>
 
+<<<<<<< HEAD
  </ScrollView>
  
 </RelativeLayout>
+=======
+</ScrollView>
+>>>>>>> origin/master
