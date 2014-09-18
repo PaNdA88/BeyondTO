@@ -4,8 +4,16 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:id="@+id/left"
-    android:background="@drawable/granmadre">
+    android:background="@drawable/granmadre_piccola"
+   >
 
-    <!-- inserire caratteristiche lista -->
+    <ListView android:id="@id/android:list"
+               android:layout_width="match_parent"
+               android:layout_height="0dp"
+               android:cacheColorHint="@android:color/transparent"
+               android:divider="@drawable/gradient"
+               android:dividerHeight="1dp"
+               android:layout_weight="1"
+               android:drawSelectorOnTop="false"/>
 
 </LinearLayout>  

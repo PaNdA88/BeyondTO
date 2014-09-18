@@ -9,6 +9,8 @@
         <!-- API 14 theme customizations can go here. -->
         <item name="android:actionBarStyle">@style/ActionBar</item>
         <item name="android:actionBarTabStyle">@style/ActionBarTabStyle</item>
+        <item name="android:listChoiceBackgroundIndicator">@drawable/apptheme_list_selector_holo_dark</item>
+		<item name="android:activatedBackgroundIndicator">@drawable/apptheme_activated_background_holo_dark</item>
         
     </style>
     
