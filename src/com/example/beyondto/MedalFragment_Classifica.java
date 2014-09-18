@@ -1,37 +1,40 @@
 package com.example.beyondto;
 
 import java.util.ArrayList;
-import java.util.Random;
-
+import java.util.List;
 import com.example.beyondto.R;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
  
 public class MedalFragment_Classifica extends Fragment {
  
+	private ListView listViewPlayers;
+	private Context ctx;
+   
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
  
-        ArrayList<Player> personList=new ArrayList<Player>();
-        Player [] people={
-                        new Player("Andrea Marietta",3600,R.drawable.rinnegati),
-                        new Player("Antonella Vannucci",3400,R.drawable.alchimisti),
-                        new Player("Dario Carbone",3100,R.drawable.alchimisti),
-                        new Player("Giovanni Malnati",2800,R.drawable.rinnegati),
-                        new Player("Tobia Giani",2600,R.drawable.alchimisti),
-                        new Player("Virginia Daniele",2500,R.drawable.rinnegati)};
+	    View rootView = inflater.inflate(R.layout.fragment_medal_classifica, container, false);
+          
+	    ctx=(MedalActivity)getActivity(); 
+        List<Player> playerList= new ArrayList<Player>();
+        playerList.add(new Player("Andre M","3450","rinnegati"));
+        playerList.add(new Player("Virgi D","2345","rinnegati"));
+        playerList.add(new Player("Anto V","1234","alchimisti"));
+        playerList.add(new Player("Dario C","456","alchimisti"));
+        playerList.add(new Player("Giovanni M","345","rinnegati"));
+        playerList.add(new Player("Massimo M","234","rinnegati"));
+        playerList.add(new Player("Tobia G","10","alchimisti"));
         
-        Random r=new Random();
-        for(int i=0;i<people.length;i++){
-              personList.add(people[r.nextInt(people.length)]);
-        }
-        
-        View rootView = inflater.inflate(R.layout.fragment_medal_classifica, container, false);
-        return rootView;
+        listViewPlayers = ( ListView )rootView.findViewById( R.id.playerlist);
+        listViewPlayers.setAdapter(new PlayerListAdapter(ctx, R.layout.playerlist, playerList) );
+   
+	    return rootView;
     }
- 
 }

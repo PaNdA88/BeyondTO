@@ -1,23 +1,38 @@
 package com.example.beyondto;
 
 public class Player {
-	private String nome;
-    private int punti;
-    private int clan;
-    
-    public Player(String nome, int punti, int clan) {
-            super();
-            this.nome = nome;
-            this.punti = punti;
-            this.clan = clan;
+    private String name;
+    private String punti;
+    private String image;
+
+    public Player(String name, String punti, String image) {
+        super();
+        this.name = name;
+        this.punti = punti;
+        this.image = image;
     }
-    public String getNome() {
-            return nome;
+
+    public String getName() {
+        return name;        
     }
-    public int getPunti() {
-            return punti;
+
+    public void setName(String nameText) {
+        name = nameText;
     }
-    public int getPhotoRes() {
-            return clan;
+
+    public String getPunti() {
+        return punti;
+    }
+
+    public void setPunti(String punti) {
+        this.punti = punti;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }

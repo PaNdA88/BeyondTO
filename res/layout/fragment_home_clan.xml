@@ -34,7 +34,7 @@
         android:layout_below="@+id/logoRinnegati"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="14dp"
-        android:background="@android:color/white" />
+        android:background="@drawable/gradient" />
 
     <TextView
         android:id="@+id/numVittorie"
@@ -67,7 +67,7 @@
          android:layout_alignLeft="@+id/divisore1"
          android:layout_below="@+id/numVittorie"
          android:layout_marginTop="18dp"
-         android:background="@android:color/white" />
+         android:background="@drawable/gradient" />
 
      <TextView
          android:id="@+id/ultimeNotifiche"
