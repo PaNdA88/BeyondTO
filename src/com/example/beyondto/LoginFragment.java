@@ -3,12 +3,15 @@ package com.example.beyondto;
 import java.util.Arrays;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.facebook.Request;
 import com.facebook.Response;
@@ -23,11 +26,13 @@ public class LoginFragment extends Fragment {
 	private static final String TAG = "MainFragment";
 	private UiLifecycleHelper uiHelper;
 	private String USER_TOKEN, EXPIRATION;
-
+	private Session session;
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		uiHelper = new UiLifecycleHelper(getActivity(), statusCallback);
+		session = Session.getActiveSession();
+        uiHelper = new UiLifecycleHelper(getActivity(), statusCallback);
 		uiHelper.onCreate(savedInstanceState);
 	}
 
@@ -35,6 +40,33 @@ public class LoginFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.login_fragment, container, false);
+		
+		if (session == null){
+			String testo1 = "ACCEDI A FACEBOOK!";
+        	TextView textTitle = (TextView) view.findViewById(R.id.titoloLogin);
+    		Resources res1 = getActivity().getResources();
+    		String tit = String.format(res1.getString(R.string.titoloLogin),testo1);
+    		textTitle.setText(Html.fromHtml((String)  tit ));
+    		String testo2 = "Per giocare con BeyondTO è necessario effettuare l'accesso a Facebook";
+        	TextView textSubtitle = (TextView) view.findViewById(R.id.sottotitolo);
+    		Resources res2 = getActivity().getResources();
+    		String sott = String.format(res2.getString(R.string.sottotitolo),testo2);
+    		textSubtitle.setText(Html.fromHtml((String)  sott ));
+        }
+		
+        else{
+        	String testo1 = "Attendere prego";
+        	TextView textTitle = (TextView) view.findViewById(R.id.titoloLogin);
+    		Resources res1 = getActivity().getResources();
+    		String tit = String.format(res1.getString(R.string.titoloLogin),testo1);
+    		textTitle.setText(Html.fromHtml((String)  tit ));
+    		String testo2 = "Stiamo effettuando la connessione a Facebook";
+        	TextView textSubtitle = (TextView) view.findViewById(R.id.sottotitolo);
+    		Resources res2 = getActivity().getResources();
+    		String sott = String.format(res2.getString(R.string.sottotitolo),testo2);
+    		textSubtitle.setText(Html.fromHtml((String)  sott ));
+        }
+        
 		LoginButton authButton = (LoginButton) view
 				.findViewById(R.id.authButton);
 		// richiedo i permessi 

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#222222" >
+    android:background="@drawable/mole1" >
            
     <TextView
         android:id="@+id/nomeUtente"
@@ -14,7 +14,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="28dp"
         android:gravity="center"
-        android:text="NOME UTENTE"
+        android:text="@string/nomeUtente"
         android:textColor="#ffffff"
         android:textSize="20dp" />
 
@@ -25,7 +25,7 @@
            android:layout_alignLeft="@+id/divisore2"
            android:layout_below="@+id/clanAppartenenza"
            android:layout_marginTop="18dp"
-           android:background="@android:color/white" />
+           android:background="@drawable/gradient" />
 
        <View
            android:id="@+id/divisore2"
@@ -34,7 +34,7 @@
            android:layout_below="@+id/edificiConquistati"
            android:layout_centerHorizontal="true"
            android:layout_marginTop="17dp"
-           android:background="@android:color/white" />
+           android:background="@drawable/gradient" />
 
         <TextView
             android:id="@+id/medaglieOttenute"
@@ -81,7 +81,7 @@
             android:layout_below="@+id/divisore1"
             android:layout_marginTop="16dp"
             android:gravity="center"
-            android:text="Punti Utente: 3400"
+            android:text="@string/puntiUtente"
             android:textColor="#ffffff"
             android:textSize="16dp" />
 
@@ -93,7 +93,7 @@
             android:layout_below="@+id/puntiUtente"
             android:layout_marginTop="14dp"
             android:gravity="center"
-            android:text="Edifici conquistati: 13"
+            android:text="@string/edificiConquistati"
             android:textColor="#ffffff"
             android:textSize="16dp" />
 
@@ -105,8 +105,8 @@
             android:layout_below="@+id/nomeUtente"
             android:layout_marginTop="14dp"
             android:gravity="center"
-            android:text="Clan Alchimisti"
+            android:text="@string/clanAppartenenza"
             android:textColor="#ffffff"
             android:textSize="20dp" />
-      
+
 </RelativeLayout>    

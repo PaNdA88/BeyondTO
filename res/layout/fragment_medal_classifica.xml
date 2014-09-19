@@ -1,21 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="#222222" >
-     
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+    	android:background="@drawable/valentino2_piccola" >
+
     <TextView
         android:id="@+id/titClassifica"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="20dp"
         android:gravity="center"
         android:text="CLASSIFICA GENERALE"
         android:textColor="#ffffff"
         android:textSize="20dp" />
+
+     <View
+         android:id="@+id/divisore1"
+         android:layout_width="wrap_content"
+         android:layout_height="0.5dp"
+         android:layout_marginTop="18dp"
+         android:background="@drawable/gradient" />
     
-</RelativeLayout>    
+    <ListView
+        android:id="@+id/playerlist"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:paddingTop="5dp" >
+    </ListView>
+        
+</LinearLayout>
+    
