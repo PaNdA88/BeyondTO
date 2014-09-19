@@ -29,5 +29,5 @@ proguard/
 .idea/
 
 .DS_Store
-*.properties
 project.properties
+*.properties

@@ -135,7 +135,7 @@ public class Connector extends AsyncTask<JSONObject, Void, JSONObject> {
 		return dati;
 	}
 	
-	public void startNewAttack(int idUserFacebook, String nomeLuogo){
+	public int startNewAttack(String idUserFacebook, String nomeLuogo, String azione){
 		
 		setPath("/startNewAttack.php");
 		
@@ -143,10 +143,53 @@ public class Connector extends AsyncTask<JSONObject, Void, JSONObject> {
 		try {
 			json.put("idFacebook", idUserFacebook);
 			json.put("nomeLuogo", nomeLuogo);
+			json.put("azione", azione);
 			
 		} catch (JSONException e) {
 			e.printStackTrace();
-		}		
+		}
+		JSONObject result = new JSONObject();
+		try {
+		  result = this.execute(json).get();
+			 
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		} catch (ExecutionException e) {
+			e.printStackTrace();
+		};
+		int idLuogo = 0;
+		try {
+			idLuogo = result.getInt("idLuogo");			
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		return idLuogo;
+	}
+	
+	public void setScoreAttDif(Double score, String idUser, String namePlace, String action, String userClan, int idPlace ){
+		
+		setPath("/setScoreAttDif.php");
+		
+		JSONObject json = new JSONObject();
+		try {
+			json.put("score", score);
+			json.put("idFacebook", idUser);
+			json.put("nomeLuogo", namePlace);
+			json.put("azione", action);
+			json.put("clanUtente", userClan);
+			json.put("idLuogo",Integer.toString(idPlace));
+			
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}JSONObject result = new JSONObject();
+		try {
+			  result = this.execute(json).get();
+				 
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			} catch (ExecutionException e) {
+				e.printStackTrace();
+			};
 	}
 
 	@Override
@@ -185,8 +228,12 @@ public class Connector extends AsyncTask<JSONObject, Void, JSONObject> {
 				InputStream instream = REntity.getContent();
 				String resultString = convertStreamToString(instream);
 				instream.close();
-				Log.d("RISULT STRING", resultString );
+				Log.e("RISULT STRING", resultString );
 				jsonObjRecv = new JSONObject(resultString);
+				String err = jsonObjRecv.getString("error");
+				if(err!=null){
+					//lanci un toast con testo = err
+				}
 			} else {
 				try {
 					jsonObjRecv.put("Error", "Il server ha risposto con un JSON vuoto");

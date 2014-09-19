@@ -12,99 +12,132 @@ import android.view.View;
 import android.view.View.OnClickListener;
 
 public class GameMap_domanda1 extends Activity {
-	 
+
 	ProgressBar progressBar;
-    public class BackgroundAsyncTask extends
-       AsyncTask<Void, Integer, Void> {
-     
-     int myProgress;
+	private double score;
+	private String idUser, namePlace, action, userClan;
+	private int idPlace, time, myProgress;
 
-     @Override
-     protected void onPostExecute(Void result) {
-      // TODO Auto-generated method stub
-     }
-
-     @Override
-     protected void onPreExecute() {
-      // TODO Auto-generated method stub
-     myProgress = 0;
-     }
-     
-     @Override
-     protected Void doInBackground(Void... params) {
-      // TODO Auto-generated method stub
-      while(myProgress<100){
-       myProgress++;
-       publishProgress(myProgress);
-       SystemClock.sleep(100);
-       if (Thread.currentThread().isInterrupted()) {
-    	   return null;
-       }
-      }
-      return null;
-     }
-
-     @Override
-     protected void onProgressUpdate(Integer... values) {
-      // TODO Auto-generated method stub
-      progressBar.setProgress(values[0]);
-     }
-    }
+	public class BackgroundAsyncTask extends AsyncTask<Void, Integer, Void> {
 
 		@Override
-		protected void onCreate(Bundle savedInstanceState) {
-			super.onCreate(savedInstanceState);
-			setContentView(R.layout.gioco_map_domanda1);
-			
-        	progressBar = (ProgressBar)findViewById(R.id.progressbar_Horizontal);
-    	    progressBar.setProgress(0);
-    	    final BackgroundAsyncTask task= new BackgroundAsyncTask();
-    	    task.execute();
-
-    	    Button risp1a = (Button) findViewById(R.id.risp1A);
-   	     	Button risp1b = (Button) findViewById(R.id.risp1B);
-   	     	Button risp1c = (Button) findViewById(R.id.risp1C);
-
-    	    risp1a.setOnClickListener(new OnClickListener() {
-    	    	@Override
-	                public void onClick(View v1) {
-    	    		Intent intentGame2a = new Intent(
-    						getApplicationContext(),
-    						GameMap_domanda2.class
-    					);
-    	    		task.cancel(true);
-    				startActivity(intentGame2a);
-    				finish();
-    	    	}
-    	     });
-    	    
-    	     risp1b.setOnClickListener(new OnClickListener() {
-        	    	@Override
- 	                public void onClick(View v2) {
-        	    		Intent intentGame2b = new Intent(
-        						getApplicationContext(),
-        						GameMap_domanda2.class
-        					);
-        	    		task.cancel(true);
-        				startActivity(intentGame2b);
-        				finish();
-        	    	}
-        	     });
-    	     
-    	     risp1c.setOnClickListener(new OnClickListener() {
-        	    	@Override
- 	                public void onClick(View v3) {
-        	    		Intent intentGame2c = new Intent(
-        						getApplicationContext(),
-        						GameMap_domanda2.class
-        					);
-        	    		task.cancel(true);
-        				startActivity(intentGame2c);
-        				finish();
-        	    	}
-        	     });
+		protected void onPostExecute(Void result) {
+			// TODO Auto-generated method stub
 		}
-		
 
+		@Override
+		protected void onPreExecute() {
+			// TODO Auto-generated method stub
+			myProgress = 0;
+		}
+
+		@Override
+	     protected Void doInBackground(Void... params) {
+	      // TODO Auto-generated method stub
+	    	 
+	     while(time >= 0){	 
+			      while(myProgress<=100){
+				       myProgress++;
+				       publishProgress(myProgress);
+				       SystemClock.sleep(100);
+				       if (Thread.currentThread().isInterrupted()) {
+				    	   return null;
+				       }
+			      }
+			      time--;
+		     }
+		     return null;
+		}
+
+		@Override
+		protected void onProgressUpdate(Integer... values) {
+			// TODO Auto-generated method stub
+			progressBar.setProgress(values[0]);
+		}
 	}
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.gioco_map_domanda1);
+		progressBar = (ProgressBar) findViewById(R.id.progressbar_Horizontal);
+		progressBar.setProgress(0);
+		final BackgroundAsyncTask task = new BackgroundAsyncTask();
+		time = 100;
+		myProgress = 0;
 		
+		task.execute();
+		
+		Button risp1a = (Button) findViewById(R.id.risp1A);
+		Button risp1b = (Button) findViewById(R.id.risp1B);
+		Button risp1c = (Button) findViewById(R.id.risp1C);
+
+		Intent i = getIntent();
+		idUser = i.getStringExtra("idUtente");
+		namePlace = i.getStringExtra("nomeLuogo");
+		action = i.getStringExtra("azione");
+		userClan = i.getStringExtra("clanUtente");
+		idPlace = i.getIntExtra("idLuogo", idPlace);
+
+		risp1a.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v1) {
+
+				score = 100 - myProgress;
+				Intent intentGame2a = new Intent(getApplicationContext(),
+						GameMap_domanda2.class);
+				intentGame2a.putExtra("score", score);
+				intentGame2a.putExtra("idUtente", idUser);
+				intentGame2a.putExtra("nomeLuogo", namePlace);
+				intentGame2a.putExtra("azione", action);
+				intentGame2a.putExtra("clanUtente", userClan);
+				intentGame2a.putExtra("idLuogo", idPlace);
+				task.cancel(true);
+				startActivity(intentGame2a);
+				finish();
+			}
+		});
+
+		risp1b.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v2) {
+
+				score = 100 - myProgress;
+				Intent intentGame2b = new Intent(getApplicationContext(),
+						GameMap_domanda2.class);
+				intentGame2b.putExtra("score", score);
+				intentGame2b.putExtra("score", score);
+				intentGame2b.putExtra("idUtente", idUser);
+				intentGame2b.putExtra("nomeLuogo", namePlace);
+				intentGame2b.putExtra("azione", action);
+				intentGame2b.putExtra("clanUtente", userClan);
+				intentGame2b.putExtra("idLuogo", idPlace);
+				task.cancel(true);
+				startActivity(intentGame2b);
+				finish();
+			}
+		});
+
+		risp1c.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v3) {
+
+				score = 100 - myProgress;
+				Intent intentGame2c = new Intent(getApplicationContext(),
+						GameMap_domanda2.class);
+				intentGame2c.putExtra("score", score);
+				intentGame2c.putExtra("score", score);
+				intentGame2c.putExtra("idUtente", idUser);
+				intentGame2c.putExtra("nomeLuogo", namePlace);
+				intentGame2c.putExtra("azione", action);
+				intentGame2c.putExtra("clanUtente", userClan);
+				intentGame2c.putExtra("idLuogo", idPlace);
+				task.cancel(true);
+				startActivity(intentGame2c);
+				finish();
+			}
+		});
+	}
+
+}
