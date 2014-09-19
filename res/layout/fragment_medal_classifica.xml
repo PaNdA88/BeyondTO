@@ -6,29 +6,17 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
     	android:background="@drawable/valentino2_piccola" >
-
-    <TextView
-        android:id="@+id/titClassifica"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:gravity="center"
-        android:text="CLASSIFICA GENERALE"
-        android:textColor="#ffffff"
-        android:textSize="20dp" />
-
-     <View
-         android:id="@+id/divisore1"
-         android:layout_width="wrap_content"
-         android:layout_height="0.5dp"
-         android:layout_marginTop="18dp"
-         android:background="@drawable/gradient" />
     
     <ListView
         android:id="@+id/playerlist"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:paddingTop="5dp" >
+        android:paddingTop="5dp"
+        android:listSelector="@drawable/list_selector"
+        android:divider="@drawable/gradient"
+        android:dividerHeight="0.5dp"
+        style="@style/ScrollbarShapeStyle"
+         >
     </ListView>
         
 </LinearLayout>

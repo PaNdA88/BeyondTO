@@ -1,9 +1,13 @@
 package com.example.beyondto;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import android.app.FragmentTransaction;
 import android.app.ListFragment;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import android.view.LayoutInflater;
@@ -17,44 +21,46 @@ import android.widget.TextView;
 
 public class NewsFragment extends ListFragment {
 
-	public class MyListAdapter extends ArrayAdapter<String> {
+	Context ctx;
+	ListView lista;
+
+	public class MyListAdapter extends ArrayAdapter<Notifica> {
 
 		Context myContext;
 
 		public MyListAdapter(Context context, int textViewResourceId,
-				String[] objects) {
+				List<Notifica> objects) {
 			super(context, textViewResourceId, objects);
 			myContext = context;
+
 		}
 
 		@Override
 		public View getView(int position, View convertView, ViewGroup parent) {
-			// return super.getView(position, convertView, parent);
 
 			LayoutInflater inflater = (LayoutInflater) myContext
 					.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
 			View row = inflater.inflate(R.layout.row, parent, false);
+			Notifica notifica = getItem(position);
 			TextView label = (TextView) row.findViewById(R.id.value);
-			label.setText(values[position]);
+			label.setText(notifica.getCategory());
+
+			TextView edificio = (TextView) row.findViewById(R.id.edificio);
+			edificio.setText(notifica.getEdificio());
+
 			ImageView icon = (ImageView) row.findViewById(R.id.icon);
 
-			for (position = 0; position < 3; position++) {
-				icon.setImageResource(R.drawable.sword);
-			}
-			for (position = 3; position < 6; position++) {
-				icon.setImageResource(R.drawable.sword);
-			}
+			String uri = "drawable/" + notifica.getImage();
+			int imageResource = myContext.getResources().getIdentifier(uri,
+					null, myContext.getPackageName());
+			Drawable image = myContext.getResources()
+					.getDrawable(imageResource);
+			icon.setImageDrawable(image);
 			return row;
 		}
 
 	}
-
-	String[] values = new String[] { "Attacco 1", "Attacco 2", "Notifica 1",
-			"Notifica 2", "Duello 1", "Duello 2"
-
-	};
-
-	// int[] drawables = { R.drawable.sword, R.drawable.scudo };
 
 	boolean mDualPane;
 	int mCurCheckPosition = 0;
@@ -62,17 +68,30 @@ public class NewsFragment extends ListFragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		View v = inflater.inflate(R.layout.fragment_news, null);
+		View v = inflater.inflate(R.layout.fragment_news, container, false);
+
+		// ctx=(MedalActivity)getActivity();
+		List<Notifica> listaNotifiche = new ArrayList<Notifica>();
+		listaNotifiche.add(new Notifica("Inizio attacco", "palazzo madama",
+				"sword"));
+		listaNotifiche.add(new Notifica("Difesa avvenuta", "palazzo madama",
+				"scudo"));
+		listaNotifiche.add(new Notifica("Attacco", "palazzo madama", "sword"));
+		listaNotifiche.add(new Notifica("Difesa", "palazzo madama", "scudo"));
+		listaNotifiche.add(new Notifica("Difesa", "palazzo madama", "scudo"));
+		listaNotifiche.add(new Notifica("Attacco", "palazzo madama", "sword"));
+		listaNotifiche.add(new Notifica("Attacco", "palazzo madama", "sword"));
+
+		MyListAdapter myListAdapter = new MyListAdapter(getActivity(),
+				R.layout.row, listaNotifiche);
+		setListAdapter(myListAdapter);
+
 		return v;
 	}
 
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
-
-		MyListAdapter myListAdapter = new MyListAdapter(getActivity(),
-				R.layout.row, values);
-		setListAdapter(myListAdapter);
 
 		// Check to see if we have a frame in which to embed the details
 		// fragment directly in the containing UI.

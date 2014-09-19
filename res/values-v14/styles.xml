@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!--
         Base application theme for API 14+. This theme completely replaces
@@ -10,8 +10,8 @@
         <!-- API 14 theme customizations can go here. -->
         <item name="android:actionBarStyle">@style/ActionBar</item>
         <item name="android:actionBarTabStyle">@style/ActionBarTabStyle</item>
-        
 		<item name="android:activatedBackgroundIndicator">@drawable/apptheme_activated_background_holo_dark</item>
+		
         
     </style>
     
@@ -28,7 +28,7 @@
     
     </style>
     
-	<style name="scrollbar_shape_style">
+	<style name="ScrollbarShapeStyle">
         <item name="android:scrollbarAlwaysDrawVerticalTrack">true</item>
         <item name="android:scrollbarStyle">outsideOverlay</item>
         <item name="android:scrollbars">vertical</item>

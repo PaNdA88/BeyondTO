@@ -25,7 +25,7 @@
         <TextView
                 android:text="Punteggio"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="#fbcc0a"
+                android:textColor="#f7c14c"
                 android:id="@+id/punti"
                 android:layout_alignLeft="@+id/nome"
                 android:layout_alignParentBottom="true"
