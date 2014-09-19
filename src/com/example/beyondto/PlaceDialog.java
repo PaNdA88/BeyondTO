@@ -8,17 +8,28 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.text.Html;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class PlaceDialog {
 	
-	private String title, view_text, action, clan, statePlace, numberAtt, numberDif;
+	private String title, view_text, action, clan, statePlace, numberAtt, numberDif, userClan;
 	private Context context;
 	private Activity activity;
+	private Button yesButton, noButton;
+	
+	public String getUserClan() {
+		return userClan;
+	}
+
+	public void setUserClan(String userClan) {
+		this.userClan = userClan;
+	}
 	
 	public PlaceDialog(){}	
 
@@ -106,7 +117,7 @@ public class PlaceDialog {
 		
 		//------------------- dynamic strings ----------------------//
 		TextView textPropriety = (TextView) dialog.findViewById(R.id.textProp);
-		Resources res = context.getResources();
+		final Resources res = context.getResources();
 		String prop = String.format(res.getString(R.string.proprierty),clan);
 		textPropriety.setText(Html.fromHtml((String)  prop ));
 		
@@ -114,8 +125,9 @@ public class PlaceDialog {
 		String state = String.format(res.getString(R.string.statePlace),statePlace);
 		textStatePlace.setText(Html.fromHtml((String)  state ));
 		
-		if(!statePlace.equals("nessuno")){
+		if(!statePlace.equals("nessuno")){		
 		
+			// #ATTACCANTI, #DIFENSORI
 			TextView textNumberAtt = (TextView) dialog.findViewById(R.id.textNumberAtt);
 			String att = String.format(res.getString(R.string.numberAtt), numberAtt);
 			textNumberAtt.setText(Html.fromHtml((String)  att ));
@@ -125,41 +137,47 @@ public class PlaceDialog {
 			textNumberDif.setText(Html.fromHtml((String)  dif ));
 		}
 		
-		TextView textAction = (TextView) dialog.findViewById(R.id.textAction);
-		String act = String.format(res.getString(R.string.action),action);
-		textAction.setText(Html.fromHtml((String)  act ));
 		//-----------------------------------------------------------------//
 		
-		Button yesButton = (Button) dialog.findViewById(R.id.yesButton);
+		if((statePlace.equals("nessuno") && action.equals("attaccare"))
+			||(statePlace.equals("sotto attacco") && action.equals("difendere"))
+			||(statePlace.equals("sotto attacco") && action.equals("attaccare"))){
 
-		yesButton.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				dialog.hide();
-				
-				//if(place[0].equals("nessuno")){
-			//	con.startNewAttack(1, nomeLuogo);
-			//}
-				
-				
-				
-				
-				Intent intentGame = new Intent(context,
-						GameMap.class);
-				getActivity().startActivity(intentGame); 
-	
-				//finish();
-			}
-		});
+			/*chiedo se vogliono attaccare o meno l'edificio*/
+			TextView textAction = (TextView) dialog.findViewById(R.id.textAction);
+			String act = String.format(res.getString(R.string.action),action);
+			textAction.setText(Html.fromHtml((String)  act ));
+			
+		    yesButton = (Button) dialog.findViewById(R.id.yesButton);
+			noButton = (Button) dialog.findViewById(R.id.noButton);
+			
+			yesButton.setOnClickListener(new OnClickListener() {
+				@Override
+				public void onClick(View v) {
 
-		Button noButton = (Button) dialog.findViewById(R.id.noButton);
-
-		noButton.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				dialog.hide();
-			}
-		});
+					Intent intentGame = new Intent(context,GameMap.class);
+					intentGame.putExtra("idUtente", "10204093897338079");
+					intentGame.putExtra("nomeLuogo", title);
+					intentGame.putExtra("azione", action);
+					intentGame.putExtra("clanUtente", userClan);
+					intentGame.putExtra("statoLuogo", statePlace);
+					
+					getActivity().startActivity(intentGame);
+					dialog.hide();
+					//finish();
+				}
+			});
+			
+			noButton.setOnClickListener(new OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					dialog.hide();
+				}
+			});
+			
+		}
+		
+		
 		
 		dialog.show();	
 	}

@@ -9,6 +9,7 @@ import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -84,6 +85,7 @@ public class MapActivity extends Activity implements OnMarkerClickListener {
 			googleMap.setOnMarkerClickListener(this);
 
 			myPosition = findMyPosition();
+			Log.d("errore gps", myPosition.toString());
 			googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(myPosition,15));
 			Connector con = new Connector();
 			listPlaces = con.getLocations();
@@ -166,27 +168,18 @@ public class MapActivity extends Activity implements OnMarkerClickListener {
 		PlaceDialog placeDialog = new PlaceDialog();
 		placeDialog.setContext(ctx);
 		placeDialog.setTitle(nomeLuogo);
-		placeDialog.setStatePlace(place[0]);
-		
+		placeDialog.setStatePlace(place[5]);
 		placeDialog.setActivity(this);
-		
-		
+		placeDialog.setUserClan(myClan);
+			
 		if(place[0].equals(myClan)){
-			Toast toast = Toast.makeText(getApplicationContext(), "entrata",
-					Toast.LENGTH_SHORT);
-			toast.show();
 			placeDialog.setClan(myClan);
-			placeDialog.setAction("difendere");
-				
+			placeDialog.setAction("difendere");			
 		}
 		
 		else{	
-			Toast toast = Toast.makeText(getApplicationContext(), "entrata",
-					Toast.LENGTH_SHORT);
-			toast.show();
 			placeDialog.setClan(otherClan);
-			placeDialog.setAction("attaccare");
-			
+			placeDialog.setAction("attaccare");			
 		}
 		
 		placeDialog.showPlaceDialog();

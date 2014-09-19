@@ -1,5 +1,6 @@
 package com.example.beyondto.giocoMappa;
 
+import com.example.beyondto.Connector;
 import com.example.beyondto.HomeActivity;
 import com.example.beyondto.MapActivity;
 import com.example.beyondto.MedalActivity;
@@ -10,6 +11,7 @@ import com.example.beyondto.SettingsActivity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -18,22 +20,45 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 
 public class GameMap extends Activity {
+	
+	
+	private String idUser, action, namePlace, userClan, statePlace, firstAttack;
+	private int idPlace;
+	
 	 
 		@Override
 		protected void onCreate(Bundle savedInstanceState) {
 			super.onCreate(savedInstanceState);
 			setContentView(R.layout.gioco_map);
-			
+	
+			/*prendo extra data da intent*/
+			idPlace = -1;
+			Intent i = getIntent();
+			idUser = i.getStringExtra("idUtente");
+			namePlace = i.getStringExtra("nomeLuogo");
+			action = i.getStringExtra("azione");
+			userClan = i.getStringExtra("clanUtente");
+			statePlace = i.getStringExtra("statoLuogo");
+	
         	Button sButton=(Button)findViewById(R.id.startButton);
             Button qButton=(Button)findViewById(R.id.quitButton);
         	
             sButton.setOnClickListener(new OnClickListener(){  
             	@Override  
             	public void onClick(View arg1) {  
+            		
+            		Connector con = new Connector();
+            		int idPlace = con.startNewAttack(idUser,namePlace, action);
+            		
             		Intent intentGame1 = new Intent(
     						getApplicationContext(),
     						GameMap_domanda1.class
     					);
+            		intentGame1.putExtra("idUtente", idUser);
+            		intentGame1.putExtra("nomeLuogo", namePlace);
+            		intentGame1.putExtra("azione", action);
+            		intentGame1.putExtra("clanUtente", userClan);
+            		intentGame1.putExtra("idLuogo", idPlace);
     				startActivity(intentGame1);
     				finish();
             	}  
@@ -72,7 +97,6 @@ public class GameMap extends Activity {
 	        switch (item.getItemId()){
 	         
 	        case R.id.menu_home:
-	        	//Toast.makeText(MainActivity.this, "Home is Selected", Toast.LENGTH_SHORT).show();
 	        	Intent intentHome = new Intent(
 						getApplicationContext(),
 						HomeActivity.class
@@ -82,7 +106,6 @@ public class GameMap extends Activity {
 	        	return true;
 	 
 	        case R.id.menu_map:
-	            //Toast.makeText(MainActivity.this, "Map is Selected", Toast.LENGTH_SHORT).show();
 	        	Intent intentMap = new Intent(
 						getApplicationContext(),
 						MapActivity.class
@@ -92,7 +115,6 @@ public class GameMap extends Activity {
 	            return true;
 	 
 	        case R.id.menu_medal:
-	            //Toast.makeText(MainActivity.this, "Medal is Selected", Toast.LENGTH_SHORT).show();
 	        	Intent intentMedal = new Intent(
 						getApplicationContext(),
 						MedalActivity.class
@@ -102,7 +124,6 @@ public class GameMap extends Activity {
 	            return true;
 	 
 	        case R.id.menu_news:
-	            //Toast.makeText(MainActivity.this, "News is Selected", Toast.LENGTH_SHORT).show();
 	        	Intent intentNews = new Intent(
 						getApplicationContext(),
 						NewsFragment.class
@@ -112,7 +133,6 @@ public class GameMap extends Activity {
 	            return true;
 	 
 	        case R.id.menu_settings:
-	            //Toast.makeText(MainActivity.this, "Settings is Selected", Toast.LENGTH_SHORT).show();
 	        	Intent intentSettings = new Intent(
 						getApplicationContext(),
 						SettingsActivity.class

@@ -1,5 +1,6 @@
 package com.example.beyondto.giocoMappa;
 
+import com.example.beyondto.Connector;
 import com.example.beyondto.HomeActivity;
 import com.example.beyondto.MapActivity;
 import com.example.beyondto.MedalActivity;
@@ -18,99 +19,98 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 
 public class GameMap_fineGioco extends Activity {
-	 
-		@Override
-		protected void onCreate(Bundle savedInstanceState) {
-			super.onCreate(savedInstanceState);
-			setContentView(R.layout.gioco_map_fine);
-			
-        	Button bButton=(Button)findViewById(R.id.backButton);
-        	
-            bButton.setOnClickListener(new OnClickListener(){  
-            	@Override  
-            	public void onClick(View arg1) {  
-            		Intent intentMap = new Intent(
-    						getApplicationContext(),
-    						MapActivity.class
-    					);
-    				startActivity(intentMap);
-    				finish();
-            	}  
-            }); 
-         }
 
-		// Menu
-	    @Override
-	    public boolean onCreateOptionsMenu(Menu menu)
-	    {
-	        MenuInflater menuInflater = getMenuInflater();
-	        menuInflater.inflate(R.menu.menu, menu);
-	        return true;
-	    }
-	     
-	    /**
-	     * Event Handling for Individual menu item selected
-	     * Identify single menu item by it's id
-	     * */
-	    @Override
-	    public boolean onOptionsItemSelected(MenuItem item)
-	    {
+	private double score;
+	private String idUser, namePlace, action, userClan;
+	private int idPlace;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.gioco_map_fine);
 		
-	        switch (item.getItemId()){
-	         
-	        case R.id.menu_home:
-	        	//Toast.makeText(MainActivity.this, "Home is Selected", Toast.LENGTH_SHORT).show();
-	        	Intent intentHome = new Intent(
-						getApplicationContext(),
-						HomeActivity.class
-					);
-				startActivity(intentHome);
-				finish();
-	        	return true;
-	 
-	        case R.id.menu_map:
-	            //Toast.makeText(MainActivity.this, "Map is Selected", Toast.LENGTH_SHORT).show();
-	        	Intent intentMap = new Intent(
-						getApplicationContext(),
-						MapActivity.class
-					);
+		Intent i = getIntent();
+		score = i.getDoubleExtra("score", score);
+	    idUser = i.getStringExtra("idUtente");
+		namePlace = i.getStringExtra("nomeLuogo");
+		action = i.getStringExtra("azione");
+		userClan = i.getStringExtra("clanUtente");
+		idPlace = i.getIntExtra("idLuogo", idPlace);
+
+		Button bButton = (Button) findViewById(R.id.backButton);
+
+		bButton.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View arg1) {
+				//devo anche aggiungere il punteggio all'operazione di attacco e i punti alla scheda utente
+				
+				Connector con = new Connector();
+				
+				con.setScoreAttDif(score, idUser, namePlace, action, userClan, idPlace);
+				
+				Intent intentMap = new Intent(getApplicationContext(),
+						MapActivity.class);
 				startActivity(intentMap);
 				finish();
-	            return true;
-	 
-	        case R.id.menu_medal:
-	            //Toast.makeText(MainActivity.this, "Medal is Selected", Toast.LENGTH_SHORT).show();
-	        	Intent intentMedal = new Intent(
-						getApplicationContext(),
-						MedalActivity.class
-					);
-				startActivity(intentMedal);
-				finish();
-	            return true;
-	 
-	        case R.id.menu_news:
-	            //Toast.makeText(MainActivity.this, "News is Selected", Toast.LENGTH_SHORT).show();
-	        	Intent intentNews = new Intent(
-						getApplicationContext(),
-						NewsFragment.class
-					);
-				startActivity(intentNews);
-				finish();
-	            return true;
-	 
-	        case R.id.menu_settings:
-	            //Toast.makeText(MainActivity.this, "Settings is Selected", Toast.LENGTH_SHORT).show();
-	        	Intent intentSettings = new Intent(
-						getApplicationContext(),
-						SettingsActivity.class
-					);
-				startActivity(intentSettings);
-				finish();
-	            return true;
-	 
-	        default:
-	            return super.onOptionsItemSelected(item);
-	        }
-	    } 
-
+			}
+		});
 	}
+
+	// Menu
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		MenuInflater menuInflater = getMenuInflater();
+		menuInflater.inflate(R.menu.menu, menu);
+		return true;
+	}
+
+	/**
+	 * Event Handling for Individual menu item selected Identify single menu
+	 * item by it's id
+	 * */
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+
+		switch (item.getItemId()) {
+
+		case R.id.menu_home:
+			Intent intentHome = new Intent(getApplicationContext(),
+					HomeActivity.class);
+			startActivity(intentHome);
+			finish();
+			return true;
+
+		case R.id.menu_map:
+			Intent intentMap = new Intent(getApplicationContext(),
+					MapActivity.class);
+			startActivity(intentMap);
+			finish();
+			return true;
+
+		case R.id.menu_medal:
+			Intent intentMedal = new Intent(getApplicationContext(),
+					MedalActivity.class);
+			startActivity(intentMedal);
+			finish();
+			return true;
+
+		case R.id.menu_news:
+			Intent intentNews = new Intent(getApplicationContext(),
+					NewsFragment.class);
+			startActivity(intentNews);
+			finish();
+			return true;
+
+		case R.id.menu_settings:
+			Intent intentSettings = new Intent(getApplicationContext(),
+					SettingsActivity.class);
+			startActivity(intentSettings);
+			finish();
+			return true;
+
+		default:
+			return super.onOptionsItemSelected(item);
+		}
+	}
+
+}
