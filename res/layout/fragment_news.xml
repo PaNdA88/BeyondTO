@@ -12,8 +12,9 @@
                android:layout_height="0dp"
                android:cacheColorHint="@android:color/transparent"
                android:divider="@drawable/gradient"
-               android:dividerHeight="1dp"
+               android:dividerHeight="0.5dp"
                android:layout_weight="1"
-               android:drawSelectorOnTop="false"/>
+               android:drawSelectorOnTop="false"
+               android:listSelector="@drawable/list_selector"/>
 
 </LinearLayout>  

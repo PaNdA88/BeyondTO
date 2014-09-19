@@ -2,6 +2,7 @@ package com.example.beyondto;
 
 import android.app.FragmentTransaction;
 import android.app.ListFragment;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -10,9 +11,50 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 public class NewsFragment extends ListFragment {
+
+	public class MyListAdapter extends ArrayAdapter<String> {
+
+		Context myContext;
+
+		public MyListAdapter(Context context, int textViewResourceId,
+				String[] objects) {
+			super(context, textViewResourceId, objects);
+			myContext = context;
+		}
+
+		@Override
+		public View getView(int position, View convertView, ViewGroup parent) {
+			// return super.getView(position, convertView, parent);
+
+			LayoutInflater inflater = (LayoutInflater) myContext
+					.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+			View row = inflater.inflate(R.layout.row, parent, false);
+			TextView label = (TextView) row.findViewById(R.id.value);
+			label.setText(values[position]);
+			ImageView icon = (ImageView) row.findViewById(R.id.icon);
+
+			for (position = 0; position < 3; position++) {
+				icon.setImageResource(R.drawable.sword);
+			}
+			for (position = 3; position < 6; position++) {
+				icon.setImageResource(R.drawable.sword);
+			}
+			return row;
+		}
+
+	}
+
+	String[] values = new String[] { "Attacco 1", "Attacco 2", "Notifica 1",
+			"Notifica 2", "Duello 1", "Duello 2"
+
+	};
+
+	// int[] drawables = { R.drawable.sword, R.drawable.scudo };
 
 	boolean mDualPane;
 	int mCurCheckPosition = 0;
@@ -28,13 +70,9 @@ public class NewsFragment extends ListFragment {
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 
-		String[] values = new String[] { "Attacco 1", "Attacco 2",
-				"Notifica 1", "Notifica 2", "Duello 1", "Duello 2" };
-
-		ArrayAdapter<String> a = new ArrayAdapter<String>(getActivity(),
-				android.R.layout.simple_list_item_1, values);
-
-		setListAdapter(a);
+		MyListAdapter myListAdapter = new MyListAdapter(getActivity(),
+				R.layout.row, values);
+		setListAdapter(myListAdapter);
 
 		// Check to see if we have a frame in which to embed the details
 		// fragment directly in the containing UI.
