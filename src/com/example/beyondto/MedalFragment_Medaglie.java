@@ -14,7 +14,6 @@ public class MedalFragment_Medaglie extends Fragment {
             Bundle savedInstanceState) {
  
         View rootView = inflater.inflate(R.layout.fragment_medal_medaglie, container, false);
-         
         return rootView;
     }
  
