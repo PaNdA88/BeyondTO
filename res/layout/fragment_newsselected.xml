@@ -7,7 +7,14 @@
                
      >
 
-   
-    
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="18dp"
+        android:layout_marginTop="16dp"
+        android:text="Hai selezionato questa notifica. Sei stato molto bravo!" />
 
 </RelativeLayout>

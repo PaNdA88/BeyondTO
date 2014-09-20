@@ -13,7 +13,7 @@
     
     <TextView
         android:id="@+id/value"
-        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textSize="15sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/icon"
@@ -21,8 +21,9 @@
     
     <TextView
         android:id="@+id/edificio"
-        android:textAppearance="?android:attr/textAppearanceSmall"
+       android:textSize="12sp"
         android:layout_alignLeft="@+id/value"
+        android:textColor="#f7c14c"
         android:layout_alignParentBottom="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>

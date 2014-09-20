@@ -23,7 +23,7 @@
 	<style name="ActionBarTabStyle" 
     parent="@android:style/Widget.Holo.ActionBar.TabView">
         <item name="android:background">@drawable/tab_indicator_ab_actionbar</item>
-         
+        <item name="android:drawSelectorOnTop">false</item>
    
     
     </style>

@@ -16,6 +16,8 @@
         android:divider="@drawable/gradient"
         android:dividerHeight="0.5dp"
         style="@style/ScrollbarShapeStyle"
+        android:drawSelectorOnTop="false"
+        android:overScrollMode="never"
          >
     </ListView>
         

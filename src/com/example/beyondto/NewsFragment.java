@@ -21,7 +21,7 @@ import android.widget.TextView;
 
 public class NewsFragment extends ListFragment {
 
-	Context ctx;
+	// Context ctx;
 	ListView lista;
 
 	public class MyListAdapter extends ArrayAdapter<Notifica> {
@@ -72,15 +72,22 @@ public class NewsFragment extends ListFragment {
 
 		// ctx=(MedalActivity)getActivity();
 		List<Notifica> listaNotifiche = new ArrayList<Notifica>();
-		listaNotifiche.add(new Notifica("Inizio attacco", "palazzo madama",
+		listaNotifiche.add(new Notifica("Il tuo attacco è andato a buon fine",
+				"Palazzo Trucchi di Levaldigi", "sword"));
+		listaNotifiche.add(new Notifica("Hai iniziato un attacco",
+				"Palazzo Trucchi di Levaldigi", "sword"));
+		listaNotifiche.add(new Notifica("Hai protetto l'edificio dall'attacco",
+				"Fontana del Frejus", "scudo"));
+		listaNotifiche.add(new Notifica("Un tuo edificio è stato attaccato!",
+				"Fontana del Frejus", "scudo"));
+		listaNotifiche.add(new Notifica(
+				"I nemici si aggirano nel tuo territorio!",
+				"Fontana del Frejus", "scudo"));
+		listaNotifiche.add(new Notifica(
+				"Il tuo clan ha conquistato l'edificio", "Palazzo Madama",
 				"sword"));
-		listaNotifiche.add(new Notifica("Difesa avvenuta", "palazzo madama",
-				"scudo"));
-		listaNotifiche.add(new Notifica("Attacco", "palazzo madama", "sword"));
-		listaNotifiche.add(new Notifica("Difesa", "palazzo madama", "scudo"));
-		listaNotifiche.add(new Notifica("Difesa", "palazzo madama", "scudo"));
-		listaNotifiche.add(new Notifica("Attacco", "palazzo madama", "sword"));
-		listaNotifiche.add(new Notifica("Attacco", "palazzo madama", "sword"));
+		listaNotifiche.add(new Notifica("Il tuo clan ha attaccato un edificio",
+				"Palazzo Madama", "sword"));
 
 		MyListAdapter myListAdapter = new MyListAdapter(getActivity(),
 				R.layout.row, listaNotifiche);
