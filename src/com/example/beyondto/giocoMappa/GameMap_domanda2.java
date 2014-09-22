@@ -16,7 +16,7 @@ public class GameMap_domanda2 extends Activity {
 	ProgressBar progressBar;
 	private double score;
 	private String idUser, namePlace, action, userClan;
-	private int idPlace, time, myProgress;
+	private int idPlace,idMatch, time, myProgress;
 	
     public class BackgroundAsyncTask extends
        AsyncTask<Void, Integer, Void> {
@@ -79,6 +79,8 @@ public class GameMap_domanda2 extends Activity {
 			action = i.getStringExtra("azione");
 			userClan = i.getStringExtra("clanUtente");
 			idPlace = i.getIntExtra("idLuogo", idPlace);
+			idMatch = i.getIntExtra("idScontro", idMatch);
+
   
     	    risp2a.setOnClickListener(new OnClickListener() {
     	    	@Override
@@ -95,6 +97,7 @@ public class GameMap_domanda2 extends Activity {
     	    		intentGame3a.putExtra("azione", action);
     	    		intentGame3a.putExtra("clanUtente", userClan);
     	    		intentGame3a.putExtra("idLuogo", idPlace);
+    	    		intentGame3a.putExtra("idScontro", idMatch);
     	    		task.cancel(true);
     				startActivity(intentGame3a);
     				finish();
@@ -117,6 +120,7 @@ public class GameMap_domanda2 extends Activity {
         	    		intentGame3b.putExtra("azione", action);
         	    		intentGame3b.putExtra("clanUtente", userClan);
         	    		intentGame3b.putExtra("idLuogo", idPlace);
+        	    		intentGame3b.putExtra("idScontro", idMatch);
         	    		task.cancel(true);
         				startActivity(intentGame3b);
         				finish();
@@ -139,6 +143,7 @@ public class GameMap_domanda2 extends Activity {
         	    		intentGame3c.putExtra("azione", action);
         	    		intentGame3c.putExtra("clanUtente", userClan);
         	    		intentGame3c.putExtra("idLuogo", idPlace);
+        	    		intentGame3c.putExtra("idScontro", idMatch);
         	    		task.cancel(true);
         				startActivity(intentGame3c);
         				finish();

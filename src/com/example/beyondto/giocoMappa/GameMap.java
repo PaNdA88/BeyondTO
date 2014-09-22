@@ -48,7 +48,7 @@ public class GameMap extends Activity {
             	public void onClick(View arg1) {  
             		
             		Connector con = new Connector();
-            		int idPlace = con.startNewAttack(idUser,namePlace, action);
+            		int infoId[] = con.startNewAttack(idUser,namePlace, action);
             		
             		Intent intentGame1 = new Intent(
     						getApplicationContext(),
@@ -58,7 +58,8 @@ public class GameMap extends Activity {
             		intentGame1.putExtra("nomeLuogo", namePlace);
             		intentGame1.putExtra("azione", action);
             		intentGame1.putExtra("clanUtente", userClan);
-            		intentGame1.putExtra("idLuogo", idPlace);
+            		intentGame1.putExtra("idLuogo", infoId[0]);
+            		intentGame1.putExtra("idScontro", infoId[1]);
     				startActivity(intentGame1);
     				finish();
             	}  

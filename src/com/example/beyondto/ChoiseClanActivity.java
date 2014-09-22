@@ -5,6 +5,7 @@ import com.facebook.widget.LoginButton;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -28,7 +29,10 @@ public class ChoiseClanActivity extends Activity {
 		Button rinnegati = (Button) view.findViewById(R.id.rinnegati);
 
 		final Bundle bundle = getIntent().getExtras();
-		if (bundle.getString("tokenUser") != null) {
+		Log.e("SCEGLI CLAN", "SCEGLI CLAN");
+		
+		
+	/*	if (bundle.getString("tokenUser") != null) {
 
 			alchimisti.setOnTouchListener(new OnTouchListener() {
 				@Override
@@ -65,7 +69,7 @@ public class ChoiseClanActivity extends Activity {
 					return false;
 				}
 			});
-		}
+		}*/
 
 		return view;
 	}

@@ -24,6 +24,7 @@ import org.json.JSONObject;
 
 import android.os.AsyncTask;
 import android.util.Log;
+import android.widget.Toast;
 
 public class Connector extends AsyncTask<JSONObject, Void, JSONObject> {
 
@@ -135,7 +136,7 @@ public class Connector extends AsyncTask<JSONObject, Void, JSONObject> {
 		return dati;
 	}
 	
-	public int startNewAttack(String idUserFacebook, String nomeLuogo, String azione){
+	public int[] startNewAttack(String idUserFacebook, String nomeLuogo, String azione){
 		
 		setPath("/startNewAttack.php");
 		
@@ -157,16 +158,17 @@ public class Connector extends AsyncTask<JSONObject, Void, JSONObject> {
 		} catch (ExecutionException e) {
 			e.printStackTrace();
 		};
-		int idLuogo = 0;
+		int infoId[] = new int[2];
 		try {
-			idLuogo = result.getInt("idLuogo");			
+			infoId[0] = result.getInt("idLuogo");	
+			infoId[1] = result.getInt("idScontro");	
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
-		return idLuogo;
+		return infoId;
 	}
 	
-	public void setScoreAttDif(Double score, String idUser, String namePlace, String action, String userClan, int idPlace ){
+	public void setScoreAttDif(Double score, String idUser, String namePlace, String action, String userClan, int idPlace, int idMatch ){
 		
 		setPath("/setScoreAttDif.php");
 		
@@ -178,6 +180,7 @@ public class Connector extends AsyncTask<JSONObject, Void, JSONObject> {
 			json.put("azione", action);
 			json.put("clanUtente", userClan);
 			json.put("idLuogo",Integer.toString(idPlace));
+			json.put("idScontro",Integer.toString(idMatch));
 			
 		} catch (JSONException e) {
 			e.printStackTrace();
@@ -222,7 +225,7 @@ public class Connector extends AsyncTask<JSONObject, Void, JSONObject> {
 			}
 			// GET JSON
 			HttpResponse response = httpClient.execute(post);
-			// prendo l'identitš della mia risposta
+			// prendo l'identitˆ della mia risposta
 			HttpEntity REntity = response.getEntity();
 			if (REntity != null) {
 				InputStream instream = REntity.getContent();
@@ -230,10 +233,11 @@ public class Connector extends AsyncTask<JSONObject, Void, JSONObject> {
 				instream.close();
 				Log.e("RISULT STRING", resultString );
 				jsonObjRecv = new JSONObject(resultString);
-				String err = jsonObjRecv.getString("error");
-				if(err!=null){
-					//lanci un toast con testo = err
+				if(jsonObjRecv.has("error")){
+					//da chiedere
+					Toast.makeText(null,jsonObjRecv.getString("error"), Toast.LENGTH_SHORT).show();
 				}
+				
 			} else {
 				try {
 					jsonObjRecv.put("Error", "Il server ha risposto con un JSON vuoto");

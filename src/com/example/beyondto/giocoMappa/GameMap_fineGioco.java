@@ -22,7 +22,7 @@ public class GameMap_fineGioco extends Activity {
 
 	private double score;
 	private String idUser, namePlace, action, userClan;
-	private int idPlace;
+	private int idPlace, idMatch;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -36,17 +36,16 @@ public class GameMap_fineGioco extends Activity {
 		action = i.getStringExtra("azione");
 		userClan = i.getStringExtra("clanUtente");
 		idPlace = i.getIntExtra("idLuogo", idPlace);
+		idMatch = i.getIntExtra("idScontro", idMatch);
 
 		Button bButton = (Button) findViewById(R.id.backButton);
 
 		bButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg1) {
-				//devo anche aggiungere il punteggio all'operazione di attacco e i punti alla scheda utente
 				
 				Connector con = new Connector();
-				
-				con.setScoreAttDif(score, idUser, namePlace, action, userClan, idPlace);
+				con.setScoreAttDif(score, idUser, namePlace, action, userClan, idPlace, idMatch);
 				
 				Intent intentMap = new Intent(getApplicationContext(),
 						MapActivity.class);

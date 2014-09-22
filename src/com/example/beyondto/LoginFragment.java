@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.facebook.Request;
 import com.facebook.Response;
@@ -27,11 +28,26 @@ public class LoginFragment extends Fragment {
 	private UiLifecycleHelper uiHelper;
 	private String USER_TOKEN, EXPIRATION;
 	private Session session;
+	private boolean logSession, newUser;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		session = Session.getActiveSession();
+		newUser = false;
+		logSession = false;
+		Session session = new Session(((LoginActivity)getActivity()).getApplicationContext());
+	    Session.setActiveSession(session);
+	    
+	    if(session != null && 
+				(session.getState().equals(SessionState.CREATED_TOKEN_LOADED) ||	
+				session.getState().equals(SessionState.OPENING) || 
+				session.getState().equals(SessionState.OPENED_TOKEN_UPDATED))){
+	    	
+	    	logSession = true;
+	    }else{
+	    	logSession = false;
+	    }
+
         uiHelper = new UiLifecycleHelper(getActivity(), statusCallback);
 		uiHelper.onCreate(savedInstanceState);
 	}
@@ -41,21 +57,9 @@ public class LoginFragment extends Fragment {
 			Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.login_fragment, container, false);
 		
-		if (session == null){
-			String testo1 = "ACCEDI A FACEBOOK!";
-        	TextView textTitle = (TextView) view.findViewById(R.id.titoloLogin);
-    		Resources res1 = getActivity().getResources();
-    		String tit = String.format(res1.getString(R.string.titoloLogin),testo1);
-    		textTitle.setText(Html.fromHtml((String)  tit ));
-    		String testo2 = "Per giocare con BeyondTO è necessario effettuare l'accesso a Facebook";
-        	TextView textSubtitle = (TextView) view.findViewById(R.id.sottotitolo);
-    		Resources res2 = getActivity().getResources();
-    		String sott = String.format(res2.getString(R.string.sottotitolo),testo2);
-    		textSubtitle.setText(Html.fromHtml((String)  sott ));
-        }
-		
-        else{
-        	String testo1 = "Attendere prego";
+		if(logSession){
+
+			String testo1 = "Attendere prego";
         	TextView textTitle = (TextView) view.findViewById(R.id.titoloLogin);
     		Resources res1 = getActivity().getResources();
     		String tit = String.format(res1.getString(R.string.titoloLogin),testo1);
@@ -65,7 +69,22 @@ public class LoginFragment extends Fragment {
     		Resources res2 = getActivity().getResources();
     		String sott = String.format(res2.getString(R.string.sottotitolo),testo2);
     		textSubtitle.setText(Html.fromHtml((String)  sott ));
-        }
+				
+		}
+		else{
+			
+			String testo1 = "ACCEDI A FACEBOOK!";
+        	TextView textTitle = (TextView) view.findViewById(R.id.titoloLogin);
+    		Resources res1 = getActivity().getResources();
+    		String tit = String.format(res1.getString(R.string.titoloLogin),testo1);
+    		textTitle.setText(Html.fromHtml((String)  tit ));
+    		String testo2 = "Per giocare con BeyondTO è necessario effettuare l'accesso a Facebook";
+        	TextView textSubtitle = (TextView) view.findViewById(R.id.sottotitolo);
+    		Resources res2 = getActivity().getResources();
+    		String sott = String.format(res2.getString(R.string.sottotitolo),testo2);
+    		textSubtitle.setText(Html.fromHtml((String)  sott ));	
+		}
+		
         
 		LoginButton authButton = (LoginButton) view
 				.findViewById(R.id.authButton);
@@ -103,7 +122,9 @@ public class LoginFragment extends Fragment {
 		
 		Request request = Request.newMeRequest(session, 
 	            new Request.GraphUserCallback() {
-	        @Override
+	        private boolean newUser;
+
+			@Override
 	        public void onCompleted(GraphUser user, Response response) {
 	            if (session == Session.getActiveSession()) {
 	                if (user != null) {	                	
@@ -117,12 +138,14 @@ public class LoginFragment extends Fragment {
 	            		Connector con = new Connector();
 	            		String result = con.doLoginFromFacebook(USER_ID, USER_TOKEN, EXPIRATION,USER_EMAIL, USER_NAME );
 	            		Log.d("RISULTATO:",result);
-	            		/*if(result.equals("0")){
-	            			goToChoiseClan(); 
-	            		}*/
-	            		if(result.equals("1")){
-	            			goToTorinoHome();  
+	            		if(result.equals("0")){
+	            			newUser = true;
+	            			//goToChoiseClan(); 
 	            		}
+	            		/*else{
+	            			goToTorinoHome();  
+	            		}*/
+	            		goToTorinoHome(); 
 	                }
 	            }
 	            if (response.getError() != null) {
@@ -136,6 +159,7 @@ public class LoginFragment extends Fragment {
 	
 	public void goToTorinoHome(){
 		Intent i = new Intent((LoginActivity)getActivity(), HomeActivity.class);
+		i.putExtra("session", session);
 		getActivity().startActivity(i); 
 		
 	}
@@ -144,7 +168,6 @@ public class LoginFragment extends Fragment {
 		Intent i = new Intent((LoginActivity)getActivity(),ChoiseClanActivity.class);
 		i.putExtra("tokenUser", USER_TOKEN);
 		getActivity().startActivity(i); 
-		
 	}
 	
 	@Override

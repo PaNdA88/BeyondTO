@@ -176,9 +176,7 @@ public class PlaceDialog {
 			});
 			
 		}
-		
-		
-		
+	
 		dialog.show();	
 	}
 }
