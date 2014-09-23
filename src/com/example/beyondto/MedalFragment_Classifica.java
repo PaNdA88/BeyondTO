@@ -6,14 +6,20 @@ import com.example.beyondto.R;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
  
-public class MedalFragment_Classifica extends Fragment {
+public class MedalFragment_Classifica extends Fragment{
  
 	private ListView listViewPlayers;
+	private ArrayList mListItem;
 	private Context ctx;
    
     @Override
@@ -23,18 +29,39 @@ public class MedalFragment_Classifica extends Fragment {
 	    View rootView = inflater.inflate(R.layout.fragment_medal_classifica, container, false);
           
 	    ctx=(MedalActivity)getActivity(); 
-        List<Player> playerList= new ArrayList<Player>();
-        playerList.add(new Player("Andre M","3450","rinnegati"));
-        playerList.add(new Player("Virgi D","2345","rinnegati"));
-        playerList.add(new Player("Anto V","1234","alchimisti"));
-        playerList.add(new Player("Dario C","456","alchimisti"));
-        playerList.add(new Player("Giovanni M","345","rinnegati"));
-        playerList.add(new Player("Massimo M","234","rinnegati"));
-        playerList.add(new Player("Tobia G","10","alchimisti"));
-        
+	   
         listViewPlayers = ( ListView )rootView.findViewById( R.id.playerlist);
-        listViewPlayers.setAdapter(new PlayerListAdapter(ctx, R.layout.playerlist, playerList) );
+        mListItem = Player.getItems();
+        listViewPlayers.setAdapter(new PlayerListAdapter(ctx, R.layout.playerlist, mListItem) );
    
+        listViewPlayers.setOnClickListener(new OnClickListener() {
+            
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				String nome = ((TextView) v).getText().toString();
+		        // Launching new Activity on selecting single List Item
+		        Intent i = new Intent((MedalActivity)getActivity(), ProfiloGiocatore.class);
+		        // sending data to new activity
+		        i.putExtra("nome", nome);
+		        getActivity().startActivity(i);
+			}
+        });
 	    return rootView;
     }
+ 
+    // ***ListAdapter***
+    private class ListAdapter extends ArrayAdapter { 
+        private ArrayList mList; 
+        private Context mContext;
+ 
+        public ListAdapter(Context context, int textViewResourceId,
+                ArrayList list) { 
+            super(context, textViewResourceId, list);
+            this.mList = list;
+            this.mContext = context;
+        }
+ 
+    }
+
 }
