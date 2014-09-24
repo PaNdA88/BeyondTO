@@ -29,39 +29,25 @@ public class MedalFragment_Classifica extends Fragment{
 	    View rootView = inflater.inflate(R.layout.fragment_medal_classifica, container, false);
           
 	    ctx=(MedalActivity)getActivity(); 
-	   
-        listViewPlayers = ( ListView )rootView.findViewById( R.id.playerlist);
+		   
+        listViewPlayers = ( ListView )rootView.findViewById(R.id.playerlist);
         mListItem = Player.getItems();
-        listViewPlayers.setAdapter(new PlayerListAdapter(ctx, R.layout.playerlist, mListItem) );
-   
-        listViewPlayers.setOnClickListener(new OnClickListener() {
-            
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				String nome = ((TextView) v).getText().toString();
-		        // Launching new Activity on selecting single List Item
-		        Intent i = new Intent((MedalActivity)getActivity(), ProfiloGiocatore.class);
-		        // sending data to new activity
-		        i.putExtra("nome", nome);
-		        getActivity().startActivity(i);
-			}
-        });
-	    return rootView;
-    }
- 
-    // ***ListAdapter***
-    private class ListAdapter extends ArrayAdapter { 
-        private ArrayList mList; 
-        private Context mContext;
- 
-        public ListAdapter(Context context, int textViewResourceId,
-                ArrayList list) { 
-            super(context, textViewResourceId, list);
-            this.mList = list;
-            this.mContext = context;
-        }
- 
-    }
+        listViewPlayers.setAdapter(new PlayerListAdapter(ctx, R.layout.playerlist, mListItem));
+        
+        /*listViewPlayers.setOnClickListener(new OnClickListener() {
 
+		@Override
+		public void onClick(View arg0) {
+			// TODO Auto-generated method stub
+			String nome = ((TextView) arg0).getText().toString();
+	        // Launching new Activity on selecting single List Item
+	        Intent i = new Intent((MedalActivity)getActivity(), ProfiloGiocatore.class);
+	        // sending data to new activity
+	        i.putExtra("nome", nome);
+	        getActivity().startActivity(i);
+		}
+        });*/
+    
+    return rootView;
+    }
 }
