@@ -55,6 +55,8 @@
             android:layout_alignLeft="@+id/divisore2"
             android:layout_below="@+id/medaglieOttenute"
             android:layout_marginTop="38dp"
+            android:clickable="true"
+            android:onClick="imageClick"
             android:src="@drawable/medaglia1" />
 
         <ImageView
