@@ -39,7 +39,7 @@ public class MedalFragment_Classifica extends Fragment implements
 			long id) {
 
 		Intent intent = new Intent();
-		intent.setClass(getActivity(), SettingsActivity.class);
+		intent.setClass(getActivity(), ProfiloGiocatore.class);
 
 		startActivity(intent);
 
