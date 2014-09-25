@@ -7,8 +7,12 @@ import android.content.res.Resources;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class HomeFragment_User extends Fragment {
 	
@@ -43,6 +47,27 @@ public class HomeFragment_User extends Fragment {
       		String edi = String.format(res4.getString(R.string.edificiConquistati),edifici);
       		textEdifici.setText(Html.fromHtml((String)  edi )); 
       		
+      		ImageView img1 = (ImageView) rootView.findViewById(R.id.med1);
+      		img1.setOnClickListener(new OnClickListener(){
+      			public void onClick(View v) {
+      				Toast.makeText(getActivity(), "Medaglia DUELLANTE", Toast.LENGTH_SHORT).show();
+      		    }
+      		});
+      		
+      		ImageView img2 = (ImageView) rootView.findViewById(R.id.med2);
+      		img2.setOnClickListener(new OnClickListener(){
+      			public void onClick(View v) {
+      				Toast.makeText(getActivity(), "Medaglia CONQUISTATORE", Toast.LENGTH_SHORT).show();
+      		    }
+      		});
+      		
+      		ImageView img3 = (ImageView) rootView.findViewById(R.id.med3);
+      		img3.setOnClickListener(new OnClickListener(){
+      			public void onClick(View v) {
+      				Toast.makeText(getActivity(), "Medaglia PREMIO FEDELTA'", Toast.LENGTH_SHORT).show();
+      		    }
+      		});
+
         return rootView;
     }
 }

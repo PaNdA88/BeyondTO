@@ -23,6 +23,7 @@ public class NewsFragment extends ListFragment {
 
 	// Context ctx;
 	ListView lista;
+	String azione= null;
 
 	public class MyListAdapter extends ArrayAdapter<Notifica> {
 
@@ -52,6 +53,13 @@ public class NewsFragment extends ListFragment {
 			ImageView icon = (ImageView) row.findViewById(R.id.icon);
 
 			String uri = "drawable/" + notifica.getImage();
+			
+			if (uri == "drawable/sword"){
+				azione = "attacco";
+			} else {
+				azione = "difesa";
+			}
+			
 			int imageResource = myContext.getResources().getIdentifier(uri,
 					null, myContext.getPackageName());
 			Drawable image = myContext.getResources()
@@ -59,7 +67,6 @@ public class NewsFragment extends ListFragment {
 			icon.setImageDrawable(image);
 			return row;
 		}
-
 	}
 
 	boolean mDualPane;
@@ -72,10 +79,26 @@ public class NewsFragment extends ListFragment {
 
 		// ctx=(MedalActivity)getActivity();
 		List<Notifica> listaNotifiche = new ArrayList<Notifica>();
+		
+		//int i = 0;
+		
+		//for(i=0; i<10; i++){			
+					
+			//if (azione == "attacco"){
+		
 		listaNotifiche.add(new Notifica("Il tuo attacco è andato a buon fine",
 				"Palazzo Trucchi di Levaldigi", "sword"));
 		listaNotifiche.add(new Notifica("Hai iniziato un attacco",
 				"Palazzo Trucchi di Levaldigi", "sword"));
+		listaNotifiche.add(new Notifica(
+				"Il tuo clan ha conquistato l'edificio", "Palazzo Madama",
+				"sword"));
+		listaNotifiche.add(new Notifica("Il tuo clan ha attaccato un edificio",
+				"Palazzo Madama", "sword"));
+			//}
+		
+			//else {
+				
 		listaNotifiche.add(new Notifica("Hai protetto l'edificio dall'attacco",
 				"Fontana del Frejus", "scudo"));
 		listaNotifiche.add(new Notifica("Un tuo edificio è stato attaccato!",
@@ -83,12 +106,10 @@ public class NewsFragment extends ListFragment {
 		listaNotifiche.add(new Notifica(
 				"I nemici si aggirano nel tuo territorio!",
 				"Fontana del Frejus", "scudo"));
-		listaNotifiche.add(new Notifica(
-				"Il tuo clan ha conquistato l'edificio", "Palazzo Madama",
-				"sword"));
-		listaNotifiche.add(new Notifica("Il tuo clan ha attaccato un edificio",
-				"Palazzo Madama", "sword"));
-
+			//}
+		
+		//}
+		
 		MyListAdapter myListAdapter = new MyListAdapter(getActivity(),
 				R.layout.row, listaNotifiche);
 		setListAdapter(myListAdapter);
@@ -144,11 +165,11 @@ public class NewsFragment extends ListFragment {
 			getListView().setItemChecked(index, true);
 
 			// Check what fragment is currently shown, replace if needed.
-			NewsSelectedFragment details = (NewsSelectedFragment) getFragmentManager()
+			NewsSelectedFragment_Attacco details = (NewsSelectedFragment_Attacco) getFragmentManager()
 					.findFragmentById(R.id.details);
 			if (details == null || details.getShownIndex() != index) {
 				// Make new fragment to show this selection.
-				details = NewsSelectedFragment.newInstance(index);
+				details = NewsSelectedFragment_Attacco.newInstance(index);
 
 				// Execute a transaction, replacing any existing fragment
 				// with this one inside the frame.
@@ -161,14 +182,15 @@ public class NewsFragment extends ListFragment {
 				// }
 				ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
 				ft.commit();
-			}
-
+				}
+			
 		} else {
 			// Otherwise we need to launch a new activity to display
 			// the dialog fragment with selected text.
 			Intent intent = new Intent();
 			intent.setClass(getActivity(), NewsSelectedActivity.class);
 			intent.putExtra("index", index);
+			intent.putExtra("azione", azione);
 			startActivity(intent);
 		}
 

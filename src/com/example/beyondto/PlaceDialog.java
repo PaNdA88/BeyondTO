@@ -19,6 +19,10 @@ import android.widget.Toast;
 public class PlaceDialog {
 	
 	private String title, view_text, action, clan, statePlace, numberAtt, numberDif, userClan, idFacebook;
+	private Context context;
+	private Activity activity;
+	private Button yesButton, noButton;
+
 	public String getIdFacebook() {
 		return idFacebook;
 	}
@@ -27,10 +31,6 @@ public class PlaceDialog {
 		this.idFacebook = idFacebook;
 	}
 
-	private Context context;
-	private Activity activity;
-	private Button yesButton, noButton;
-	
 	public String getUserClan() {
 		return userClan;
 	}
@@ -38,8 +38,9 @@ public class PlaceDialog {
 	public void setUserClan(String userClan) {
 		this.userClan = userClan;
 	}
-	
-	public PlaceDialog(){}	
+
+	public PlaceDialog() {
+	}
 
 	public String getTitle() {
 		return title;
@@ -48,7 +49,7 @@ public class PlaceDialog {
 	public Activity getActivity() {
 		return activity;
 	}
-	
+
 	public void setTitle(String title) {
 		this.title = title;
 	}
@@ -72,7 +73,7 @@ public class PlaceDialog {
 	public void setActivity(Activity activity) {
 		this.activity = activity;
 	}
-	
+
 	public String getAction() {
 		return action;
 	}
@@ -112,79 +113,89 @@ public class PlaceDialog {
 	public void setNumberDif(String numberDif) {
 		this.numberDif = numberDif;
 	}
-	
-	public void showPlaceDialog(){
-		
+
+	public void showPlaceDialog() {
+
 		final Dialog dialog = new Dialog(context);
 		dialog.setContentView(R.layout.dialog_map);
 		dialog.setTitle(title);
-		TextView text = (TextView) dialog.findViewById(R.id.textDialog);
-		text.setText(view_text);
+		// TextView text = (TextView) dialog.findViewById(R.id.textDialog);
+		// text.setText(view_text);
 		ImageView image = (ImageView) dialog.findViewById(R.id.imageDialog);
 		image.setImageResource(R.drawable.frejus);
-		
-		//------------------- dynamic strings ----------------------//
+
+		// ------------------- dynamic strings ----------------------//
 		TextView textPropriety = (TextView) dialog.findViewById(R.id.textProp);
 		final Resources res = context.getResources();
-		String prop = String.format(res.getString(R.string.proprierty),clan);
-		textPropriety.setText(Html.fromHtml((String)  prop ));
-		
-		TextView textStatePlace = (TextView) dialog.findViewById(R.id.textStatePlace);
-		String state = String.format(res.getString(R.string.statePlace),statePlace);
-		textStatePlace.setText(Html.fromHtml((String)  state ));
-		
-		if(!statePlace.equals("nessuno")){		
-		
-			// #ATTACCANTI, #DIFENSORI
-			TextView textNumberAtt = (TextView) dialog.findViewById(R.id.textNumberAtt);
-			String att = String.format(res.getString(R.string.numberAtt), numberAtt);
-			textNumberAtt.setText(Html.fromHtml((String)  att ));
-			
-			TextView textNumberDif = (TextView) dialog.findViewById(R.id.textNumberDif);
-			String dif = String.format(res.getString(R.string.numberDif), numberDif);
-			textNumberDif.setText(Html.fromHtml((String)  dif ));
-		}
-		
-		//-----------------------------------------------------------------//
-		
-		if((statePlace.equals("nessuno") && action.equals("attaccare"))
-			||(statePlace.equals("sotto attacco") && action.equals("difendere"))
-			||(statePlace.equals("sotto attacco") && action.equals("attaccare"))){
+		String prop = String.format(res.getString(R.string.proprierty), clan);
+		textPropriety.setText(Html.fromHtml((String) prop));
 
-			/*chiedo se vogliono attaccare o meno l'edificio*/
-			TextView textAction = (TextView) dialog.findViewById(R.id.textAction);
-			String act = String.format(res.getString(R.string.action),action);
-			textAction.setText(Html.fromHtml((String)  act ));
-			
-		    yesButton = (Button) dialog.findViewById(R.id.yesButton);
+		TextView textStatePlace = (TextView) dialog
+				.findViewById(R.id.textStatePlace);
+		String state = String.format(res.getString(R.string.statePlace),
+				statePlace);
+		textStatePlace.setText(Html.fromHtml((String) state));
+
+		if (!statePlace.equals("nessuno")) {
+
+			// #ATTACCANTI, #DIFENSORI
+			TextView textNumberAtt = (TextView) dialog
+					.findViewById(R.id.textNumberAtt);
+			String att = String.format(res.getString(R.string.numberAtt),
+					numberAtt);
+			textNumberAtt.setText(Html.fromHtml((String) att));
+
+			TextView textNumberDif = (TextView) dialog
+					.findViewById(R.id.textNumberDif);
+			String dif = String.format(res.getString(R.string.numberDif),
+					numberDif);
+			textNumberDif.setText(Html.fromHtml((String) dif));
+		}
+
+		// -----------------------------------------------------------------//
+
+		if ((statePlace.equals("nessuno") && action.equals("attaccare"))
+				|| (statePlace.equals("sotto attacco") && action
+						.equals("difendere"))
+				|| (statePlace.equals("sotto attacco") && action
+						.equals("attaccare"))) {
+
+			/* chiedo se vogliono attaccare o meno l'edificio */
+			TextView textAction = (TextView) dialog
+					.findViewById(R.id.textAction);
+			String act = String.format(res.getString(R.string.action), action);
+			textAction.setText(Html.fromHtml((String) act));
+
+			yesButton = (Button) dialog.findViewById(R.id.yesButton);
 			noButton = (Button) dialog.findViewById(R.id.noButton);
-			
+
 			yesButton.setOnClickListener(new OnClickListener() {
 				@Override
 				public void onClick(View v) {
 
 					Intent intentGame = new Intent(context,GameMap.class);
 					intentGame.putExtra("idUtente", idFacebook);
+
 					intentGame.putExtra("nomeLuogo", title);
 					intentGame.putExtra("azione", action);
 					intentGame.putExtra("clanUtente", userClan);
 					intentGame.putExtra("statoLuogo", statePlace);
-					
+
 					getActivity().startActivity(intentGame);
 					dialog.hide();
-					//finish();
+					// finish();
 				}
 			});
-			
+
 			noButton.setOnClickListener(new OnClickListener() {
 				@Override
 				public void onClick(View v) {
 					dialog.hide();
 				}
 			});
-			
+
 		}
-	
-		dialog.show();	
+
+		dialog.show();
 	}
 }
