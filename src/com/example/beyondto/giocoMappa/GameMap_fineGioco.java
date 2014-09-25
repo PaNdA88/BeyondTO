@@ -7,10 +7,14 @@ import com.example.beyondto.MedalActivity;
 import com.example.beyondto.NewsFragment;
 import com.example.beyondto.R;
 import com.example.beyondto.SettingsActivity;
+import com.facebook.Session;
+import com.facebook.UiLifecycleHelper;
+import com.facebook.widget.FacebookDialog;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -23,10 +27,16 @@ public class GameMap_fineGioco extends Activity {
 	private double score;
 	private String idUser, namePlace, action, userClan;
 	private int idPlace, idMatch;
+	private Session session;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
+		session = new Session(getApplicationContext());
+	    Session.setActiveSession(session);
+		
+	   
 		setContentView(R.layout.gioco_map_fine);
 		
 		Intent i = getIntent();
@@ -54,6 +64,9 @@ public class GameMap_fineGioco extends Activity {
 			}
 		});
 	}
+	
+	
+
 
 	// Menu
 	@Override

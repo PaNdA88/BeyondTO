@@ -18,7 +18,15 @@ import android.widget.Toast;
 
 public class PlaceDialog {
 	
-	private String title, view_text, action, clan, statePlace, numberAtt, numberDif, userClan;
+	private String title, view_text, action, clan, statePlace, numberAtt, numberDif, userClan, idFacebook;
+	public String getIdFacebook() {
+		return idFacebook;
+	}
+
+	public void setIdFacebook(String idFacebook) {
+		this.idFacebook = idFacebook;
+	}
+
 	private Context context;
 	private Activity activity;
 	private Button yesButton, noButton;
@@ -156,7 +164,7 @@ public class PlaceDialog {
 				public void onClick(View v) {
 
 					Intent intentGame = new Intent(context,GameMap.class);
-					intentGame.putExtra("idUtente", "10204093897338079");
+					intentGame.putExtra("idUtente", idFacebook);
 					intentGame.putExtra("nomeLuogo", title);
 					intentGame.putExtra("azione", action);
 					intentGame.putExtra("clanUtente", userClan);

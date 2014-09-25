@@ -18,6 +18,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class GameMap extends Activity {
 	
@@ -50,18 +51,24 @@ public class GameMap extends Activity {
             		Connector con = new Connector();
             		int infoId[] = con.startNewAttack(idUser,namePlace, action);
             		
-            		Intent intentGame1 = new Intent(
-    						getApplicationContext(),
-    						GameMap_domanda1.class
-    					);
-            		intentGame1.putExtra("idUtente", idUser);
-            		intentGame1.putExtra("nomeLuogo", namePlace);
-            		intentGame1.putExtra("azione", action);
-            		intentGame1.putExtra("clanUtente", userClan);
-            		intentGame1.putExtra("idLuogo", infoId[0]);
-            		intentGame1.putExtra("idScontro", infoId[1]);
-    				startActivity(intentGame1);
-    				finish();
+            		if(infoId[1] == -1){
+            			Toast.makeText(getApplicationContext(),"Non puoi attaccare/difendere questo luogo per la seconda volta", Toast.LENGTH_SHORT).show();
+            			finish();
+            		}else{
+	
+	            		Intent intentGame1 = new Intent(
+	    						getApplicationContext(),
+	    						GameMap_domanda1.class
+	    					);
+	            		intentGame1.putExtra("idUtente", idUser);
+	            		intentGame1.putExtra("nomeLuogo", namePlace);
+	            		intentGame1.putExtra("azione", action);
+	            		intentGame1.putExtra("clanUtente", userClan);
+	            		intentGame1.putExtra("idLuogo", infoId[0]);
+	            		intentGame1.putExtra("idScontro", infoId[1]);
+	    				startActivity(intentGame1);
+	    				finish();
+            		}
             	}  
             });  
             

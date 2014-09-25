@@ -12,6 +12,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import com.example.beyondto.adapter.TabsPagerAdapterHome;
+import com.facebook.Session;
 
 public class HomeActivity extends Activity implements ActionBar.TabListener {
 
@@ -26,6 +27,10 @@ public class HomeActivity extends Activity implements ActionBar.TabListener {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_home);
+		
+		//Facebook session
+		Session session = new Session(getApplicationContext());
+	    Session.setActiveSession(session);
 
 		// Initialization
 		viewPager = (ViewPager) findViewById(R.id.pager);

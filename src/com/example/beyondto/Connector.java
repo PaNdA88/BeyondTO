@@ -61,6 +61,37 @@ public class Connector extends AsyncTask<JSONObject, Void, JSONObject> {
 		}
 		return success;
 	}
+	
+	
+	public String[] getUserInfo(String Token){
+		
+		setPath("/getUserInfo.php");
+		JSONObject json = new JSONObject();
+		try {
+			json.put("token", Token);
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		JSONObject result = new JSONObject();
+		try {
+			result = this.execute(json).get();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		} catch (ExecutionException e) {
+			e.printStackTrace();
+		}
+		String info[] = new String[3];
+		try {
+			 info[0] = result.getString("idFacebook");
+			 info[1] = result.getString("fazioneUtente");
+			 info[2] = result.getString("fazioneAvversaria");
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		
+		
+		return info;
+	}
 
 	/*
 	 * Get information about places 
@@ -193,6 +224,27 @@ public class Connector extends AsyncTask<JSONObject, Void, JSONObject> {
 			} catch (ExecutionException e) {
 				e.printStackTrace();
 			};
+	}
+	
+	public void setWinnersMatch(String namePlace){
+		
+		setPath("/setWinnersMatch.php");
+		
+		JSONObject json = new JSONObject();
+		try {
+			json.put("nomeLuogo", namePlace);
+			
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}JSONObject result = new JSONObject();
+		try {
+			  result = this.execute(json).get();
+				 
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			} catch (ExecutionException e) {
+				e.printStackTrace();
+			};		
 	}
 
 	@Override

@@ -15,6 +15,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.facebook.Session;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.GoogleMap.OnMarkerClickListener;
@@ -31,24 +32,47 @@ public class MapActivity extends Activity implements OnMarkerClickListener {
 	public LatLng myPosition;
 	public ArrayList<Place> listPlaces;
 	public ArrayList<LatLngBounds> boundPlaces;
-	public String myClan = "alchimisti";
-	public String otherClan = "rinnegati";
+	private String myClan, otherClan, idFacebook;
 	public Intent intent = new Intent();
 	private MarkerOptions options = null;
 	final Context ctx = this;
+	private Session session;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_map);
+		
+		//Facebook session
+		session = new Session(getApplicationContext());
+	    Session.setActiveSession(session);
 		try {
-			drawMap();
+			getUser();
+			if(!idFacebook.equals("-1")){
+				drawMap();
+			}else{
+				Intent toLogin = new Intent(getApplicationContext(), LoginActivity.class);
+				startActivity(toLogin);
+			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
+	/*
+	 * Get user info
+	 */
+	public void getUser(){
+		Connector con = new Connector();
+		String info[] = con.getUserInfo((session.getAccessToken()).toString());
+		idFacebook = info[0];
+		Log.e("ID FACEBOOK", idFacebook);
+		myClan = info[1];
+		Log.e("CLAN", myClan);
+		otherClan = info[2]; 
+	}
+	
 	/*
 	 * Get user position
 	 */
@@ -125,7 +149,7 @@ public class MapActivity extends Activity implements OnMarkerClickListener {
 			LatLngBounds boundPlace = new LatLngBounds(SO, NE);
 
 			if (((String) ((listPlaces.get(i)).getProprietaFazione()))
-					.equals("alchimisti")) {
+					.equals("Alchimisti")) {
 				options = new MarkerOptions()
 						.position(boundPlace.getCenter())
 						.title((listPlaces.get(i)).getNomeLuogo())
@@ -133,7 +157,7 @@ public class MapActivity extends Activity implements OnMarkerClickListener {
 								.defaultMarker(BitmapDescriptorFactory.HUE_AZURE));
 			}
 			if (((String) ((listPlaces.get(i)).getProprietaFazione()))
-					.equals("rinnegati")) {
+					.equals("Rinnegati")) {
 
 				options = new MarkerOptions()
 						.position(boundPlace.getCenter())
@@ -168,26 +192,25 @@ public class MapActivity extends Activity implements OnMarkerClickListener {
 		String nomeLuogo = marker.getTitle();
 
 		Connector con = new Connector();
-		String[] place = con.checkPlaceState(nomeLuogo);
+		con.setWinnersMatch(nomeLuogo);
+		
+		Connector con2 = new Connector();
+		String[] place = con2.checkPlaceState(nomeLuogo);
 
 		PlaceDialog placeDialog = new PlaceDialog();
 		placeDialog.setContext(ctx);
 		placeDialog.setTitle(nomeLuogo);
 		placeDialog.setStatePlace(place[5]);
 		placeDialog.setActivity(this);
+		placeDialog.setIdFacebook(idFacebook);
 		placeDialog.setUserClan(myClan);
+		placeDialog.setClan(place[0]);
 			
 		if(place[0].equals(myClan)){
-			placeDialog.setClan(myClan);
 			placeDialog.setAction("difendere");			
-		}
-		
-		else{	
-			placeDialog.setClan(otherClan);
+		}else{	
 			placeDialog.setAction("attaccare");			
-
 		}
-
 		placeDialog.showPlaceDialog();
 		/*
 		 * boolean inPlace = InPlace(place);
