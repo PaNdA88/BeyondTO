@@ -1,35 +1,41 @@
-<LinearLayout 
+<RelativeLayout 
     xmlns:android="http://schemas.android.com/apk/res/android" 
     xmlns:tools="http://schemas.android.com/tools" 
     android:layout_width="match_parent" 
     android:layout_height="match_parent" 
-    android:orientation="vertical" >
+    android:orientation="vertical" 
+    android:background="@drawable/libri" >
 
-<TextView 
+<TextView
     android:id="@+id/titoloLogin"
-    android:layout_width="fill_parent" 
-    android:layout_height="wrap_content" 
-    android:layout_marginTop="60dp" 
-    android:gravity="center" 
-    android:text="@string/titoloLogin" 
-    android:textColor="#ffffff" 
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentLeft="true"
+    android:layout_below="@+id/sottotitolo"
+    android:layout_marginTop="16dp"
+    android:gravity="center"
+    android:text="@string/titoloLogin"
+    android:textColor="#ffffff"
     android:textSize="20dp" />
 
-<TextView 
+<com.facebook.widget.LoginButton
+    android:id="@+id/authButton"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/titoloLogin"
+    android:layout_centerHorizontal="true"
+    android:layout_marginTop="22dp" />
+
+<TextView
     android:id="@+id/sottotitolo"
-    android:layout_width="fill_parent" 
-    android:layout_height="wrap_content" 
-    android:layout_marginTop="40dp" 
-    android:gravity="center" 
-    android:text="@string/sottotitolo" 
-    android:textColor="#ffffff" 
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentTop="true"
+    android:layout_marginTop="27dp"
+    android:gravity="center"
+    android:text="@string/sottotitolo"
+    android:textColor="#ffffff"
     android:textSize="20dp" />
 
-<com.facebook.widget.LoginButton 
-    android:id="@+id/authButton" 
-    android:layout_width="wrap_content" 
-    android:layout_height="wrap_content" 
-    android:layout_gravity="center_horizontal" 
-    android:layout_marginTop="30dp" />
-
-</LinearLayout>
+</RelativeLayout>
