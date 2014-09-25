@@ -11,8 +11,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.facebook.Request;
 import com.facebook.Response;
@@ -64,6 +65,13 @@ public class LoginFragment extends Fragment {
     		Resources res1 = getActivity().getResources();
     		String tit = String.format(res1.getString(R.string.titoloLogin),testo1);
     		textTitle.setText(Html.fromHtml((String)  tit ));
+    		
+    	    ProgressBar p = new ProgressBar((LoginActivity)getActivity(), null, android.R.attr.progressBarStyle);
+    	    p.setVisibility(View.VISIBLE);
+    	    RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(100,100);
+    	    params.addRule(RelativeLayout.CENTER_IN_PARENT);
+    	    ((ViewGroup) view).addView(p, params);
+    		
     		String testo2 = "Stiamo effettuando la connessione a Facebook";
         	TextView textSubtitle = (TextView) view.findViewById(R.id.sottotitolo);
     		Resources res2 = getActivity().getResources();
@@ -71,6 +79,7 @@ public class LoginFragment extends Fragment {
     		textSubtitle.setText(Html.fromHtml((String)  sott ));
 				
 		}
+				
 		else{
 			
 			String testo1 = "ACCEDI A FACEBOOK!";
@@ -78,13 +87,13 @@ public class LoginFragment extends Fragment {
     		Resources res1 = getActivity().getResources();
     		String tit = String.format(res1.getString(R.string.titoloLogin),testo1);
     		textTitle.setText(Html.fromHtml((String)  tit ));
+    		
     		String testo2 = "Per giocare con BeyondTO è necessario effettuare l'accesso a Facebook";
         	TextView textSubtitle = (TextView) view.findViewById(R.id.sottotitolo);
     		Resources res2 = getActivity().getResources();
     		String sott = String.format(res2.getString(R.string.sottotitolo),testo2);
     		textSubtitle.setText(Html.fromHtml((String)  sott ));	
 		}
-		
         
 		LoginButton authButton = (LoginButton) view
 				.findViewById(R.id.authButton);
@@ -161,7 +170,6 @@ public class LoginFragment extends Fragment {
 		Intent i = new Intent((LoginActivity)getActivity(), HomeActivity.class);
 		i.putExtra("session", session);
 		getActivity().startActivity(i); 
-		
 	}
 	
 	public void goToChoiseClan(){
@@ -206,5 +214,4 @@ public class LoginFragment extends Fragment {
 		super.onSaveInstanceState(outState);
 		uiHelper.onSaveInstanceState(outState);
 	}
-
 }
