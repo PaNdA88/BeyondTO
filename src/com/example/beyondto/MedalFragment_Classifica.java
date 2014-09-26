@@ -38,9 +38,10 @@ public class MedalFragment_Classifica extends Fragment implements
 	public void onItemClick(AdapterView<?> parent, View view, int position,
 			long id) {
 
+		String s = "ciccia";
 		Intent intent = new Intent();
 		intent.setClass(getActivity(), ProfiloGiocatore.class);
-
+		intent.putExtra("nome", s);
 		startActivity(intent);
 
 	}
