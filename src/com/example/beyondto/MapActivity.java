@@ -109,7 +109,7 @@ public class MapActivity extends Activity implements OnMarkerClickListener {
 			googleMap.setOnMarkerClickListener(this);
 
 			myPosition = findMyPosition();
-
+			System.out.println(myPosition);
 			googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(myPosition,15));
 
 			Connector con = new Connector();

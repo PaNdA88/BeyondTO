@@ -184,7 +184,6 @@ public class LoginFragment extends Fragment {
 
 	public void goToTorinoHome() {
 		Intent i = new Intent((LoginActivity) getActivity(), HomeActivity.class);
-		i.putExtra("session", session);
 		getActivity().startActivity(i);
 	}
 

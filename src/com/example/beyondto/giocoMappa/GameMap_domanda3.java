@@ -1,6 +1,9 @@
 package com.example.beyondto.giocoMappa;
 
+import com.example.beyondto.Connector;
 import com.example.beyondto.R;
+import com.example.beyondto.giocoMappa.GameMap_domanda2.BackgroundAsyncTask;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -8,6 +11,8 @@ import android.os.Bundle;
 import android.os.SystemClock;
 import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.RadioButton;
+import android.widget.TextView;
 import android.view.View;
 import android.view.View.OnClickListener;
 
@@ -16,8 +21,9 @@ public class GameMap_domanda3 extends Activity {
 	ProgressBar progressBar;
 	private double score;
 	private String idUser, namePlace, action, userClan;
-	private int idPlace, idMatch, time, myProgress;
-
+	private int idPlace, idMatch, time, myProgress, risp1, risp2, risp3;
+	private String[] question3;
+	
     public class BackgroundAsyncTask extends
        AsyncTask<Void, Integer, Void> {
 
@@ -64,16 +70,13 @@ public class GameMap_domanda3 extends Activity {
 			
         	progressBar = (ProgressBar)findViewById(R.id.progressbar_Horizontal);
     	    progressBar.setProgress(0);
-    	    new BackgroundAsyncTask().execute();
-    	     
-    	    time = 100;
-    	    myProgress = 0;
+    	    final BackgroundAsyncTask task = new BackgroundAsyncTask();
     	    
-    	    Button risp3a = (Button) findViewById(R.id.risp3A);
-   	     	Button risp3b = (Button) findViewById(R.id.risp3B);
-   	     	Button risp3c = (Button) findViewById(R.id.risp3C);
-   	     	
-   	     	Intent i = getIntent();
+    	    risp1 = ((int) (Math.random() * 3));
+    		risp2 = (risp1 % 3) + 1;
+    		risp3 = (risp2 % 3) + 1;
+
+    		Intent i = getIntent();
 	     	score = i.getDoubleExtra("score", score);
    	     	idUser = i.getStringExtra("idUtente");
 			namePlace = i.getStringExtra("nomeLuogo");
@@ -81,69 +84,106 @@ public class GameMap_domanda3 extends Activity {
 			userClan = i.getStringExtra("clanUtente");
 			idPlace = i.getIntExtra("idLuogo", idPlace);
 			idMatch = i.getIntExtra("idScontro", idMatch);
-
-    	    risp3a.setOnClickListener(new OnClickListener() {
-    	    	@Override
-	                public void onClick(View v1) {
-    	    		
-    	    		score = score + (100 - myProgress);
-    	    		Intent intentGameEndA = new Intent(
-    						getApplicationContext(),
-    						GameMap_fineGioco.class
-    					);
-    	    		intentGameEndA.putExtra("score", score);
-    	    		intentGameEndA.putExtra("idUtente", idUser);
-    	    		intentGameEndA.putExtra("nomeLuogo", namePlace);
-    	    		intentGameEndA.putExtra("azione", action);
-    	    		intentGameEndA.putExtra("clanUtente", userClan);
-    	    		intentGameEndA.putExtra("idLuogo", idPlace);
-    	    		intentGameEndA.putExtra("idScontro", idMatch);
-    	    		startActivity(intentGameEndA);
-    				finish();
-    	    	}
-    	     });
-    	    
-    	     risp3b.setOnClickListener(new OnClickListener() {
-        	    	@Override
- 	                public void onClick(View v2) {
-        	    		
-        	    		score = score + (100 - myProgress);
-        	    		Intent intentGameEndB = new Intent(
-        						getApplicationContext(),
-        						GameMap_fineGioco.class
-        					);
-        	    		intentGameEndB.putExtra("score", score);
-        	    		intentGameEndB.putExtra("idUtente", idUser);
-        	    		intentGameEndB.putExtra("nomeLuogo", namePlace);
-        	    		intentGameEndB.putExtra("azione", action);
-        	    		intentGameEndB.putExtra("clanUtente", userClan);
-        	    		intentGameEndB.putExtra("idLuogo", idPlace);
-        	    		intentGameEndB.putExtra("idScontro", idMatch);
-        				startActivity(intentGameEndB);
-        				finish();
-        	    	}
-        	     });
+			
+			Connector con = new Connector();
+			question3 = con.getQuestion(idPlace);
+			task.execute();
     	     
-    	     risp3c.setOnClickListener(new OnClickListener() {
-        	    	@Override
- 	                public void onClick(View v3) {
-        	    		
-        	    		score = score + (100 - myProgress);
-        	    		Intent intentGameEndC = new Intent(
-        						getApplicationContext(),
-        						GameMap_fineGioco.class
-        					);
-        	    		intentGameEndC.putExtra("score", score);
-        	    		intentGameEndC.putExtra("idUtente", idUser);
-        	    		intentGameEndC.putExtra("nomeLuogo", namePlace);
-        	    		intentGameEndC.putExtra("azione", action);
-        	    		intentGameEndC.putExtra("clanUtente", userClan);
-        	    		intentGameEndC.putExtra("idLuogo", idPlace);
-        	    		intentGameEndC.putExtra("idScontro", idMatch);
-        				startActivity(intentGameEndC);
-        				finish();
-        	    	}
-        	     });
+    	    time = 100;
+    	    myProgress = 0;
+    	    
+    	    if (!question3[0].equals("-1")) {
+
+    	    	TextView text = (TextView) findViewById(R.id.domanda3);
+    			text.setText(question3[0]);
+    	    	
+	    	    final RadioButton risp3a = (RadioButton) findViewById(R.id.risp3A);
+	    	    risp3a.setText(question3[risp1]);
+	    	    
+	    	    final RadioButton risp3b = (RadioButton) findViewById(R.id.risp3B);
+	    	    risp3b.setText(question3[risp2]);
+	    	    
+	    	    final RadioButton risp3c = (RadioButton) findViewById(R.id.risp3C);
+	    	    risp3c.setText(question3[risp3]);
+	    	   
+	   	     	
+	    	    risp3a.setOnClickListener(new OnClickListener() {
+	    	    	@Override
+		                public void onClick(View v1) {
+	    	    		
+	    	    		if(risp3a.getText().equals(question3[1])){
+							score = score + (100 - myProgress);
+						}else{
+							score = 0;
+						}
+	    	    		Intent intentGameEndA = new Intent(
+	    						getApplicationContext(),
+	    						GameMap_fineGioco.class
+	    					);
+	    	    		intentGameEndA.putExtra("score", score);
+	    	    		intentGameEndA.putExtra("idUtente", idUser);
+	    	    		intentGameEndA.putExtra("nomeLuogo", namePlace);
+	    	    		intentGameEndA.putExtra("azione", action);
+	    	    		intentGameEndA.putExtra("clanUtente", userClan);
+	    	    		intentGameEndA.putExtra("idLuogo", idPlace);
+	    	    		intentGameEndA.putExtra("idScontro", idMatch);
+	    	    		startActivity(intentGameEndA);
+	    				finish();
+	    	    	}
+	    	     });
+	    	    
+	    	     risp3b.setOnClickListener(new OnClickListener() {
+	        	    	@Override
+	 	                public void onClick(View v2) {
+	        	    		
+	        	    		if(risp3a.getText().equals(question3[1])){
+								score = score + (100 - myProgress);
+							}else{
+								score = 0;
+							}
+	        	    		Intent intentGameEndB = new Intent(
+	        						getApplicationContext(),
+	        						GameMap_fineGioco.class
+	        					);
+	        	    		intentGameEndB.putExtra("score", score);
+	        	    		intentGameEndB.putExtra("idUtente", idUser);
+	        	    		intentGameEndB.putExtra("nomeLuogo", namePlace);
+	        	    		intentGameEndB.putExtra("azione", action);
+	        	    		intentGameEndB.putExtra("clanUtente", userClan);
+	        	    		intentGameEndB.putExtra("idLuogo", idPlace);
+	        	    		intentGameEndB.putExtra("idScontro", idMatch);
+	        				startActivity(intentGameEndB);
+	        				finish();
+	        	    	}
+	        	     });
+	    	     
+	    	     risp3c.setOnClickListener(new OnClickListener() {
+	        	    	@Override
+	 	                public void onClick(View v3) {
+	        	    		
+	        	    		if(risp3a.getText().equals(question3[1])){
+								score = score + (100 - myProgress);
+							}else{
+								score = 0;
+							}
+	        	    		Intent intentGameEndC = new Intent(
+	        						getApplicationContext(),
+	        						GameMap_fineGioco.class
+	        					);
+	        	    		intentGameEndC.putExtra("score", score);
+	        	    		intentGameEndC.putExtra("idUtente", idUser);
+	        	    		intentGameEndC.putExtra("nomeLuogo", namePlace);
+	        	    		intentGameEndC.putExtra("azione", action);
+	        	    		intentGameEndC.putExtra("clanUtente", userClan);
+	        	    		intentGameEndC.putExtra("idLuogo", idPlace);
+	        	    		intentGameEndC.putExtra("idScontro", idMatch);
+	        				startActivity(intentGameEndC);
+	        				finish();
+	        	    	}
+	        	     });
+    	    }else{
+    	    	finish();
+    	    }
 		}
 		
 

@@ -26,41 +26,46 @@
         android:textSize="20dp" />
 
     <TextView
-        android:id="@+id/question3"
+        android:id="@+id/domanda3"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginTop="100dp"
         android:gravity="center"
-        android:text="Il gallo fa l'uovo su un tetto, da che parte rotola?"
+        android:text=""
         android:textColor="#ffffff"
         android:textSize="20dp" />
 
-    <Button
-        android:id="@+id/risp3A"
-        android:layout_width="300px"
+    
+    <RadioGroup
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:text="A destra"/>
+        android:orientation="vertical" >    
+    </RadioGroup>
 
-    <Button
-        android:id="@+id/risp3B"
-        android:layout_width="300px"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/risp3A"
-        android:layout_below="@+id/risp3A"
-        android:layout_marginTop="15dp"
-        android:text="A sinistra" />
-
-    <Button
+    <RadioButton
         android:id="@+id/risp3C"
-        android:layout_width="300px"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/progressbar_Horizontal"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="79dp" />
+
+    <RadioButton
+        android:id="@+id/risp3B"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/risp3C"
+        android:layout_alignLeft="@+id/risp3C"
+        android:layout_marginBottom="40dp" />
+
+    <RadioButton
+        android:id="@+id/risp3A"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/risp3B"
         android:layout_alignLeft="@+id/risp3B"
-        android:layout_below="@+id/risp3B"
-        android:layout_marginTop="14dp"
-        android:text="Il gallo non fa le uova" />
+        android:layout_marginBottom="46dp" />
     
 </RelativeLayout>
