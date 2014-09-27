@@ -26,41 +26,45 @@
         android:textSize="20dp" />
 
     <TextView
-        android:id="@+id/question2"
+        android:id="@+id/domanda2"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginTop="100dp"
         android:gravity="center"
-        android:text="Di che colore è il cavallo bianco di Napoleone?"
+        android:text=""
         android:textColor="#ffffff"
         android:textSize="20dp" />
 
-    <Button
-        android:id="@+id/risp2A"
-        android:layout_width="300px"
+     <RadioGroup
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:text="Magenta" />
+        android:orientation="vertical" >    
+    </RadioGroup>
 
-    <Button
-        android:id="@+id/risp2B"
-        android:layout_width="300px"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/risp2A"
-        android:layout_below="@+id/risp2A"
-        android:layout_marginTop="15dp"
-        android:text="Bianco" />
+     <RadioButton
+         android:id="@+id/risp2C"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_alignLeft="@+id/progressbar_Horizontal"
+         android:layout_alignParentBottom="true"
+         android:layout_marginBottom="74dp" />
 
-    <Button
-        android:id="@+id/risp2C"
-        android:layout_width="300px"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/risp2B"
-        android:layout_below="@+id/risp2B"
-        android:layout_marginTop="15dp"
-        android:text="Napoleone non aveva cavalli" />
+     <RadioButton
+         android:id="@+id/risp2A"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_above="@+id/risp2B"
+         android:layout_alignLeft="@+id/risp2B"
+         android:layout_marginBottom="42dp" />
+
+     <RadioButton
+         android:id="@+id/risp2B"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_above="@+id/risp2C"
+         android:layout_alignLeft="@+id/risp2C"
+         android:layout_marginBottom="40dp" />
     
 </RelativeLayout>

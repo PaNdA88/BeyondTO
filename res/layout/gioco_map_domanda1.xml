@@ -10,11 +10,14 @@
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/domanda1"
+        android:layout_centerHorizontal="true"
         android:layout_margin="20dip"
         android:max="100" />
-
+    
+    
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/domanda1"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -25,42 +28,35 @@
         android:textColor="#ffffff"
         android:textSize="20dp" />
 
-    <TextView
-        android:id="@+id/rispA1"
+   
+    <RadioGroup
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="100dp"
-        android:gravity="center"
-        android:text="Quanti sono i sette nani?"
-        android:textColor="#ffffff"
-        android:textSize="20dp" />
+        android:orientation="vertical" >
 
-    <Button
-        android:id="@+id/risp1A"
-        android:layout_width="300px"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:text="7" />
+        <RadioButton
+            android:id="@+id/risp1C"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/progressbar_Horizontal"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="78dp" />
 
-    <Button
-        android:id="@+id/risp1B"
-        android:layout_width="300px"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/risp1A"
-        android:layout_below="@+id/risp1A"
-        android:layout_marginTop="14dp"
-        android:text="101" />
+        <RadioButton
+            android:id="@+id/risp1A"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/risp1B"
+            android:layout_alignLeft="@+id/risp1B"
+            android:layout_marginBottom="32dp" />
 
-    <Button
-        android:id="@+id/risp1C"
-        android:layout_width="300px"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/risp1B"
-        android:layout_below="@+id/risp1B"
-        android:layout_marginTop="14dp"
-        android:text="Tanti" />
+        <RadioButton
+            android:id="@+id/risp1B"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/risp1C"
+            android:layout_alignLeft="@+id/risp1C"
+            android:layout_marginBottom="37dp" />
+    </RadioGroup>
 
 </RelativeLayout>
