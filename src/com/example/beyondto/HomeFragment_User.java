@@ -3,6 +3,7 @@ package com.example.beyondto;
 import com.example.beyondto.R;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.content.Context;
 import android.content.res.Resources;
 import android.text.Html;
 import android.view.LayoutInflater;
@@ -10,18 +11,24 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class HomeFragment_User extends Fragment {
-	
-    @Override
+
+	//variabili - cambiare con valori da db 
+	int attacchi = 40;
+	int difese = 25;
+	int puntiUt = 3500;
+		
+	@Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
 
         	View rootView = inflater.inflate(R.layout.fragment_home_user, container, false); 
-        
+        	
         	//------------------- dynamic strings ----------------------//
       		String nome = "Andrea";
       		TextView textUser = (TextView) rootView.findViewById(R.id.nomeUtente);
@@ -47,27 +54,80 @@ public class HomeFragment_User extends Fragment {
       		String edi = String.format(res4.getString(R.string.edificiConquistati),edifici);
       		textEdifici.setText(Html.fromHtml((String)  edi )); 
       		
-      		ImageView img1 = (ImageView) rootView.findViewById(R.id.med1);
-      		img1.setOnClickListener(new OnClickListener(){
-      			public void onClick(View v) {
-      				Toast.makeText(getActivity(), "Medaglia DUELLANTE", Toast.LENGTH_SHORT).show();
-      		    }
-      		});
+      		LinearLayout linLayout1 = (LinearLayout) rootView.findViewById(R.id.linLayout1);
+            
+      		if (attacchi > 0){
+      			Context ctx = getActivity();
+      			ImageView imageView = new ImageView(ctx);
+      			imageView.setImageResource(R.drawable.medaglia1);
+      			linLayout1.addView(imageView);
+      			imageView.setOnClickListener(new OnClickListener(){
+      				public void onClick(View v) {
+      					Toast.makeText(getActivity(), "Medaglia DUELLANTE", Toast.LENGTH_SHORT).show();
+      				}
+      			});
+      		}
       		
-      		ImageView img2 = (ImageView) rootView.findViewById(R.id.med2);
-      		img2.setOnClickListener(new OnClickListener(){
-      			public void onClick(View v) {
-      				Toast.makeText(getActivity(), "Medaglia CONQUISTATORE", Toast.LENGTH_SHORT).show();
-      		    }
-      		});
+      		if (difese > 0){
+      			Context ctx = getActivity();
+      			ImageView imageView = new ImageView(ctx);
+      			imageView.setImageResource(R.drawable.medaglia3);
+      			linLayout1.addView(imageView);
+      			imageView.setOnClickListener(new OnClickListener(){
+      				public void onClick(View v) {
+      					Toast.makeText(getActivity(), "Medaglia APPRENDISTA", Toast.LENGTH_SHORT).show();
+      				}
+      			});
+      		}
       		
-      		ImageView img3 = (ImageView) rootView.findViewById(R.id.med3);
-      		img3.setOnClickListener(new OnClickListener(){
-      			public void onClick(View v) {
-      				Toast.makeText(getActivity(), "Medaglia PREMIO FEDELTA'", Toast.LENGTH_SHORT).show();
-      		    }
-      		});
-
+      		if (attacchi > 29){
+      			Context ctx = getActivity();
+      			ImageView imageView = new ImageView(ctx);
+      			imageView.setImageResource(R.drawable.medaglia4);
+      			linLayout1.addView(imageView);
+      			imageView.setOnClickListener(new OnClickListener(){
+      				public void onClick(View v) {
+      					Toast.makeText(getActivity(), "Medaglia CONQUISTATORE", Toast.LENGTH_SHORT).show();
+      				}
+      			});
+      		}
+      		
+      		if (difese > 29){
+      			Context ctx = getActivity();
+      			ImageView imageView = new ImageView(ctx);
+      			imageView.setImageResource(R.drawable.medaglia6);
+      			linLayout1.addView(imageView);
+      			imageView.setOnClickListener(new OnClickListener(){
+          			public void onClick(View v) {
+          				Toast.makeText(getActivity(), "Medaglia DIFENSORE", Toast.LENGTH_SHORT).show();
+          		    }
+          		});
+          	}
+          		
+          	if (puntiUt > 999){
+          		Context ctx = getActivity();
+      			ImageView imageView = new ImageView(ctx);
+      			imageView.setImageResource(R.drawable.medaglia5);
+      			linLayout1.addView(imageView);
+      			imageView.setOnClickListener(new OnClickListener(){
+          			public void onClick(View v) {
+          				Toast.makeText(getActivity(), "Medaglia LEADER", Toast.LENGTH_SHORT).show();
+          		    }
+          		});
+          	}
+          		
+          	if (puntiUt > 9999){
+          		Context ctx = getActivity();
+      			ImageView imageView = new ImageView(ctx);
+      			imageView.setImageResource(R.drawable.medaglia2);
+      			linLayout1.addView(imageView);
+      			imageView.setOnClickListener(new OnClickListener(){
+          			public void onClick(View v) {
+          				Toast.makeText(getActivity(), "Medaglia MASTER", Toast.LENGTH_SHORT).show();
+          		    }
+          		});
+          	}
+      		
         return rootView;
     }
 }

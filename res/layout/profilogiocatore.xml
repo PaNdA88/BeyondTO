@@ -6,12 +6,113 @@
     android:orientation="vertical"
     android:background="@drawable/superga" >
      
-    <TextView android:layout_width="fill_parent"
+    <TextView
+        android:id="@+id/nome"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="28dp"
         android:gravity="center"
-        android:text="PROFILO GIOCATORE"
         android:textColor="#ffffff"
-        android:textSize="20dp"
-        android:layout_centerInParent="true"/>
-    
+        android:textSize="20dp" />
+
+        <ImageView
+            android:id="@+id/med2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/med1"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/medaglia2" />
+
+        <ImageView
+            android:id="@+id/med3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/med2"
+            android:layout_alignRight="@+id/divisore2"
+            android:src="@drawable/medaglia3" />
+
+        <ImageView
+            android:id="@+id/med1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/divisore1"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="55dp"
+            android:src="@drawable/medaglia1" />
+
+        <TextView
+            android:id="@+id/punti"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/med3"
+            android:layout_alignParentLeft="true"
+            android:layout_marginBottom="41dp"
+            android:gravity="center"
+            android:textColor="#ffffff"
+            android:textSize="16dp" />
+
+        <TextView
+            android:id="@+id/medaglieOttenute"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/punti"
+            android:layout_alignBottom="@+id/punti"
+            android:layout_alignParentLeft="true"
+            android:gravity="center"
+            android:text="Medaglie ottenute:"
+            android:textColor="#ffffff"
+            android:textSize="16dp" />
+
+        <View
+            android:id="@+id/divisore1"
+            android:layout_width="200dp"
+            android:layout_height="1dp"
+            android:layout_above="@+id/punti"
+            android:layout_alignRight="@+id/med3"
+            android:layout_marginBottom="33dp"
+            android:background="@drawable/gradient" />
+
+        <TextView
+            android:id="@+id/edificiConquistati"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/clanAppartenenza"
+            android:layout_marginTop="50dp"
+            android:gravity="center"
+            android:text="@string/edificiConquistati"
+            android:textColor="#ffffff"
+            android:textSize="16dp" />
+
+        <View
+            android:id="@+id/divisore2"
+            android:layout_width="200dp"
+            android:layout_height="1dp"
+            android:layout_below="@+id/clanAppartenenza"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="31dp"
+            android:background="@drawable/gradient" />
+
+        <ImageView
+            android:id="@+id/logoRinnegati"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/med2"
+            android:layout_below="@+id/nome"
+            android:src="@drawable/rinnegati" />
+
+        <TextView
+            android:id="@+id/clanAppartenenza"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/logoRinnegati"
+            android:layout_marginTop="30dp"
+            android:gravity="center"
+            android:text="@string/clanAppartenenza"
+            android:textColor="#ffffff"
+            android:textSize="20dp" />
+
 </RelativeLayout>    
