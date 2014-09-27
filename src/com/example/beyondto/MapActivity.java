@@ -153,8 +153,7 @@ public class MapActivity extends Activity implements OnMarkerClickListener {
 				options = new MarkerOptions()
 						.position(boundPlace.getCenter())
 						.title((listPlaces.get(i)).getNomeLuogo())
-						.icon(BitmapDescriptorFactory
-								.defaultMarker(BitmapDescriptorFactory.HUE_AZURE));
+						.icon(BitmapDescriptorFactory.fromResource(R.drawable.blue_gem));
 			}
 			if (((String) ((listPlaces.get(i)).getProprietaFazione()))
 					.equals("Rinnegati")) {
@@ -162,8 +161,7 @@ public class MapActivity extends Activity implements OnMarkerClickListener {
 				options = new MarkerOptions()
 						.position(boundPlace.getCenter())
 						.title((listPlaces.get(i)).getNomeLuogo())
-						.icon(BitmapDescriptorFactory
-								.defaultMarker(BitmapDescriptorFactory.HUE_RED));
+						.icon(BitmapDescriptorFactory.fromResource(R.drawable.red_gem));
 
 			}
 			if (((String) ((listPlaces.get(i)).getProprietaFazione()))
@@ -172,8 +170,7 @@ public class MapActivity extends Activity implements OnMarkerClickListener {
 				options = new MarkerOptions()
 						.position(boundPlace.getCenter())
 						.title((listPlaces.get(i)).getNomeLuogo())
-						.icon(BitmapDescriptorFactory
-								.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
+						.icon(BitmapDescriptorFactory.fromResource(R.drawable.grey_gem));
 			}
 			googleMap.addMarker(options);
 		}

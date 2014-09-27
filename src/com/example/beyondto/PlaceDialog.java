@@ -11,6 +11,7 @@ import android.text.Html;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -117,14 +118,22 @@ public class PlaceDialog {
 	public void showPlaceDialog() {
 
 		final Dialog dialog = new Dialog(context);
+		dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+		dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent); 
 		dialog.setContentView(R.layout.dialog_map);
-		dialog.setTitle(title);
-		// TextView text = (TextView) dialog.findViewById(R.id.textDialog);
-		// text.setText(view_text);
+		//dialog.setTitle(title);
+		
+		
+		
 		ImageView image = (ImageView) dialog.findViewById(R.id.imageDialog);
 		image.setImageResource(R.drawable.frejus);
 
 		// ------------------- dynamic strings ----------------------//
+		
+		TextView titledialog = (TextView) dialog.findViewById(R.id.titleDialog);
+		titledialog.setText(title);
+		
+		
 		TextView textPropriety = (TextView) dialog.findViewById(R.id.textProp);
 		final Resources res = context.getResources();
 		String prop = String.format(res.getString(R.string.proprierty), clan);
@@ -166,7 +175,7 @@ public class PlaceDialog {
 			String act = String.format(res.getString(R.string.action), action);
 			textAction.setText(Html.fromHtml((String) act));
 
-			yesButton = (Button) dialog.findViewById(R.id.yesButton);
+		yesButton = (Button) dialog.findViewById(R.id.yesButton);
 			noButton = (Button) dialog.findViewById(R.id.noButton);
 
 			yesButton.setOnClickListener(new OnClickListener() {

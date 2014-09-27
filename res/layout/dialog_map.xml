@@ -1,22 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:background="@drawable/dialog_shape">
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/dialog_shape"
+    android:padding="10dp"
+    >
     
- <!--   <TextView
-        android:id="@+id/textDialog"
+     <TextView
+        android:id="@+id/titleDialog"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:textColor="#FFF" /> --> 
+        android:layout_alignParentTop="true"
+        android:textColor="@color/theme_yellow"
+        android:textSize="25sp"
+        android:includeFontPadding="false"
+        
+         />
+     
+<View
+                android:id="@+id/divider"
+                android:layout_width="290dp"
+                android:layout_height="1dp"
+                android:layout_below="@id/titleDialog"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/gradient_inverse" />
 
 <TextView
          android:id="@+id/textAction"
-         android:layout_marginTop="15dp"
+         android:layout_marginTop="10dp"
          android:layout_width="wrap_content"
          android:layout_height="wrap_content"
+         android:layout_below="@id/divider"
          android:layout_centerHorizontal="true"
          android:text="@string/action" />
 
@@ -26,7 +43,7 @@
          android:layout_height="wrap_content"
          android:layout_centerHorizontal="true"
          android:layout_below="@id/textAction"
-         android:layout_marginTop="15dp"
+         android:layout_marginTop="10dp"
          android:background="@drawable/image_border"
          android:src="@drawable/frejus" />
 
@@ -42,7 +59,7 @@
          android:layout_height="wrap_content"
          android:layout_centerHorizontal="true"
          android:layout_below="@id/imageDialog"
-         android:layout_marginTop="15dp"
+         android:layout_marginTop="10dp"
          android:text="@string/proprierty" />
 
      <TextView
@@ -51,7 +68,7 @@
          android:layout_height="wrap_content"
           android:layout_centerHorizontal="true"
          android:layout_below="@id/textProp"
-         android:layout_marginTop="15dp"
+         android:layout_marginTop="10dp"
          android:text="@string/statePlace" />
      
      <TextView
@@ -60,7 +77,7 @@
          android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
          android:layout_below="@id/textStatePlace"
-         android:layout_marginTop="15dp"
+         android:layout_marginTop="10dp"
          android:text="Orario primo attacco:" />
 
      <TextView
@@ -69,7 +86,7 @@
          android:layout_height="wrap_content"
          android:layout_centerHorizontal="true"
          android:layout_below="@id/textFirstAtt"
-         android:layout_marginTop="15dp"
+         android:layout_marginTop="10dp"
          android:text="@string/numberAtt" />
      
      <TextView
@@ -78,30 +95,38 @@
          android:layout_height="wrap_content"
          android:layout_centerHorizontal="true"
          android:layout_below="@id/textNumberAtt"
-         android:layout_marginTop="15dp"
+         android:layout_marginTop="10dp"
          android:text="@string/numberDif" />
-     
-<Button
-    android:id="@+id/yesButton"
-    android:layout_width="120dp"
+ 
+  <RelativeLayout
+      android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_below="@id/textNumberDif"
-    android:layout_marginLeft="24dp"
-    android:layout_marginTop="30dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginBottom="10dp"
+    android:layout_centerInParent="true"
+      >  
+
+      <Button 
+          android:id="@+id/yesButton"
+          android:layout_width="96dp"
+    android:layout_height="32dp"
+    android:text="SI"
     android:background="@drawable/yes_button"
+    android:layout_marginRight="15dp"
     
-    android:text="SI" />
-
-     <Button
-         android:id="@+id/noButton"
-         android:layout_width="120dp"
-         android:layout_height="wrap_content"
-         android:layout_alignBaseline="@+id/yesButton"
-         android:layout_alignBottom="@+id/yesButton"
-         android:layout_alignParentRight="true"
-         android:layout_marginRight="24dp"
-        
-         android:background="@drawable/no_button"
-         android:text="NO" />
-
+          
+          />
+      
+      <Button
+          android:id="@+id/noButton" 
+       android:layout_width="96dp"
+    android:layout_height="32dp"
+    android:text="NO"  
+    android:background="@drawable/no_button" 
+     android:layout_toRightOf="@id/yesButton"     
+          />
+      
+</RelativeLayout>
+ 
 </RelativeLayout>
