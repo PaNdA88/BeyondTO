@@ -1,6 +1,8 @@
 package com.example.beyondto;
 
 import com.example.beyondto.R;
+import com.facebook.Session;
+
 import android.os.Bundle;
 import android.app.Fragment;
 import android.content.res.Resources;
@@ -19,6 +21,10 @@ public class HomeFragment_User extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
+    	
+    		//Facebook session
+    		Session session = new Session((HomeActivity)getActivity());
+    		Session.setActiveSession(session);
 
         	View rootView = inflater.inflate(R.layout.fragment_home_user, container, false); 
         
