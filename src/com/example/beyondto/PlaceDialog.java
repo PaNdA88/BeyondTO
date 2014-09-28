@@ -122,17 +122,20 @@ public class PlaceDialog {
 		dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent); 
 		dialog.setContentView(R.layout.dialog_map);
 		//dialog.setTitle(title);
-		
-		
-		
-		ImageView image = (ImageView) dialog.findViewById(R.id.imageDialog);
-		image.setImageResource(R.drawable.frejus);
-
+				
 		// ------------------- dynamic strings ----------------------//
 		
 		TextView titledialog = (TextView) dialog.findViewById(R.id.titleDialog);
 		titledialog.setText(title);
-		
+		String luogo = title;
+
+		ImageView image = (ImageView) dialog.findViewById(R.id.imageDialog);
+		if (luogo.equals("Carcere Le Nuove"))
+			image.setImageResource(R.drawable.nuove);
+		else if (luogo.equals("Il Fante"))
+			image.setImageResource(R.drawable.fante);
+		else if (luogo.equals("Politecnico"))
+			image.setImageResource(R.drawable.poli);
 		
 		TextView textPropriety = (TextView) dialog.findViewById(R.id.textProp);
 		final Resources res = context.getResources();

@@ -19,6 +19,6 @@ public class ProfiloGiocatore extends Activity {
 		txtName.setText(nome);
 		TextView txtPoints = (TextView) findViewById(R.id.punti);
 		txtPoints.setText(punti);
-		//ImageView img = i.getStringExtra("clan");;
+		//ImageView img = i.getStringExtra("clan");
 	}
 }
