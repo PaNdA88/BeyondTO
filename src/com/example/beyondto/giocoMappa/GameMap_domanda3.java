@@ -72,8 +72,8 @@ public class GameMap_domanda3 extends Activity {
     	    final BackgroundAsyncTask task = new BackgroundAsyncTask();
     	    
     	    risp1 = ((int) (Math.random() * 3));
-    		risp2 = (risp1 % 3) + 1;
-    		risp3 = (risp2 % 3) + 1;
+    		risp2 = (risp1 + 1) % 3;
+    		risp3 = (risp2 + 1) % 3;
 
     		Intent i = getIntent();
 	     	score = i.getDoubleExtra("score", score);
@@ -97,13 +97,13 @@ public class GameMap_domanda3 extends Activity {
     			text.setText(question3[0]);
     	    	
 	    	    final RadioButton risp3a = (RadioButton) findViewById(R.id.risp3A);
-	    	    risp3a.setText(question3[risp1]);
+	    	    risp3a.setText(question3[risp1+1]);
 	    	    
 	    	    final RadioButton risp3b = (RadioButton) findViewById(R.id.risp3B);
-	    	    risp3b.setText(question3[risp2]);
+	    	    risp3b.setText(question3[risp2+1]);
 	    	    
 	    	    final RadioButton risp3c = (RadioButton) findViewById(R.id.risp3C);
-	    	    risp3c.setText(question3[risp3]);
+	    	    risp3c.setText(question3[risp3+1]);
 	    	   
 	   	     	
 	    	    risp3a.setOnClickListener(new OnClickListener() {

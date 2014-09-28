@@ -23,122 +23,130 @@ public class HomeFragment_User extends Fragment {
 	String info[];
 
 	@Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-            Bundle savedInstanceState) {
-    	
-    		//Facebook session
-    		Session session = new Session((HomeActivity)getActivity());
-    		Session.setActiveSession(session);
-    		
-    		Connector con = new Connector();
-    		info = con.getUserInfo(session.getAccessToken());
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
 
-        	View rootView = inflater.inflate(R.layout.fragment_home_user, container, false); 
-        	      	
-        	try{
-  
-	        	//------------------- dynamic strings ----------------------//
-	      		String nome = info[2];
-	      		TextView textUser = (TextView) rootView.findViewById(R.id.nomeUtente);
-	      		Resources res1 =((HomeActivity) getActivity()).getResources();
-	      		String user = String.format(res1.getString(R.string.nomeUtente),nome);
-	      		textUser.setText(Html.fromHtml((String)  user )); 
-	      		
-	      		String clan = info[3];
-	      		TextView textClan = (TextView) rootView.findViewById(R.id.clanAppartenenza);
-	      		Resources res2 =((HomeActivity) getActivity()).getResources();
-	      		String cl = String.format(res2.getString(R.string.clanAppartenenza),clan);
-	      		textClan.setText(Html.fromHtml((String)  cl ));
-	      		
-	      		String punti = info[1];
-	      		TextView textPoints = (TextView) rootView.findViewById(R.id.puntiUtente);
-	      		Resources res3 =((HomeActivity) getActivity()).getResources();
-	      		String pt = String.format(res3.getString(R.string.puntiUtente),punti);
-	      		textPoints.setText(Html.fromHtml((String)  pt )); 
-	      		
-	      		String edifici = info[5];
-	      		TextView textEdifici = (TextView) rootView.findViewById(R.id.edificiConquistati);
-	      		Resources res4 =((HomeActivity) getActivity()).getResources();
-	      		String edi = String.format(res4.getString(R.string.edificiConquistati),edifici);
-	      		textEdifici.setText(Html.fromHtml((String)  edi )); 
-	      		
-	      		LinearLayout linLayout1 = (LinearLayout) rootView.findViewById(R.id.linLayout1);
-	            
-	      		if (Integer.parseInt(info[6]) > 0){
-	      			Context ctx = getActivity();
-	      			ImageView imageView = new ImageView(ctx);
-	      			imageView.setImageResource(R.drawable.medaglia1);
-	      			linLayout1.addView(imageView);
-	      			imageView.setOnClickListener(new OnClickListener(){
-	      				public void onClick(View v) {
-	      					Toast.makeText(getActivity(), "Medaglia DUELLANTE", Toast.LENGTH_SHORT).show();
-	      				}
-	      			});
-	      		}
-	      		
-	      		if (Integer.parseInt(info[7]) > 0){
-	      			Context ctx = getActivity();
-	      			ImageView imageView = new ImageView(ctx);
-	      			imageView.setImageResource(R.drawable.medaglia3);
-	      			linLayout1.addView(imageView);
-	      			imageView.setOnClickListener(new OnClickListener(){
-	      				public void onClick(View v) {
-	      					Toast.makeText(getActivity(), "Medaglia APPRENDISTA", Toast.LENGTH_SHORT).show();
-	      				}
-	      			});
-	      		}
-	      		
-	      		if (Integer.parseInt(info[6]) > 29){
-	      			Context ctx = getActivity();
-	      			ImageView imageView = new ImageView(ctx);
-	      			imageView.setImageResource(R.drawable.medaglia4);
-	      			linLayout1.addView(imageView);
-	      			imageView.setOnClickListener(new OnClickListener(){
-	      				public void onClick(View v) {
-	      					Toast.makeText(getActivity(), "Medaglia CONQUISTATORE", Toast.LENGTH_SHORT).show();
-	      				}
-	      			});
-	      		}
-	      		
-	      		if (Integer.parseInt(info[7]) > 29){
-	      			Context ctx = getActivity();
-	      			ImageView imageView = new ImageView(ctx);
-	      			imageView.setImageResource(R.drawable.medaglia6);
-	      			linLayout1.addView(imageView);
-	      			imageView.setOnClickListener(new OnClickListener(){
-	          			public void onClick(View v) {
-	          				Toast.makeText(getActivity(), "Medaglia DIFENSORE", Toast.LENGTH_SHORT).show();
-	          		    }
-	          		});
-	          	}
-	          		
-	          	if (Integer.parseInt(info[1]) > 999){
-	          		Context ctx = getActivity();
-	      			ImageView imageView = new ImageView(ctx);
-	      			imageView.setImageResource(R.drawable.medaglia5);
-	      			linLayout1.addView(imageView);
-	      			imageView.setOnClickListener(new OnClickListener(){
-	          			public void onClick(View v) {
-	          				Toast.makeText(getActivity(), "Medaglia LEADER", Toast.LENGTH_SHORT).show();
-	          		    }
-	          		});
-	          	}
-	          		
-	          	if (Integer.parseInt(info[1]) > 9999){
-	          		Context ctx = getActivity();
-	      			ImageView imageView = new ImageView(ctx);
-	      			imageView.setImageResource(R.drawable.medaglia2);
-	      			linLayout1.addView(imageView);
-	      			imageView.setOnClickListener(new OnClickListener(){
-	          			public void onClick(View v) {
-	          				Toast.makeText(getActivity(), "Medaglia MASTER", Toast.LENGTH_SHORT).show();
-	          		    }
-	          		});
-	          	}
-        	}catch(Exception e){
-        		e.printStackTrace();
-        	}
-        	
-        return rootView;
-    }
+		// Facebook session
+		Session session = new Session((HomeActivity) getActivity());
+		Session.setActiveSession(session);
+
+		Connector con = new Connector();
+		info = con.getUserInfo(session.getAccessToken());
+
+		View rootView = inflater.inflate(R.layout.fragment_home_user,
+				container, false);
+
+		// ------------------- dynamic strings ----------------------//
+		String nome = info[2];
+		TextView textUser = (TextView) rootView.findViewById(R.id.nomeUtente);
+		Resources res1 = ((HomeActivity) getActivity()).getResources();
+		String user = String.format(res1.getString(R.string.nomeUtente), nome);
+		textUser.setText(Html.fromHtml((String) user));
+
+		String clan = info[3];
+		TextView textClan = (TextView) rootView
+				.findViewById(R.id.clanAppartenenza);
+		Resources res2 = ((HomeActivity) getActivity()).getResources();
+		String cl = String.format(res2.getString(R.string.clanAppartenenza),
+				clan);
+		textClan.setText(Html.fromHtml((String) cl));
+
+		String punti = info[1];
+		TextView textPoints = (TextView) rootView
+				.findViewById(R.id.puntiUtente);
+		Resources res3 = ((HomeActivity) getActivity()).getResources();
+		String pt = String.format(res3.getString(R.string.puntiUtente), punti);
+		textPoints.setText(Html.fromHtml((String) pt));
+
+		String edifici = info[5];
+		TextView textEdifici = (TextView) rootView
+				.findViewById(R.id.edificiConquistati);
+		Resources res4 = ((HomeActivity) getActivity()).getResources();
+		String edi = String.format(res4.getString(R.string.edificiConquistati),
+				edifici);
+		textEdifici.setText(Html.fromHtml((String) edi));
+
+		LinearLayout linLayout1 = (LinearLayout) rootView
+				.findViewById(R.id.linLayout1);
+
+		if (Integer.parseInt(info[6]) > 0) {
+			Context ctx = getActivity();
+			ImageView imageView = new ImageView(ctx);
+			imageView.setImageResource(R.drawable.medaglia1);
+			linLayout1.addView(imageView);
+			imageView.setOnClickListener(new OnClickListener() {
+				public void onClick(View v) {
+					Toast.makeText(getActivity(), "Medaglia DUELLANTE",
+							Toast.LENGTH_SHORT).show();
+				}
+			});
+		}
+
+		if (Integer.parseInt(info[7]) > 0) {
+			Context ctx = getActivity();
+			ImageView imageView = new ImageView(ctx);
+			imageView.setImageResource(R.drawable.medaglia3);
+			linLayout1.addView(imageView);
+			imageView.setOnClickListener(new OnClickListener() {
+				public void onClick(View v) {
+					Toast.makeText(getActivity(), "Medaglia APPRENDISTA",
+							Toast.LENGTH_SHORT).show();
+				}
+			});
+		}
+
+		if (Integer.parseInt(info[6]) > 29) {
+			Context ctx = getActivity();
+			ImageView imageView = new ImageView(ctx);
+			imageView.setImageResource(R.drawable.medaglia4);
+			linLayout1.addView(imageView);
+			imageView.setOnClickListener(new OnClickListener() {
+				public void onClick(View v) {
+					Toast.makeText(getActivity(), "Medaglia CONQUISTATORE",
+							Toast.LENGTH_SHORT).show();
+				}
+			});
+		}
+
+		if (Integer.parseInt(info[7]) > 29) {
+			Context ctx = getActivity();
+			ImageView imageView = new ImageView(ctx);
+			imageView.setImageResource(R.drawable.medaglia6);
+			linLayout1.addView(imageView);
+			imageView.setOnClickListener(new OnClickListener() {
+				public void onClick(View v) {
+					Toast.makeText(getActivity(), "Medaglia DIFENSORE",
+							Toast.LENGTH_SHORT).show();
+				}
+			});
+		}
+
+		if (Integer.parseInt(info[1]) > 999) {
+			Context ctx = getActivity();
+			ImageView imageView = new ImageView(ctx);
+			imageView.setImageResource(R.drawable.medaglia5);
+			linLayout1.addView(imageView);
+			imageView.setOnClickListener(new OnClickListener() {
+				public void onClick(View v) {
+					Toast.makeText(getActivity(), "Medaglia LEADER",
+							Toast.LENGTH_SHORT).show();
+				}
+			});
+		}
+
+		if (Integer.parseInt(info[1]) > 9999) {
+			Context ctx = getActivity();
+			ImageView imageView = new ImageView(ctx);
+			imageView.setImageResource(R.drawable.medaglia2);
+			linLayout1.addView(imageView);
+			imageView.setOnClickListener(new OnClickListener() {
+				public void onClick(View v) {
+					Toast.makeText(getActivity(), "Medaglia MASTER",
+							Toast.LENGTH_SHORT).show();
+				}
+			});
+		}
+
+		return rootView;
+	}
 }
