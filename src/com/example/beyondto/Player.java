@@ -32,7 +32,7 @@ public class Player {
     }
     
     public static ArrayList getItems() {
-        ArrayList list = new ArrayList();
+        ArrayList<Player> list = new ArrayList<Player>();
         Player item;
  
         //ciclo for -- per ogni giocatore prendi i punti e ordina 

@@ -17,7 +17,7 @@ public class MedalFragment_Classifica extends Fragment implements
 		OnItemClickListener {
 
 	private ListView listViewPlayers;
-	private ArrayList mListItem;
+	private ArrayList<Player> mListItem;
 	private Context ctx;
 
 	@Override
@@ -38,9 +38,9 @@ public class MedalFragment_Classifica extends Fragment implements
 	public void onItemClick(AdapterView<?> parent, View view, int position,
 			long id) {
 
-		String nome = "Andre M";
+		String nome = mListItem.get(position).getName();
 		//ImageView imgClan;
-		String punti = "4563";
+		String punti = mListItem.get(position).getPunti();
 		Intent intent = new Intent();
 		intent.setClass(getActivity(), ProfiloGiocatore.class);
 		intent.putExtra("nome", nome);

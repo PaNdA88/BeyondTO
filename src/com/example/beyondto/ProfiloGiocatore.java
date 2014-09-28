@@ -18,7 +18,10 @@ public class ProfiloGiocatore extends Activity {
 		TextView txtName = (TextView) findViewById(R.id.nome);
 		txtName.setText(nome);
 		TextView txtPoints = (TextView) findViewById(R.id.punti);
-		txtPoints.setText(punti);
+		txtPoints.setText("Punteggio: " + punti);
+		String edi = "Edifici Conquistati: 23";
+		TextView txtEdi = (TextView) findViewById(R.id.edifici);
+		txtEdi.setText(edi);
 		//ImageView img = i.getStringExtra("clan");
 	}
 }
