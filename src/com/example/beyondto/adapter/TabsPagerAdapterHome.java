@@ -10,7 +10,9 @@ import android.support.v13.app.FragmentPagerAdapter;
 	 
 	public class TabsPagerAdapterHome extends FragmentPagerAdapter {
 	 
-	    public TabsPagerAdapterHome(FragmentManager fm) {
+	    private String[] info;
+
+		public TabsPagerAdapterHome(FragmentManager fm) {
 	        super(fm);
 	    }
 	 
@@ -20,13 +22,19 @@ import android.support.v13.app.FragmentPagerAdapter;
 	        switch (index) {
 	        case 0:
 	            // User fragment activity
-	            return new HomeFragment_User();
+	            HomeFragment_User user = new HomeFragment_User();
+	            user.setInfoUser(info);
+	            return user;
 	        case 1:
 	            // Clan fragment activity
-	            return new HomeFragment_Clan();
+	        	HomeFragment_Clan clan = new HomeFragment_Clan();
+	        	clan.setInfoUser(info);
+	        	return clan;
 	        case 2:
 	            // Chat fragment activity
-	            return new HomeFragment_Chat();
+	        	HomeFragment_Chat chat = new HomeFragment_Chat();
+	        	chat.setInfoUser(info);
+	        	return chat;
 	        }
 	 
 	        return null;
@@ -36,6 +44,11 @@ import android.support.v13.app.FragmentPagerAdapter;
 	    public int getCount() {
 	        // get item count - equal to number of tabs
 	        return 3;
+	    }
+	    
+	    public void setInfoUser(String[] info){
+	    	this.info = info;
+	    	
 	    }
 	 
 	

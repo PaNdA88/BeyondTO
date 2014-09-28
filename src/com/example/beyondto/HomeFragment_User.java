@@ -26,13 +26,6 @@ public class HomeFragment_User extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 
-		// Facebook session
-		Session session = new Session((HomeActivity) getActivity());
-		Session.setActiveSession(session);
-
-		Connector con = new Connector();
-		info = con.getUserInfo(session.getAccessToken());
-
 		View rootView = inflater.inflate(R.layout.fragment_home_user,
 				container, false);
 
@@ -148,5 +141,9 @@ public class HomeFragment_User extends Fragment {
 		}
 
 		return rootView;
+	}
+
+	public void setInfoUser(String[] info) {
+		this.info = info;	
 	}
 }

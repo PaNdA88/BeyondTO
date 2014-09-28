@@ -12,7 +12,9 @@ import android.widget.TextView;
 
 public class HomeFragment_Clan extends Fragment {
  
-    @Override
+    private String[] info;
+
+	@Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
  
@@ -39,4 +41,9 @@ public class HomeFragment_Clan extends Fragment {
   		
         return rootView;
     }
+
+	public void setInfoUser(String[] info) {
+		this.info = info;
+		
+	}
 }

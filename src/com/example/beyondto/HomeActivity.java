@@ -22,6 +22,7 @@ public class HomeActivity extends Activity implements ActionBar.TabListener {
 	// Tab titles
 	private String[] tabsHome = { "Utente", "Scheda Clan", "Chat" };
 	Intent intent = new Intent();
+	String[] info;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -31,6 +32,9 @@ public class HomeActivity extends Activity implements ActionBar.TabListener {
 		//Facebook session
 		Session session = new Session(getApplicationContext());
 	    Session.setActiveSession(session);
+	    
+	    Connector con = new Connector();
+		info = con.getUserInfo(session.getAccessToken());
 
 		// Initialization
 		viewPager = (ViewPager) findViewById(R.id.pager);
