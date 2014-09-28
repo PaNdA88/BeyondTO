@@ -14,6 +14,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -60,14 +61,16 @@ public class HomeFragment_User extends Fragment {
       		String edi = String.format(res4.getString(R.string.edificiConquistati),edifici);
       		textEdifici.setText(Html.fromHtml((String)  edi )); 
       		
-      		LinearLayout linLayout1 = (LinearLayout) rootView.findViewById(R.id.linLayout1);
+      		
+      		
             
       		if (attacchi > 0){
-      			Context ctx = getActivity();
-      			ImageView imageView = new ImageView(ctx);
-      			imageView.setImageResource(R.drawable.medaglia1);
-      			linLayout1.addView(imageView);
-      			imageView.setOnClickListener(new OnClickListener(){
+      			//Context ctx = getActivity();
+      			//ImageView imageView = new ImageView(ctx);
+      			ImageView image = (ImageView) rootView.findViewById(R.id.med1);
+       			image.setImageResource(R.drawable.medaglia1);
+      			//linLayout1.addView(imageView);
+      			image.setOnClickListener(new OnClickListener(){
       				public void onClick(View v) {
       					Toast.makeText(getActivity(), "Medaglia DUELLANTE", Toast.LENGTH_SHORT).show();
       				}
@@ -75,11 +78,9 @@ public class HomeFragment_User extends Fragment {
       		}
       		
       		if (difese > 0){
-      			Context ctx = getActivity();
-      			ImageView imageView = new ImageView(ctx);
-      			imageView.setImageResource(R.drawable.medaglia3);
-      			linLayout1.addView(imageView);
-      			imageView.setOnClickListener(new OnClickListener(){
+      			ImageView image = (ImageView) rootView.findViewById(R.id.med3);
+       			image.setImageResource(R.drawable.medaglia3);
+      			image.setOnClickListener(new OnClickListener(){
       				public void onClick(View v) {
       					Toast.makeText(getActivity(), "Medaglia APPRENDISTA", Toast.LENGTH_SHORT).show();
       				}
@@ -87,11 +88,12 @@ public class HomeFragment_User extends Fragment {
       		}
       		
       		if (attacchi > 29){
-      			Context ctx = getActivity();
-      			ImageView imageView = new ImageView(ctx);
-      			imageView.setImageResource(R.drawable.medaglia4);
-      			linLayout1.addView(imageView);
-      			imageView.setOnClickListener(new OnClickListener(){
+      			ImageView image = (ImageView) rootView.findViewById(R.id.med4);
+       			
+      			
+      			image.setImageResource(R.drawable.medaglia4);
+      			
+      			image.setOnClickListener(new OnClickListener(){
       				public void onClick(View v) {
       					Toast.makeText(getActivity(), "Medaglia CONQUISTATORE", Toast.LENGTH_SHORT).show();
       				}
@@ -99,11 +101,11 @@ public class HomeFragment_User extends Fragment {
       		}
       		
       		if (difese > 29){
-      			Context ctx = getActivity();
-      			ImageView imageView = new ImageView(ctx);
-      			imageView.setImageResource(R.drawable.medaglia6);
-      			linLayout1.addView(imageView);
-      			imageView.setOnClickListener(new OnClickListener(){
+      			ImageView image = (ImageView) rootView.findViewById(R.id.med6);
+      			
+      			image.setImageResource(R.drawable.medaglia6);
+      			
+      			image.setOnClickListener(new OnClickListener(){
           			public void onClick(View v) {
           				Toast.makeText(getActivity(), "Medaglia DIFENSORE", Toast.LENGTH_SHORT).show();
           		    }
@@ -111,11 +113,12 @@ public class HomeFragment_User extends Fragment {
           	}
           		
           	if (puntiUt > 999){
-          		Context ctx = getActivity();
-      			ImageView imageView = new ImageView(ctx);
-      			imageView.setImageResource(R.drawable.medaglia5);
-      			linLayout1.addView(imageView);
-      			imageView.setOnClickListener(new OnClickListener(){
+
+          		ImageView image = (ImageView) rootView.findViewById(R.id.med5);
+      			
+      			image.setImageResource(R.drawable.medaglia5);
+      			
+      			image.setOnClickListener(new OnClickListener(){
           			public void onClick(View v) {
           				Toast.makeText(getActivity(), "Medaglia LEADER", Toast.LENGTH_SHORT).show();
           		    }
@@ -123,11 +126,10 @@ public class HomeFragment_User extends Fragment {
           	}
           		
           	if (puntiUt > 9999){
-          		Context ctx = getActivity();
-      			ImageView imageView = new ImageView(ctx);
-      			imageView.setImageResource(R.drawable.medaglia2);
-      			linLayout1.addView(imageView);
-      			imageView.setOnClickListener(new OnClickListener(){
+          		ImageView image = (ImageView) rootView.findViewById(R.id.med2);
+      			image.setImageResource(R.drawable.medaglia2);
+      			
+      			image.setOnClickListener(new OnClickListener(){
           			public void onClick(View v) {
           				Toast.makeText(getActivity(), "Medaglia MASTER", Toast.LENGTH_SHORT).show();
           		    }
