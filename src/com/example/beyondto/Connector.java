@@ -63,12 +63,12 @@ public class Connector extends AsyncTask<JSONObject, Void, JSONObject> {
 		return success;
 	}
 
-	public String[] getUserInfo(String Token) {
+	public String[] getUserInfo(String idFacebook) {
 
 		setPath("/getUserInfo.php");
 		JSONObject json = new JSONObject();
 		try {
-			json.put("token", Token);
+			json.put("idFacebook", idFacebook);
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
@@ -80,16 +80,15 @@ public class Connector extends AsyncTask<JSONObject, Void, JSONObject> {
 		} catch (ExecutionException e) {
 			e.printStackTrace();
 		}
-		String info[] = new String[8];
+		String info[] = new String[7];
 		try {
-			info[0] = result.getString("idFacebook");
-			info[1] = result.getString("punti");
-			info[2] = result.getString("userName");
-			info[3] = result.getString("fazioneUtente");
-			info[4] = result.getString("fazioneAvversaria");
-			info[5] = result.getString("numeroConquiste");
-			info[6] = result.getString("numeroAttacchi");
-			info[7] = result.getString("numeroDifese");
+			info[0] = result.getString("punti");
+			info[1] = result.getString("userName");
+			info[2] = result.getString("fazioneUtente");
+			info[3] = result.getString("fazioneAvversaria");
+			info[4] = result.getString("numeroConquiste");
+			info[5] = result.getString("numeroAttacchi");
+			info[6] = result.getString("numeroDifese");
 			
 		} catch (JSONException e) {
 			e.printStackTrace();

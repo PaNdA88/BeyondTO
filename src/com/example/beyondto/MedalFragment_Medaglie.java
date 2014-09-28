@@ -28,7 +28,7 @@ public class MedalFragment_Medaglie extends Fragment {
 		Session.setActiveSession(session);
 		
 		Connector con = new Connector();
-		info = con.getUserInfo(session.getAccessToken());
+		info = con.getUserInfo(Infoton.getInstance().getUserId());
  
         View rootView = inflater.inflate(R.layout.fragment_medal_medaglie, container, false);
       

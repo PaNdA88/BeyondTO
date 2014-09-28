@@ -44,8 +44,7 @@ public class MapActivity extends Activity implements OnMarkerClickListener {
 		setContentView(R.layout.activity_map);
 		
 		//Facebook session
-		session = new Session(getApplicationContext());
-	    Session.setActiveSession(session);
+		session = Session.getActiveSession();
 		try {
 			getUser();
 			if(!idFacebook.equals("-1")){
@@ -65,7 +64,7 @@ public class MapActivity extends Activity implements OnMarkerClickListener {
 	 */
 	public void getUser(){
 		Connector con = new Connector();
-		String info[] = con.getUserInfo((session.getAccessToken()).toString());
+		String info[] = con.getUserInfo(Infoton.getInstance().getUserId());
 		idFacebook = info[0];
 		Log.e("ID FACEBOOK", idFacebook);
 		myClan = info[1];

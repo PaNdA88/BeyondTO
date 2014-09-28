@@ -31,13 +31,13 @@ public class HomeFragment_User extends Fragment {
 
 		// ------------------- dynamic strings ----------------------//
 		
-		String nome = info[2];
+		String nome = info[1];
 		TextView textUser = (TextView) rootView.findViewById(R.id.nomeUtente);
 		Resources res1 = ((HomeActivity) getActivity()).getResources();
 		String user = String.format(res1.getString(R.string.nomeUtente), nome);
 		textUser.setText(Html.fromHtml((String) user));
 
-		String clan = info[3];
+		String clan = info[2];
 		TextView textClan = (TextView) rootView
 				.findViewById(R.id.clanAppartenenza);
 		Resources res2 = ((HomeActivity) getActivity()).getResources();
@@ -45,14 +45,14 @@ public class HomeFragment_User extends Fragment {
 				clan);
 		textClan.setText(Html.fromHtml((String) cl));
 
-		String punti = info[1];
+		String punti = info[0];
 		TextView textPoints = (TextView) rootView
 				.findViewById(R.id.puntiUtente);
 		Resources res3 = ((HomeActivity) getActivity()).getResources();
 		String pt = String.format(res3.getString(R.string.puntiUtente), punti);
 		textPoints.setText(Html.fromHtml((String) pt));
 
-		String edifici = info[5];
+		String edifici = info[4];
 		TextView textEdifici = (TextView) rootView
 				.findViewById(R.id.edificiConquistati);
 		Resources res4 = ((HomeActivity) getActivity()).getResources();
@@ -63,7 +63,7 @@ public class HomeFragment_User extends Fragment {
 		LinearLayout linLayout1 = (LinearLayout) rootView
 				.findViewById(R.id.linLayout1);
 
-		if (Integer.parseInt(info[6]) > 0) {
+		if (Integer.parseInt(info[5]) > 0) {
 			Context ctx = getActivity();
 			ImageView imageView = new ImageView(ctx);
 			imageView.setImageResource(R.drawable.medaglia1);
@@ -76,7 +76,7 @@ public class HomeFragment_User extends Fragment {
 			});
 		}
 
-		if (Integer.parseInt(info[7]) > 0) {
+		if (Integer.parseInt(info[6]) > 0) {
 			Context ctx = getActivity();
 			ImageView imageView = new ImageView(ctx);
 			imageView.setImageResource(R.drawable.medaglia3);
@@ -89,7 +89,7 @@ public class HomeFragment_User extends Fragment {
 			});
 		}
 
-		if (Integer.parseInt(info[6]) > 29) {
+		if (Integer.parseInt(info[5]) > 29) {
 			Context ctx = getActivity();
 			ImageView imageView = new ImageView(ctx);
 			imageView.setImageResource(R.drawable.medaglia4);
@@ -102,7 +102,7 @@ public class HomeFragment_User extends Fragment {
 			});
 		}
 
-		if (Integer.parseInt(info[7]) > 29) {
+		if (Integer.parseInt(info[6]) > 29) {
 			Context ctx = getActivity();
 			ImageView imageView = new ImageView(ctx);
 			imageView.setImageResource(R.drawable.medaglia6);
@@ -115,7 +115,7 @@ public class HomeFragment_User extends Fragment {
 			});
 		}
 
-		if (Integer.parseInt(info[1]) > 999) {
+		if (Integer.parseInt(info[0]) > 999) {
 			Context ctx = getActivity();
 			ImageView imageView = new ImageView(ctx);
 			imageView.setImageResource(R.drawable.medaglia5);
@@ -128,7 +128,7 @@ public class HomeFragment_User extends Fragment {
 			});
 		}
 
-		if (Integer.parseInt(info[1]) > 9999) {
+		if (Integer.parseInt(info[0]) > 9999) {
 			Context ctx = getActivity();
 			ImageView imageView = new ImageView(ctx);
 			imageView.setImageResource(R.drawable.medaglia2);

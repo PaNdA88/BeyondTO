@@ -33,13 +33,11 @@ public class HomeActivity extends Activity implements ActionBar.TabListener {
 		//Facebook session
 		Session session = Session.getActiveSession();
 
-	    
-	    Log.d("USERID", Infoton.getInstance().getUserId());
 	    Connector con = new Connector();
 	    
-		info = con.getUserInfo(session.getAccessToken());
+		info = con.getUserInfo(Infoton.getInstance().getUserId());
 		if(info[0].equals("-1"))
-			Log.d("TOken",session.getAccessToken());
+			Log.d("TOken",Infoton.getInstance().getUserId());
 		
 		// Initialization
 		viewPager = (ViewPager) findViewById(R.id.pager);
