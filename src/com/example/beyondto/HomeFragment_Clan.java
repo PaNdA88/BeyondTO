@@ -11,12 +11,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 public class HomeFragment_Clan extends Fragment {
+	
 	private String[] info;
-
-	public HomeFragment_Clan(String[] info) {
-		super();
-		this.info = info;
-	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,

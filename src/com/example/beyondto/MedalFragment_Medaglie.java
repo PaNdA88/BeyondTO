@@ -27,7 +27,7 @@ public class MedalFragment_Medaglie extends Fragment {
 		Session session = new Session((MedalActivity)getActivity());
 		Session.setActiveSession(session);
 		
-		Connector con = new Connector();
+		Connector con = new Connector(((MedalActivity)getActivity()).getApplicationContext());
 		info = con.getUserInfo(session.getAccessToken());
  
         View rootView = inflater.inflate(R.layout.fragment_medal_medaglie, container, false);

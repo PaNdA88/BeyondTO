@@ -48,7 +48,7 @@ public class GameMap extends Activity {
             	@Override  
             	public void onClick(View arg1) {  
             		
-            		Connector con = new Connector();
+            		Connector con = new Connector(getApplicationContext());
             		int infoId[] = con.startNewAttack(idUser,namePlace, action);
             		
             		if(infoId[1] == -1){

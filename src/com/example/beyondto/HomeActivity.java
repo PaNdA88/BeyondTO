@@ -7,6 +7,7 @@ import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -33,7 +34,8 @@ public class HomeActivity extends Activity implements ActionBar.TabListener {
 		Session session = new Session(getApplicationContext());
 	    Session.setActiveSession(session);
 	    
-	    Connector con = new Connector();
+	    Connector con = new Connector(getApplicationContext());
+	    Log.d("TOken",session.getAccessToken());
 		info = con.getUserInfo(session.getAccessToken());
 
 		// Initialization

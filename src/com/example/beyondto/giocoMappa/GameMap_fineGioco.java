@@ -54,7 +54,7 @@ public class GameMap_fineGioco extends Activity {
 			@Override
 			public void onClick(View arg1) {
 				
-				Connector con = new Connector();
+				Connector con = new Connector(getApplicationContext());
 				con.setScoreAttDif(score, idUser, namePlace, action, userClan, idPlace, idMatch);
 				
 				Intent intentMap = new Intent(getApplicationContext(),

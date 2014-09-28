@@ -81,7 +81,7 @@ public class GameMap_domanda2 extends Activity {
 		idPlace = i.getIntExtra("idLuogo", idPlace);
 		idMatch = i.getIntExtra("idScontro", idMatch);
 
-		Connector con = new Connector();
+		Connector con = new Connector(getApplicationContext());
 		question2 = con.getQuestion(idPlace);
 		task.execute();
 

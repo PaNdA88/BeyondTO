@@ -22,6 +22,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
@@ -30,6 +31,12 @@ public class Connector extends AsyncTask<JSONObject, Void, JSONObject> {
 
 	String url = "http://www.antonellavannucci.it";
 	String path;
+	Context context;
+	
+
+	public Connector(Context applicationContext) {
+		this.context = applicationContext;
+	}
 
 	public String doLoginFromFacebook(String userId, String tokenFacebook,
 			String dateExpiringToken, String userEmail, String userName) {
@@ -326,7 +333,7 @@ public class Connector extends AsyncTask<JSONObject, Void, JSONObject> {
 				jsonObjRecv = new JSONObject(resultString);
 				if (jsonObjRecv.has("error")) {
 					// da chiedere
-					Toast.makeText(null, jsonObjRecv.getString("error"),
+					Toast.makeText(context, jsonObjRecv.getString("error"),
 							Toast.LENGTH_SHORT).show();
 				}
 

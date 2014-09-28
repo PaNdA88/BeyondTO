@@ -11,10 +11,6 @@ public class HomeFragment_Chat extends Fragment {
  
 	private String[] info;
 
-	public HomeFragment_Chat(String[] info) {
-		super();
-		this.info = info;
-	}
 	@Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {

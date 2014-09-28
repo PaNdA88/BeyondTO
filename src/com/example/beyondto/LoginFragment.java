@@ -158,7 +158,7 @@ public class LoginFragment extends Fragment {
 								String USER_EMAIL = user.asMap().get("email")
 										.toString();
 								Log.d("USER EMAIL", USER_EMAIL);
-								Connector con = new Connector();
+								Connector con = new Connector(((LoginActivity)getActivity()).getApplicationContext());
 								String result = con.doLoginFromFacebook(
 										USER_ID, USER_TOKEN, EXPIRATION,
 										USER_EMAIL, USER_NAME);
