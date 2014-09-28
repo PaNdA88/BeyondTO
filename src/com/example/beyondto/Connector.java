@@ -79,15 +79,20 @@ public class Connector extends AsyncTask<JSONObject, Void, JSONObject> {
 		} catch (ExecutionException e) {
 			e.printStackTrace();
 		}
-		String info[] = new String[3];
+		String info[] = new String[8];
 		try {
 			info[0] = result.getString("idFacebook");
-			info[1] = result.getString("fazioneUtente");
-			info[2] = result.getString("fazioneAvversaria");
+			info[1] = result.getString("punti");
+			info[2] = result.getString("userName");
+			info[3] = result.getString("fazioneUtente");
+			info[4] = result.getString("fazioneAvversaria");
+			info[5] = result.getString("numeroConquiste");
+			info[6] = result.getString("numeroAttacchi");
+			info[7] = result.getString("numeroDifese");
+			
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
-
 		return info;
 	}
 

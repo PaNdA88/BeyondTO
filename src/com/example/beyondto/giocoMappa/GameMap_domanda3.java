@@ -62,7 +62,6 @@ public class GameMap_domanda3 extends Activity {
       progressBar.setProgress(values[0]);
      }
     }
-
 		@Override
 		protected void onCreate(Bundle savedInstanceState) {
 			super.onCreate(savedInstanceState);
