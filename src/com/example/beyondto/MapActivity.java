@@ -64,7 +64,7 @@ public class MapActivity extends Activity implements OnMarkerClickListener {
 	 * Get user info
 	 */
 	public void getUser(){
-		Connector con = new Connector(getApplicationContext());
+		Connector con = new Connector();
 		String info[] = con.getUserInfo((session.getAccessToken()).toString());
 		idFacebook = info[0];
 		Log.e("ID FACEBOOK", idFacebook);
@@ -112,7 +112,7 @@ public class MapActivity extends Activity implements OnMarkerClickListener {
 			System.out.println(myPosition);
 			googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(myPosition,15));
 
-			Connector con = new Connector(getApplicationContext());
+			Connector con = new Connector();
 			listPlaces = con.getLocations();
 			if (listPlaces != null) {
 				if (!listPlaces.isEmpty()) {
@@ -188,10 +188,10 @@ public class MapActivity extends Activity implements OnMarkerClickListener {
 
 		String nomeLuogo = marker.getTitle();
 
-		Connector con = new Connector(getApplicationContext());
+		Connector con = new Connector();
 		con.setWinnersMatch(nomeLuogo);
 		
-		Connector con2 = new Connector(getApplicationContext());
+		Connector con2 = new Connector();
 		String[] place = con2.checkPlaceState(nomeLuogo);
 
 		PlaceDialog placeDialog = new PlaceDialog();

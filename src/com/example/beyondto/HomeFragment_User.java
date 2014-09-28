@@ -30,6 +30,7 @@ public class HomeFragment_User extends Fragment {
 				container, false);
 
 		// ------------------- dynamic strings ----------------------//
+		
 		String nome = info[2];
 		TextView textUser = (TextView) rootView.findViewById(R.id.nomeUtente);
 		Resources res1 = ((HomeActivity) getActivity()).getResources();

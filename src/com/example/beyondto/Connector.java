@@ -31,13 +31,7 @@ public class Connector extends AsyncTask<JSONObject, Void, JSONObject> {
 
 	String url = "http://www.antonellavannucci.it";
 	String path;
-	Context context;
 	
-
-	public Connector(Context applicationContext) {
-		this.context = applicationContext;
-	}
-
 	public String doLoginFromFacebook(String userId, String tokenFacebook,
 			String dateExpiringToken, String userEmail, String userName) {
 
@@ -332,9 +326,8 @@ public class Connector extends AsyncTask<JSONObject, Void, JSONObject> {
 				Log.e("RISULT STRING", resultString);
 				jsonObjRecv = new JSONObject(resultString);
 				if (jsonObjRecv.has("error")) {
-					// da chiedere
-					Toast.makeText(context, jsonObjRecv.getString("error"),
-							Toast.LENGTH_SHORT).show();
+					
+					Log.e("Errore comunicazione", jsonObjRecv.getString("error"));
 				}
 
 			} else {

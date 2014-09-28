@@ -31,13 +31,16 @@ public class HomeActivity extends Activity implements ActionBar.TabListener {
 		setContentView(R.layout.activity_home);
 		
 		//Facebook session
-		Session session = new Session(getApplicationContext());
-	    Session.setActiveSession(session);
-	    
-	    Connector con = new Connector(getApplicationContext());
-	    Log.d("TOken",session.getAccessToken());
-		info = con.getUserInfo(session.getAccessToken());
+		Session session = Session.getActiveSession();
 
+	    
+	    Log.d("USERID", Infoton.getInstance().getUserId());
+	    Connector con = new Connector();
+	    
+		info = con.getUserInfo(session.getAccessToken());
+		if(info[0].equals("-1"))
+			Log.d("TOken",session.getAccessToken());
+		
 		// Initialization
 		viewPager = (ViewPager) findViewById(R.id.pager);
 		actionBar = getActionBar();

@@ -81,7 +81,7 @@ public class GameMap_domanda2 extends Activity {
 		idPlace = i.getIntExtra("idLuogo", idPlace);
 		idMatch = i.getIntExtra("idScontro", idMatch);
 
-		Connector con = new Connector(getApplicationContext());
+		Connector con = new Connector();
 		question2 = con.getQuestion(idPlace);
 		task.execute();
 
@@ -94,21 +94,21 @@ public class GameMap_domanda2 extends Activity {
 			text.setText(question2[0]);
 
 			final RadioButton risp2A = (RadioButton) findViewById(R.id.risp2A);
-			risp2A.setText(question2[risp1+1]);
+			risp2A.setText(question2[risp1 + 1]);
 
 			final RadioButton risp2B = (RadioButton) findViewById(R.id.risp2B);
-			risp2B.setText(question2[risp2+1]);
+			risp2B.setText(question2[risp2 + 1]);
 
 			final RadioButton risp2C = (RadioButton) findViewById(R.id.risp2C);
-			risp2C.setText(question2[risp3+1]);
+			risp2C.setText(question2[risp3 + 1]);
 
 			risp2A.setOnClickListener(new OnClickListener() {
 				@Override
 				public void onClick(View v1) {
 
-					if(risp2A.getText().equals(question2[1])){
+					if (risp2A.getText().equals(question2[1])) {
 						score = score + (100 - myProgress);
-					}else{
+					} else {
 						score = 0;
 					}
 					Intent intentGame3a = new Intent(getApplicationContext(),
@@ -130,9 +130,9 @@ public class GameMap_domanda2 extends Activity {
 				@Override
 				public void onClick(View v2) {
 
-					if(risp2B.getText().equals(question2[1])){
+					if (risp2B.getText().equals(question2[1])) {
 						score = score + (100 - myProgress);
-					}else{
+					} else {
 						score = 0;
 					}
 					Intent intentGame3b = new Intent(getApplicationContext(),
@@ -155,9 +155,9 @@ public class GameMap_domanda2 extends Activity {
 				@Override
 				public void onClick(View v3) {
 
-					if(risp2C.getText().equals(question2[1])){
+					if (risp2C.getText().equals(question2[1])) {
 						score = score + (100 - myProgress);
-					}else{
+					} else {
 						score = 0;
 					}
 					Intent intentGame3c = new Intent(getApplicationContext(),
