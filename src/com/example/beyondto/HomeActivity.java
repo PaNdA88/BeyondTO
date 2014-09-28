@@ -41,7 +41,7 @@ public class HomeActivity extends Activity implements ActionBar.TabListener {
 		actionBar = getActionBar();
 		actionBar.removeAllTabs();
 		mAdapterHome = new TabsPagerAdapterHome(getFragmentManager());
-
+		mAdapterHome.setInfoUser(info);
 		viewPager.setAdapter(mAdapterHome);
 		actionBar.setHomeButtonEnabled(false);
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);

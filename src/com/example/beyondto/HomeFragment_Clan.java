@@ -11,39 +11,45 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 public class HomeFragment_Clan extends Fragment {
- 
-    private String[] info;
+	private String[] info;
+
+	public HomeFragment_Clan(String[] info) {
+		super();
+		this.info = info;
+	}
 
 	@Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-            Bundle savedInstanceState) {
- 
-        View rootView = inflater.inflate(R.layout.fragment_home_clan, container, false);
-         
-      //------------------- dynamic strings ----------------------//
-  		String clan = "RINNEGATI";
-  		TextView textClan = (TextView) rootView.findViewById(R.id.nomeClan);
-  		Resources res1 =((HomeActivity) getActivity()).getResources();
-  		String cl = String.format(res1.getString(R.string.nomeClan),clan);
-  		textClan.setText(Html.fromHtml((String)  cl )); 
-  		
-  		String membri = "50";
-  		TextView textMembers = (TextView) rootView.findViewById(R.id.numMembri);
-  		Resources res2 =((HomeActivity) getActivity()).getResources();
-  		String memb = String.format(res2.getString(R.string.numMembri),membri);
-  		textMembers.setText(Html.fromHtml((String)  memb ));
-  		
-  		String vittorie = "18";
-  		TextView textVitt = (TextView) rootView.findViewById(R.id.numVittorie);
-  		Resources res3 =((HomeActivity) getActivity()).getResources();
-  		String vitt = String.format(res3.getString(R.string.numVittorie),vittorie);
-  		textVitt.setText(Html.fromHtml((String)  vitt )); 
-  		
-        return rootView;
-    }
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
+
+		View rootView = inflater.inflate(R.layout.fragment_home_clan,
+				container, false);
+
+		// ------------------- dynamic strings ----------------------//
+		String clan = "RINNEGATI";
+		TextView textClan = (TextView) rootView.findViewById(R.id.nomeClan);
+		Resources res1 = ((HomeActivity) getActivity()).getResources();
+		String cl = String.format(res1.getString(R.string.nomeClan), clan);
+		textClan.setText(Html.fromHtml((String) cl));
+
+		String membri = "50";
+		TextView textMembers = (TextView) rootView.findViewById(R.id.numMembri);
+		Resources res2 = ((HomeActivity) getActivity()).getResources();
+		String memb = String.format(res2.getString(R.string.numMembri), membri);
+		textMembers.setText(Html.fromHtml((String) memb));
+
+		String vittorie = "18";
+		TextView textVitt = (TextView) rootView.findViewById(R.id.numVittorie);
+		Resources res3 = ((HomeActivity) getActivity()).getResources();
+		String vitt = String.format(res3.getString(R.string.numVittorie),
+				vittorie);
+		textVitt.setText(Html.fromHtml((String) vitt));
+
+		return rootView;
+	}
 
 	public void setInfoUser(String[] info) {
 		this.info = info;
-		
+
 	}
 }
