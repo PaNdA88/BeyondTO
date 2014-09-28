@@ -11,19 +11,18 @@ import android.view.ViewGroup;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
-public class NewsSelectedFragment_Difesa extends Fragment {
+public class NewsSelectedFragment extends Fragment {
 
 	// frammento della news selezionata, che compare sulla destra dello schermo
 	// se il dispositivo è abbastanza grosso oppure in modalità landscape
 
-	public static NewsSelectedFragment_Difesa newInstance(int index) {
+	public static NewsSelectedFragment newInstance(int index) {
 
-		NewsSelectedFragment_Difesa f = new NewsSelectedFragment_Difesa();
+		NewsSelectedFragment f = new NewsSelectedFragment();
 		// Supply index input as an argument.
 		Bundle args = new Bundle();
 		args.putInt("index", index);
 		f.setArguments(args);
-
 		return f;
 	}
 
@@ -45,16 +44,13 @@ public class NewsSelectedFragment_Difesa extends Fragment {
 			return null;
 		}
 		
-		
-		View rootView = inflater.inflate(R.layout.fragment_newsselected_difesa,
+		View rootView = inflater.inflate(R.layout.fragment_newsselected,
 				container, false);
 		
 		//------------------- dynamic strings ----------------------//
-  		String testo = "Qui compare la notifica relativa alla DIFESA di questo edificio";
+  		String testo = "Qui compare la notifica relativa all'ATTACCO o alla DIFESA di questo edificio";
   		TextView textNot = (TextView) rootView.findViewById(R.id.testoNotifica);
-  		Resources res =((NewsSelectedActivity) getActivity()).getResources();
-  		String txt = String.format(res.getString(R.string.testoNotifica),testo);
-  		textNot.setText(Html.fromHtml((String)  txt)); 
+  		textNot.setText(Html.fromHtml((String)  testo)); 
 
 		/*
 		 * ScrollView scroller = new ScrollView(getActivity()); TextView text =
