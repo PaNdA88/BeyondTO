@@ -111,7 +111,7 @@
           android:layout_width="96dp"
     android:layout_height="32dp"
     android:text="SI"
-    android:background="@drawable/yes_button"
+    android:background="@drawable/selector_yes"
     android:layout_marginRight="15dp"
     
           
@@ -122,7 +122,7 @@
        android:layout_width="96dp"
     android:layout_height="32dp"
     android:text="NO"  
-    android:background="@drawable/no_button" 
+    android:background="@drawable/selector_no" 
      android:layout_toRightOf="@id/yesButton"     
           />
       

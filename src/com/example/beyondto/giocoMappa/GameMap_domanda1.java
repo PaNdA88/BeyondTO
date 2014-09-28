@@ -94,14 +94,16 @@ public class GameMap_domanda1 extends Activity {
 			TextView text = (TextView) findViewById(R.id.domanda1);
 			text.setText(question1[0]);
 
-			final RadioButton risp1a = (RadioButton) findViewById(R.id.risp1A);
+
+			final Button risp1a = (Button) findViewById(R.id.risp1A);
 			risp1a.setText(question1[risp1 + 1]);
 
-			final RadioButton risp1b = (RadioButton) findViewById(R.id.risp1B);
+			final Button risp1b = (Button) findViewById(R.id.risp1B);
 			risp1b.setText(question1[risp2 + 1]);
 
-			final RadioButton risp1c = (RadioButton) findViewById(R.id.risp1C);
+			final Button risp1c = (Button) findViewById(R.id.risp1C);
 			risp1c.setText(question1[risp3 + 1]);
+
 
 			risp1a.setOnClickListener(new OnClickListener() {
 				@Override

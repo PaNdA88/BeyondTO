@@ -85,14 +85,55 @@
             android:textColor="#ffffff"
             android:textSize="20dp" />
 
-        <LinearLayout
-            android:id="@+id/linLayout1"
+        <RelativeLayout
+            
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
+            android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:gravity="center" >
-        </LinearLayout>
+            android:layout_below="@+id/medaglieOttenute"
+            android:gravity="center"
+            android:paddingTop= "20dp" >
+            
+            <ImageView
+                android:id="@+id/med1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp" />
 
-</RelativeLayout>    
+            <ImageView
+                android:id="@+id/med2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp" 
+                android:layout_toRightOf="@id/med1"/>
+
+            <ImageView
+                android:id="@+id/med3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:layout_toRightOf="@id/med2" />
+
+            <ImageView
+                android:id="@+id/med4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:layout_toRightOf="@id/med3" />
+
+            <ImageView
+                android:id="@+id/med5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:layout_toRightOf="@id/med4" />
+
+            <ImageView
+                android:id="@+id/med6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                
+                android:layout_toRightOf="@id/med5" />
+    </RelativeLayout>
+
+</RelativeLayout>

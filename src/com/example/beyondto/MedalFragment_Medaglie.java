@@ -23,11 +23,7 @@ public class MedalFragment_Medaglie extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
     	
-    	//Facebook session
-		Session session = new Session((MedalActivity)getActivity());
-		Session.setActiveSession(session);
-		
-		Connector con = new Connector();
+    	Connector con = new Connector();
 		info = con.getUserInfo(Infoton.getInstance().getUserId());
  
         View rootView = inflater.inflate(R.layout.fragment_medal_medaglie, container, false);
