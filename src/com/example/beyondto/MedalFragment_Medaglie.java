@@ -1,18 +1,14 @@
 package com.example.beyondto;
 
 import com.example.beyondto.R;
-import com.facebook.Session;
 
 import android.os.Bundle;
 import android.app.Fragment;
-import android.content.Context;
 import android.graphics.Color;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
  
 public class MedalFragment_Medaglie extends Fragment {
@@ -27,9 +23,7 @@ public class MedalFragment_Medaglie extends Fragment {
 		info = con.getUserInfo(Infoton.getInstance().getUserId());
  
         View rootView = inflater.inflate(R.layout.fragment_medal_medaglie, container, false);
-      
-        //RelativeLayout relLayout1 = (RelativeLayout) rootView.findViewById(R.id.relLayout1);
-              
+           
         //MEDAGLIA 1
         ImageView imageView1 = (ImageView) rootView.findViewById(R.id.med1);
         TextView nomeMed1 = (TextView) rootView.findViewById(R.id.nome_med1);
