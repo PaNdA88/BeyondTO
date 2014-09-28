@@ -1,5 +1,8 @@
 package com.example.beyondto;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import com.example.beyondto.giocoMappa.GameMap;
 
 import android.app.Activity;
@@ -7,6 +10,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.text.Html;
 import android.util.Log;
 import android.view.View;
@@ -23,7 +27,9 @@ public class PlaceDialog {
 	private Context context;
 	private Activity activity;
 	private Button yesButton, noButton;
-
+	
+	private Map<String, String> nomiFile = new HashMap<String, String>();
+	
 	public String getIdFacebook() {
 		return idFacebook;
 	}
@@ -121,6 +127,10 @@ public class PlaceDialog {
 		dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent); 
 		dialog.setContentView(R.layout.dialog_map);
+		
+		nomiFile.put("Politecnico", "poli");
+		nomiFile.put("Carcere Le Nuove", "nuove");
+		nomiFile.put("Il Fante", "fante");
 		//dialog.setTitle(title);
 				
 		// ------------------- dynamic strings ----------------------//
@@ -130,12 +140,11 @@ public class PlaceDialog {
 		String luogo = title;
 
 		ImageView image = (ImageView) dialog.findViewById(R.id.imageDialog);
-		if (luogo.equals("Carcere Le Nuove"))
-			image.setImageResource(R.drawable.nuove);
-		else if (luogo.equals("Il Fante"))
-			image.setImageResource(R.drawable.fante);
-		else if (luogo.equals("Politecnico"))
-			image.setImageResource(R.drawable.poli);
+		String uri = "drawable/" + nomiFile.get(luogo);
+		int imageResource = context.getResources().getIdentifier(uri, null,
+				context.getPackageName());
+		Drawable img = context.getResources().getDrawable(imageResource);
+		image.setImageDrawable(img);
 		
 		TextView textPropriety = (TextView) dialog.findViewById(R.id.textProp);
 		final Resources res = context.getResources();
