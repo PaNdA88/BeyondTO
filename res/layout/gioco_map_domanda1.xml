@@ -7,10 +7,9 @@
 
     <ProgressBar
         android:id="@+id/progressbar_Horizontal"
-        style="?android:attr/progressBarStyleHorizontal"
+        style="@style/ProgressBarAppTheme"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/domanda1"
         android:layout_centerHorizontal="true"
         android:layout_margin="20dip"
         android:max="100" />
@@ -29,34 +28,30 @@
         android:textSize="20dp" />
 
    
-    <RadioGroup
-        android:layout_width="fill_parent"
+    <Button
+        android:id="@+id/risp1A"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:orientation="vertical" >
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+         />
 
-        <RadioButton
-            android:id="@+id/risp1C"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/progressbar_Horizontal"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="78dp" />
+    <Button
+        android:id="@+id/risp1B"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/risp1A"
+        android:layout_below="@+id/risp1A"
+        android:layout_marginTop="14dp"
+         />
 
-        <RadioButton
-            android:id="@+id/risp1A"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/risp1B"
-            android:layout_alignLeft="@+id/risp1B"
-            android:layout_marginBottom="32dp" />
-
-        <RadioButton
-            android:id="@+id/risp1B"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/risp1C"
-            android:layout_alignLeft="@+id/risp1C"
-            android:layout_marginBottom="37dp" />
-    </RadioGroup>
+    <Button
+        android:id="@+id/risp1C"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/risp1B"
+        android:layout_below="@+id/risp1B"
+        android:layout_marginTop="14dp"
+         />
 
 </RelativeLayout>
