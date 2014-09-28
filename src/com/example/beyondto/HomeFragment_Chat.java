@@ -9,7 +9,9 @@ import android.view.ViewGroup;
  
 public class HomeFragment_Chat extends Fragment {
  
-    @Override
+	private String[] info;
+
+	@Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
  
@@ -17,5 +19,10 @@ public class HomeFragment_Chat extends Fragment {
          
         return rootView;
     }
+
+	public void setInfoUser(String[] info) {
+		this.info = info;
+		
+	}
  
 }

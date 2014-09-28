@@ -163,6 +163,10 @@ public class LoginFragment extends Fragment {
 										USER_ID, USER_TOKEN, EXPIRATION,
 										USER_EMAIL, USER_NAME);
 								Log.d("RISULTATO:", result);
+								
+								Infoton infoton = Infoton.getInstance();
+								infoton.setUserId(user.getId());
+								
 								if (result.equals("0")) {
 									newUser = true;
 									// goToChoiseClan();

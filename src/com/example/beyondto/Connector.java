@@ -22,6 +22,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
@@ -30,7 +31,7 @@ public class Connector extends AsyncTask<JSONObject, Void, JSONObject> {
 
 	String url = "http://www.antonellavannucci.it";
 	String path;
-
+	
 	public String doLoginFromFacebook(String userId, String tokenFacebook,
 			String dateExpiringToken, String userEmail, String userName) {
 
@@ -62,12 +63,12 @@ public class Connector extends AsyncTask<JSONObject, Void, JSONObject> {
 		return success;
 	}
 
-	public String[] getUserInfo(String Token) {
+	public String[] getUserInfo(String idFacebook) {
 
 		setPath("/getUserInfo.php");
 		JSONObject json = new JSONObject();
 		try {
-			json.put("token", Token);
+			json.put("idFacebook", idFacebook);
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
@@ -79,15 +80,19 @@ public class Connector extends AsyncTask<JSONObject, Void, JSONObject> {
 		} catch (ExecutionException e) {
 			e.printStackTrace();
 		}
-		String info[] = new String[3];
+		String info[] = new String[7];
 		try {
-			info[0] = result.getString("idFacebook");
-			info[1] = result.getString("fazioneUtente");
-			info[2] = result.getString("fazioneAvversaria");
+			info[0] = result.getString("punti");
+			info[1] = result.getString("userName");
+			info[2] = result.getString("fazioneUtente");
+			info[3] = result.getString("fazioneAvversaria");
+			info[4] = result.getString("numeroConquiste");
+			info[5] = result.getString("numeroAttacchi");
+			info[6] = result.getString("numeroDifese");
+			
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
-
 		return info;
 	}
 
@@ -320,9 +325,8 @@ public class Connector extends AsyncTask<JSONObject, Void, JSONObject> {
 				Log.e("RISULT STRING", resultString);
 				jsonObjRecv = new JSONObject(resultString);
 				if (jsonObjRecv.has("error")) {
-					// da chiedere
-					Toast.makeText(null, jsonObjRecv.getString("error"),
-							Toast.LENGTH_SHORT).show();
+					
+					Log.e("Errore comunicazione", jsonObjRecv.getString("error"));
 				}
 
 			} else {

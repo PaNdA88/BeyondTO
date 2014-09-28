@@ -44,8 +44,7 @@
          android:layout_centerHorizontal="true"
          android:layout_below="@id/textAction"
          android:layout_marginTop="10dp"
-         android:background="@drawable/image_border"
-         android:src="@drawable/frejus" />
+         android:background="@drawable/image_border" />
 
      
      

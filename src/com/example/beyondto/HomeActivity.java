@@ -7,6 +7,7 @@ import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -22,6 +23,7 @@ public class HomeActivity extends Activity implements ActionBar.TabListener {
 	// Tab titles
 	private String[] tabsHome = { "Utente", "Scheda Clan", "Chat" };
 	Intent intent = new Intent();
+	String[] info;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -29,15 +31,20 @@ public class HomeActivity extends Activity implements ActionBar.TabListener {
 		setContentView(R.layout.activity_home);
 		
 		//Facebook session
-		Session session = new Session(getApplicationContext());
-	    Session.setActiveSession(session);
+		Session session = Session.getActiveSession();
 
+	    Connector con = new Connector();
+	    
+		info = con.getUserInfo(Infoton.getInstance().getUserId());
+		if(info[0].equals("-1"))
+			Log.d("TOken",Infoton.getInstance().getUserId());
+		
 		// Initialization
 		viewPager = (ViewPager) findViewById(R.id.pager);
 		actionBar = getActionBar();
 		actionBar.removeAllTabs();
 		mAdapterHome = new TabsPagerAdapterHome(getFragmentManager());
-
+		mAdapterHome.setInfoUser(info);
 		viewPager.setAdapter(mAdapterHome);
 		actionBar.setHomeButtonEnabled(false);
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);

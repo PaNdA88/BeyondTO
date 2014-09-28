@@ -69,8 +69,8 @@ public class GameMap_domanda2 extends Activity {
 		final BackgroundAsyncTask task = new BackgroundAsyncTask();
 
 		risp1 = ((int) (Math.random() * 3));
-		risp2 = (risp1 % 3) + 1;
-		risp3 = (risp2 % 3) + 1;
+		risp2 = (risp1 + 1) % 3;
+		risp3 = (risp2 + 1) % 3;
 
 		Intent i = getIntent();
 		score = i.getDoubleExtra("score", score);
@@ -93,22 +93,24 @@ public class GameMap_domanda2 extends Activity {
 			TextView text = (TextView) findViewById(R.id.domanda2);
 			text.setText(question2[0]);
 
+
 			final Button risp2A = (Button) findViewById(R.id.risp2A);
-			risp2A.setText(question2[risp1]);
+			risp2A.setText(question2[risp1 + 1]);
 
 			final Button risp2B = (Button) findViewById(R.id.risp2B);
-			risp2B.setText(question2[risp2]);
+			risp2B.setText(question2[risp2 + 1]);
 
 			final Button risp2C = (Button) findViewById(R.id.risp2C);
-			risp2C.setText(question2[risp3]);
+			risp2C.setText(question2[risp3 + 1]);
+
 
 			risp2A.setOnClickListener(new OnClickListener() {
 				@Override
 				public void onClick(View v1) {
 
-					if(risp2A.getText().equals(question2[1])){
+					if (risp2A.getText().equals(question2[1])) {
 						score = score + (100 - myProgress);
-					}else{
+					} else {
 						score = 0;
 					}
 					Intent intentGame3a = new Intent(getApplicationContext(),
@@ -130,9 +132,9 @@ public class GameMap_domanda2 extends Activity {
 				@Override
 				public void onClick(View v2) {
 
-					if(risp2B.getText().equals(question2[1])){
+					if (risp2B.getText().equals(question2[1])) {
 						score = score + (100 - myProgress);
-					}else{
+					} else {
 						score = 0;
 					}
 					Intent intentGame3b = new Intent(getApplicationContext(),
@@ -155,9 +157,9 @@ public class GameMap_domanda2 extends Activity {
 				@Override
 				public void onClick(View v3) {
 
-					if(risp2C.getText().equals(question2[1])){
+					if (risp2C.getText().equals(question2[1])) {
 						score = score + (100 - myProgress);
-					}else{
+					} else {
 						score = 0;
 					}
 					Intent intentGame3c = new Intent(getApplicationContext(),

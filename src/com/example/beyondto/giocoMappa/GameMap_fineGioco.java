@@ -32,16 +32,15 @@ public class GameMap_fineGioco extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
+
 		session = new Session(getApplicationContext());
-	    Session.setActiveSession(session);
-		
-	   
+		Session.setActiveSession(session);
+
 		setContentView(R.layout.gioco_map_fine);
-		
+
 		Intent i = getIntent();
 		score = i.getDoubleExtra("score", score);
-	    idUser = i.getStringExtra("idUtente");
+		idUser = i.getStringExtra("idUtente");
 		namePlace = i.getStringExtra("nomeLuogo");
 		action = i.getStringExtra("azione");
 		userClan = i.getStringExtra("clanUtente");
@@ -53,10 +52,11 @@ public class GameMap_fineGioco extends Activity {
 		bButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg1) {
-				
+
 				Connector con = new Connector();
-				con.setScoreAttDif(score, idUser, namePlace, action, userClan, idPlace, idMatch);
-				
+				con.setScoreAttDif(score, idUser, namePlace, action, userClan,
+						idPlace, idMatch);
+
 				Intent intentMap = new Intent(getApplicationContext(),
 						MapActivity.class);
 				startActivity(intentMap);
@@ -64,9 +64,6 @@ public class GameMap_fineGioco extends Activity {
 			}
 		});
 	}
-	
-	
-
 
 	// Menu
 	@Override

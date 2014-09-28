@@ -1,6 +1,8 @@
 package com.example.beyondto;
 
 import com.example.beyondto.R;
+import com.facebook.Session;
+
 import android.os.Bundle;
 import android.app.Fragment;
 import android.content.Context;
@@ -14,15 +16,19 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
  
 public class MedalFragment_Medaglie extends Fragment {
- 
-	//variabili - cambiare con valori da db 
-	int attacchi = 40;
-	int difese = 25;
-	int punti = 3500;
+
+	String info[];
 	
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
+    	
+    	//Facebook session
+		Session session = new Session((MedalActivity)getActivity());
+		Session.setActiveSession(session);
+		
+		Connector con = new Connector();
+		info = con.getUserInfo(Infoton.getInstance().getUserId());
  
         View rootView = inflater.inflate(R.layout.fragment_medal_medaglie, container, false);
       
@@ -53,7 +59,7 @@ public class MedalFragment_Medaglie extends Fragment {
 		descMed.setText("Hai sferrato il tuo primo attacco");
 		descMed.setGravity(Gravity.CENTER);
 		
-		if (attacchi > 0) {
+		if (Integer.parseInt(info[6]) > 0) {
 	    imageView.setImageResource(R.drawable.medaglia1);
 		nomeMed.setTextColor(Color.parseColor("#FFFFFF"));
 		descMed.setTextColor(Color.parseColor("#FFFFFF"));
@@ -85,7 +91,7 @@ public class MedalFragment_Medaglie extends Fragment {
 		descMed.setText("Hai difeso un edificio per la prima volta");
 		descMed.setGravity(Gravity.CENTER);
 		
-		if (difese > 0) {
+		if (Integer.parseInt(info[7]) > 0) {
 	    imageView.setImageResource(R.drawable.medaglia3);
 		nomeMed.setTextColor(Color.parseColor("#FFFFFF"));
 		descMed.setTextColor(Color.parseColor("#FFFFFF"));
@@ -117,7 +123,7 @@ public class MedalFragment_Medaglie extends Fragment {
 		descMed.setText("Hai attaccato 30 luoghi");
 		descMed.setGravity(Gravity.CENTER);
 		
-		if (attacchi > 29) {
+		if (Integer.parseInt(info[6]) > 29) {
 	    imageView.setImageResource(R.drawable.medaglia4);
 		nomeMed.setTextColor(Color.parseColor("#FFFFFF"));
 		descMed.setTextColor(Color.parseColor("#FFFFFF"));
@@ -149,7 +155,7 @@ public class MedalFragment_Medaglie extends Fragment {
 		descMed.setText("Hai difeso 30 edifici");
 		descMed.setGravity(Gravity.CENTER);
 		
-		if (difese > 29) {
+		if (Integer.parseInt(info[7]) > 29) {
 	    imageView.setImageResource(R.drawable.medaglia6);
 		nomeMed.setTextColor(Color.parseColor("#FFFFFF"));
 		descMed.setTextColor(Color.parseColor("#FFFFFF"));
@@ -181,7 +187,7 @@ public class MedalFragment_Medaglie extends Fragment {
 		descMed.setText("Hai totalizzato 1000 punti");
 		descMed.setGravity(Gravity.CENTER);
 		
-		if (punti > 999) {
+		if (Integer.parseInt(info[1]) > 999) {
 	    imageView.setImageResource(R.drawable.medaglia5);
 		nomeMed.setTextColor(Color.parseColor("#FFFFFF"));
 		descMed.setTextColor(Color.parseColor("#FFFFFF"));
@@ -213,7 +219,7 @@ public class MedalFragment_Medaglie extends Fragment {
 		descMed.setText("HAI TOTALIZZATO 10000 PUNTI");
 		descMed.setGravity(Gravity.CENTER);
 		
-		if (punti > 9999) {
+		if (Integer.parseInt(info[1]) > 9999) {
 	    imageView.setImageResource(R.drawable.medaglia2);
 		nomeMed.setTextColor(Color.parseColor("#FFFFFF"));
 		descMed.setTextColor(Color.parseColor("#FFFFFF"));
@@ -228,7 +234,5 @@ public class MedalFragment_Medaglie extends Fragment {
 	    linLayout1.addView(nomeMed);
 	    linLayout1.addView(descMed);
 
-	    gr.setImageResource(R.drawable.gradiente);
-	    linLayout1.addView(gr);
 	}
 }
