@@ -33,8 +33,8 @@ public class PlayerListAdapter extends ArrayAdapter<Player> {
 		TextView giocatoreName = (TextView) convertView.findViewById(R.id.nome);
 		giocatoreName.setText(Giocatore.getName());
 
-		TextView legendBorn = (TextView) convertView.findViewById(R.id.punti);
-		legendBorn.setText(Giocatore.getPunti());
+		TextView Punteggio = (TextView) convertView.findViewById(R.id.punti);
+		Punteggio.setText(Giocatore.getPunti());
 
 		ImageView clanImage = (ImageView) convertView.findViewById(R.id.clan);
 		String uri = "drawable/" + Giocatore.getImage();

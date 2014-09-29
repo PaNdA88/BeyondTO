@@ -25,7 +25,7 @@ public class HomeFragment_Clan extends Fragment {
 		//infoClan = conClan.getClanInfo(Infoton.getInstance().getUserId());
 
 		// ------------------- dynamic strings ----------------------//
-		String clan = "RINNEGATI";
+		String clan = info[2];
 		TextView textClan = (TextView) rootView.findViewById(R.id.nomeClan);
 		Resources res1 = ((HomeActivity) getActivity()).getResources();
 		String cl = String.format(res1.getString(R.string.nomeClan), clan);
