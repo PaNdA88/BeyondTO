@@ -21,8 +21,8 @@ public class HomeFragment_Clan extends Fragment {
 		View rootView = inflater.inflate(R.layout.fragment_home_clan,
 				container, false);
 		
-		//Connector conClan = Connector();
-		//infoClan = conClan.getClanInfo(Infoton.getInstance().getUserId());
+		Connector conClan = new Connector();
+		infoClan = conClan.getClanInfo(Infoton.getInstance().getUserId());
 
 		// ------------------- dynamic strings ----------------------//
 		String clan = info[2];
@@ -31,13 +31,13 @@ public class HomeFragment_Clan extends Fragment {
 		String cl = String.format(res1.getString(R.string.nomeClan), clan);
 		textClan.setText(Html.fromHtml((String) cl));
 
-		String membri = "50";
+		String membri = infoClan[0];
 		TextView textMembers = (TextView) rootView.findViewById(R.id.numMembri);
 		Resources res2 = ((HomeActivity) getActivity()).getResources();
 		String memb = String.format(res2.getString(R.string.numMembri), membri);
 		textMembers.setText(Html.fromHtml((String) memb));
 
-		String vittorie = "18";
+		String vittorie = infoClan[1];
 		TextView textVitt = (TextView) rootView.findViewById(R.id.numVittorie);
 		Resources res3 = ((HomeActivity) getActivity()).getResources();
 		String vitt = String.format(res3.getString(R.string.numVittorie),
