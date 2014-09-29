@@ -65,10 +65,8 @@ public class MapActivity extends Activity implements OnMarkerClickListener {
 	public void getUser(){
 		Connector con = new Connector();
 		String info[] = con.getUserInfo(Infoton.getInstance().getUserId());
-		idFacebook = info[0];
-		Log.e("ID FACEBOOK", idFacebook);
+		idFacebook = Infoton.getInstance().getUserId();
 		myClan = info[1];
-		Log.e("CLAN", myClan);
 		otherClan = info[2]; 
 	}
 	
@@ -108,7 +106,7 @@ public class MapActivity extends Activity implements OnMarkerClickListener {
 			googleMap.setOnMarkerClickListener(this);
 
 			myPosition = findMyPosition();
-			System.out.println(myPosition);
+
 			googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(myPosition,15));
 
 			Connector con = new Connector();

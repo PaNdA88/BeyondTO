@@ -3,9 +3,27 @@ package com.example.beyondto;
 import java.util.ArrayList;
 
 public class Player {
-    private String name;
-    private String punti;
-    private String image;
+    private String name, punti, image, idFacebook, fazione, edificiConquistati;
+
+	public String getEdificiConquistati() {
+		return edificiConquistati;
+	}
+
+	public String getFazione() {
+		return fazione;
+	}
+
+	public void setFazione(String fazione) {
+		this.fazione = fazione;
+	}
+
+	public String getIdFacebook() {
+		return idFacebook;
+	}
+
+	public void setIdFacebook(String idFacebook) {
+		this.idFacebook = idFacebook;
+	}
 
 	public String getName() {
         return name;        
@@ -30,8 +48,13 @@ public class Player {
     public void setImage(String image) {
         this.image = image;
     }
+
+	public void setEdificiConquistati(String string) {
+		// TODO Auto-generated method stub
+		
+	}
     
-    public static ArrayList getItems() {
+    /*public static ArrayList getItems() {
         ArrayList<Player> list = new ArrayList<Player>();
         Player item;
  
@@ -79,5 +102,5 @@ public class Player {
         list.add(item);
         
         return list;
-    }
+    }*/
 }

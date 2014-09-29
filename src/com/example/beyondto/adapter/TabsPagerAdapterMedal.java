@@ -1,12 +1,19 @@
 package com.example.beyondto.adapter;
 
-	import com.example.beyondto.MedalFragment_Medaglie;
-	import com.example.beyondto.MedalFragment_Classifica;
-	import android.app.Fragment;
-	import android.app.FragmentManager;
-	import android.support.v13.app.FragmentPagerAdapter;
+	import java.util.ArrayList;
+
+import com.example.beyondto.HomeFragment_User;
+import com.example.beyondto.MedalFragment_Medaglie;
+import com.example.beyondto.MedalFragment_Classifica;
+import com.example.beyondto.Player;
+
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.support.v13.app.FragmentPagerAdapter;
 	 
 	public class TabsPagerAdapterMedal extends FragmentPagerAdapter {
+		
+		private ArrayList<Player> infoUsers;
 	 
 	    public TabsPagerAdapterMedal(FragmentManager fm2) {
 	        super(fm2);
@@ -18,11 +25,12 @@ package com.example.beyondto.adapter;
 	    	
 	        switch (index2) {
 	        case 0:
-	            // Medal fragment activity
 	            return new MedalFragment_Medaglie();
+	            
 	        case 1:
-	            // Chart fragment activity
-	            return new MedalFragment_Classifica();
+	        	MedalFragment_Classifica classifica = new MedalFragment_Classifica();
+	        	classifica.setListUsers(infoUsers);
+	            return classifica;
 	        }
 	 
 	        return null;
@@ -33,6 +41,12 @@ package com.example.beyondto.adapter;
 	        // get item count - equal to number of tabs
 	        return 2;
 	    }
+	    
+
+		public void setListUsers(ArrayList<Player> infoUsers) {
+			this.infoUsers = infoUsers;
+			
+		}
 	 
 	
 }

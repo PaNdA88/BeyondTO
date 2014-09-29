@@ -29,7 +29,7 @@ public class Connector extends AsyncTask<JSONObject, Void, JSONObject> {
 
 	String url = "http://www.antonellavannucci.it";
 	String path;
-	
+
 	public String doLoginFromFacebook(String userId, String tokenFacebook,
 			String dateExpiringToken, String userEmail, String userName) {
 
@@ -61,8 +61,9 @@ public class Connector extends AsyncTask<JSONObject, Void, JSONObject> {
 		return success;
 	}
 
-	//------------------------------------------ METODI HOME ACTIVITY -------------------------------------------------------//
-	
+	// ------------------------------------------ METODI HOME ACTIVITY
+	// -------------------------------------------------------//
+
 	public String[] getUserInfo(String idFacebook) {
 
 		setPath("/getUserInfo.php");
@@ -89,15 +90,15 @@ public class Connector extends AsyncTask<JSONObject, Void, JSONObject> {
 			info[4] = result.getString("numeroConquiste");
 			info[5] = result.getString("numeroAttacchi");
 			info[6] = result.getString("numeroDifese");
-			
+
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
 		return info;
 	}
-	
-	public String[] getClanInfo(String idFacebook){
-		
+
+	public String[] getClanInfo(String idFacebook) {
+
 		setPath("/clanInfo.php");
 		JSONObject json = new JSONObject();
 		try {
@@ -117,15 +118,51 @@ public class Connector extends AsyncTask<JSONObject, Void, JSONObject> {
 		try {
 			info[0] = result.getString("numeroClan");
 			info[1] = result.getString("numeroVincite");
-			
+
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
 		return info;
 	}
 
-	//------------------------------------------ METODI MAP ACTIVITY ----------------------------------------------------------//
-	
+	// ------------------------------------------ METODI MEDAL ACTIVITY
+	// ----------------------------------------------------------//
+
+	public ArrayList<Player> getRankUsers() {
+		setPath("/getRankUsers.php");
+		JSONObject json = new JSONObject();
+		JSONArray users = new JSONArray();
+		ArrayList<Player> listUsers = new ArrayList<Player>();
+		try {
+			JSONObject result = this.execute(json).get();
+			users = result.getJSONArray("users");
+			for (int i = 0; i < users.length(); i++) {
+
+				JSONObject u = users.getJSONObject(i);
+				Player p = new Player();
+				p.setIdFacebook(u.getString("idFacebook"));
+				p.setName(u.getString("userName"));
+				p.setFazione(u.getString("clan"));
+				p.setPunti(u.getString("score"));
+				p.setEdificiConquistati(u.getString("numWin"));
+				listUsers.add(p);
+			}
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+			listUsers = null;
+		} catch (ExecutionException e) {
+			e.printStackTrace();
+			listUsers = null;
+		} catch (JSONException e) {
+			e.printStackTrace();
+			listUsers = null;
+		}
+		return listUsers;
+	}
+
+	// ------------------------------------------ METODI MAP ACTIVITY
+	// ----------------------------------------------------------//
+
 	public ArrayList<Place> getLocations() {
 		setPath("/getLocations.php");
 		JSONObject json = new JSONObject();
@@ -220,7 +257,7 @@ public class Connector extends AsyncTask<JSONObject, Void, JSONObject> {
 		} catch (ExecutionException e) {
 			e.printStackTrace();
 		}
-	
+
 		int infoId[] = new int[2];
 		try {
 			infoId[0] = result.getInt("idLuogo");
@@ -309,7 +346,7 @@ public class Connector extends AsyncTask<JSONObject, Void, JSONObject> {
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
-		
+
 		return question;
 	}
 
@@ -352,8 +389,9 @@ public class Connector extends AsyncTask<JSONObject, Void, JSONObject> {
 				Log.e("RISULT STRING", resultString);
 				jsonObjRecv = new JSONObject(resultString);
 				if (jsonObjRecv.has("error")) {
-					
-					Log.e("Errore comunicazione", jsonObjRecv.getString("error"));
+
+					Log.e("Errore comunicazione",
+							jsonObjRecv.getString("error"));
 				}
 
 			} else {

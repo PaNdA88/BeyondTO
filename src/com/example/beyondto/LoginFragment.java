@@ -153,6 +153,10 @@ public class LoginFragment extends Fragment {
 
 								String USER_ID = user.getId();
 								Log.d("USER ID", USER_ID);
+								Infoton infoton = Infoton.getInstance();
+								infoton.setUserId(USER_ID);
+								Log.d("INFOTON", infoton.getUserId());
+								
 								String USER_NAME = user.getName();
 								Log.d("USER NAME", USER_NAME);
 								String USER_EMAIL = user.asMap().get("email")
@@ -163,9 +167,6 @@ public class LoginFragment extends Fragment {
 										USER_ID, USER_TOKEN, EXPIRATION,
 										USER_EMAIL, USER_NAME);
 								Log.d("RISULTATO:", result);
-								
-								Infoton infoton = Infoton.getInstance();
-								infoton.setUserId(user.getId());
 								
 								if (result.equals("0")) {
 									newUser = true;

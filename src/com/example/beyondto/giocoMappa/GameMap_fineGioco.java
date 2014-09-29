@@ -28,13 +28,16 @@ public class GameMap_fineGioco extends Activity {
 	private String idUser, namePlace, action, userClan;
 	private int idPlace, idMatch;
 	private Session session;
+	private UiLifecycleHelper uiHelper;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		session = new Session(getApplicationContext());
-		Session.setActiveSession(session);
+		// Facebook elements
+		session = Session.getActiveSession();
+		uiHelper = new UiLifecycleHelper(this, null);
+		uiHelper.onCreate(savedInstanceState);
 
 		setContentView(R.layout.gioco_map_fine);
 
@@ -47,6 +50,11 @@ public class GameMap_fineGioco extends Activity {
 		idPlace = i.getIntExtra("idLuogo", idPlace);
 		idMatch = i.getIntExtra("idScontro", idMatch);
 
+		// Facebook dialog to share score
+		FacebookDialog shareDialog = new FacebookDialog.ShareDialogBuilder(this)
+				.setLink(null).build();
+		uiHelper.trackPendingDialogCall(shareDialog.present());
+
 		Button bButton = (Button) findViewById(R.id.backButton);
 
 		bButton.setOnClickListener(new OnClickListener() {
@@ -56,7 +64,6 @@ public class GameMap_fineGioco extends Activity {
 				Connector con = new Connector();
 				con.setScoreAttDif(score, idUser, namePlace, action, userClan,
 						idPlace, idMatch);
-
 				Intent intentMap = new Intent(getApplicationContext(),
 						MapActivity.class);
 				startActivity(intentMap);
@@ -71,6 +78,51 @@ public class GameMap_fineGioco extends Activity {
 		MenuInflater menuInflater = getMenuInflater();
 		menuInflater.inflate(R.menu.menu, menu);
 		return true;
+	}
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+
+		uiHelper.onActivityResult(requestCode, resultCode, data,
+				new FacebookDialog.Callback() {
+					@Override
+					public void onError(FacebookDialog.PendingCall pendingCall,
+							Exception error, Bundle data) {
+						Log.e("Activity",
+								String.format("Error: %s", error.toString()));
+					}
+
+					@Override
+					public void onComplete(
+							FacebookDialog.PendingCall pendingCall, Bundle data) {
+						Log.i("Activity", "Success!");
+					}
+				});
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		uiHelper.onResume();
+	}
+
+	@Override
+	protected void onSaveInstanceState(Bundle outState) {
+		super.onSaveInstanceState(outState);
+		uiHelper.onSaveInstanceState(outState);
+	}
+
+	@Override
+	public void onPause() {
+		super.onPause();
+		uiHelper.onPause();
+	}
+
+	@Override
+	public void onDestroy() {
+		super.onDestroy();
+		uiHelper.onDestroy();
 	}
 
 	/**

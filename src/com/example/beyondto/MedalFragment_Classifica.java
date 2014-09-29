@@ -27,7 +27,7 @@ public class MedalFragment_Classifica extends Fragment implements
 				container, false);
 		ctx = (MedalActivity) getActivity();
 		listViewPlayers = (ListView) rootView.findViewById(R.id.playerlist);
-		mListItem = Player.getItems();
+		//mListItem = Player.getItems();
 		listViewPlayers.setAdapter(new PlayerListAdapter(ctx,
 				R.layout.playerlist, mListItem));
 		listViewPlayers.setOnItemClickListener(this);
@@ -37,7 +37,7 @@ public class MedalFragment_Classifica extends Fragment implements
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position,
 			long id) {
-
+		
 		String nome = mListItem.get(position).getName();
 		//ImageView imgClan;
 		String punti = mListItem.get(position).getPunti();
@@ -48,5 +48,9 @@ public class MedalFragment_Classifica extends Fragment implements
 		//intent.putExtra("clan", imgClan);
 		startActivity(intent);
 
+	}
+	
+	public void setListUsers(ArrayList<Player> infoUsers) {
+		mListItem = infoUsers;	
 	}
 }

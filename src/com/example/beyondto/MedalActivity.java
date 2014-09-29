@@ -1,5 +1,7 @@
 package com.example.beyondto;
 
+import java.util.ArrayList;
+
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;
 import android.app.Activity;
@@ -20,16 +22,22 @@ public class MedalActivity extends Activity implements ActionBar.TabListener {
 	private ActionBar actionBar;
 	Intent intent = new Intent();
 	private String[] tabs = { "Medaglie", "Classifica" };
+	private ArrayList<Player> infoUsers;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_medal);
 
+		Connector con = new Connector();
+		infoUsers = con.getRankUsers();
+		
 		// Initialization
 		viewPager = (ViewPager) findViewById(R.id.pager);
 		actionBar = getActionBar();
 		mAdapter = new TabsPagerAdapterMedal(getFragmentManager());
+		
+		mAdapter.setListUsers(infoUsers);
 
 		viewPager.setAdapter(mAdapter);
 		actionBar.setHomeButtonEnabled(false);
