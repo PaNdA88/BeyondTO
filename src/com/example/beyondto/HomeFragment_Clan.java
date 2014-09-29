@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 public class HomeFragment_Clan extends Fragment {
 	
-	private String[] info;
+	private String[] info, infoClan;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -20,6 +20,9 @@ public class HomeFragment_Clan extends Fragment {
 
 		View rootView = inflater.inflate(R.layout.fragment_home_clan,
 				container, false);
+		
+		//Connector conClan = Connector();
+		//infoClan = conClan.getClanInfo(Infoton.getInstance().getUserId());
 
 		// ------------------- dynamic strings ----------------------//
 		String clan = "RINNEGATI";
@@ -42,6 +45,11 @@ public class HomeFragment_Clan extends Fragment {
 		textVitt.setText(Html.fromHtml((String) vitt));
 
 		return rootView;
+	}
+
+	private Connector Connector() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	public void setInfoUser(String[] info) {
