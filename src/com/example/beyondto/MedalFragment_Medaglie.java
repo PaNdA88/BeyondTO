@@ -121,9 +121,9 @@ public class MedalFragment_Medaglie extends Fragment {
 			descMed6.setTextColor(Color.parseColor("#FFFFFF"));
 		}
 		else {
-			imageView5.setImageResource(R.drawable.medaglia2bn);
-			nomeMed5.setTextColor(Color.parseColor("#999999"));
-			descMed5.setTextColor(Color.parseColor("#999999"));
+			imageView6.setImageResource(R.drawable.medaglia2bn);
+			nomeMed6.setTextColor(Color.parseColor("#999999"));
+			descMed6.setTextColor(Color.parseColor("#999999"));
 		}
 		
         
