@@ -28,7 +28,7 @@ import android.support.v13.app.FragmentPagerAdapter;
 	        case 1:
 	            // Clan fragment activity
 	        	HomeFragment_Clan clan = new HomeFragment_Clan();
-	        	//clan.setInfoUser(info);
+	        	clan.setInfoUser(info);
 	        	return clan;
 	        case 2:
 	            // Chat fragment activity

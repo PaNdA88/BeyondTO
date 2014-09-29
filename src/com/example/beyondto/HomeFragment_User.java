@@ -1,21 +1,14 @@
 package com.example.beyondto;
 
-import com.example.beyondto.R;
-import com.facebook.Session;
-
-import android.os.Bundle;
 import android.app.Fragment;
-import android.content.Context;
 import android.content.res.Resources;
+import android.os.Bundle;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -60,10 +53,7 @@ public class HomeFragment_User extends Fragment {
     				edifici);
     		textEdifici.setText(Html.fromHtml((String) edi));
 
-      		
-      		
-      		
-            
+      	
       		if (Integer.parseInt(info[5]) > 0){
       			//Context ctx = getActivity();
       			//ImageView imageView = new ImageView(ctx);
