@@ -39,15 +39,23 @@ public class MedalFragment_Classifica extends Fragment implements
 			long id) {
 		
 		String nome = mListItem.get(position).getName();
-		//ImageView imgClan;
 		String punti = mListItem.get(position).getPunti();
 		Intent intent = new Intent();
 		intent.setClass(getActivity(), ProfiloGiocatore.class);
 		intent.putExtra("nome", nome);
 		intent.putExtra("punti", punti);
-		//intent.putExtra("clan", imgClan);
-		startActivity(intent);
-
+		String clan = null;
+		String edifici = null;
+		
+		PlayerDialog playerDialog = new PlayerDialog();
+		playerDialog.setContext(ctx);
+		playerDialog.setTitle(nome);
+		playerDialog.setClan(clan);
+		playerDialog.setPunti(punti);
+		playerDialog.setEdifici(edifici);
+		playerDialog.setActivity(this);
+		
+		playerDialog.showPlayerDialog();
 	}
 	
 	public void setListUsers(ArrayList<Player> infoUsers) {

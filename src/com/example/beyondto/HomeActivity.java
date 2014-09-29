@@ -37,8 +37,6 @@ public class HomeActivity extends Activity implements ActionBar.TabListener {
 	    Connector con = new Connector();
 	    
 		info = con.getUserInfo(Infoton.getInstance().getUserId());
-		if(info[0].equals("-1"))
-			Log.d("TOken",Infoton.getInstance().getUserId());
 		
 		// Initialization
 		viewPager = (ViewPager) findViewById(R.id.pager);
@@ -114,13 +112,11 @@ public class HomeActivity extends Activity implements ActionBar.TabListener {
 		case R.id.menu_map:
 
 			intent.setClass(getApplicationContext(), MapActivity.class);
-
 			startActivity(intent);
 			return true;
 
 		case R.id.menu_medal:
 			intent.setClass(getApplicationContext(), MedalActivity.class);
-
 			startActivity(intent);
 
 			return true;
@@ -128,14 +124,12 @@ public class HomeActivity extends Activity implements ActionBar.TabListener {
 		case R.id.menu_news:
 
 			intent.setClass(getApplicationContext(), NewsActivity.class);
-
 			startActivity(intent);
 			return true;
 
 		case R.id.menu_settings:
 
 			intent.setClass(getApplicationContext(), SettingsActivity.class);
-
 			startActivity(intent);
 			return true;
 

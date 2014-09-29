@@ -19,10 +19,8 @@ public class HomeFragment_User extends Fragment {
 	@Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
-    	
-    	
         	View rootView = inflater.inflate(R.layout.fragment_home_user, container, false); 
-        	
+     
         	//------------------- dynamic strings ----------------------//
         	String nome = info[1];
     		TextView textUser = (TextView) rootView.findViewById(R.id.nomeUtente);

@@ -30,7 +30,7 @@
 
     <Button
         android:id="@+id/quitButton"
-        android:layout_width="300px"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView1"
         android:layout_centerHorizontal="true"
@@ -39,7 +39,7 @@
 
     <Button
         android:id="@+id/startButton"
-        android:layout_width="300px"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/quitButton"
         android:layout_below="@+id/textView1"

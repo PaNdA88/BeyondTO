@@ -110,20 +110,20 @@ public class MedalFragment_Medaglie extends Fragment {
 		}
 		
 		//MEDAGLIA 6
-        ImageView imageView6 = (ImageView) rootView.findViewById(R.id.med5);
-        TextView nomeMed6 = (TextView) rootView.findViewById(R.id.nome_med5);
-        TextView descMed6 = (TextView) rootView.findViewById(R.id.desc_med5);
+        ImageView imageView6 = (ImageView) rootView.findViewById(R.id.med6);
+        TextView nomeMed6 = (TextView) rootView.findViewById(R.id.nome_med6);
+        TextView descMed6 = (TextView) rootView.findViewById(R.id.desc_med6);
         nomeMed6.setText("MASTER");
-		descMed6.setText("HAI TOTALIZZATO 10000 PUNTI!");
+		descMed6.setText("Hai totalizzato 10000 punti!");
 		if (Integer.parseInt(info[0]) > 9999) {
 		    imageView6.setImageResource(R.drawable.medaglia2);
 			nomeMed6.setTextColor(Color.parseColor("#FFFFFF"));
 			descMed6.setTextColor(Color.parseColor("#FFFFFF"));
 		}
 		else {
-			imageView5.setImageResource(R.drawable.medaglia2bn);
-			nomeMed5.setTextColor(Color.parseColor("#999999"));
-			descMed5.setTextColor(Color.parseColor("#999999"));
+			imageView6.setImageResource(R.drawable.medaglia2bn);
+			nomeMed6.setTextColor(Color.parseColor("#999999"));
+			descMed6.setTextColor(Color.parseColor("#999999"));
 		}
 		
         

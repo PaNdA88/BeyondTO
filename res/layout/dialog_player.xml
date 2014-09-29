@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/dialog_shape"
+    android:padding="10dp" >
+
+    <TextView
+        android:id="@+id/titleDialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:includeFontPadding="false"
+        android:textColor="@color/theme_yellow"
+        android:textSize="25sp" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="290dp"
+        android:layout_height="1dp"
+        android:layout_below="@id/titleDialog"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/gradient_inverse" />
+
+    <ImageView
+        android:id="@+id/imageClan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/divider"
+        android:layout_marginTop="10dp" />
+
+    <TextView
+        android:id="@+id/textClan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/imageClan"
+        android:layout_marginTop="10dp" />
+
+    <TextView
+        android:id="@+id/textPunti"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textClan"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp" />
+
+    <TextView
+        android:id="@+id/textEdifici"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textPunti"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textEdifici"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="13dp"
+        android:layout_marginTop="13dp" >
+
+        <Button
+            android:id="@+id/closeButton"
+            android:layout_width="96dp"
+            android:layout_height="32dp"
+            android:background="@drawable/selector_no"
+            android:text="Indietro" />
+        
+    </RelativeLayout>
+
+</RelativeLayout>
