@@ -19,14 +19,14 @@
             android:id="@+id/relLayout1"
             android:layout_width="match_parent"
             android:orientation="vertical"
-            android:layout_height="479dp" >
+            android:layout_height="wrap_content" >
 
             <ImageView
                 android:id="@+id/med1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="20dp" />
+                android:layout_marginTop="10dp" />
 
             <TextView
                 android:id="@+id/nome_med1"
@@ -34,7 +34,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_below="@+id/med1"
-                android:textSize="16dp" />
+                android:textSize="16sp" />
             
             <TextView
                 android:id="@+id/desc_med1"
@@ -42,7 +42,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/nome_med1"
                 android:layout_centerHorizontal="true"
-                android:textSize="14dp" />
+                android:textSize="14sp" />
             
            <View
                 android:id="@+id/divisore1"
@@ -50,6 +50,7 @@
                 android:layout_height="0.5dp"
                 android:layout_below="@+id/desc_med1"
                 android:layout_centerHorizontal="true"
+                android:layout_marginTop="15dp"
                 android:background="@drawable/gradient" /> 
             
            
@@ -60,7 +61,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/divisore1"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="20dp" />
+                android:layout_marginTop="15dp" />
 
             <TextView
                 android:id="@+id/nome_med2"
@@ -84,7 +85,8 @@
                 android:layout_height="0.5dp"
                 android:layout_below="@+id/desc_med2"
                 android:layout_centerHorizontal="true"
-                android:background="@drawable/gradient" />
+                android:background="@drawable/gradient"
+                android:layout_marginTop="15dp" />
             
            
            
@@ -94,7 +96,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/divisore2"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="20dp" />
+                android:layout_marginTop="15dp" />
 
             <TextView
                 android:id="@+id/nome_med3"
@@ -118,7 +120,8 @@
                 android:layout_height="0.5dp"
                 android:layout_below="@+id/desc_med3"
                 android:layout_centerHorizontal="true"
-                android:background="@drawable/gradient" />
+                android:background="@drawable/gradient"
+                android:layout_marginTop="15dp" />
             
            
            
@@ -128,7 +131,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/divisore3"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="20dp" />
+                android:layout_marginTop="15dp" />
 
             <TextView
                 android:id="@+id/nome_med4"
@@ -152,7 +155,8 @@
                 android:layout_height="0.5dp"
                 android:layout_below="@+id/desc_med4"
                 android:layout_centerHorizontal="true"
-                android:background="@drawable/gradient" />
+                android:background="@drawable/gradient"
+                android:layout_marginTop="15dp" />
 
             
            
@@ -162,7 +166,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/divisore4"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="20dp" />
+                android:layout_marginTop="15dp" />
 
             <TextView
                 android:id="@+id/nome_med5"
@@ -184,9 +188,10 @@
                 android:id="@+id/divisore5"
                 android:layout_width="200dp"
                 android:layout_height="0.5dp"
-                android:layout_below="@+id/desc_med5"
+                android:layout_below="@id/desc_med5"
                 android:layout_centerHorizontal="true"
-                android:background="@drawable/gradient" />
+                android:background="@drawable/gradient"
+                android:layout_marginTop="15dp" />
 
            
            
@@ -194,23 +199,23 @@
                 android:id="@+id/med6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/divisore5"
+                android:layout_below="@id/divisore5"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="20dp" />
+                android:layout_marginTop="15dp" />
 
             <TextView
                 android:id="@+id/nome_med6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:layout_below="@+id/med6"
+                android:layout_below="@id/med6"
                 android:textSize="16dp" />
             
             <TextView
                 android:id="@+id/desc_med6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/nome_med6"
+                android:layout_below="@id/nome_med6"
                 android:layout_centerHorizontal="true"
                 android:textSize="14dp" />
             
