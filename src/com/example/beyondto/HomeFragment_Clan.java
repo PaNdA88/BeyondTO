@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 public class HomeFragment_Clan extends Fragment {
 	
-	private String[] info;
+	private String[] info, infoClan;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -20,21 +20,24 @@ public class HomeFragment_Clan extends Fragment {
 
 		View rootView = inflater.inflate(R.layout.fragment_home_clan,
 				container, false);
+		
+		Connector conClan = new Connector();
+		infoClan = conClan.getClanInfo(Infoton.getInstance().getUserId());
 
 		// ------------------- dynamic strings ----------------------//
-		String clan = "RINNEGATI";
+		String clan = info[2];
 		TextView textClan = (TextView) rootView.findViewById(R.id.nomeClan);
 		Resources res1 = ((HomeActivity) getActivity()).getResources();
 		String cl = String.format(res1.getString(R.string.nomeClan), clan);
 		textClan.setText(Html.fromHtml((String) cl));
 
-		String membri = "50";
+		String membri = infoClan[0];
 		TextView textMembers = (TextView) rootView.findViewById(R.id.numMembri);
 		Resources res2 = ((HomeActivity) getActivity()).getResources();
 		String memb = String.format(res2.getString(R.string.numMembri), membri);
 		textMembers.setText(Html.fromHtml((String) memb));
 
-		String vittorie = "18";
+		String vittorie = infoClan[1];
 		TextView textVitt = (TextView) rootView.findViewById(R.id.numVittorie);
 		Resources res3 = ((HomeActivity) getActivity()).getResources();
 		String vitt = String.format(res3.getString(R.string.numVittorie),
@@ -42,6 +45,11 @@ public class HomeFragment_Clan extends Fragment {
 		textVitt.setText(Html.fromHtml((String) vitt));
 
 		return rootView;
+	}
+
+	private Connector Connector() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	public void setInfoUser(String[] info) {

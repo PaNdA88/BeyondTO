@@ -22,10 +22,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
-import android.widget.Toast;
 
 public class Connector extends AsyncTask<JSONObject, Void, JSONObject> {
 
@@ -63,6 +61,8 @@ public class Connector extends AsyncTask<JSONObject, Void, JSONObject> {
 		return success;
 	}
 
+	//------------------------------------------ METODI HOME ACTIVITY -------------------------------------------------------//
+	
 	public String[] getUserInfo(String idFacebook) {
 
 		setPath("/getUserInfo.php");
@@ -95,10 +95,37 @@ public class Connector extends AsyncTask<JSONObject, Void, JSONObject> {
 		}
 		return info;
 	}
+	
+	public String[] getClanInfo(String idFacebook){
+		
+		setPath("/clanInfo.php");
+		JSONObject json = new JSONObject();
+		try {
+			json.put("idFacebook", idFacebook);
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		JSONObject result = new JSONObject();
+		try {
+			result = this.execute(json).get();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		} catch (ExecutionException e) {
+			e.printStackTrace();
+		}
+		String info[] = new String[2];
+		try {
+			info[0] = result.getString("numeroClan");
+			info[1] = result.getString("numeroVincite");
+			
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		return info;
+	}
 
-	/*
-	 * Get information about places
-	 */
+	//------------------------------------------ METODI MAP ACTIVITY ----------------------------------------------------------//
+	
 	public ArrayList<Place> getLocations() {
 		setPath("/getLocations.php");
 		JSONObject json = new JSONObject();

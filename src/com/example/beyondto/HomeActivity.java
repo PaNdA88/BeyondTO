@@ -32,7 +32,6 @@ public class HomeActivity extends Activity implements ActionBar.TabListener {
 		
 		//Facebook session
 		Session session = Session.getActiveSession();
-
 	    Connector con = new Connector();
 	    
 		info = con.getUserInfo(Infoton.getInstance().getUserId());
