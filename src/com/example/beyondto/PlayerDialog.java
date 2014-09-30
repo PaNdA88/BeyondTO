@@ -107,44 +107,29 @@ public class PlayerDialog {
 		
 		nomiFileClan.put("Alchimisti", "alchimisti");
 		nomiFileClan.put("Rinnegati", "rinnegati");
-		//dialog.setTitle(title);
-				
+
 		// ------------------- dynamic strings ----------------------//
 		
-		/*Intent i = getIntent();
-		String nome = i.getStringExtra("nome");
-		String punti = i.getStringExtra("punti");
-		TextView txtName = (TextView) findViewById(R.id.nome);
-		txtName.setText(nome);
-		TextView txtPoints = (TextView) findViewById(R.id.punti);
-		txtPoints.setText("Punteggio: " + punti);
-		String edi = "Edifici Conquistati: 23";
-		TextView txtEdi = (TextView) findViewById(R.id.edifici);
-		txtEdi.setText(edi);*/
-		
 		TextView titledialog = (TextView) dialog.findViewById(R.id.titleDialog);
-		title = "Nome Utente";
 		titledialog.setText(title);
 		
-		String clan = "Alchimisti";
-
-		ImageView image = (ImageView) dialog.findViewById(R.id.imageClan);
+		ImageView clanImage = (ImageView) dialog.findViewById(R.id.imageClan);
+		nomiFileClan.put("Alchimisti", "alchimisti");
+		nomiFileClan.put("Rinnegati", "rinnegati");
 		String uri = "drawable/" + nomiFileClan.get(clan);
 		int imageResource = context.getResources().getIdentifier(uri, null,
 				context.getPackageName());
 		Drawable img = context.getResources().getDrawable(imageResource);
-		image.setImageDrawable(img);
+		clanImage.setImageDrawable(img);
 		
 		TextView textClan = (TextView) dialog.findViewById(R.id.textClan);
 		textClan.setText("Clan " + clan);
 
 		TextView textPunti = (TextView) dialog.findViewById(R.id.textPunti);
-		punti = "Punti: 1234";
-		textPunti.setText(punti);
+		textPunti.setText("Punti: " + punti);
 
 		TextView textEdifici = (TextView) dialog.findViewById(R.id.textEdifici);
-		edifici = "Edifici conquistati: 10";
-		textEdifici.setText(edifici);
+		textEdifici.setText("Edifici conquistati: " + edifici);
 		
 		closeButton = (Button) dialog.findViewById(R.id.closeButton);
 		closeButton.setOnClickListener(new OnClickListener() {
