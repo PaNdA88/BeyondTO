@@ -1,6 +1,9 @@
 package com.example.beyondto;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
@@ -16,6 +19,7 @@ public class PlayerListAdapter extends ArrayAdapter<Player> {
 	private int resource;
 	private LayoutInflater inflater;
 	private Context context;
+	private Map<String, String> nomiFileClan = new HashMap<String, String>();
 
 	public PlayerListAdapter(Context ctx, int resourceId, List<Player> objects) {
 		super(ctx, resourceId, objects);
@@ -36,13 +40,16 @@ public class PlayerListAdapter extends ArrayAdapter<Player> {
 		TextView Punteggio = (TextView) convertView.findViewById(R.id.punti);
 		Punteggio.setText(Giocatore.getPunti());
 
-		/*ImageView clanImage = (ImageView) convertView.findViewById(R.id.clan);
-		String uri = "drawable/" + Giocatore.getImage();
+		ImageView clanImage = (ImageView) convertView.findViewById(R.id.clan);
+		nomiFileClan.put("Alchimisti", "alchimisti");
+		nomiFileClan.put("Rinnegati", "rinnegati");
+		String clan = Giocatore.getFazione();
+		String uri = "drawable/" + nomiFileClan.get(clan);
 		int imageResource = context.getResources().getIdentifier(uri, null,
 				context.getPackageName());
-		Drawable image = context.getResources().getDrawable(imageResource);
-		clanImage.setImageDrawable(image);*/
-
+		Drawable img = context.getResources().getDrawable(imageResource);
+		clanImage.setImageDrawable(img);
+		
 		return convertView;
 	}
 }

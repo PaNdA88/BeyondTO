@@ -144,7 +144,7 @@ public class Connector extends AsyncTask<JSONObject, Void, JSONObject> {
 				p.setName(u.getString("userName"));
 				p.setFazione(u.getString("clan"));
 				p.setPunti(u.getString("score"));
-				p.setEdificiConquistati(u.getString("numWin"));
+				p.setEdifici(u.getString("numWin"));
 				listUsers.add(p);
 			}
 		} catch (InterruptedException e) {

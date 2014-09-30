@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,7 +28,6 @@ public class MedalFragment_Classifica extends Fragment implements
 				container, false);
 		ctx = (MedalActivity) getActivity();
 		listViewPlayers = (ListView) rootView.findViewById(R.id.playerlist);
-		//mListItem = Player.getItems();
 		listViewPlayers.setAdapter(new PlayerListAdapter(ctx,
 				R.layout.playerlist, mListItem));
 		listViewPlayers.setOnItemClickListener(this);
@@ -40,12 +40,9 @@ public class MedalFragment_Classifica extends Fragment implements
 		
 		String nome = mListItem.get(position).getName();
 		String punti = mListItem.get(position).getPunti();
-		Intent intent = new Intent();
-		intent.setClass(getActivity(), ProfiloGiocatore.class);
-		intent.putExtra("nome", nome);
-		intent.putExtra("punti", punti);
-		String clan = null;
-		String edifici = null;
+		String clan = mListItem.get(position).getFazione();
+		String edifici = mListItem.get(position).getEdifici();
+		//Log.e("edifici", edifici);
 		
 		PlayerDialog playerDialog = new PlayerDialog();
 		playerDialog.setContext(ctx);
