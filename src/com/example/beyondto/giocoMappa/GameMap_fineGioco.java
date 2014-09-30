@@ -1,16 +1,5 @@
 package com.example.beyondto.giocoMappa;
 
-import com.example.beyondto.Connector;
-import com.example.beyondto.HomeActivity;
-import com.example.beyondto.MapActivity;
-import com.example.beyondto.MedalActivity;
-import com.example.beyondto.NewsFragment;
-import com.example.beyondto.R;
-import com.example.beyondto.SettingsActivity;
-import com.facebook.Session;
-import com.facebook.UiLifecycleHelper;
-import com.facebook.widget.FacebookDialog;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -21,6 +10,17 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+
+import com.example.beyondto.Connector;
+import com.example.beyondto.HomeActivity;
+import com.example.beyondto.MapActivity;
+import com.example.beyondto.MedalActivity;
+import com.example.beyondto.NewsFragment;
+import com.example.beyondto.R;
+import com.example.beyondto.SettingsActivity;
+import com.facebook.Session;
+import com.facebook.UiLifecycleHelper;
+import com.facebook.widget.FacebookDialog;
 
 public class GameMap_fineGioco extends Activity {
 

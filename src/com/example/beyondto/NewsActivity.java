@@ -1,5 +1,7 @@
 package com.example.beyondto;
 
+import java.util.ArrayList;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +12,7 @@ import android.view.MenuItem;
 public class NewsActivity extends Activity {
 
 	Intent intent = new Intent();
+	ArrayList<Notifica> not = new ArrayList<Notifica>();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

@@ -61,8 +61,7 @@ public class Connector extends AsyncTask<JSONObject, Void, JSONObject> {
 		return success;
 	}
 
-	// ------------------------------------------ METODI HOME ACTIVITY
-	// -------------------------------------------------------//
+	// --------- METODI HOME ACTIVITY ----------------//
 
 	public String[] getUserInfo(String idFacebook) {
 
@@ -125,8 +124,7 @@ public class Connector extends AsyncTask<JSONObject, Void, JSONObject> {
 		return info;
 	}
 
-	// ------------------------------------------ METODI MEDAL ACTIVITY
-	// ----------------------------------------------------------//
+	// -------------- METODI MEDAL ACTIVITY -----------------//
 
 	public ArrayList<Player> getRankUsers() {
 		setPath("/getRankUsers.php");
@@ -160,8 +158,41 @@ public class Connector extends AsyncTask<JSONObject, Void, JSONObject> {
 		return listUsers;
 	}
 
-	// ------------------------------------------ METODI MAP ACTIVITY
-	// ----------------------------------------------------------//
+	// --------- METODI NEWS -------------//
+	public ArrayList<Notifica> getAllNotifications() {
+		setPath("/getAllNotifications.php");
+		JSONObject json = new JSONObject();
+		JSONArray notifications = new JSONArray();
+		ArrayList<Notifica> listNot = new ArrayList<Notifica>();
+		try {
+			JSONObject result = this.execute(json).get();
+			notifications = result.getJSONArray("notifications");
+			for (int i = 0; i < notifications.length(); i++) {
+
+				JSONObject u = notifications.getJSONObject(i);
+				Notifica n = new Notifica();
+				n.setName(u.getString("userNome"));
+				n.setAzione(u.getString("azione"));
+				n.setEdificio(u.getString("nomePlace"));
+				n.setFazione(u.getString("fazione"));
+				n.setTempo(u.getString("orario"));
+				listNot.add(n);
+			}
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+			listNot = null;
+		} catch (ExecutionException e) {
+			e.printStackTrace();
+			listNot = null;
+		} catch (JSONException e) {
+			e.printStackTrace();
+			listNot = null;
+		}
+
+		return null;
+	}
+
+	// --------- METODI MAP ACTIVITY-------------//
 
 	public ArrayList<Place> getLocations() {
 		setPath("/getLocations.php");

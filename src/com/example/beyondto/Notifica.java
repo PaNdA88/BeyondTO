@@ -2,15 +2,39 @@ package com.example.beyondto;
 
 public class Notifica {
 
-	private String categoria;
-	private String edificio;
-	private String image;
+	private String categoria, edificio, image, azione, tempo, fazione;
 
-	public Notifica(String categoria, String edificio, String image) {
-		super();
-		this.categoria = categoria;
-		this.edificio = edificio;
-		this.image = image;
+	/*
+	 * public Notifica(String categoria, String edificio, String image) { //
+	 * super(); this.categoria = categoria; this.edificio = edificio; this.image
+	 * = image; }
+	 */
+
+	public String getFazione() {
+		return fazione;
+	}
+
+	public void setFazione(String fazione) {
+		this.fazione = fazione;
+	}
+
+	public Notifica() {
+	}
+
+	public String getAzione() {
+		return azione;
+	}
+
+	public void setAzione(String azione) {
+		this.azione = azione;
+	}
+
+	public String getTempo() {
+		return tempo;
+	}
+
+	public void setTempo(String tempo) {
+		this.tempo = tempo;
 	}
 
 	public String getCategory() {

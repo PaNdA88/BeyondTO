@@ -9,11 +9,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -23,7 +21,7 @@ public class NewsFragment extends ListFragment {
 
 	// Context ctx;
 	ListView lista;
-	String azione= null;
+	String azione = null;
 
 	public class MyListAdapter extends ArrayAdapter<Notifica> {
 
@@ -53,13 +51,13 @@ public class NewsFragment extends ListFragment {
 			ImageView icon = (ImageView) row.findViewById(R.id.icon);
 
 			String uri = "drawable/" + notifica.getImage();
-			
-			if (uri == "drawable/sword"){
+
+			if (uri == "drawable/sword") {
 				azione = "attacco";
 			} else {
 				azione = "difesa";
 			}
-			
+
 			int imageResource = myContext.getResources().getIdentifier(uri,
 					null, myContext.getPackageName());
 			Drawable image = myContext.getResources()
@@ -79,37 +77,41 @@ public class NewsFragment extends ListFragment {
 
 		// ctx=(MedalActivity)getActivity();
 		List<Notifica> listaNotifiche = new ArrayList<Notifica>();
-		
-		//int i = 0;
-		
-		//for(i=0; i<10; i++){			
-					
-			//if (azione == "attacco"){
-		
-		listaNotifiche.add(new Notifica("Il tuo attacco è andato a buon fine",
-				"Palazzo Trucchi di Levaldigi", "sword"));
-		listaNotifiche.add(new Notifica("Hai iniziato un attacco",
-				"Palazzo Trucchi di Levaldigi", "sword"));
-		listaNotifiche.add(new Notifica(
-				"Il tuo clan ha conquistato l'edificio", "Palazzo Madama",
-				"sword"));
-		listaNotifiche.add(new Notifica("Il tuo clan ha attaccato un edificio",
-				"Palazzo Madama", "sword"));
-			//}
-		
-			//else {
-				
-		listaNotifiche.add(new Notifica("Hai protetto l'edificio dall'attacco",
-				"Fontana del Frejus", "scudo"));
-		listaNotifiche.add(new Notifica("Un tuo edificio è stato attaccato!",
-				"Fontana del Frejus", "scudo"));
-		listaNotifiche.add(new Notifica(
-				"I nemici si aggirano nel tuo territorio!",
-				"Fontana del Frejus", "scudo"));
-			//}
-		
-		//}
-		
+
+		// int i = 0;
+
+		// for(i=0; i<10; i++){
+
+		// if (azione == "attacco"){
+
+		/*
+		 * listaNotifiche.add(new
+		 * Notifica("Il tuo attacco è andato a buon fine",
+		 * "Palazzo Trucchi di Levaldigi", "sword")); listaNotifiche.add(new
+		 * Notifica("Hai iniziato un attacco", "Palazzo Trucchi di Levaldigi",
+		 * "sword")); listaNotifiche.add(new Notifica(
+		 * "Il tuo clan ha conquistato l'edificio", "Palazzo Madama", "sword"));
+		 * listaNotifiche.add(new
+		 * Notifica("Il tuo clan ha attaccato un edificio", "Palazzo Madama",
+		 * "sword"));
+		 */
+		// }
+
+		// else {
+
+		/*
+		 * listaNotifiche.add(new
+		 * Notifica("Hai protetto l'edificio dall'attacco",
+		 * "Fontana del Frejus", "scudo")); listaNotifiche.add(new
+		 * Notifica("Un tuo edificio è stato attaccato!", "Fontana del Frejus",
+		 * "scudo")); listaNotifiche.add(new Notifica(
+		 * "I nemici si aggirano nel tuo territorio!", "Fontana del Frejus",
+		 * "scudo"));
+		 */
+		// }
+
+		// }
+
 		MyListAdapter myListAdapter = new MyListAdapter(getActivity(),
 				R.layout.row, listaNotifiche);
 		setListAdapter(myListAdapter);
@@ -182,8 +184,8 @@ public class NewsFragment extends ListFragment {
 				// }
 				ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
 				ft.commit();
-				}
-			
+			}
+
 		} else {
 			// Otherwise we need to launch a new activity to display
 			// the dialog fragment with selected text.

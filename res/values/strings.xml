@@ -37,4 +37,7 @@
     <string name="notificaDif">DIFESA</string>
     <string name="testoNotifica">%1$s</string>
     
+    <!-- Stringhe bottone share Facebook -->
+    <string name="share">Share</string>
+    
 </resources>
