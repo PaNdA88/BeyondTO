@@ -1,5 +1,7 @@
 package com.example.beyondto;
 
+import org.jivesoftware.smack.ConnectionListener;
+
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;
 import android.app.Activity;
@@ -11,12 +13,21 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.example.beyondto.adapter.TabsPagerAdapterHome;
 import com.facebook.Session;
+import com.quickblox.module.chat.QBChatService;
+import com.quickblox.module.users.model.QBUser;
+import com.quickblox.sample.chat.core.RoomChat;
+import com.quickblox.sample.chat.ui.activities.ChatActivity;
+import com.quickblox.sample.chat.ui.activities.ChatLoginActivity;
+import com.quickblox.sample.chat.ui.activities.RegistrationActivity;
 
 public class HomeActivity extends Activity implements ActionBar.TabListener {
 
+	private ConnectionListener connectionListener;
+	private static final int AUTHENTICATION_REQUEST = 1;
 	private ViewPager viewPager;
 	private TabsPagerAdapterHome mAdapterHome;
 	private ActionBar actionBar;
@@ -24,6 +35,8 @@ public class HomeActivity extends Activity implements ActionBar.TabListener {
 	private String[] tabsHome = { "Utente", "Scheda Clan", "Chat" };
 	Intent intent = new Intent();
 	String[] info;
+	private String[] infoUser;
+	String clan;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -37,6 +50,7 @@ public class HomeActivity extends Activity implements ActionBar.TabListener {
 	    Connector con = new Connector();
 	    
 		info = con.getUserInfo(Infoton.getInstance().getUserId());
+		clan = info[2];
 		
 		// Initialization
 		viewPager = (ViewPager) findViewById(R.id.pager);
@@ -90,6 +104,33 @@ public class HomeActivity extends Activity implements ActionBar.TabListener {
 	@Override
 	public void onTabUnselected(Tab tab, FragmentTransaction ft) {
 	}
+	
+
+	public void entraChat() {
+		// TODO Auto-generated method stub
+		QBUser qbUser = ((App) getApplication()).getQbUser();
+        if (qbUser != null) {
+           
+        	
+        	connectionListener = new ChatConnectionListener();
+            QBChatService.getInstance().addConnectionListener(connectionListener);
+
+            if (clan.equals("Alchimisti")) {	            	
+            	Bundle bundle = createChatBundle("beyondTo", false);  //inserire chat alchimisti
+            	ChatActivity.start(this, bundle); 
+            }else {
+	            Bundle bundle = createChatBundle("beyondTo", false);  //ins chat rinnegati
+	            ChatActivity.start(this, bundle); 
+            }
+            
+                       
+        	
+        } else {	            
+            Intent intent = new Intent(getApplicationContext(), ChatLoginActivity.class);
+            startActivityForResult(intent, AUTHENTICATION_REQUEST); 	            	            	            
+        }
+
+	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -130,13 +171,94 @@ public class HomeActivity extends Activity implements ActionBar.TabListener {
 		case R.id.menu_settings:
 
 			intent.setClass(getApplicationContext(), SettingsActivity.class);
+
 			startActivity(intent);
 			return true;
-
+			
+			
 		default:
 			return super.onOptionsItemSelected(item);
 
 		}
+		
+		
+		
 	}
+	
+	
+	
+	
+	 @Override
+	    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+	        if (resultCode == RESULT_OK) {
 
+	            connectionListener = new ChatConnectionListener();
+	            QBChatService.getInstance().addConnectionListener(connectionListener);
+
+	            Bundle bundle = createChatBundle("beyondTo", false);
+	            ChatActivity.start(this, bundle);
+	            
+	        } else {
+	        	
+	            Intent intent2 = new Intent(getApplicationContext(), RegistrationActivity.class);
+	            startActivityForResult(intent2, AUTHENTICATION_REQUEST);
+	        	
+	            //Intent passaARegistrazione= new Intent(MainActivity.this, RegistrationActivity.class);			
+	            //startActivity(passaARegistrazione);
+	            
+
+	        }
+	    }
+	
+	
+	private Bundle createChatBundle(String roomName, boolean createChat) {
+     Bundle bundle = new Bundle();
+     bundle.putSerializable(ChatActivity.EXTRA_MODE, ChatActivity.Mode.GROUP);
+     bundle.putString(RoomChat.EXTRA_ROOM_NAME, roomName);
+     if (createChat) {
+         bundle.putSerializable(RoomChat.EXTRA_ROOM_ACTION, RoomChat.RoomAction.CREATE);
+     } else {
+         bundle.putSerializable(RoomChat.EXTRA_ROOM_ACTION, RoomChat.RoomAction.JOIN);
+     }
+     return bundle;
+ }
+	
+	
+	public class ChatConnectionListener implements ConnectionListener {
+
+     @Override
+     public void connectionClosed() {
+         showToast("connectionClosed");
+     }
+
+     @Override
+     public void connectionClosedOnError(Exception e) {
+         showToast("connectionClosed on error" + e.getLocalizedMessage());
+     }
+
+     @Override
+     public void reconnectingIn(int i) {
+
+     }
+
+     @Override
+     public void reconnectionSuccessful() {
+
+     }
+
+     @Override
+     public void reconnectionFailed(Exception e) {
+
+     }
+ }
+	
+	
+	private void showToast(final String msg) {
+     runOnUiThread(new Runnable() {
+         @Override
+         public void run() {
+             Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
+         }
+     });
+	}
 }

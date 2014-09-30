@@ -21,9 +21,12 @@
     <string name="edificiConquistati">Edifici conquistati: %1$s</string>
     
     <!-- Stringhe Home : Pagina Clan -->
-    <string name="nomeClan">CLAN %1$s</string>
+    <string name="nomeClan">Clan %1$s</string>
     <string name="numMembri">Membri: %1$s</string>
     <string name="numVittorie">Vittorie: %1$s</string>
+    
+    <!-- Stringhe Home : Pagina Chat -->
+    <string name="nomeChat">Stai per entrare nella Chat %1$s</string>
     
     <!-- Stringhe Mappa -->
     <string name="action">Vuoi %1$s questo luogo?</string>

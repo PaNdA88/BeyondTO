@@ -26,6 +26,7 @@
     
 
     <application
+        android:name=".App"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
@@ -130,14 +131,25 @@
                  android:value="splitActionBarWhenNarrow" />
         </activity>
         
+        <!-- Activity Chat -->
+        
         <activity
-            android:uiOptions="splitActionBarWhenNarrow"
-            android:name=".ProfiloGiocatore"
-            android:label="@string/app_name" >
-             <meta-data 
-                 android:name="android.support.UI_OPTIONS"
-                 android:value="splitActionBarWhenNarrow" />
-        </activity>
+            android:name="com.quickblox.sample.chat.ui.activities.ChatLoginActivity"
+            android:label="Login" />
+        
+        <activity
+            android:name="com.quickblox.sample.chat.ui.activities.RegistrationActivity"
+            android:label="Registrazione" />
+        
+        <activity
+            android:name="com.quickblox.sample.chat.ui.activities.ChatActivity"
+            android:label="Chat" />
+        
+        <activity
+            android:name="com.quickblox.sample.chat.ui.activities.SecondActivity"
+            android:label="SecondActivity" />
+        
+       
         
         <!-- Activity Pagine Gioco Mappa -->
         

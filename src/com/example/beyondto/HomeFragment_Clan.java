@@ -19,15 +19,13 @@ import android.widget.TextView;
 public class HomeFragment_Clan extends Fragment {
 	
 	private String[] info, infoClan;
-	//private Context context;
 	private Map<String, String> nomiFileClan = new HashMap<String, String>();
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 
-		View rootView = inflater.inflate(R.layout.fragment_home_clan,
-				container, false);
+		View rootView = inflater.inflate(R.layout.fragment_home_clan, container, false);
 		
 		Connector conClan = new Connector();
 		infoClan = conClan.getClanInfo(Infoton.getInstance().getUserId());
