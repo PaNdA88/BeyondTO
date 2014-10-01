@@ -9,7 +9,6 @@ import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -42,15 +41,16 @@ public class MapActivity extends Activity implements OnMarkerClickListener {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_map);
-		
-		//Facebook session
+
+		// Facebook session
 		session = Session.getActiveSession();
 		try {
 			getUser();
-			if(!idFacebook.equals("-1")){
+			if (!idFacebook.equals("-1")) {
 				drawMap();
-			}else{
-				Intent toLogin = new Intent(getApplicationContext(), LoginActivity.class);
+			} else {
+				Intent toLogin = new Intent(getApplicationContext(),
+						LoginActivity.class);
 				startActivity(toLogin);
 			}
 
@@ -62,14 +62,14 @@ public class MapActivity extends Activity implements OnMarkerClickListener {
 	/*
 	 * Get user info
 	 */
-	public void getUser(){
+	public void getUser() {
 		Connector con = new Connector();
 		String info[] = con.getUserInfo(Infoton.getInstance().getUserId());
 		idFacebook = Infoton.getInstance().getUserId();
-		myClan = info[1];
-		otherClan = info[2]; 
+		myClan = info[2];
+		otherClan = info[3];
 	}
-	
+
 	/*
 	 * Get user position
 	 */
@@ -107,7 +107,8 @@ public class MapActivity extends Activity implements OnMarkerClickListener {
 
 			myPosition = findMyPosition();
 
-			googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(myPosition,15));
+			googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(myPosition,
+					15));
 
 			Connector con = new Connector();
 			listPlaces = con.getLocations();
@@ -150,7 +151,8 @@ public class MapActivity extends Activity implements OnMarkerClickListener {
 				options = new MarkerOptions()
 						.position(boundPlace.getCenter())
 						.title((listPlaces.get(i)).getNomeLuogo())
-						.icon(BitmapDescriptorFactory.fromResource(R.drawable.blue_gem));
+						.icon(BitmapDescriptorFactory
+								.fromResource(R.drawable.blue_gem));
 			}
 			if (((String) ((listPlaces.get(i)).getProprietaFazione()))
 					.equals("Rinnegati")) {
@@ -158,7 +160,8 @@ public class MapActivity extends Activity implements OnMarkerClickListener {
 				options = new MarkerOptions()
 						.position(boundPlace.getCenter())
 						.title((listPlaces.get(i)).getNomeLuogo())
-						.icon(BitmapDescriptorFactory.fromResource(R.drawable.red_gem));
+						.icon(BitmapDescriptorFactory
+								.fromResource(R.drawable.red_gem));
 
 			}
 			if (((String) ((listPlaces.get(i)).getProprietaFazione()))
@@ -167,7 +170,8 @@ public class MapActivity extends Activity implements OnMarkerClickListener {
 				options = new MarkerOptions()
 						.position(boundPlace.getCenter())
 						.title((listPlaces.get(i)).getNomeLuogo())
-						.icon(BitmapDescriptorFactory.fromResource(R.drawable.grey_gem));
+						.icon(BitmapDescriptorFactory
+								.fromResource(R.drawable.grey_gem));
 			}
 			googleMap.addMarker(options);
 		}
@@ -187,7 +191,7 @@ public class MapActivity extends Activity implements OnMarkerClickListener {
 
 		Connector con = new Connector();
 		con.setWinnersMatch(nomeLuogo);
-		
+
 		Connector con2 = new Connector();
 		String[] place = con2.checkPlaceState(nomeLuogo);
 
@@ -199,11 +203,11 @@ public class MapActivity extends Activity implements OnMarkerClickListener {
 		placeDialog.setIdFacebook(idFacebook);
 		placeDialog.setUserClan(myClan);
 		placeDialog.setClan(place[0]);
-			
-		if(place[0].equals(myClan)){
-			placeDialog.setAction("difendere");			
-		}else{	
-			placeDialog.setAction("attaccare");			
+
+		if (place[0].equals(myClan)) {
+			placeDialog.setAction("difendere");
+		} else {
+			placeDialog.setAction("attaccare");
 		}
 		placeDialog.showPlaceDialog();
 		/*
