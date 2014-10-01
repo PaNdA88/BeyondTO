@@ -128,10 +128,10 @@ public class RoomChat implements Chat, RoomListener, ChatMessageListener {
        // String nome= QBChatUtils.getChatLoginFull(Integer.parseInt(sender));
         QBUser qbUser = ((App) (chatActivity.getApplication())).getQbUser();
         if (sender.equals(qbUser.getFullName()) || sender.equals(qbUser.getId().toString())) {
-            chatActivity.showMessage(new ChatMessage(message.getBody(), login, time, false));
+            chatActivity.showMessage(new ChatMessage(message.getBody(), time, false));
         } else {
         	
-            chatActivity.showMessage(new ChatMessage(message.getBody(), sender, time, true));
+            chatActivity.showMessage(new ChatMessage(message.getBody(), time, true));
         }
     }
     
