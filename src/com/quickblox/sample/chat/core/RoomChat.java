@@ -35,7 +35,7 @@ public class RoomChat implements Chat, RoomListener, ChatMessageListener {
     private static final String TAG = RoomChat.class.getSimpleName();
     private ChatActivity chatActivity;
     private QBChatRoom chatRoom;
-    private String login, nome;
+    private String login, nome, nomeUtente;
     private String[] infoUser;
     private Map<String, String> nomiUtenti = new HashMap<String, String>();
 
@@ -119,8 +119,8 @@ public class RoomChat implements Chat, RoomListener, ChatMessageListener {
             public void onComplete(Result result) {
                 if (result.isSuccess()) {
                     QBUserResult qbUserResult = (QBUserResult) result;
-                    qbUserResult.getUser().getId();
-                    //qbUserResult.getUser().getLogin();
+                    //qbUserResult.getUser().getId();
+                    nomeUtente= qbUserResult.getUser().getLogin();
                 }
             } 
         });
@@ -130,6 +130,7 @@ public class RoomChat implements Chat, RoomListener, ChatMessageListener {
         if (sender.equals(qbUser.getFullName()) || sender.equals(qbUser.getId().toString())) {
             chatActivity.showMessage(new ChatMessage(message.getBody(), login, time, false));
         } else {
+        	
             chatActivity.showMessage(new ChatMessage(message.getBody(), sender, time, true));
         }
     }

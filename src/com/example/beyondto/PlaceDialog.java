@@ -23,7 +23,7 @@ import android.widget.Toast;
 
 public class PlaceDialog {
 	
-	private String title, view_text, action, clan, statePlace, numberAtt, numberDif, userClan, idFacebook;
+	private String title, view_text, orario, action, clan, statePlace, numberAtt, numberDif, userClan, idFacebook;
 	private Context context;
 	private Activity activity;
 	private Button yesButton, noButton;
@@ -120,7 +120,15 @@ public class PlaceDialog {
 	public void setNumberDif(String numberDif) {
 		this.numberDif = numberDif;
 	}
+	
+	public String getOrario() {
+		return orario;
+	}
 
+	public void setOrario(String orario) {
+		this.orario = orario;
+	}
+	
 	public void showPlaceDialog() {
 
 		final Dialog dialog = new Dialog(context);
@@ -158,7 +166,6 @@ public class PlaceDialog {
 		textStatePlace.setText(Html.fromHtml((String) state));
 
 		if (!statePlace.equals("nessuno")) {
-
 			// #ATTACCANTI, #DIFENSORI
 			TextView textNumberAtt = (TextView) dialog
 					.findViewById(R.id.textNumberAtt);
@@ -171,6 +178,23 @@ public class PlaceDialog {
 			String dif = String.format(res.getString(R.string.numberDif),
 					numberDif);
 			textNumberDif.setText(Html.fromHtml((String) dif));
+			
+			TextView textOrario = (TextView) dialog
+					.findViewById(R.id.textFirstAtt);
+			String or = String.format(res.getString(R.string.textFirstAtt),
+					orario);
+			textOrario.setText(Html.fromHtml((String) or));
+		}
+		else {
+			TextView textNumberAtt = (TextView) dialog
+					.findViewById(R.id.textNumberAtt);
+			textNumberAtt.setText(null);
+			TextView textNumberDif = (TextView) dialog
+					.findViewById(R.id.textNumberDif);
+			textNumberDif.setText(null);
+			TextView textOrario = (TextView) dialog
+					.findViewById(R.id.textFirstAtt);
+			textOrario.setText(null);
 		}
 
 		// -----------------------------------------------------------------//
@@ -181,6 +205,7 @@ public class PlaceDialog {
 				|| (statePlace.equals("sotto attacco") && action
 						.equals("attaccare"))) {
 
+			Log.e("AZIONE", action);
 			/* chiedo se vogliono attaccare o meno l'edificio */
 			TextView textAction = (TextView) dialog
 					.findViewById(R.id.textAction);

@@ -33,12 +33,6 @@ public class GameMap_fineGioco extends Activity {
 
 		setContentView(R.layout.gioco_map_fine);
 		
-		String punti = String.valueOf(score);
-		TextView textPunti = (TextView) findViewById(R.id.punteggioFinale);
-		Resources res1 = getApplicationContext().getResources();
-		String pt = String.format(res1.getString(R.string.punteggioFinale), punti);
-		textPunti.setText(Html.fromHtml((String) pt));
-		
 		Intent i = getIntent();
 		score = i.getDoubleExtra("score", score);
 		Log.e("PUNTEGGI DOMANDA 3: ", Double.toString(score));
@@ -49,6 +43,12 @@ public class GameMap_fineGioco extends Activity {
 		idPlace = i.getIntExtra("idLuogo", idPlace);
 		idMatch = i.getIntExtra("idScontro", idMatch);
 
+		String punti = Double.toString(score);
+		TextView textPunti = (TextView) findViewById(R.id.punteggioFinale);
+		Resources res1 = getApplicationContext().getResources();
+		String pt = String.format(res1.getString(R.string.punteggioFinale), punti);
+		textPunti.setText(Html.fromHtml((String) pt));
+		
 		Button bButton = (Button) findViewById(R.id.backButton);
 
 		bButton.setOnClickListener(new OnClickListener() {
