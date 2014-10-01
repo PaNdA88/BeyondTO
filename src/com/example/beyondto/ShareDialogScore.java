@@ -23,6 +23,7 @@ public class ShareDialogScore extends Activity {
 	private double score;
 	private String idUser, namePlace, action, userClan;
 	private int idPlace, idMatch;
+	private String description;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -42,12 +43,27 @@ public class ShareDialogScore extends Activity {
 		idPlace = i.getIntExtra("idLuogo", idPlace);
 		idMatch = i.getIntExtra("idScontro", idMatch);
 
+		if (action.equals("attaccare")) {
+			description = "Ho appena attaccato " + namePlace
+					+ " e totalizzato " + score + " punti!";
+		} else {
+			description = "Ho appena difeso " + namePlace + " e totalizzato "
+					+ score + " punti!";
+		}
+
 		if (FacebookDialog.canPresentShareDialog(getApplicationContext(),
 				FacebookDialog.ShareDialogFeature.SHARE_DIALOG)) {
 			// Publish the post using the Share Dialog
+			/*
+			 * FacebookDialog shareDialog = new
+			 * FacebookDialog.ShareDialogBuilder(
+			 * this).setLink("https://developers.facebook.com/android")
+			 * .build();
+			 */
 			FacebookDialog shareDialog = new FacebookDialog.ShareDialogBuilder(
-					this).setLink("https://developers.facebook.com/android")
-					.build();
+					this).setName("BeyondTo").setLink(description)
+					.setPicture("drawable/logop").build();
+
 			uiHelper.trackPendingDialogCall(shareDialog.present());
 
 		} else {
