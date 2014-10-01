@@ -33,7 +33,7 @@ import android.support.v13.app.FragmentPagerAdapter;
 	        case 2:
 	            // Chat fragment activity
 	        	HomeFragment_Chat chat = new HomeFragment_Chat();
-	        	//chat.setInfoUser(info);
+	        	chat.setInfoUser(info);
 	        	return chat;
 	        }
 	 

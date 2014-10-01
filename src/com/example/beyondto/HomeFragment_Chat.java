@@ -21,7 +21,7 @@ import android.widget.TextView;
  
 public class HomeFragment_Chat extends Fragment {
  
-	private String[] info, infoClan;
+	private String[] info;
 	private Map<String, String> nomiFileClan = new HashMap<String, String>();
 
 	@Override
@@ -29,12 +29,8 @@ public class HomeFragment_Chat extends Fragment {
             Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fragment_home_chat, container, false);
-         
-        Connector conClan = new Connector();
-		infoClan = conClan.getClanInfo(Infoton.getInstance().getUserId());
-		
-		//String clan = info[2];
-		String clan = "Alchimisti";
+        
+		String clan = info[2];
 		TextView textClan = (TextView) rootView.findViewById(R.id.nomeChat);
 		Resources res1 = ((HomeActivity) getActivity()).getResources();
 		String cl = String.format(res1.getString(R.string.nomeChat), clan);
@@ -61,11 +57,6 @@ public class HomeFragment_Chat extends Fragment {
 		
         return rootView;
     }
-	
-	private Connector Connector() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	public void setInfoUser(String[] info) {
 		this.info = info;

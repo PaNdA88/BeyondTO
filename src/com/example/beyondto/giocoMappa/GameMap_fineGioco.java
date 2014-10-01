@@ -2,7 +2,9 @@ package com.example.beyondto.giocoMappa;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
+import android.text.Html;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -10,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.beyondto.Connector;
 import com.example.beyondto.HomeActivity;
@@ -40,6 +43,12 @@ public class GameMap_fineGioco extends Activity {
 		uiHelper.onCreate(savedInstanceState);
 
 		setContentView(R.layout.gioco_map_fine);
+		
+		String punti = String.valueOf(score);
+		TextView textPunti = (TextView) findViewById(R.id.punteggioFinale);
+		Resources res1 = getApplicationContext().getResources();
+		String pt = String.format(res1.getString(R.string.punteggioFinale), punti);
+		textPunti.setText(Html.fromHtml((String) pt));
 
 		Intent i = getIntent();
 		score = i.getDoubleExtra("score", score);

@@ -18,14 +18,14 @@
         android:textSize="20dp" />
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/punteggioFinale"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginTop="100dp"
         android:gravity="center"
-        android:text="Il tuo punteggio è di 300 punti"
+        android:text="@string/punteggioFinale"
         android:textColor="#ffffff"
         android:textSize="20dp" />
 
@@ -33,7 +33,7 @@
         android:id="@+id/backButton"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView1"
+        android:layout_below="@+id/punteggioFinale"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="86dp"
         android:text="TORNA ALLA MAPPA" />
