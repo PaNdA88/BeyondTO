@@ -4,8 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -18,42 +16,28 @@ import com.example.beyondto.MedalActivity;
 import com.example.beyondto.NewsFragment;
 import com.example.beyondto.R;
 import com.example.beyondto.SettingsActivity;
-import com.facebook.Session;
-import com.facebook.UiLifecycleHelper;
-import com.facebook.widget.FacebookDialog;
+import com.example.beyondto.ShareDialogScore;
 
 public class GameMap_fineGioco extends Activity {
 
 	private double score;
 	private String idUser, namePlace, action, userClan;
 	private int idPlace, idMatch;
-	private Session session;
-	private UiLifecycleHelper uiHelper;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		// Facebook elements
-		session = Session.getActiveSession();
-		uiHelper = new UiLifecycleHelper(this, null);
-		uiHelper.onCreate(savedInstanceState);
-
 		setContentView(R.layout.gioco_map_fine);
-
 		Intent i = getIntent();
 		score = i.getDoubleExtra("score", score);
+		Log.e("PUNTEGGI DOMANDA 3: ", Double.toString(score));
 		idUser = i.getStringExtra("idUtente");
 		namePlace = i.getStringExtra("nomeLuogo");
 		action = i.getStringExtra("azione");
 		userClan = i.getStringExtra("clanUtente");
 		idPlace = i.getIntExtra("idLuogo", idPlace);
 		idMatch = i.getIntExtra("idScontro", idMatch);
-
-		// Facebook dialog to share score
-		FacebookDialog shareDialog = new FacebookDialog.ShareDialogBuilder(this)
-				.setLink(null).build();
-		uiHelper.trackPendingDialogCall(shareDialog.present());
 
 		Button bButton = (Button) findViewById(R.id.backButton);
 
@@ -64,65 +48,36 @@ public class GameMap_fineGioco extends Activity {
 				Connector con = new Connector();
 				con.setScoreAttDif(score, idUser, namePlace, action, userClan,
 						idPlace, idMatch);
+
 				Intent intentMap = new Intent(getApplicationContext(),
 						MapActivity.class);
 				startActivity(intentMap);
 				finish();
 			}
 		});
-	}
 
-	// Menu
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		MenuInflater menuInflater = getMenuInflater();
-		menuInflater.inflate(R.menu.menu, menu);
-		return true;
-	}
+		// Facebook dialog
 
-	@Override
-	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-		super.onActivityResult(requestCode, resultCode, data);
+		Button shareButton = (Button) findViewById(R.id.shareButton);
 
-		uiHelper.onActivityResult(requestCode, resultCode, data,
-				new FacebookDialog.Callback() {
-					@Override
-					public void onError(FacebookDialog.PendingCall pendingCall,
-							Exception error, Bundle data) {
-						Log.e("Activity",
-								String.format("Error: %s", error.toString()));
-					}
+		shareButton.setOnClickListener(new OnClickListener() {
 
-					@Override
-					public void onComplete(
-							FacebookDialog.PendingCall pendingCall, Bundle data) {
-						Log.i("Activity", "Success!");
-					}
-				});
-	}
+			@Override
+			public void onClick(View arg1) {
+				Intent i = new Intent(getApplicationContext(),
+						ShareDialogScore.class);
+				i.putExtra("score", score);
+				i.putExtra("idUtente", idUser);
+				i.putExtra("nomeLuogo", namePlace);
+				i.putExtra("azione", action);
+				i.putExtra("clanUtente", userClan);
+				i.putExtra("idLuogo", idPlace);
+				i.putExtra("idScontro", idMatch);
 
-	@Override
-	protected void onResume() {
-		super.onResume();
-		uiHelper.onResume();
-	}
+				startActivity(i);
+			}
+		});
 
-	@Override
-	protected void onSaveInstanceState(Bundle outState) {
-		super.onSaveInstanceState(outState);
-		uiHelper.onSaveInstanceState(outState);
-	}
-
-	@Override
-	public void onPause() {
-		super.onPause();
-		uiHelper.onPause();
-	}
-
-	@Override
-	public void onDestroy() {
-		super.onDestroy();
-		uiHelper.onDestroy();
 	}
 
 	/**

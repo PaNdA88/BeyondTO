@@ -306,7 +306,7 @@ public class Connector extends AsyncTask<JSONObject, Void, JSONObject> {
 
 		JSONObject json = new JSONObject();
 		try {
-			json.put("score", score);
+			json.put("score", Double.toString(score));
 			json.put("idFacebook", idUser);
 			json.put("nomeLuogo", namePlace);
 			json.put("azione", action);

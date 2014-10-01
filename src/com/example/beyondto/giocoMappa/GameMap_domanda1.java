@@ -1,20 +1,18 @@
 package com.example.beyondto.giocoMappa;
 
-import com.example.beyondto.Connector;
-import com.example.beyondto.R;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.SystemClock;
-import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.ProgressBar;
-import android.widget.RadioButton;
-import android.widget.TextView;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+
+import com.example.beyondto.Connector;
+import com.example.beyondto.R;
 
 public class GameMap_domanda1 extends Activity {
 
@@ -94,7 +92,6 @@ public class GameMap_domanda1 extends Activity {
 			TextView text = (TextView) findViewById(R.id.domanda1);
 			text.setText(question1[0]);
 
-
 			final Button risp1a = (Button) findViewById(R.id.risp1A);
 			risp1a.setText(question1[risp1 + 1]);
 
@@ -104,7 +101,6 @@ public class GameMap_domanda1 extends Activity {
 			final Button risp1c = (Button) findViewById(R.id.risp1C);
 			risp1c.setText(question1[risp3 + 1]);
 
-
 			risp1a.setOnClickListener(new OnClickListener() {
 				@Override
 				public void onClick(View v1) {
@@ -112,7 +108,7 @@ public class GameMap_domanda1 extends Activity {
 					if (risp1a.getText().equals(question1[1])) {
 						score = 100 - myProgress;
 					} else {
-						score = 0;
+						score = score;
 					}
 
 					Intent intentGame2a = new Intent(getApplicationContext(),
@@ -137,7 +133,7 @@ public class GameMap_domanda1 extends Activity {
 					if (risp1b.getText().equals(question1[1])) {
 						score = 100 - myProgress;
 					} else {
-						score = 0;
+						score = score;
 					}
 					Intent intentGame2b = new Intent(getApplicationContext(),
 							GameMap_domanda2.class);
@@ -161,7 +157,7 @@ public class GameMap_domanda1 extends Activity {
 					if (risp1c.getText().equals(question1[1])) {
 						score = 100 - myProgress;
 					} else {
-						score = 0;
+						score = score;
 					}
 					Intent intentGame2c = new Intent(getApplicationContext(),
 							GameMap_domanda2.class);
