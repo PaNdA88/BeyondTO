@@ -3,8 +3,6 @@ package com.example.beyondto;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.example.beyondto.giocoMappa.GameMap;
-
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
@@ -12,24 +10,25 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.text.Html;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.example.beyondto.giocoMappa.GameMap;
 
 public class PlaceDialog {
-	
-	private String title, view_text, orario, action, clan, statePlace, numberAtt, numberDif, userClan, idFacebook;
+
+	private String title, view_text, orario, action, clan, statePlace,
+			numberAtt, numberDif, userClan, idFacebook;
 	private Context context;
 	private Activity activity;
 	private Button yesButton, noButton;
-	
+
 	private Map<String, String> nomiFile = new HashMap<String, String>();
-	
+
 	public String getIdFacebook() {
 		return idFacebook;
 	}
@@ -120,7 +119,7 @@ public class PlaceDialog {
 	public void setNumberDif(String numberDif) {
 		this.numberDif = numberDif;
 	}
-	
+
 	public String getOrario() {
 		return orario;
 	}
@@ -128,21 +127,22 @@ public class PlaceDialog {
 	public void setOrario(String orario) {
 		this.orario = orario;
 	}
-	
+
 	public void showPlaceDialog() {
 
 		final Dialog dialog = new Dialog(context);
 		dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-		dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent); 
+		dialog.getWindow().setBackgroundDrawableResource(
+				android.R.color.transparent);
 		dialog.setContentView(R.layout.dialog_map);
-		
+
 		nomiFile.put("Politecnico", "poli");
 		nomiFile.put("Carcere Le Nuove", "nuove");
 		nomiFile.put("Il Fante", "fante");
-		//dialog.setTitle(title);
-				
+		// dialog.setTitle(title);
+
 		// ------------------- dynamic strings ----------------------//
-		
+
 		TextView titledialog = (TextView) dialog.findViewById(R.id.titleDialog);
 		titledialog.setText(title);
 		String luogo = title;
@@ -153,7 +153,7 @@ public class PlaceDialog {
 				context.getPackageName());
 		Drawable img = context.getResources().getDrawable(imageResource);
 		image.setImageDrawable(img);
-		
+
 		TextView textPropriety = (TextView) dialog.findViewById(R.id.textProp);
 		final Resources res = context.getResources();
 		String prop = String.format(res.getString(R.string.proprierty), clan);
@@ -178,14 +178,13 @@ public class PlaceDialog {
 			String dif = String.format(res.getString(R.string.numberDif),
 					numberDif);
 			textNumberDif.setText(Html.fromHtml((String) dif));
-			
+
 			TextView textOrario = (TextView) dialog
 					.findViewById(R.id.textFirstAtt);
 			String or = String.format(res.getString(R.string.textFirstAtt),
 					orario);
 			textOrario.setText(Html.fromHtml((String) or));
-		}
-		else {
+		} else {
 			TextView textNumberAtt = (TextView) dialog
 					.findViewById(R.id.textNumberAtt);
 			textNumberAtt.setText(null);
@@ -204,22 +203,20 @@ public class PlaceDialog {
 						.equals("difendere"))
 				|| (statePlace.equals("sotto attacco") && action
 						.equals("attaccare"))) {
-
-			Log.e("AZIONE", action);
 			/* chiedo se vogliono attaccare o meno l'edificio */
 			TextView textAction = (TextView) dialog
 					.findViewById(R.id.textAction);
 			String act = String.format(res.getString(R.string.action), action);
 			textAction.setText(Html.fromHtml((String) act));
 
-		yesButton = (Button) dialog.findViewById(R.id.yesButton);
+			yesButton = (Button) dialog.findViewById(R.id.yesButton);
 			noButton = (Button) dialog.findViewById(R.id.noButton);
 
 			yesButton.setOnClickListener(new OnClickListener() {
 				@Override
 				public void onClick(View v) {
 
-					Intent intentGame = new Intent(context,GameMap.class);
+					Intent intentGame = new Intent(context, GameMap.class);
 					intentGame.putExtra("idUtente", idFacebook);
 
 					intentGame.putExtra("nomeLuogo", title);

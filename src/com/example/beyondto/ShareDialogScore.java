@@ -54,22 +54,12 @@ public class ShareDialogScore extends Activity {
 		if (FacebookDialog.canPresentShareDialog(getApplicationContext(),
 				FacebookDialog.ShareDialogFeature.SHARE_DIALOG)) {
 			// Publish the post using the Share Dialog
-			/*
-			 * FacebookDialog shareDialog = new
-			 * FacebookDialog.ShareDialogBuilder(
-			 * this).setLink("https://developers.facebook.com/android")
-			 * .build();
-			 */
 			FacebookDialog shareDialog = new FacebookDialog.ShareDialogBuilder(
-					this).setName("BeyondTo").setLink(description)
-					.setPicture("drawable/logop").build();
-
+					this).setName("BeyondTO").setCaption(description)
+					.setLink("www.antonellavannucci.it/logoFacebook.png")
+					.build();
 			uiHelper.trackPendingDialogCall(shareDialog.present());
-
-		} else {
-			// Fallback. For example, publish the post using the Feed Dialog
 		}
-
 	}
 
 	@Override
@@ -88,7 +78,6 @@ public class ShareDialogScore extends Activity {
 					@Override
 					public void onComplete(
 							FacebookDialog.PendingCall pendingCall, Bundle data) {
-						Log.i("Activity", "Success!");
 
 						Intent i = new Intent(getApplicationContext(),
 								GameMap_fineGioco.class);
