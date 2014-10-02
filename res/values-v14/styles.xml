@@ -11,6 +11,17 @@
         <item name="android:actionBarStyle">@style/ActionBar</item>
         <item name="android:actionBarTabStyle">@style/ActionBarTabStyle</item>
 		<item name="android:buttonStyle">@style/ButtonAppTheme</item>
+		<item name="android:editTextBackground">@drawable/apptheme_edit_text_holo_dark</item>
+
+<item name="android:textColorHighlight">#99f7c14c</item>
+
+<item name="android:textSelectHandleLeft">@drawable/apptheme_text_select_handle_left</item>
+
+<item name="android:textSelectHandleRight">@drawable/apptheme_text_select_handle_right</item>
+
+<item name="android:textSelectHandle">@drawable/apptheme_text_select_handle_middle</item>
+
+<item name="android:autoCompleteTextViewStyle">@style/AutoCompleteTextViewAppTheme</item>
 		
 
 </style>  
@@ -51,6 +62,12 @@
       <item name="android:progressDrawable">@drawable/apptheme_progress_horizontal_holo_dark</item>
       
   </style>
+  
+<style parent="android:Widget.Holo.AutoCompleteTextView" name="AutoCompleteTextViewAppTheme">
 
+
+<item name="android:background">@drawable/apptheme_edit_text_holo_dark</item>
+
+</style>
 	
 </resources>

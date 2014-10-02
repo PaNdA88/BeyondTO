@@ -14,6 +14,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import com.example.beyondto.adapter.TabsPagerAdapterMedal;
+import com.facebook.Session;
 
 public class MedalActivity extends Activity implements ActionBar.TabListener {
 
@@ -29,14 +30,23 @@ public class MedalActivity extends Activity implements ActionBar.TabListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_medal);
 
+		// Facebook session
+		Session session = Session.getActiveSession();
+
+		if (session.isClosed()) {
+			Intent toLogin = new Intent(this, LoginActivity.class);
+			startActivity(toLogin);
+			finish();
+		}
+
 		Connector con = new Connector();
 		infoUsers = con.getRankUsers();
-		
+
 		// Initialization
 		viewPager = (ViewPager) findViewById(R.id.pager);
 		actionBar = getActionBar();
 		mAdapter = new TabsPagerAdapterMedal(getFragmentManager());
-		
+
 		mAdapter.setListUsers(infoUsers);
 
 		viewPager.setAdapter(mAdapter);
@@ -111,7 +121,7 @@ public class MedalActivity extends Activity implements ActionBar.TabListener {
 			return true;
 
 		case R.id.menu_medal:
-			
+
 			intent.setClass(getApplicationContext(), MedalActivity.class);
 			startActivity(intent);
 			return true;

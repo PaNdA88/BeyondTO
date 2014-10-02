@@ -5,7 +5,6 @@ import java.util.Arrays;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -56,9 +55,6 @@ public class SettingsActivity extends Activity {
 						|| session.getState().equals(SessionState.OPENING) || session
 						.getState().equals(SessionState.OPENED_TOKEN_UPDATED))) {
 
-			// logSession = true;
-		} else {
-			// logSession = false;
 		}
 
 		uiHelper = new UiLifecycleHelper(this, statusCallback);
@@ -90,10 +86,8 @@ public class SettingsActivity extends Activity {
 	private void onSessionStateChange(Session session, SessionState state,
 			Exception exception) {
 		if (state.isOpened()) {
-			Log.i("SONO LOGGATA", "Logged in...");
 
 		} else if (state.isClosed()) {
-			Log.i("NON SONO LOGGATA", "Logged out...");
 			Intent i = new Intent(this, LoginActivity.class);
 			startActivity(i);
 			finish();
@@ -131,25 +125,6 @@ public class SettingsActivity extends Activity {
 		super.onSaveInstanceState(outState);
 		uiHelper.onSaveInstanceState(outState);
 	}
-
-	// mi ricavo il token creato da facebook
-	/*
-	 * public void getUserToken(final Session session) { USER_TOKEN =
-	 * session.getAccessToken().toString(); EXPIRATION =
-	 * (session.getExpirationDate()).toString();
-	 * 
-	 * Request request = Request.newMeRequest(session, new
-	 * Request.GraphUserCallback() { private boolean newUser;
-	 * 
-	 * @Override public void onCompleted(GraphUser user, Response response) { if
-	 * (session == Session.getActiveSession()) { if (user != null) {
-	 * 
-	 * 
-	 * } } if (response.getError() != null) {
-	 * 
-	 * Log.d("ERROR:", response.getError().toString()); } } });
-	 * request.executeAsync(); }
-	 */
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {

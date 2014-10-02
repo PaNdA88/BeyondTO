@@ -9,14 +9,12 @@ import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.example.beyondto.adapter.TabsPagerAdapterHome;
-import com.facebook.Session;
 import com.quickblox.module.chat.QBChatService;
 import com.quickblox.module.users.model.QBUser;
 import com.quickblox.sample.chat.core.RoomChat;
@@ -42,16 +40,11 @@ public class HomeActivity extends Activity implements ActionBar.TabListener {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_home);
-		
-		//Facebook session
-		Session session = new Session(getApplicationContext());
-		Session.setActiveSession(session);
 
-	    Connector con = new Connector();
-	    
+		Connector con = new Connector();
 		info = con.getUserInfo(Infoton.getInstance().getUserId());
 		clan = info[2];
-		
+
 		// Initialization
 		viewPager = (ViewPager) findViewById(R.id.pager);
 		actionBar = getActionBar();
@@ -104,7 +97,6 @@ public class HomeActivity extends Activity implements ActionBar.TabListener {
 	@Override
 	public void onTabUnselected(Tab tab, FragmentTransaction ft) {
 	}
-	
 
 	public void entraChat() {
 		// TODO Auto-generated method stub
@@ -173,20 +165,14 @@ public class HomeActivity extends Activity implements ActionBar.TabListener {
 
 			startActivity(intent);
 			return true;
-			
-			
+
 		default:
 			return super.onOptionsItemSelected(item);
 
 		}
-		
-		
-		
+
 	}
-	
-	
-	
-	
+
 	 @Override
 	    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 	        if (resultCode == RESULT_OK) {
@@ -214,55 +200,55 @@ public class HomeActivity extends Activity implements ActionBar.TabListener {
 	        }
 	    }
 	
-	
 	private Bundle createChatBundle(String roomName, boolean createChat) {
-     Bundle bundle = new Bundle();
-     bundle.putSerializable(ChatActivity.EXTRA_MODE, ChatActivity.Mode.GROUP);
-     bundle.putString(RoomChat.EXTRA_ROOM_NAME, roomName);
-     if (createChat) {
-         bundle.putSerializable(RoomChat.EXTRA_ROOM_ACTION, RoomChat.RoomAction.CREATE);
-     } else {
-         bundle.putSerializable(RoomChat.EXTRA_ROOM_ACTION, RoomChat.RoomAction.JOIN);
-     }
-     return bundle;
- }
-	
-	
+		Bundle bundle = new Bundle();
+		bundle.putSerializable(ChatActivity.EXTRA_MODE, ChatActivity.Mode.GROUP);
+		bundle.putString(RoomChat.EXTRA_ROOM_NAME, roomName);
+		if (createChat) {
+			bundle.putSerializable(RoomChat.EXTRA_ROOM_ACTION,
+					RoomChat.RoomAction.CREATE);
+		} else {
+			bundle.putSerializable(RoomChat.EXTRA_ROOM_ACTION,
+					RoomChat.RoomAction.JOIN);
+		}
+		return bundle;
+	}
+
 	public class ChatConnectionListener implements ConnectionListener {
 
-     @Override
-     public void connectionClosed() {
-         showToast("connectionClosed");
-     }
+		@Override
+		public void connectionClosed() {
+			showToast("connectionClosed");
+		}
 
-     @Override
-     public void connectionClosedOnError(Exception e) {
-         showToast("connectionClosed on error" + e.getLocalizedMessage());
-     }
+		@Override
+		public void connectionClosedOnError(Exception e) {
+			showToast("connectionClosed on error" + e.getLocalizedMessage());
+		}
 
-     @Override
-     public void reconnectingIn(int i) {
+		@Override
+		public void reconnectingIn(int i) {
 
-     }
+		}
 
-     @Override
-     public void reconnectionSuccessful() {
+		@Override
+		public void reconnectionSuccessful() {
 
-     }
+		}
 
-     @Override
-     public void reconnectionFailed(Exception e) {
+		@Override
+		public void reconnectionFailed(Exception e) {
 
-     }
- }
-	
-	
+		}
+	}
+
 	private void showToast(final String msg) {
-     runOnUiThread(new Runnable() {
-         @Override
-         public void run() {
-             Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
-         }
-     });
+		runOnUiThread(new Runnable() {
+			@Override
+			public void run() {
+				Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG)
+						.show();
+			}
+		});
 	}
 }
