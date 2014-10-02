@@ -84,10 +84,6 @@ public class MapActivity extends Activity implements OnMarkerClickListener {
 	private void drawMap() {
 		if (googleMap == null) {
 
-			Toast toast = Toast.makeText(getApplicationContext(), "mappa",
-					Toast.LENGTH_SHORT);
-			toast.show();
-
 			googleMap = ((MapFragment) getFragmentManager().findFragmentById(
 					R.id.map)).getMap();
 			googleMap.setMyLocationEnabled(true);
