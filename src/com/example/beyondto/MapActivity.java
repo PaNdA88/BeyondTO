@@ -24,9 +24,13 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.TileOverlay;
+import com.google.android.gms.maps.model.TileOverlayOptions;
 
 public class MapActivity extends Activity implements OnMarkerClickListener {
 
+	static final String MAP_ID = "elviggio.jlac1733";
+	private TileOverlay tiles;
 	private GoogleMap googleMap;
 	public LatLng myPosition;
 	public ArrayList<Place> listPlaces;
@@ -84,24 +88,17 @@ public class MapActivity extends Activity implements OnMarkerClickListener {
 	private void drawMap() {
 		if (googleMap == null) {
 
-			Toast toast = Toast.makeText(getApplicationContext(), "mappa",
-					Toast.LENGTH_SHORT);
-			toast.show();
-
 			googleMap = ((MapFragment) getFragmentManager().findFragmentById(
 					R.id.map)).getMap();
 			googleMap.setMyLocationEnabled(true);
-			googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+			googleMap.setMapType(GoogleMap.MAP_TYPE_NONE);
 
 			// TILE OVERLAY
-			/*
-			 * TileOverlayOptions opts = new TileOverlayOptions();
-			 * opts.tileProvider(new myTileProvider(
-			 * "https://a.tiles.mapbox.com/v4/elviggio.jlac1733/" +
-			 * "page.html?access_token=pk.eyJ1IjoiZWx2aWdnaW8iLCJhIjoiYVNEVkVrcyJ9.dD41RqV94iuVMkIrW0yCng#"
-			 * + "16/45.0651/7.6578")); opts.zIndex(5); TileOverlay overlay =
-			 * googleMap.addTileOverlay(opts);
-			 */
+			
+			final MapBoxOnlineTileProvider provider = new MapBoxOnlineTileProvider(MAP_ID);
+			final TileOverlayOptions overlay = new TileOverlayOptions().tileProvider(provider);
+			tiles=googleMap.addTileOverlay(overlay);
+			 
 
 			googleMap.getUiSettings().setRotateGesturesEnabled(false);
 			googleMap.setOnMarkerClickListener(this);
