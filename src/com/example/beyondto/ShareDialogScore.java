@@ -165,13 +165,4 @@ public class ShareDialogScore extends Activity {
 		super.onDestroy();
 		uiHelper.onDestroy();
 	}
-
-	// Menu
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		MenuInflater menuInflater = getMenuInflater();
-		menuInflater.inflate(R.menu.menu, menu);
-		return true;
-	}
-
 }

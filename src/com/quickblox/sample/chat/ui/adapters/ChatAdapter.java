@@ -21,7 +21,7 @@ import java.util.List;
 
 public class ChatAdapter extends BaseAdapter {
 
-    private static final String DATE_FORMAT = "hh:mm, dd-MM-yyyy";
+    private static final String DATE_FORMAT = "kk:mm, dd-MM-yyyy";
     private final List<ChatMessage> chatMessages;
     private Context context;
 
@@ -90,24 +90,6 @@ public class ChatAdapter extends BaseAdapter {
             holder.contentWithBG.setBackgroundResource(R.drawable.incoming_message_bg);
 
             LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) holder.contentWithBG.getLayoutParams();
-            layoutParams.gravity = Gravity.RIGHT;
-            holder.contentWithBG.setLayoutParams(layoutParams);
-
-            RelativeLayout.LayoutParams lp = (RelativeLayout.LayoutParams) holder.content.getLayoutParams();
-            lp.addRule(RelativeLayout.ALIGN_PARENT_LEFT, 0);
-            lp.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
-            holder.content.setLayoutParams(lp);
-            layoutParams = (LinearLayout.LayoutParams) holder.txtMessage.getLayoutParams();
-            layoutParams.gravity = Gravity.RIGHT;
-            holder.txtMessage.setLayoutParams(layoutParams);
-
-            layoutParams = (LinearLayout.LayoutParams) holder.txtInfo.getLayoutParams();
-            layoutParams.gravity = Gravity.RIGHT;
-            holder.txtInfo.setLayoutParams(layoutParams);
-        } else {
-            holder.contentWithBG.setBackgroundResource(R.drawable.outgoing_message_bg);
-
-            LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) holder.contentWithBG.getLayoutParams();
             layoutParams.gravity = Gravity.LEFT;
             holder.contentWithBG.setLayoutParams(layoutParams);
 
@@ -121,6 +103,24 @@ public class ChatAdapter extends BaseAdapter {
 
             layoutParams = (LinearLayout.LayoutParams) holder.txtInfo.getLayoutParams();
             layoutParams.gravity = Gravity.LEFT;
+            holder.txtInfo.setLayoutParams(layoutParams);
+        } else {
+            holder.contentWithBG.setBackgroundResource(R.drawable.outgoing_message_bg);
+
+            LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) holder.contentWithBG.getLayoutParams();
+            layoutParams.gravity = Gravity.RIGHT;
+            holder.contentWithBG.setLayoutParams(layoutParams);
+
+            RelativeLayout.LayoutParams lp = (RelativeLayout.LayoutParams) holder.content.getLayoutParams();
+            lp.addRule(RelativeLayout.ALIGN_PARENT_LEFT, 0);
+            lp.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
+            holder.content.setLayoutParams(lp);
+            layoutParams = (LinearLayout.LayoutParams) holder.txtMessage.getLayoutParams();
+            layoutParams.gravity = Gravity.RIGHT;
+            holder.txtMessage.setLayoutParams(layoutParams);
+
+            layoutParams = (LinearLayout.LayoutParams) holder.txtInfo.getLayoutParams();
+            layoutParams.gravity = Gravity.RIGHT;
             holder.txtInfo.setLayoutParams(layoutParams);
         }
     }

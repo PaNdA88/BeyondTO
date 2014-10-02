@@ -44,7 +44,8 @@ public class RoomChat implements Chat, RoomListener, ChatMessageListener {
 
         String chatRoomName = chatActivity.getIntent().getStringExtra(EXTRA_ROOM_NAME);
         RoomAction action = (RoomAction) chatActivity.getIntent().getSerializableExtra(EXTRA_ROOM_ACTION);
-        String roomBeyondTo= "beyondTo";
+        String roomAlchimisti = "provaAlchimisti";
+        String roomRinnegati = "provaRinnegati";
         
         Connector con= new Connector();
         infoUser = con.getUserInfo(Infoton.getInstance().getUserId());
@@ -60,9 +61,14 @@ public class RoomChat implements Chat, RoomListener, ChatMessageListener {
                 create(chatRoomName);
                 break;
             case JOIN:
-                //join( ((App) chatActivity.getApplication()).getCurrentRoom());
-            	join(roomBeyondTo);
-                break;
+            	
+            	if (infoUser[2].equals("Alchimisti")){
+            		join(roomAlchimisti);
+            		break;
+            	}else{
+            		join(roomRinnegati);
+            		break;
+            	}
         }
     }
 

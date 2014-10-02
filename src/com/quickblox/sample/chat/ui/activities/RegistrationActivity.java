@@ -6,6 +6,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.quickblox.core.QBCallback;
 import com.quickblox.core.result.Result;
@@ -91,8 +92,12 @@ public class RegistrationActivity extends Activity implements QBCallback {
                    // Intent i = new Intent();  //come sta adesso darebbe il result a login_activity
                    // setResult(RESULT_OK, i);
                     
-                    Intent passaAHomeActivity= new Intent(RegistrationActivity.this, HomeActivity.class);			
-                    startActivity(passaAHomeActivity); 
+                    Intent tornaAllaHome = new Intent(RegistrationActivity.this, HomeActivity.class);
+                    startActivity(tornaAllaHome);
+
+        			Toast toast = Toast.makeText(getApplicationContext(), "Registrazione effettuata con successo. Torna nuovamente alla sezione chat per accedere alla tua stanza!",
+        					Toast.LENGTH_SHORT);
+        			toast.show();
                     
                     finish();
                     
@@ -108,14 +113,10 @@ public class RegistrationActivity extends Activity implements QBCallback {
             });
         } else {
             AlertDialog.Builder dialog = new AlertDialog.Builder(this);
-            dialog.setMessage("Error(s) occurred. Look into DDMS log for details, " +
-                    "please. Errors: " + result.getErrors()).create().show();
-            
-            //Intent intent = new Intent(RegistrationActivity.this, LoginActivity.class);
-            //startActivityForResult(intent, 1);
-            //Intent i = new Intent();
-            //setResult(RESULT_CANCELED, i);
-            
+            dialog.setMessage("Login/registrazione falliti. Probabile problema di rete. " +
+                    "Errors: " + result.getErrors()).create().show();
+            Intent tornaAllaHome = new Intent(RegistrationActivity.this, HomeActivity.class);
+            startActivity(tornaAllaHome);
         }
     }
 

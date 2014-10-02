@@ -101,28 +101,25 @@ public class HomeActivity extends Activity implements ActionBar.TabListener {
 	public void entraChat() {
 		// TODO Auto-generated method stub
 		QBUser qbUser = ((App) getApplication()).getQbUser();
-		if (qbUser != null) {
+        if (qbUser != null) {
+           
+        	connectionListener = new ChatConnectionListener();
+            QBChatService.getInstance().addConnectionListener(connectionListener);
 
-			connectionListener = new ChatConnectionListener();
-			QBChatService.getInstance().addConnectionListener(
-					connectionListener);
-
-			if (clan.equals("Alchimisti")) {
-				Bundle bundle = createChatBundle("beyondTo", false); // inserire
-																		// chat
-																		// alchimisti
-				ChatActivity.start(this, bundle);
-			} else {
-				Bundle bundle = createChatBundle("beyondTo", false); // ins chat
-																		// rinnegati
-				ChatActivity.start(this, bundle);
-			}
-
-		} else {
-			Intent intent = new Intent(getApplicationContext(),
-					ChatLoginActivity.class);
-			startActivityForResult(intent, AUTHENTICATION_REQUEST);
-		}
+            if (clan.equals("Alchimisti")) {	            	
+            	Bundle bundle = createChatBundle("provaAlchimisti", false); 
+            	ChatActivity.start(this, bundle); 
+            }else {
+	            Bundle bundle = createChatBundle("provaRinnegati", false);
+	            ChatActivity.start(this, bundle); 
+            }
+            
+                       
+        	
+        } else {	            
+            Intent intent = new Intent(getApplicationContext(), ChatLoginActivity.class);
+            startActivityForResult(intent, AUTHENTICATION_REQUEST); 	            	            	            
+        }
 
 	}
 
@@ -176,30 +173,33 @@ public class HomeActivity extends Activity implements ActionBar.TabListener {
 
 	}
 
-	@Override
-	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-		if (resultCode == RESULT_OK) {
+	 @Override
+	    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+	        if (resultCode == RESULT_OK) {
 
-			connectionListener = new ChatConnectionListener();
-			QBChatService.getInstance().addConnectionListener(
-					connectionListener);
+	            connectionListener = new ChatConnectionListener();
+	            QBChatService.getInstance().addConnectionListener(connectionListener);
 
-			Bundle bundle = createChatBundle("beyondTo", false);
-			ChatActivity.start(this, bundle);
+	            if (clan.equals("Alchimisti")) {	            	
+	            	Bundle bundle = createChatBundle("provaAlchimisti", false); 
+	            	ChatActivity.start(this, bundle); 
+	            }else {
+		            Bundle bundle = createChatBundle("provaRinnegati", false);
+		            ChatActivity.start(this, bundle); 
+	            }
+	            
+	        } else {
+	        	
+	            Intent intent2 = new Intent(getApplicationContext(), RegistrationActivity.class);
+	            startActivityForResult(intent2, AUTHENTICATION_REQUEST);
+	        	
+	            //Intent passaARegistrazione= new Intent(MainActivity.this, RegistrationActivity.class);			
+	            //startActivity(passaARegistrazione);
+	            
 
-		} else {
-
-			Intent intent2 = new Intent(getApplicationContext(),
-					RegistrationActivity.class);
-			startActivityForResult(intent2, AUTHENTICATION_REQUEST);
-
-			// Intent passaARegistrazione= new Intent(MainActivity.this,
-			// RegistrationActivity.class);
-			// startActivity(passaARegistrazione);
-
-		}
-	}
-
+	        }
+	    }
+	
 	private Bundle createChatBundle(String roomName, boolean createChat) {
 		Bundle bundle = new Bundle();
 		bundle.putSerializable(ChatActivity.EXTRA_MODE, ChatActivity.Mode.GROUP);
