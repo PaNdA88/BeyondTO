@@ -111,15 +111,14 @@ public class HomeActivity extends Activity implements ActionBar.TabListener {
 		QBUser qbUser = ((App) getApplication()).getQbUser();
         if (qbUser != null) {
            
-        	
         	connectionListener = new ChatConnectionListener();
             QBChatService.getInstance().addConnectionListener(connectionListener);
 
             if (clan.equals("Alchimisti")) {	            	
-            	Bundle bundle = createChatBundle("beyondTo", false);  //inserire chat alchimisti
+            	Bundle bundle = createChatBundle("provaAlchimisti", false); 
             	ChatActivity.start(this, bundle); 
             }else {
-	            Bundle bundle = createChatBundle("beyondTo", false);  //ins chat rinnegati
+	            Bundle bundle = createChatBundle("provaRinnegati", false);
 	            ChatActivity.start(this, bundle); 
             }
             
@@ -195,8 +194,13 @@ public class HomeActivity extends Activity implements ActionBar.TabListener {
 	            connectionListener = new ChatConnectionListener();
 	            QBChatService.getInstance().addConnectionListener(connectionListener);
 
-	            Bundle bundle = createChatBundle("beyondTo", false);
-	            ChatActivity.start(this, bundle);
+	            if (clan.equals("Alchimisti")) {	            	
+	            	Bundle bundle = createChatBundle("provaAlchimisti", false); 
+	            	ChatActivity.start(this, bundle); 
+	            }else {
+		            Bundle bundle = createChatBundle("provaRinnegati", false);
+		            ChatActivity.start(this, bundle); 
+	            }
 	            
 	        } else {
 	        	
