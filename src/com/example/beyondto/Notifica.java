@@ -38,6 +38,7 @@ public class Notifica {
 	}
 
 	public String getCategory() {
+		// sarebbe l'attacco
 		return categoria;
 	}
 

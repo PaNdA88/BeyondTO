@@ -42,18 +42,8 @@ public class MapActivity extends Activity implements OnMarkerClickListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_map);
 
-		// Facebook session
-		session = Session.getActiveSession();
 		try {
-			getUser();
-			if (!idFacebook.equals("-1")) {
-				drawMap();
-			} else {
-				Intent toLogin = new Intent(getApplicationContext(),
-						LoginActivity.class);
-				startActivity(toLogin);
-			}
-
+			drawMap();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -102,6 +92,17 @@ public class MapActivity extends Activity implements OnMarkerClickListener {
 					R.id.map)).getMap();
 			googleMap.setMyLocationEnabled(true);
 			googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+
+			// TILE OVERLAY
+			/*
+			 * TileOverlayOptions opts = new TileOverlayOptions();
+			 * opts.tileProvider(new myTileProvider(
+			 * "https://a.tiles.mapbox.com/v4/elviggio.jlac1733/" +
+			 * "page.html?access_token=pk.eyJ1IjoiZWx2aWdnaW8iLCJhIjoiYVNEVkVrcyJ9.dD41RqV94iuVMkIrW0yCng#"
+			 * + "16/45.0651/7.6578")); opts.zIndex(5); TileOverlay overlay =
+			 * googleMap.addTileOverlay(opts);
+			 */
+
 			googleMap.getUiSettings().setRotateGesturesEnabled(false);
 			googleMap.setOnMarkerClickListener(this);
 
