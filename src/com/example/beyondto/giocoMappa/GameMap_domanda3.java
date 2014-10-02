@@ -1,20 +1,19 @@
 package com.example.beyondto.giocoMappa;
 
-import com.example.beyondto.Connector;
-import com.example.beyondto.R;
-import com.example.beyondto.giocoMappa.GameMap_domanda2.BackgroundAsyncTask;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.SystemClock;
-import android.widget.Button;
-import android.widget.ProgressBar;
-import android.widget.RadioButton;
-import android.widget.TextView;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+
+import com.example.beyondto.Connector;
+import com.example.beyondto.R;
 
 public class GameMap_domanda3 extends Activity {
 
@@ -38,7 +37,6 @@ public class GameMap_domanda3 extends Activity {
 		}
 
 		@Override
-
 		protected Void doInBackground(Void... params) {
 
 			while (time >= 0) {
@@ -78,6 +76,7 @@ public class GameMap_domanda3 extends Activity {
 
 		Intent i = getIntent();
 		score = i.getDoubleExtra("score", score);
+		Log.e("PUNTEGGI DOMANDA 2: ", Double.toString(score));
 		idUser = i.getStringExtra("idUtente");
 		namePlace = i.getStringExtra("nomeLuogo");
 		action = i.getStringExtra("azione");
@@ -112,8 +111,7 @@ public class GameMap_domanda3 extends Activity {
 
 					if (risp3a.getText().equals(question3[1])) {
 						score = score + (100 - myProgress);
-					} else {
-						score = 0;
+						Log.e("SCORE: ", Double.toString(score));
 					}
 					Intent intentGameEndA = new Intent(getApplicationContext(),
 							GameMap_fineGioco.class);
@@ -133,10 +131,8 @@ public class GameMap_domanda3 extends Activity {
 				@Override
 				public void onClick(View v2) {
 
-					if (risp3a.getText().equals(question3[1])) {
+					if (risp3b.getText().equals(question3[1])) {
 						score = score + (100 - myProgress);
-					} else {
-						score = 0;
 					}
 					Intent intentGameEndB = new Intent(getApplicationContext(),
 							GameMap_fineGioco.class);
@@ -156,10 +152,8 @@ public class GameMap_domanda3 extends Activity {
 				@Override
 				public void onClick(View v3) {
 
-					if (risp3a.getText().equals(question3[1])) {
+					if (risp3c.getText().equals(question3[1])) {
 						score = score + (100 - myProgress);
-					} else {
-						score = 0;
 					}
 					Intent intentGameEndC = new Intent(getApplicationContext(),
 							GameMap_fineGioco.class);

@@ -34,6 +34,10 @@
     <string name="statePlace">Stato luogo: %1$s</string>
     <string name="numberAtt">Attaccanti: %1$s</string>
     <string name="numberDif">Difensori: %1$s</string>
+    <string name="textFirstAtt">Orario primo attacco: %1$s</string>
+    
+    <!-- Stringa Fine gioco -->
+    <string name="punteggioFinale">Hai totalizzato %1$s punti</string>
         
     <!-- Stringhe Notifiche -->
     <string name="notificaAtt">ATTACCO!</string>

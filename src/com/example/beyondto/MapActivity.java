@@ -9,7 +9,6 @@ import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -42,18 +41,9 @@ public class MapActivity extends Activity implements OnMarkerClickListener {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_map);
-		
-		//Facebook session
-		session = Session.getActiveSession();
-		try {
-			getUser();
-			if(!idFacebook.equals("-1")){
-				drawMap();
-			}else{
-				Intent toLogin = new Intent(getApplicationContext(), LoginActivity.class);
-				startActivity(toLogin);
-			}
 
+		try {
+			drawMap();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -62,14 +52,14 @@ public class MapActivity extends Activity implements OnMarkerClickListener {
 	/*
 	 * Get user info
 	 */
-	public void getUser(){
+	public void getUser() {
 		Connector con = new Connector();
 		String info[] = con.getUserInfo(Infoton.getInstance().getUserId());
 		idFacebook = Infoton.getInstance().getUserId();
-		myClan = info[1];
-		otherClan = info[2]; 
+		myClan = info[2];
+		otherClan = info[3];
 	}
-	
+
 	/*
 	 * Get user position
 	 */
@@ -102,12 +92,24 @@ public class MapActivity extends Activity implements OnMarkerClickListener {
 					R.id.map)).getMap();
 			googleMap.setMyLocationEnabled(true);
 			googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+
+			// TILE OVERLAY
+			/*
+			 * TileOverlayOptions opts = new TileOverlayOptions();
+			 * opts.tileProvider(new myTileProvider(
+			 * "https://a.tiles.mapbox.com/v4/elviggio.jlac1733/" +
+			 * "page.html?access_token=pk.eyJ1IjoiZWx2aWdnaW8iLCJhIjoiYVNEVkVrcyJ9.dD41RqV94iuVMkIrW0yCng#"
+			 * + "16/45.0651/7.6578")); opts.zIndex(5); TileOverlay overlay =
+			 * googleMap.addTileOverlay(opts);
+			 */
+
 			googleMap.getUiSettings().setRotateGesturesEnabled(false);
 			googleMap.setOnMarkerClickListener(this);
 
 			myPosition = findMyPosition();
 
-			googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(myPosition,15));
+			googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(myPosition,
+					15));
 
 			Connector con = new Connector();
 			listPlaces = con.getLocations();
@@ -150,7 +152,8 @@ public class MapActivity extends Activity implements OnMarkerClickListener {
 				options = new MarkerOptions()
 						.position(boundPlace.getCenter())
 						.title((listPlaces.get(i)).getNomeLuogo())
-						.icon(BitmapDescriptorFactory.fromResource(R.drawable.blue_gem));
+						.icon(BitmapDescriptorFactory
+								.fromResource(R.drawable.blue_gem));
 			}
 			if (((String) ((listPlaces.get(i)).getProprietaFazione()))
 					.equals("Rinnegati")) {
@@ -158,7 +161,8 @@ public class MapActivity extends Activity implements OnMarkerClickListener {
 				options = new MarkerOptions()
 						.position(boundPlace.getCenter())
 						.title((listPlaces.get(i)).getNomeLuogo())
-						.icon(BitmapDescriptorFactory.fromResource(R.drawable.red_gem));
+						.icon(BitmapDescriptorFactory
+								.fromResource(R.drawable.red_gem));
 
 			}
 			if (((String) ((listPlaces.get(i)).getProprietaFazione()))
@@ -167,7 +171,8 @@ public class MapActivity extends Activity implements OnMarkerClickListener {
 				options = new MarkerOptions()
 						.position(boundPlace.getCenter())
 						.title((listPlaces.get(i)).getNomeLuogo())
-						.icon(BitmapDescriptorFactory.fromResource(R.drawable.grey_gem));
+						.icon(BitmapDescriptorFactory
+								.fromResource(R.drawable.grey_gem));
 			}
 			googleMap.addMarker(options);
 		}
@@ -187,7 +192,7 @@ public class MapActivity extends Activity implements OnMarkerClickListener {
 
 		Connector con = new Connector();
 		con.setWinnersMatch(nomeLuogo);
-		
+
 		Connector con2 = new Connector();
 		String[] place = con2.checkPlaceState(nomeLuogo);
 
@@ -199,11 +204,11 @@ public class MapActivity extends Activity implements OnMarkerClickListener {
 		placeDialog.setIdFacebook(idFacebook);
 		placeDialog.setUserClan(myClan);
 		placeDialog.setClan(place[0]);
-			
-		if(place[0].equals(myClan)){
-			placeDialog.setAction("difendere");			
-		}else{	
-			placeDialog.setAction("attaccare");			
+
+		if (place[0].equals(myClan)) {
+			placeDialog.setAction("difendere");
+		} else {
+			placeDialog.setAction("attaccare");
 		}
 		placeDialog.showPlaceDialog();
 		/*

@@ -1,6 +1,5 @@
 package com.example.beyondto;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import android.app.FragmentTransaction;
@@ -43,7 +42,7 @@ public class NewsFragment extends ListFragment {
 			View row = inflater.inflate(R.layout.row, parent, false);
 			Notifica notifica = getItem(position);
 			TextView label = (TextView) row.findViewById(R.id.value);
-			label.setText(notifica.getCategory());
+			label.setText(notifica.getAzione());
 
 			TextView edificio = (TextView) row.findViewById(R.id.edificio);
 			edificio.setText(notifica.getEdificio());
@@ -76,7 +75,6 @@ public class NewsFragment extends ListFragment {
 		View v = inflater.inflate(R.layout.fragment_news, container, false);
 
 		// ctx=(MedalActivity)getActivity();
-		List<Notifica> listaNotifiche = new ArrayList<Notifica>();
 
 		// int i = 0;
 
@@ -112,8 +110,10 @@ public class NewsFragment extends ListFragment {
 
 		// }
 
+		Connector con = new Connector();
+
 		MyListAdapter myListAdapter = new MyListAdapter(getActivity(),
-				R.layout.row, listaNotifiche);
+				R.layout.row, con.getAllNotifications());
 		setListAdapter(myListAdapter);
 
 		return v;

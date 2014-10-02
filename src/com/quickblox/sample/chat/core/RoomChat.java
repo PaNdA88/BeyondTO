@@ -6,12 +6,17 @@ import android.widget.Toast;
 import com.example.beyondto.App;
 import com.example.beyondto.Connector;
 import com.example.beyondto.Infoton;
+import com.quickblox.core.QBCallback;
+import com.quickblox.core.QBCallbackImpl;
+import com.quickblox.core.result.Result;
 import com.quickblox.module.chat.QBChatRoom;
 import com.quickblox.module.chat.QBChatService;
 import com.quickblox.module.chat.listeners.ChatMessageListener;
 import com.quickblox.module.chat.listeners.RoomListener;
 import com.quickblox.module.chat.utils.QBChatUtils;
+import com.quickblox.module.users.QBUsers;
 import com.quickblox.module.users.model.QBUser;
+import com.quickblox.module.users.result.QBUserResult;
 import com.quickblox.sample.chat.model.ChatMessage;
 import com.quickblox.sample.chat.ui.activities.ChatActivity;
 
@@ -30,7 +35,7 @@ public class RoomChat implements Chat, RoomListener, ChatMessageListener {
     private static final String TAG = RoomChat.class.getSimpleName();
     private ChatActivity chatActivity;
     private QBChatRoom chatRoom;
-    private String login, nome;
+    private String login, nome, nomeUtente;
     private String[] infoUser;
     private Map<String, String> nomiUtenti = new HashMap<String, String>();
 
@@ -108,12 +113,25 @@ public class RoomChat implements Chat, RoomListener, ChatMessageListener {
        // nomiUtenti.put("1584885", "DarioCarbone");
         
         String sender = QBChatUtils.parseRoomOccupant(message.getFrom());
+        
+        QBUsers.getUser(Integer.parseInt(sender), new QBCallbackImpl() {
+            @Override
+            public void onComplete(Result result) {
+                if (result.isSuccess()) {
+                    QBUserResult qbUserResult = (QBUserResult) result;
+                    //qbUserResult.getUser().getId();
+                    nomeUtente= qbUserResult.getUser().getLogin();
+                }
+            } 
+        });
+        
        // String nome= QBChatUtils.getChatLoginFull(Integer.parseInt(sender));
         QBUser qbUser = ((App) (chatActivity.getApplication())).getQbUser();
         if (sender.equals(qbUser.getFullName()) || sender.equals(qbUser.getId().toString())) {
-            chatActivity.showMessage(new ChatMessage(message.getBody(), login, time, false));
+            chatActivity.showMessage(new ChatMessage(message.getBody(), time, false));
         } else {
-            chatActivity.showMessage(new ChatMessage(message.getBody(), sender, time, true));
+        	
+            chatActivity.showMessage(new ChatMessage(message.getBody(), time, true));
         }
     }
     

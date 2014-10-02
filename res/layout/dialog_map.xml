@@ -1,131 +1,120 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:background="@drawable/dialog_shape"
-    android:padding="10dp"
-    >
-    
-     <TextView
+    android:padding="10dp" >
+
+    <TextView
         android:id="@+id/titleDialog"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         android:layout_alignParentTop="true"
-        android:textColor="@color/theme_yellow"
-        android:textSize="25sp"
-        android:includeFontPadding="false"
-        
-         />
-     
-<View
-                android:id="@+id/divider"
-                android:layout_width="290dp"
-                android:layout_height="1dp"
-                android:layout_below="@id/titleDialog"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="5dp"
-                android:background="@drawable/gradient_inverse" />
-
-<TextView
-         android:id="@+id/textAction"
-         android:layout_marginTop="10dp"
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:layout_below="@id/divider"
-         android:layout_centerHorizontal="true"
-         android:text="@string/action" />
-
-     <ImageView
-         android:id="@+id/imageDialog"
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:layout_centerHorizontal="true"
-         android:layout_below="@id/textAction"
-         android:layout_marginTop="10dp"
-         android:background="@drawable/image_border" />
-
-     
-     
-      <!-- Stringa per segnlalare la proprietà dell'azione -->
-     
-     <!-- Stringa per la scelta dell'azione --> 
-
-     <TextView
-         android:id="@+id/textProp"
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:layout_centerHorizontal="true"
-         android:layout_below="@id/imageDialog"
-         android:layout_marginTop="10dp"
-         android:text="@string/proprierty" />
-
-     <TextView
-         android:id="@+id/textStatePlace"
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-          android:layout_centerHorizontal="true"
-         android:layout_below="@id/textProp"
-         android:layout_marginTop="10dp"
-         android:text="@string/statePlace" />
-     
-     <TextView
-         android:id="@+id/textFirstAtt"
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-         android:layout_below="@id/textStatePlace"
-         android:layout_marginTop="10dp"
-         android:text="Orario primo attacco:" />
+        android:includeFontPadding="false"
+        android:textColor="@color/theme_yellow"
+        android:textSize="25sp" />
 
-     <TextView
-         android:id="@+id/textNumberAtt"
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:layout_centerHorizontal="true"
-         android:layout_below="@id/textFirstAtt"
-         android:layout_marginTop="10dp"
-         android:text="@string/numberAtt" />
-     
-     <TextView
-         android:id="@+id/textNumberDif"
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:layout_centerHorizontal="true"
-         android:layout_below="@id/textNumberAtt"
-         android:layout_marginTop="10dp"
-         android:text="@string/numberDif" />
- 
-  <RelativeLayout
-      android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_below="@id/textNumberDif"
-    android:layout_marginTop="13dp"
-    android:layout_marginBottom="13dp"
-    android:layout_centerInParent="true"
-      >  
+    <View
+        android:id="@+id/divider"
+        android:layout_width="290dp"
+        android:layout_height="1dp"
+        android:layout_below="@id/titleDialog"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/gradient_inverse" />
 
-      <Button 
-          android:id="@+id/yesButton"
-          android:layout_width="96dp"
-    android:layout_height="32dp"
-    android:text="SI"
-    android:background="@drawable/selector_yes"
-    android:layout_marginRight="15dp"
-    
-          
-          />
-      
-      <Button
-          android:id="@+id/noButton" 
-       android:layout_width="96dp"
-    android:layout_height="32dp"
-    android:text="NO"  
-    android:background="@drawable/selector_no" 
-     android:layout_toRightOf="@id/yesButton"     
-          />
-      
-</RelativeLayout>
- 
+    <TextView
+        android:id="@+id/textAction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/divider"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text="@string/action" />
+
+    <ImageView
+        android:id="@+id/imageDialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textAction"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/image_border" />
+
+    <!-- Stringa per segnlalare la proprietà dell'azione -->
+
+
+    <!-- Stringa per la scelta dell'azione -->
+
+    <TextView
+        android:id="@+id/textProp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imageDialog"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text="@string/proprierty" />
+
+    <TextView
+        android:id="@+id/textStatePlace"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textProp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text="@string/statePlace" />
+
+    <TextView
+        android:id="@+id/textFirstAtt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textStatePlace"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text="@string/textFirstAtt" />
+
+    <TextView
+        android:id="@+id/textNumberAtt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textFirstAtt"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text="@string/numberAtt" />
+
+    <TextView
+        android:id="@+id/textNumberDif"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textNumberAtt"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text="@string/numberDif" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textNumberDif"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="13dp"
+        android:layout_marginTop="13dp" >
+
+        <Button
+            android:id="@+id/yesButton"
+            android:layout_width="96dp"
+            android:layout_height="32dp"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/selector_yes"
+            android:text="SI" />
+
+        <Button
+            android:id="@+id/noButton"
+            android:layout_width="96dp"
+            android:layout_height="32dp"
+            android:layout_toRightOf="@id/yesButton"
+            android:background="@drawable/selector_no"
+            android:text="NO" />
+    </RelativeLayout>
+
 </RelativeLayout>

@@ -15,6 +15,8 @@ import android.widget.TextView;
 
 
 import com.example.beyondto.App;
+import com.example.beyondto.Connector;
+import com.example.beyondto.Infoton;
 //import com.quickblox.sample.chat.R;
 import com.example.beyondto.R;
 import com.quickblox.sample.chat.core.Chat;
@@ -38,7 +40,8 @@ public class ChatActivity extends Activity {
     private Chat chat;
     private ChatAdapter adapter;
     private ListView messagesContainer;
-
+    Connector con = new Connector();
+    String[] infoUser = con.getUserInfo(Infoton.getInstance().getUserId());
     
     public static void start(Context context, Bundle bundle) {
         Intent intent = new Intent(context, ChatActivity.class);
@@ -81,13 +84,11 @@ public class ChatActivity extends Activity {
                 container.removeView(meLabel);
                 container.removeView(companionLabel);
                 
-   
-        
-
         sendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String lastMsg = messageEditText.getText().toString();
+            	String nome = infoUser[1];
+                String lastMsg = nome + ": " + messageEditText.getText().toString();
                 if (TextUtils.isEmpty(lastMsg)) {
                     return;
                 }
