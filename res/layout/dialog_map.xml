@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/relLayoutLuogo"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:background="@drawable/dialog_shape"
@@ -24,97 +25,98 @@
         android:layout_marginTop="5dp"
         android:background="@drawable/gradient_inverse" />
 
-    <TextView
-        android:id="@+id/textAction"
+    <ImageView
+        android:id="@+id/imageDialog"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/divider"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
-        android:text="@string/action" />
-
-    <ImageView
-        android:id="@+id/imageDialog"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/textAction"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
         android:background="@drawable/image_border" />
 
-    <!-- Stringa per segnlalare la proprietà dell'azione -->
-
-
-    <!-- Stringa per la scelta dell'azione -->
-
-    <TextView
+    <RelativeLayout
         android:id="@+id/textProp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/imageDialog"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:text="@string/proprierty" />
+        android:layout_marginTop="10dp" />
 
-    <TextView
-        android:id="@+id/textStatePlace"
+    <RelativeLayout
+        android:id="@+id/textState"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/textProp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:text="@string/statePlace" />
+        android:layout_marginTop="10dp" />
 
-    <TextView
-        android:id="@+id/textFirstAtt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/textStatePlace"
+    <View
+        android:id="@+id/divisore"
+        android:layout_width="200dp"
+        android:layout_height="1dp"
+        android:layout_below="@+id/textState"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
-        android:text="@string/textFirstAtt" />
-
-    <TextView
-        android:id="@+id/textNumberAtt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/textFirstAtt"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:text="@string/numberAtt" />
-
-    <TextView
-        android:id="@+id/textNumberDif"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/textNumberAtt"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:text="@string/numberDif" />
+        android:background="@drawable/gradient" />
 
     <RelativeLayout
+        android:id="@+id/textFirst"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/textNumberDif"
-        android:layout_centerInParent="true"
-        android:layout_marginBottom="13dp"
-        android:layout_marginTop="13dp" >
+        android:layout_below="@id/divisore"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp" />
 
-        <Button
-            android:id="@+id/yesButton"
-            android:layout_width="96dp"
-            android:layout_height="32dp"
-            android:layout_marginRight="15dp"
-            android:background="@drawable/selector_yes"
-            android:text="SI" />
+    <RelativeLayout
+        android:id="@+id/textAtt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textFirst"
+        android:layout_centerHorizontal="true" />
 
-        <Button
-            android:id="@+id/noButton"
-            android:layout_width="96dp"
-            android:layout_height="32dp"
-            android:layout_toRightOf="@id/yesButton"
-            android:background="@drawable/selector_no"
-            android:text="NO" />
+    <RelativeLayout
+        android:id="@+id/textDif"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textAtt"
+        android:layout_centerHorizontal="true" />
+
+    <RelativeLayout
+        android:id="@+id/textAct"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textDif"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp" />
+
+    <RelativeLayout
+        android:id="@+id/textButt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textAct"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp" >
+
+        <RelativeLayout
+            android:id="@+id/textButtyes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp" />
+
+        <RelativeLayout
+            android:id="@+id/textButtno"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/textButtyes" />
     </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/textEsci"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/divisore"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp" />
 
 </RelativeLayout>
