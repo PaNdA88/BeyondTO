@@ -2,48 +2,66 @@ package com.example.beyondto;
 
 public class Notifica {
 
-	private String categoria, edificio, image, azione, tempo, fazione;
-
-	/*
-	 * public Notifica(String categoria, String edificio, String image) { //
-	 * super(); this.categoria = categoria; this.edificio = edificio; this.image
-	 * = image; }
-	 */
-
-	public String getFazione() {
-		return fazione;
-	}
-
-	public void setFazione(String fazione) {
-		this.fazione = fazione;
-	}
+	private String categoria, userName, edificio, image, text, orario,
+			userClan, edificioClan;
 
 	public Notifica() {
 	}
 
-	public String getAzione() {
-		return azione;
+	public String getEdificioClan() {
+		return edificioClan;
 	}
 
-	public void setAzione(String azione) {
-		this.azione = azione;
+	public void setEdificioClan(String edificioClan) {
+		this.edificioClan = edificioClan;
 	}
 
-	public String getTempo() {
-		return tempo;
+	public String getUserClan() {
+		return userClan;
 	}
 
-	public void setTempo(String tempo) {
-		this.tempo = tempo;
+	public void setUserClan(String userClan) {
+		this.userClan = userClan;
+	}
+
+	public String getOrario() {
+		return orario;
+	}
+
+	public void setOrario(String orario) {
+		this.orario = orario;
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public String getText() {
+		return text;
+	}
+
+	public void setText(String text) {
+		this.text = text;
+	}
+
+	public void setCategory(String categoria) {
+		this.categoria = categoria;
 	}
 
 	public String getCategory() {
-		// sarebbe l'attacco
 		return categoria;
 	}
 
-	public void setName(String Text) {
-		categoria = Text;
+	public void setImage(String image) {
+		this.image = image;
+	}
+
+	public String getImage() {
+		return image;
 	}
 
 	public String getEdificio() {
@@ -54,11 +72,4 @@ public class Notifica {
 		this.edificio = edificio;
 	}
 
-	public String getImage() {
-		return image;
-	}
-
-	public void setImage(String image) {
-		this.image = image;
-	}
 }

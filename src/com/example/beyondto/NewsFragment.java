@@ -1,5 +1,6 @@
 package com.example.beyondto;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import android.app.FragmentTransaction;
@@ -18,9 +19,14 @@ import android.widget.TextView;
 
 public class NewsFragment extends ListFragment {
 
-	// Context ctx;
+	Context ctx;
 	ListView lista;
-	String azione = null;
+
+	Connector con = new Connector();
+	ArrayList<Notifica> listaNotifiche = con.getAllNotifications();
+
+	Connector con2 = new Connector();
+	String[] user = con2.getUserInfo(Infoton.getInstance().getUserId());
 
 	public class MyListAdapter extends ArrayAdapter<Notifica> {
 
@@ -41,29 +47,52 @@ public class NewsFragment extends ListFragment {
 
 			View row = inflater.inflate(R.layout.row, parent, false);
 			Notifica notifica = getItem(position);
+
+			String text;
+
+			// caso attacco
+			if (notifica.getCategory().equals("attaccare")) {
+				if (notifica.getUserClan().equals(user[2])) {
+					text = "Attacco della tua squadra!";
+				} else {
+					text = "Attacco della squadra avversaria!";
+				}
+			} else {// caso difesa
+				if (notifica.getUserClan().equals(user[2])) {
+					text = "Difesa della tua squadra!";
+				} else {
+					text = "Difesa della squadra avversaria!";
+				}
+			}
+
+			/*
+			 * if (notifica.getCategory().equals("attaccare")) {
+			 * 
+			 * if (user[1].equals(notifica.getUserName())) { userName = "Tu"; }
+			 * else { userName = notifica.getUserName(); }
+			 * 
+			 * text = userName + ": attacco effettuato il giorno " +
+			 * notifica.getOrario() + "!"; } else { text = userName +
+			 * ": difesa conclusa il giorno " + notifica.getOrario() + "!"; }
+			 */
 			TextView label = (TextView) row.findViewById(R.id.value);
-			label.setText(notifica.getAzione());
+			label.setText(text);
 
 			TextView edificio = (TextView) row.findViewById(R.id.edificio);
-			edificio.setText(notifica.getEdificio());
+			edificio.setText("del giorno: " + notifica.getOrario());
 
 			ImageView icon = (ImageView) row.findViewById(R.id.icon);
 
 			String uri = "drawable/" + notifica.getImage();
-
-			if (uri == "drawable/sword") {
-				azione = "attacco";
-			} else {
-				azione = "difesa";
-			}
-
 			int imageResource = myContext.getResources().getIdentifier(uri,
 					null, myContext.getPackageName());
 			Drawable image = myContext.getResources()
 					.getDrawable(imageResource);
 			icon.setImageDrawable(image);
+
 			return row;
 		}
+
 	}
 
 	boolean mDualPane;
@@ -74,46 +103,8 @@ public class NewsFragment extends ListFragment {
 			Bundle savedInstanceState) {
 		View v = inflater.inflate(R.layout.fragment_news, container, false);
 
-		// ctx=(MedalActivity)getActivity();
-
-		// int i = 0;
-
-		// for(i=0; i<10; i++){
-
-		// if (azione == "attacco"){
-
-		/*
-		 * listaNotifiche.add(new
-		 * Notifica("Il tuo attacco è andato a buon fine",
-		 * "Palazzo Trucchi di Levaldigi", "sword")); listaNotifiche.add(new
-		 * Notifica("Hai iniziato un attacco", "Palazzo Trucchi di Levaldigi",
-		 * "sword")); listaNotifiche.add(new Notifica(
-		 * "Il tuo clan ha conquistato l'edificio", "Palazzo Madama", "sword"));
-		 * listaNotifiche.add(new
-		 * Notifica("Il tuo clan ha attaccato un edificio", "Palazzo Madama",
-		 * "sword"));
-		 */
-		// }
-
-		// else {
-
-		/*
-		 * listaNotifiche.add(new
-		 * Notifica("Hai protetto l'edificio dall'attacco",
-		 * "Fontana del Frejus", "scudo")); listaNotifiche.add(new
-		 * Notifica("Un tuo edificio è stato attaccato!", "Fontana del Frejus",
-		 * "scudo")); listaNotifiche.add(new Notifica(
-		 * "I nemici si aggirano nel tuo territorio!", "Fontana del Frejus",
-		 * "scudo"));
-		 */
-		// }
-
-		// }
-
-		Connector con = new Connector();
-
 		MyListAdapter myListAdapter = new MyListAdapter(getActivity(),
-				R.layout.row, con.getAllNotifications());
+				R.layout.row, listaNotifiche);
 		setListAdapter(myListAdapter);
 
 		return v;
@@ -177,6 +168,7 @@ public class NewsFragment extends ListFragment {
 				// with this one inside the frame.
 				FragmentTransaction ft = getFragmentManager()
 						.beginTransaction();
+
 				// if (index == 0) {
 				ft.replace(R.id.details, details);
 				// } else {
@@ -192,7 +184,22 @@ public class NewsFragment extends ListFragment {
 			Intent intent = new Intent();
 			intent.setClass(getActivity(), NewsSelectedActivity.class);
 			intent.putExtra("index", index);
-			intent.putExtra("azione", azione);
+
+			// listaNotifiche
+			/*
+			 * intent.putExtra("username",
+			 * listaNotifiche.get(index).getUserName());
+			 * intent.putExtra("userClan",
+			 * listaNotifiche.get(index).getUserClan());
+			 * intent.putExtra("namePlace", listaNotifiche.get(index)
+			 * .getEdificio()); intent.putExtra("azione",
+			 * listaNotifiche.get(index).getCategory());
+			 * intent.putExtra("edificioClan", listaNotifiche.get(index)
+			 * .getEdificioClan()); intent.putExtra("orario",
+			 * listaNotifiche.get(index).getOrario()); intent.putExtra("user",
+			 * user[1]);
+			 */
+
 			startActivity(intent);
 		}
 

@@ -1,14 +1,11 @@
 package com.example.beyondto;
 
 import android.app.Fragment;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.text.Html;
-import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ScrollView;
 import android.widget.TextView;
 
 public class NewsSelectedFragment extends Fragment {
@@ -43,14 +40,15 @@ public class NewsSelectedFragment extends Fragment {
 			// the view hierarchy; it would just never be used.
 			return null;
 		}
-		
+
 		View rootView = inflater.inflate(R.layout.fragment_newsselected,
 				container, false);
-		
-		//------------------- dynamic strings ----------------------//
-  		String testo = "Qui compare la notifica relativa all'ATTACCO o alla DIFESA di questo edificio";
-  		TextView textNot = (TextView) rootView.findViewById(R.id.testoNotifica);
-  		textNot.setText(Html.fromHtml((String)  testo)); 
+
+		// ------------------- dynamic strings ----------------------//
+		String testo = "Qui compare la notifica relativa all'ATTACCO o alla DIFESA di questo edificio";
+
+		TextView textNot = (TextView) rootView.findViewById(R.id.testoNotifica);
+		textNot.setText(Html.fromHtml((String) testo));
 
 		/*
 		 * ScrollView scroller = new ScrollView(getActivity()); TextView text =
