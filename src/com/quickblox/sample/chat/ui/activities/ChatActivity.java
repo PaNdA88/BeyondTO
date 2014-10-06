@@ -21,7 +21,6 @@ import com.example.beyondto.Infoton;
 import com.example.beyondto.R;
 import com.quickblox.sample.chat.core.Chat;
 import com.quickblox.sample.chat.core.RoomChat;
-import com.quickblox.sample.chat.core.SingleChat;
 import com.quickblox.sample.chat.model.ChatMessage;
 import com.quickblox.sample.chat.ui.adapters.ChatAdapter;
 
@@ -108,7 +107,6 @@ public class ChatActivity extends Activity {
     }
 
     public void showMessage(ChatMessage message) {
-        saveMessageToHistory(message);
         adapter.add(message);
         adapter.notifyDataSetChanged();
         scrollDown();
@@ -120,11 +118,6 @@ public class ChatActivity extends Activity {
         scrollDown();
     }
 
-    private void saveMessageToHistory(ChatMessage message) {
-        if (mode == Mode.SINGLE) {
-            ((App)getApplication()).addMessage(getIntent().getIntExtra(SingleChat.EXTRA_USER_ID, 0), message);
-        }
-    }
 
     private void restoreMessagesFromHistory(int userId) {
         List<ChatMessage> messages = ((App)getApplication()).getMessages(userId);
