@@ -18,6 +18,7 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 
 import com.example.beyondto.giocoMappa.GameMap;
@@ -249,6 +250,12 @@ public class PlaceDialog {
 			yesButton.setBackgroundResource(buttonyesNormalResId);
 			noButton.setBackgroundResource(buttonnoNormalResId);
 
+			//RelativeLayout.LayoutParams params =(LayoutParams) yesButton.getLayoutParams();
+			//params.width = 96;//change the width size
+			//params.height= 32;//change the hight size
+			//yesButton.setLayoutParams(params);
+			//noButton.setLayoutParams(params);
+			
 			textButtyes.addView(yesButton);
 			textButtno.addView(noButton);
 
