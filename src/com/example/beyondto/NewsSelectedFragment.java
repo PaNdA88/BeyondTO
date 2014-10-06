@@ -3,6 +3,7 @@ package com.example.beyondto;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.text.Html;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,15 +11,30 @@ import android.widget.TextView;
 
 public class NewsSelectedFragment extends Fragment {
 
-	// frammento della news selezionata, che compare sulla destra dello schermo
-	// se il dispositivo è abbastanza grosso oppure in modalità landscape
+	/*
+	 * private String username, userClan; private String namePlace; private
+	 * String azione; private String edificioClan; private String orario;
+	 * private String user; private String prova;
+	 */
 
-	public static NewsSelectedFragment newInstance(int index) {
+	String username;
+	static Bundle args = new Bundle();
+
+	public static NewsSelectedFragment newInstance(int index, String username,
+			String userClan, String namePlace, String azione,
+			String edificioClan, String orario, String user) {
 
 		NewsSelectedFragment f = new NewsSelectedFragment();
 		// Supply index input as an argument.
-		Bundle args = new Bundle();
 		args.putInt("index", index);
+		args.putString("username", username);
+		args.putString("userClan", userClan);
+		args.putString("namePlace", namePlace);
+		args.putString("azione", azione);
+		args.putString("edificioClan", edificioClan);
+		args.putString("orario", orario);
+		args.putString("user", user);
+
 		f.setArguments(args);
 		return f;
 	}
@@ -45,7 +61,32 @@ public class NewsSelectedFragment extends Fragment {
 				container, false);
 
 		// ------------------- dynamic strings ----------------------//
-		String testo = "Qui compare la notifica relativa all'ATTACCO o alla DIFESA di questo edificio";
+
+		/*
+		 * if (azione.equals("attaccare")) {
+		 * 
+		 * if (user.equals(notifica.getUserName())) { userName = "Tu"; } else {
+		 * userName = notifica.getUserName(); }
+		 * 
+		 * text = userName + ": attacco effettuato il giorno " +
+		 * notifica.getOrario() + "!"; } else { text = userName +
+		 * ": difesa conclusa il giorno " + notifica.getOrario() + "!"; }
+		 */
+
+		// caso attacco
+		/*
+		 * String testo = ""; if (args.getString(azione).equals("attaccare")) {
+		 * if (args.getString(user).equals(args.getString(username))) { String
+		 * username = "Tu"; args.putString("usernane", "Tu"); }
+		 * 
+		 * testo = args.getString(username) + ": attacco effettuato il giorno "
+		 * + args.getString(orario) + "!"; } else { // caso difesa testo =
+		 * username + testo = ": difesa conclusa il giorno " +
+		 * args.getString(orario) + "!"; }
+		 */
+
+		Log.e("USER", args.getString("username"));
+		String testo = "boh";
 
 		TextView textNot = (TextView) rootView.findViewById(R.id.testoNotifica);
 		textNot.setText(Html.fromHtml((String) testo));
@@ -62,5 +103,4 @@ public class NewsSelectedFragment extends Fragment {
 		return rootView;
 
 	}
-
 }
