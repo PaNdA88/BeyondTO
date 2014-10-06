@@ -19,7 +19,8 @@ public class GameMap_domanda2 extends Activity {
 
 	ProgressBar progressBar;
 	private double score;
-	private String idUser, namePlace, action, userClan;
+	private String idUser, namePlace, action, userClan, risp1data, risp1corretta;
+	private String risp2data, risp2corretta;
 	private int idPlace, idMatch, time, myProgress, risp1, risp2, risp3;
 	private String[] question2;
 
@@ -82,6 +83,8 @@ public class GameMap_domanda2 extends Activity {
 		userClan = i.getStringExtra("clanUtente");
 		idPlace = i.getIntExtra("idLuogo", idPlace);
 		idMatch = i.getIntExtra("idScontro", idMatch);
+		risp1data = i.getStringExtra("risp1data");
+		risp1corretta = i.getStringExtra("risp1corretta");
 
 		Connector con = new Connector();
 		question2 = con.getQuestion(idPlace);
@@ -110,8 +113,16 @@ public class GameMap_domanda2 extends Activity {
 
 					if (risp2A.getText().equals(question2[1])) {
 						score = score + (100 - myProgress);
+						risp2data = (String) risp2A.getText();
+						risp2corretta = (String) risp2A.getText();
+						Log.e("risp1data", risp1data);
+						Log.e("risp1corretta", risp1corretta);
+						Log.e("risp2data", risp2data);
+						Log.e("risp2corretta", risp2corretta);
 					} else {
 						score = score;
+						risp2data = (String) risp2A.getText();
+						risp2corretta = question2[1];
 					}
 					Intent intentGame3a = new Intent(getApplicationContext(),
 							GameMap_domanda3.class);
@@ -122,6 +133,10 @@ public class GameMap_domanda2 extends Activity {
 					intentGame3a.putExtra("clanUtente", userClan);
 					intentGame3a.putExtra("idLuogo", idPlace);
 					intentGame3a.putExtra("idScontro", idMatch);
+					intentGame3a.putExtra("risp1data", risp1data);
+					intentGame3a.putExtra("risp1corretta", risp1corretta);
+					intentGame3a.putExtra("risp2data", risp2data);
+					intentGame3a.putExtra("risp2corretta", risp2corretta);
 					task.cancel(true);
 					startActivity(intentGame3a);
 					finish();
@@ -134,8 +149,20 @@ public class GameMap_domanda2 extends Activity {
 
 					if (risp2B.getText().equals(question2[1])) {
 						score = score + (100 - myProgress);
+						risp2data = (String) risp2B.getText();
+						risp2corretta = (String) risp2B.getText();
+						Log.e("risp1data", risp1data);
+						Log.e("risp1corretta", risp1corretta);
+						Log.e("risp2data", risp2data);
+						Log.e("risp2corretta", risp2corretta);
 					} else {
 						score = 0;
+						risp2data = (String) risp2B.getText();
+						risp2corretta = question2[1];
+						Log.e("risp1data", risp1data);
+						Log.e("risp1corretta", risp1corretta);
+						Log.e("risp2data", risp2data);
+						Log.e("risp2corretta", risp2corretta);
 					}
 					Intent intentGame3b = new Intent(getApplicationContext(),
 							GameMap_domanda3.class);
@@ -147,6 +174,10 @@ public class GameMap_domanda2 extends Activity {
 					intentGame3b.putExtra("clanUtente", userClan);
 					intentGame3b.putExtra("idLuogo", idPlace);
 					intentGame3b.putExtra("idScontro", idMatch);
+					intentGame3b.putExtra("risp1data", risp1data);
+					intentGame3b.putExtra("risp1corretta", risp1corretta);
+					intentGame3b.putExtra("risp2data", risp2data);
+					intentGame3b.putExtra("risp2corretta", risp2corretta);
 					task.cancel(true);
 					startActivity(intentGame3b);
 					finish();
@@ -159,8 +190,20 @@ public class GameMap_domanda2 extends Activity {
 
 					if (risp2C.getText().equals(question2[1])) {
 						score = score + (100 - myProgress);
+						risp2data = (String) risp2C.getText();
+						risp2corretta = (String) risp2C.getText();
+						Log.e("risp1data", risp1data);
+						Log.e("risp1corretta", risp1corretta);
+						Log.e("risp2data", risp2data);
+						Log.e("risp2corretta", risp2corretta);
 					} else {
 						score = score;
+						risp2data = (String) risp2C.getText();
+						risp2corretta = question2[1];
+						Log.e("risp1data", risp1data);
+						Log.e("risp1corretta", risp1corretta);
+						Log.e("risp2data", risp2data);
+						Log.e("risp2corretta", risp2corretta);
 					}
 					Intent intentGame3c = new Intent(getApplicationContext(),
 							GameMap_domanda3.class);
@@ -172,6 +215,10 @@ public class GameMap_domanda2 extends Activity {
 					intentGame3c.putExtra("clanUtente", userClan);
 					intentGame3c.putExtra("idLuogo", idPlace);
 					intentGame3c.putExtra("idScontro", idMatch);
+					intentGame3c.putExtra("risp1data", risp1data);
+					intentGame3c.putExtra("risp1corretta", risp1corretta);
+					intentGame3c.putExtra("risp2data", risp2data);
+					intentGame3c.putExtra("risp2corretta", risp2corretta);
 					task.cancel(true);
 					startActivity(intentGame3c);
 					finish();

@@ -1,6 +1,7 @@
 package com.example.beyondto.giocoMappa;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -24,8 +25,9 @@ import com.example.beyondto.ShareDialogScore;
 public class GameMap_fineGioco extends Activity {
 
 	private double score;
-	private String idUser, namePlace, action, userClan;
+	private String idUser, namePlace, action, userClan, risp1data, risp2data, risp3data, risp1corretta, risp2corretta, risp3corretta;
 	private int idPlace, idMatch;
+	final Context ctx = this;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +44,12 @@ public class GameMap_fineGioco extends Activity {
 		userClan = i.getStringExtra("clanUtente");
 		idPlace = i.getIntExtra("idLuogo", idPlace);
 		idMatch = i.getIntExtra("idScontro", idMatch);
+		risp1data = i.getStringExtra("risp1data");
+		risp1corretta = i.getStringExtra("risp1corretta");
+		risp2data = i.getStringExtra("risp2data");
+		risp2corretta = i.getStringExtra("risp2corretta");
+		risp3data = i.getStringExtra("risp3data");
+		risp3corretta = i.getStringExtra("risp3corretta");
 
 		String punti = Double.toString(score);
 		TextView textPunti = (TextView) findViewById(R.id.punteggioFinale);
@@ -87,7 +95,25 @@ public class GameMap_fineGioco extends Activity {
 				startActivity(i);
 			}
 		});
+		
+		Button rispButton = (Button) findViewById(R.id.rispButton);
 
+		rispButton.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View arg1) {
+
+				RisposteDialog risposteDialog = new RisposteDialog();
+				risposteDialog.setContext(ctx);
+				risposteDialog.setRisp1data(risp1data);
+				risposteDialog.setRisp2data(risp2data);
+				risposteDialog.setRisp3data(risp3data);
+				risposteDialog.setRisp1corretta(risp1corretta);
+				risposteDialog.setRisp2corretta(risp2corretta);
+				risposteDialog.setRisp3corretta(risp3corretta);
+				risposteDialog.showRisposteDialog();
+			}
+		});
+		
 	}
 
 	/**

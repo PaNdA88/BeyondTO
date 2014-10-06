@@ -35,17 +35,14 @@ public class RoomChat implements Chat, RoomListener, ChatMessageListener {
     private static final String TAG = RoomChat.class.getSimpleName();
     private ChatActivity chatActivity;
     private QBChatRoom chatRoom;
-    private String login, nome, nomeUtente;
+    private String login, nome;
     private String[] infoUser;
-    private Map<String, String> nomiUtenti = new HashMap<String, String>();
 
     public RoomChat(ChatActivity chatActivity) {
         this.chatActivity = chatActivity;
 
         String chatRoomName = chatActivity.getIntent().getStringExtra(EXTRA_ROOM_NAME);
         RoomAction action = (RoomAction) chatActivity.getIntent().getSerializableExtra(EXTRA_ROOM_ACTION);
-        String roomAlchimisti = "provaAlchimisti";
-        String roomRinnegati = "provaRinnegati";
         
         Connector con= new Connector();
         infoUser = con.getUserInfo(Infoton.getInstance().getUserId());
@@ -60,15 +57,10 @@ public class RoomChat implements Chat, RoomListener, ChatMessageListener {
             case CREATE:
                 create(chatRoomName);
                 break;
-            case JOIN:
+            case JOIN:            	
+            	join(chatRoomName);
+            	break;
             	
-            	if (infoUser[2].equals("Alchimisti")){
-            		join(roomAlchimisti);
-            		break;
-            	}else{
-            		join(roomRinnegati);
-            		break;
-            	}
         }
     }
 
@@ -115,12 +107,10 @@ public class RoomChat implements Chat, RoomListener, ChatMessageListener {
             time = Calendar.getInstance().getTime();
         }
         // Show message
-        
-       // nomiUtenti.put("1584885", "DarioCarbone");
-        
+                
         String sender = QBChatUtils.parseRoomOccupant(message.getFrom());
         
-        QBUsers.getUser(Integer.parseInt(sender), new QBCallbackImpl() {
+       /* QBUsers.getUser(Integer.parseInt(sender), new QBCallbackImpl() {
             @Override
             public void onComplete(Result result) {
                 if (result.isSuccess()) {
@@ -129,9 +119,8 @@ public class RoomChat implements Chat, RoomListener, ChatMessageListener {
                     nomeUtente= qbUserResult.getUser().getLogin();
                 }
             } 
-        });
+        });*/
         
-       // String nome= QBChatUtils.getChatLoginFull(Integer.parseInt(sender));
         QBUser qbUser = ((App) (chatActivity.getApplication())).getQbUser();
         if (sender.equals(qbUser.getFullName()) || sender.equals(qbUser.getId().toString())) {
             chatActivity.showMessage(new ChatMessage(message.getBody(), time, false));
@@ -141,13 +130,6 @@ public class RoomChat implements Chat, RoomListener, ChatMessageListener {
         }
     }
     
-   /* 
-    public String nomeUtenteDaID(String sender){
-    	QBUser user= QBUser.findById(sender) ;
-    	String utente= user.getLogin();
-    	return utente;
-    }
-    */
     
 
     @Override
