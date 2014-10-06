@@ -29,12 +29,12 @@ public class NewsSelectedActivity extends Activity {
 
 		if (savedInstanceState == null) {
 			// During initial setup, plug in the details fragment.
-			
+
 			NewsSelectedFragment details = new NewsSelectedFragment();
 			details.setArguments(getIntent().getExtras());
 			getFragmentManager().beginTransaction()
 					.add(android.R.id.content, details).commit();
-			
+
 		}
 	}
 

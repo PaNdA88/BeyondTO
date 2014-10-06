@@ -171,12 +171,39 @@ public class Connector extends AsyncTask<JSONObject, Void, JSONObject> {
 
 				JSONObject u = notifications.getJSONObject(i);
 				Notifica n = new Notifica();
-				n.setName(u.getString("userNome"));
-				n.setAzione(u.getString("azione"));
+				n.setUserName(u.getString("userNome"));
 				n.setEdificio(u.getString("nomePlace"));
-				n.setFazione(u.getString("fazione"));
-				n.setTempo(u.getString("orario"));
+				n.setCategory(u.getString("azione"));
+				n.setOrario(u.getString("orario"));
+				n.setUserClan(u.getString("fazione"));
+
+				if (u.getString("azione").equals("attaccare")) {
+					n.setImage("sword");
+				} else {
+					n.setImage("scudo");
+				}
+
+				/*
+				 * String azione = u.getString("azione"); Log.e("AZIONE: ",
+				 * azione); String place = u.getString("nomePlace");
+				 * Log.e("LUOGO: ", place); String img = ""; Notifica n = new
+				 * Notifica(azione, place, img);
+				 * 
+				 * if (azione.equals("attaccare")) { n.setImage("sword");
+				 * Log.e("IMG: ", n.getImage()); } else { n.setImage("scudo");
+				 * Log.e("IMG: ", n.getImage()); }
+				 */
+
+				/*
+				 * n.setName(u.getString("userNome"));
+				 * n.setAzione(u.getString("azione"));
+				 * n.setEdificio(u.getString("nomePlace"));
+				 * n.setFazione(u.getString("fazione"));
+				 * n.setTempo(u.getString("orario"));
+				 * n.setCategory(u.getString("azione"));
+				 */
 				listNot.add(n);
+
 			}
 		} catch (InterruptedException e) {
 			e.printStackTrace();
@@ -189,7 +216,7 @@ public class Connector extends AsyncTask<JSONObject, Void, JSONObject> {
 			listNot = null;
 		}
 
-		return null;
+		return listNot;
 	}
 
 	// --------- METODI MAP ACTIVITY-------------//

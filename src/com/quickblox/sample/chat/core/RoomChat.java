@@ -1,32 +1,25 @@
 package com.quickblox.sample.chat.core;
 
+import java.util.Calendar;
+import java.util.Date;
+
+import org.jivesoftware.smack.XMPPException;
+import org.jivesoftware.smack.packet.Message;
+
 import android.util.Log;
 import android.widget.Toast;
 
 import com.example.beyondto.App;
 import com.example.beyondto.Connector;
 import com.example.beyondto.Infoton;
-import com.quickblox.core.QBCallback;
-import com.quickblox.core.QBCallbackImpl;
-import com.quickblox.core.result.Result;
 import com.quickblox.module.chat.QBChatRoom;
 import com.quickblox.module.chat.QBChatService;
 import com.quickblox.module.chat.listeners.ChatMessageListener;
 import com.quickblox.module.chat.listeners.RoomListener;
 import com.quickblox.module.chat.utils.QBChatUtils;
-import com.quickblox.module.users.QBUsers;
 import com.quickblox.module.users.model.QBUser;
-import com.quickblox.module.users.result.QBUserResult;
 import com.quickblox.sample.chat.model.ChatMessage;
 import com.quickblox.sample.chat.ui.activities.ChatActivity;
-
-import org.jivesoftware.smack.XMPPException;
-import org.jivesoftware.smack.packet.Message;
-
-import java.util.Calendar;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 
 public class RoomChat implements Chat, RoomListener, ChatMessageListener {
 
@@ -156,4 +149,5 @@ public class RoomChat implements Chat, RoomListener, ChatMessageListener {
     }
 
     public static enum RoomAction {CREATE, JOIN}
+
 }

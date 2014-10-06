@@ -11,8 +11,6 @@ public class NewsActivity extends Activity {
 
 	Intent intent = new Intent();
 
-	// ArrayList<Notifica> not = new ArrayList<Notifica>();
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
