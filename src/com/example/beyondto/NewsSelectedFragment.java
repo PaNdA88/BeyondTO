@@ -1,9 +1,9 @@
 package com.example.beyondto;
 
 import android.app.Fragment;
+import android.content.Context;
 import android.os.Bundle;
 import android.text.Html;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +17,8 @@ public class NewsSelectedFragment extends Fragment {
 	 * private String user; private String prova;
 	 */
 
-	String username;
+	String username = "";
+	Context myContext = (NewsActivity) getActivity();
 	static Bundle args = new Bundle();
 
 	public static NewsSelectedFragment newInstance(int index, String username,
@@ -60,37 +61,48 @@ public class NewsSelectedFragment extends Fragment {
 		View rootView = inflater.inflate(R.layout.fragment_newsselected,
 				container, false);
 
+		/*
+		 * ImageView icon = (ImageView) rootView.findViewById(R.id.icon);
+		 * 
+		 * String uri = "drawable/" + args.getString("azione"); int
+		 * imageResource = myContext.getResources().getIdentifier(uri, null,
+		 * myContext.getPackageName()); Drawable image =
+		 * myContext.getResources().getDrawable(imageResource);
+		 * icon.setImageDrawable(image);
+		 */
+
 		// ------------------- dynamic strings ----------------------//
 
-		/*
-		 * if (azione.equals("attaccare")) {
-		 * 
-		 * if (user.equals(notifica.getUserName())) { userName = "Tu"; } else {
-		 * userName = notifica.getUserName(); }
-		 * 
-		 * text = userName + ": attacco effettuato il giorno " +
-		 * notifica.getOrario() + "!"; } else { text = userName +
-		 * ": difesa conclusa il giorno " + notifica.getOrario() + "!"; }
-		 */
+		String azione = "";
 
-		// caso attacco
-		/*
-		 * String testo = ""; if (args.getString(azione).equals("attaccare")) {
-		 * if (args.getString(user).equals(args.getString(username))) { String
-		 * username = "Tu"; args.putString("usernane", "Tu"); }
-		 * 
-		 * testo = args.getString(username) + ": attacco effettuato il giorno "
-		 * + args.getString(orario) + "!"; } else { // caso difesa testo =
-		 * username + testo = ": difesa conclusa il giorno " +
-		 * args.getString(orario) + "!"; }
-		 */
+		String obiettivo = "OBIETTIVO: " + args.getString("namePlace");
 
-		Log.e("USER", args.getString("username"));
-		String testo = "boh";
+		if (args.getString("azione").equals("attaccare")) {
+			if (args.getString("user").equals(args.getString("username"))) {
+				username = "Tu";
+			} else {
+				username = args.getString("username");
+			}
+			azione = "attacco";
+		} else {
+			azione = "difesa";
+		}
 
-		TextView textNot = (TextView) rootView.findViewById(R.id.testoNotifica);
-		textNot.setText(Html.fromHtml((String) testo));
+		String utente = "UTENTE: " + username;
+		String act = "AZIONE: " + azione;
+		String giorno = " GIORNO: " + args.getString("orario");
 
+		TextView ob = (TextView) rootView.findViewById(R.id.obiettivo);
+		ob.setText(Html.fromHtml((String) obiettivo));
+
+		TextView us = (TextView) rootView.findViewById(R.id.utente);
+		us.setText(Html.fromHtml((String) utente));
+
+		TextView az = (TextView) rootView.findViewById(R.id.azione);
+		az.setText(Html.fromHtml((String) act));
+
+		TextView t = (TextView) rootView.findViewById(R.id.giorno);
+		t.setText(Html.fromHtml((String) giorno));
 		/*
 		 * ScrollView scroller = new ScrollView(getActivity()); TextView text =
 		 * new TextView(getActivity()); int padding =

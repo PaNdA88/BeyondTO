@@ -158,6 +158,7 @@ public class NewsFragment extends ListFragment {
 		String azione = listaNotifiche.get(index).getCategory();
 		String edificioClan = listaNotifiche.get(index).getEdificioClan();
 		String orario = listaNotifiche.get(index).getOrario();
+		String USER = user[1];
 
 		if (mDualPane) {
 			// We can display everything in-place with fragments, so update
@@ -167,8 +168,6 @@ public class NewsFragment extends ListFragment {
 			// Check what fragment is currently shown, replace if needed.
 			NewsSelectedFragment details = (NewsSelectedFragment) getFragmentManager()
 					.findFragmentById(R.id.details);
-
-			String USER = user[1];
 
 			if (details == null || details.getShownIndex() != index) {
 				// Make new fragment to show this selection.
