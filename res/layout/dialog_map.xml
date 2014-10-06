@@ -99,22 +99,23 @@
 
         <RelativeLayout
             android:id="@+id/textButtyes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="10dp" />
+            android:layout_width="76dp"
+            android:layout_height="32dp"
+            
+            />
 
         <RelativeLayout
             android:id="@+id/textButtno"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
+            android:layout_width="76dp"
+            android:layout_height="32dp"
+            
             android:layout_toRightOf="@id/textButtyes" />
     </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/textEsci"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="76dp"
+        android:layout_height="32dp"
         android:layout_below="@id/divisore"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp" />
