@@ -54,23 +54,17 @@ public class NewsSelectedActivity extends Activity {
 		String giorno = " GIORNO: " + orario;
 
 		TextView tit = (TextView) findViewById(R.id.notificaTit);
-		tit.setText(Html.fromHtml((String) act));
+		tit.setText(act);
 
 		TextView ob = (TextView) findViewById(R.id.obiettivoAct);
-		ob.setText(Html.fromHtml((String) obiettivo));
+		ob.setText(obiettivo);
 
-		/*
-		 * 
-		 * 
-		 * /* TextView us = (TextView) findViewById(R.id.utenteAct);
-		 * us.setText(Html.fromHtml((String) utente));
-		 * 
-		 * TextView az = (TextView) findViewById(R.id.azioneAct);
-		 * az.setText(Html.fromHtml((String) act));
-		 * 
-		 * TextView t = (TextView) findViewById(R.id.giornoAct);
-		 * t.setText(Html.fromHtml((String) giorno));
-		 */
+		TextView us = (TextView) findViewById(R.id.utenteAct);
+		us.setText(utente);
+		
+		TextView t = (TextView) findViewById(R.id.giornoAct);
+		t.setText(giorno);
+		 
 
 		if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
 			// If the screen is now in landscape mode, we can show the

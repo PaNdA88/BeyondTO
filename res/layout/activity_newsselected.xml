@@ -1,4 +1,4 @@
-<FrameLayout 
+<RelativeLayout 
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" 
     android:layout_height="match_parent"
@@ -14,7 +14,6 @@
         android:gravity="center"
         android:textColor="#ffffff"
         android:textSize="16dp" />
-    
      
      <TextView
         android:id="@+id/obiettivoAct"
@@ -26,7 +25,6 @@
         android:gravity="center"
         android:textColor="#ffffff" />
      
-     <!--  
     <TextView
         android:id="@+id/utenteAct"
         android:layout_width="fill_parent"
@@ -37,24 +35,14 @@
         android:gravity="center"
         android:textColor="#ffffff" />
     
-     <TextView
-        android:id="@+id/azioneAct"
+       <TextView
+        android:id="@+id/giornoAct"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/utenteAct"
         android:layout_marginTop="30dp"
         android:gravity="center"
-        android:textColor="#ffffff" />
-     
-       <TextView
-        android:id="@+id/giornoAct"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/azioneact"
-        android:layout_marginTop="30dp"
-        android:gravity="center"
-        android:textColor="#ffffff" /> -->
+        android:textColor="#ffffff" /> 
     
-</FrameLayout>
+</RelativeLayout>
