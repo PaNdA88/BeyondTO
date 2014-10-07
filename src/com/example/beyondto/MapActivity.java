@@ -201,6 +201,8 @@ public class MapActivity extends Activity implements OnMarkerClickListener {
 		Connector con2 = new Connector();
 		String[] place = con2.checkPlaceState(nomeLuogo);
 
+		Log.e("ORARIO", place[6]);
+
 		PlaceDialog placeDialog = new PlaceDialog();
 		placeDialog.setContext(ctx);
 		placeDialog.setTitle(nomeLuogo);
@@ -209,6 +211,9 @@ public class MapActivity extends Activity implements OnMarkerClickListener {
 		placeDialog.setIdFacebook(idFacebook);
 		placeDialog.setUserClan(myClan);
 		placeDialog.setClan(place[0]);
+		placeDialog.setNumberAtt(place[7]);
+		placeDialog.setNumberDif(place[8]);
+		placeDialog.setOrario(place[6]);
 
 		if (place[0].equals(myClan)) {
 			placeDialog.setAction("difendere");

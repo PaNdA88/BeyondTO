@@ -276,7 +276,7 @@ public class Connector extends AsyncTask<JSONObject, Void, JSONObject> {
 		} catch (ExecutionException e) {
 			e.printStackTrace();
 		}
-		String[] dati = new String[6];
+		String[] dati = new String[9];
 
 		try {
 			dati[0] = result.getString("proprietaFazione");
@@ -285,6 +285,9 @@ public class Connector extends AsyncTask<JSONObject, Void, JSONObject> {
 			dati[3] = result.getString("latNE");
 			dati[4] = result.getString("lngNE");
 			dati[5] = result.getString("statoLuogo");
+			dati[6] = result.getString("orario");
+			dati[7] = result.getString("numeroAttaccanti");
+			dati[8] = result.getString("numeroDifensori");
 
 		} catch (JSONException e) {
 			e.printStackTrace();
