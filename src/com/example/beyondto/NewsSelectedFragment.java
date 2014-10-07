@@ -1,12 +1,17 @@
 package com.example.beyondto;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import android.app.Fragment;
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class NewsSelectedFragment extends Fragment {
@@ -70,7 +75,8 @@ public class NewsSelectedFragment extends Fragment {
 		if (args != null) {
 			String azione = "";
 
-			String obiettivo = "OBIETTIVO: " + args.getString("namePlace");
+			String obiettivo = "Obiettivo: " + args.getString("namePlace");
+			ImageView icona = (ImageView) rootView.findViewById(R.id.icon);
 			System.out.println(args.getString("namePlace"));
 			if (args.getString("azione").equals("attaccare")) {
 				if (args.getString("user").equals(args.getString("username"))) {
@@ -78,26 +84,32 @@ public class NewsSelectedFragment extends Fragment {
 				} else {
 					username = args.getString("username");
 				}
-				azione = "attacco";
+				azione = "ATTACCO!";
+				icona.setImageResource(R.drawable.sword);
 			} else {
-				azione = "difesa";
+				if (args.getString("user").equals(args.getString("username"))) {
+					username = "Tu";
+				} else {
+					username = args.getString("username");
+				}
+				azione = "DIFESA!";
+				icona.setImageResource(R.drawable.scudo);
 			}
-
-			String utente = "UTENTE: " + username;
-			String act = "AZIONE: " + azione;
-			String giorno = " GIORNO: " + args.getString("orario");
+			
+			TextView tit = (TextView) rootView.findViewById(R.id.notifica);
+			tit.setText(azione);
+			
+			String utente = "Utente: " + username;
+			String giorno = " Giorno: " + args.getString("orario");
 
 			TextView ob = (TextView) rootView.findViewById(R.id.obiettivo);
-			ob.setText(Html.fromHtml((String) obiettivo));
+			ob.setText(obiettivo);
 
 			TextView us = (TextView) rootView.findViewById(R.id.utente);
-			us.setText(Html.fromHtml((String) utente));
+			us.setText(utente);
 
-			TextView az = (TextView) rootView.findViewById(R.id.azione);
-			az.setText(Html.fromHtml((String) act));
-
-			TextView t = (TextView) rootView.findViewById(R.id.giorno);
-			t.setText(Html.fromHtml((String) giorno));
+			TextView ora = (TextView) rootView.findViewById(R.id.giorno);
+			ora.setText(giorno);
 			/*
 			 * ScrollView scroller = new ScrollView(getActivity()); TextView
 			 * text = new TextView(getActivity()); int padding =

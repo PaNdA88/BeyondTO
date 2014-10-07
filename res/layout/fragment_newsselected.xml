@@ -13,23 +13,16 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="18dp"
         android:gravity="center"
-        android:text="@string/notificaAtt"
         android:textColor="#ffffff"
         android:textSize="16dp" />
     
-   <!--   <ImageView
+    <ImageView
         android:id="@+id/icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/notifica"/>-->
-<!-- 
-    <ImageView
-        android:id="@+id/logoAttacco"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_below="@+id/notifica"
-        android:layout_centerHorizontal="true"
-        android:src="@drawable/sword" /> -->
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:id="@+id/obiettivo"
@@ -37,9 +30,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/icon"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="10dp"
         android:gravity="center"
-        android:text="@string/testoNotifica"
         android:textColor="#ffffff" />
     
     <TextView
@@ -48,17 +40,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/obiettivo"
-        android:layout_marginTop="30dp"
-        android:gravity="center"
-        android:textColor="#ffffff" />
-    
-     <TextView
-        android:id="@+id/azione"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/utente"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="10dp"
         android:gravity="center"
         android:textColor="#ffffff" />
      
@@ -67,10 +49,9 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/azione"
-        android:layout_marginTop="30dp"
+        android:layout_below="@+id/utente"
+        android:layout_marginTop="10dp"
         android:gravity="center"
         android:textColor="#ffffff" />
     
-
 </RelativeLayout>

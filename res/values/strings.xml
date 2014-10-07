@@ -38,11 +38,6 @@
     
     <!-- Stringa Fine gioco -->
     <string name="punteggioFinale">Hai totalizzato %1$s punti</string>
-        
-    <!-- Stringhe Notifiche -->
-    <string name="notificaAtt">ATTACCO!</string>
-    <string name="notificaDif">DIFESA</string>
-    <string name="testoNotifica">%1$s</string>
     
     <!-- Stringhe bottone share Facebook -->
     <string name="share">Condividi su Facebook</string>

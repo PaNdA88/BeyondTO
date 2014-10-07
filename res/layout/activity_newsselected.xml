@@ -6,7 +6,7 @@
  
     <TextView
         android:id="@+id/notificaTit"
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
@@ -14,20 +14,27 @@
         android:gravity="center"
         android:textColor="#ffffff"
         android:textSize="16dp" />
-     
+    
+      <ImageView
+        android:id="@+id/icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/notificaTit"
+        android:layout_centerHorizontal="true" />
+      
      <TextView
         android:id="@+id/obiettivoAct"
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/notificaTit"
+        android:layout_below="@+id/icon"
         android:layout_marginTop="30dp"
         android:gravity="center"
         android:textColor="#ffffff" />
      
     <TextView
         android:id="@+id/utenteAct"
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/obiettivoAct"
@@ -37,7 +44,7 @@
     
        <TextView
         android:id="@+id/giornoAct"
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/utenteAct"
