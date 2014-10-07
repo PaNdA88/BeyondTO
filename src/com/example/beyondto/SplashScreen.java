@@ -13,7 +13,7 @@ import android.os.Handler;
 
 public class SplashScreen extends Activity implements QBCallback {
 
-    private static int SPLASH_TIME_OUT = 1000;
+    private static int SPLASH_TIME_OUT = 3000;
     private static final String APP_ID = "99";
     private static final String AUTH_KEY = "63ebrp5VZt7qTOv";
     private static final String AUTH_SECRET = "YavMAxm5T59-BRw";

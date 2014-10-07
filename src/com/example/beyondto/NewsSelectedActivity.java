@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -62,15 +63,19 @@ public class NewsSelectedActivity extends Activity {
 
 		TextView tit = (TextView) findViewById(R.id.notificaTit);
 		tit.setText(act);
+		tit.setGravity(Gravity.CENTER_HORIZONTAL | Gravity.CENTER_VERTICAL);
 
 		TextView ob = (TextView) findViewById(R.id.obiettivoAct);
 		ob.setText(obiettivo);
+		ob.setGravity(Gravity.CENTER_HORIZONTAL | Gravity.CENTER_VERTICAL);
 
 		TextView us = (TextView) findViewById(R.id.utenteAct);
 		us.setText(utente);
+		us.setGravity(Gravity.CENTER_HORIZONTAL | Gravity.CENTER_VERTICAL);
 
 		TextView t = (TextView) findViewById(R.id.giornoAct);
 		t.setText(giorno);
+		t.setGravity(Gravity.CENTER_HORIZONTAL | Gravity.CENTER_VERTICAL);
 
 		if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
 			// If the screen is now in landscape mode, we can show the

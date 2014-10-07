@@ -33,7 +33,7 @@ public class ChatLoginActivity extends Activity implements QBCallback {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_registration);
+        setContentView(R.layout.activity_main);
 
         login = "";
         Connector con= new Connector();
