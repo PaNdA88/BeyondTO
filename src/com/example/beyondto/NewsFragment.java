@@ -197,6 +197,8 @@ public class NewsFragment extends ListFragment {
 			intent.putExtra("azione", azione);
 			intent.putExtra("orario", orario);
 			intent.putExtra("user", user[1]);
+			System.out.println("sno qui");
+			System.out.println(username);
 
 			startActivity(intent);
 		}

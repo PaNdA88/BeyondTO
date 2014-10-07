@@ -99,7 +99,7 @@ public class LoginFragment extends Fragment {
 					testo1);
 			textTitle.setText(Html.fromHtml((String) tit));
 
-			String testo2 = "Per giocare con BeyondTO è necessario effettuare l'accesso a Facebook";
+			String testo2 = "Per giocare con BeyondTO e' necessario effettuare l'accesso a Facebook";
 			TextView textSubtitle = (TextView) view
 					.findViewById(R.id.sottotitolo);
 			Resources res2 = getActivity().getResources();
@@ -156,7 +156,7 @@ public class LoginFragment extends Fragment {
 								Infoton infoton = Infoton.getInstance();
 								infoton.setUserId(USER_ID);
 								Log.d("INFOTON", infoton.getUserId());
-								
+
 								String USER_NAME = user.getName();
 								Log.d("USER NAME", USER_NAME);
 								String USER_EMAIL = user.asMap().get("email")
@@ -167,7 +167,7 @@ public class LoginFragment extends Fragment {
 										USER_ID, USER_TOKEN, EXPIRATION,
 										USER_EMAIL, USER_NAME);
 								Log.d("RISULTATO:", result);
-								
+
 								if (result.equals("0")) {
 									newUser = true;
 									// goToChoiseClan();

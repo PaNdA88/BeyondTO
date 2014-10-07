@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.example.beyondto.Connector;
 import com.example.beyondto.HomeActivity;
+import com.example.beyondto.Infoton;
 import com.example.beyondto.MapActivity;
 import com.example.beyondto.MedalActivity;
 import com.example.beyondto.NewsFragment;
@@ -25,7 +26,8 @@ import com.example.beyondto.ShareDialogScore;
 public class GameMap_fineGioco extends Activity {
 
 	private double score;
-	private String idUser, namePlace, action, userClan, risp1data, risp2data, risp3data, risp1corretta, risp2corretta, risp3corretta;
+	private String idUser, namePlace, action, userClan, risp1data, risp2data,
+			risp3data, risp1corretta, risp2corretta, risp3corretta;
 	private int idPlace, idMatch;
 	final Context ctx = this;
 
@@ -34,7 +36,7 @@ public class GameMap_fineGioco extends Activity {
 		super.onCreate(savedInstanceState);
 
 		setContentView(R.layout.gioco_map_fine);
-		
+
 		Intent i = getIntent();
 		score = i.getDoubleExtra("score", score);
 		Log.e("PUNTEGGI DOMANDA 3: ", Double.toString(score));
@@ -54,9 +56,10 @@ public class GameMap_fineGioco extends Activity {
 		String punti = Double.toString(score);
 		TextView textPunti = (TextView) findViewById(R.id.punteggioFinale);
 		Resources res1 = getApplicationContext().getResources();
-		String pt = String.format(res1.getString(R.string.punteggioFinale), punti);
+		String pt = String.format(res1.getString(R.string.punteggioFinale),
+				punti);
 		textPunti.setText(Html.fromHtml((String) pt));
-		
+
 		Button bButton = (Button) findViewById(R.id.backButton);
 
 		bButton.setOnClickListener(new OnClickListener() {
@@ -64,8 +67,8 @@ public class GameMap_fineGioco extends Activity {
 			public void onClick(View arg1) {
 
 				Connector con = new Connector();
-				con.setScoreAttDif(score, idUser, namePlace, action, userClan,
-						idPlace, idMatch);
+				con.setScoreAttDif(score, Infoton.getInstance().getUserId(),
+						namePlace, action, userClan, idPlace, idMatch);
 
 				Intent intentMap = new Intent(getApplicationContext(),
 						MapActivity.class);
@@ -85,7 +88,7 @@ public class GameMap_fineGioco extends Activity {
 				Intent i = new Intent(getApplicationContext(),
 						ShareDialogScore.class);
 				i.putExtra("score", score);
-				i.putExtra("idUtente", idUser);
+				i.putExtra("idUtente", Infoton.getInstance().getUserId());
 				i.putExtra("nomeLuogo", namePlace);
 				i.putExtra("azione", action);
 				i.putExtra("clanUtente", userClan);
@@ -95,7 +98,7 @@ public class GameMap_fineGioco extends Activity {
 				startActivity(i);
 			}
 		});
-		
+
 		Button rispButton = (Button) findViewById(R.id.rispButton);
 
 		rispButton.setOnClickListener(new OnClickListener() {
@@ -113,7 +116,7 @@ public class GameMap_fineGioco extends Activity {
 				risposteDialog.showRisposteDialog();
 			}
 		});
-		
+
 	}
 
 	/**

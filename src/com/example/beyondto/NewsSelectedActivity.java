@@ -1,15 +1,9 @@
 package com.example.beyondto;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.text.Html;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -19,7 +13,7 @@ import android.widget.TextView;
 
 public class NewsSelectedActivity extends Activity {
 
-	// attivitˆ che viene lanciata per visualizzare la news selezionata
+	// attivitö che viene lanciata per visualizzare la news selezionata
 	// nei casi in cui lo schermo sia piccolino e non si possa usare il
 	// frammento
 
@@ -68,32 +62,21 @@ public class NewsSelectedActivity extends Activity {
 
 		TextView tit = (TextView) findViewById(R.id.notificaTit);
 		tit.setText(act);
-		
+
 		TextView ob = (TextView) findViewById(R.id.obiettivoAct);
 		ob.setText(obiettivo);
 
 		TextView us = (TextView) findViewById(R.id.utenteAct);
 		us.setText(utente);
-		
+
 		TextView t = (TextView) findViewById(R.id.giornoAct);
 		t.setText(giorno);
-		 
 
 		if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
 			// If the screen is now in landscape mode, we can show the
 			// dialog in-line with the list so we don't need this activity.
 			finish();
 			return;
-		}
-
-		if (savedInstanceState == null) {
-			// During initial setup, plug in the details fragment.
-
-			NewsSelectedFragment details = new NewsSelectedFragment();
-			details.setArguments(getIntent().getExtras());
-			getFragmentManager().beginTransaction()
-					.add(android.R.id.content, details).commit();
-
 		}
 	}
 
