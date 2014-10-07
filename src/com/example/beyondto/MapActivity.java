@@ -39,6 +39,7 @@ public class MapActivity extends Activity implements OnMarkerClickListener {
 	private String myClan, otherClan, idFacebook;
 	public Intent intent = new Intent();
 	private MarkerOptions options = null;
+	private MarkerOptions myLocation = null;
 	final Context ctx = this;
 	private Session session;
 
@@ -108,13 +109,50 @@ public class MapActivity extends Activity implements OnMarkerClickListener {
 					.tileProvider(provider);
 			tiles = googleMap.addTileOverlay(overlay);
 
+			googleMap.getUiSettings().setMyLocationButtonEnabled(false);
 			googleMap.getUiSettings().setRotateGesturesEnabled(false);
 			googleMap.setOnMarkerClickListener(this);
 
 			myPosition = findMyPosition();
 
+			// custom my location icon
+			if (myClan.equals("Alchimisti")) {
+				myLocation = new MarkerOptions()
+						.position(myPosition)
+						.title("La mia posizione")
+						.snippet("Io sono qui!")
+						.icon(BitmapDescriptorFactory
+								.fromResource(R.drawable.alchimisti));
+			} else {
+				myLocation = new MarkerOptions()
+						.position(myPosition)
+						.title("La mia posizione")
+						.snippet("Io sono qui!")
+						.icon(BitmapDescriptorFactory
+								.fromResource(R.drawable.rinnegati));
+			}
+
 			googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(myPosition,
 					15));
+
+			// custom my location icon
+			if (myClan.equals("Alchimisti")) {
+				myLocation = new MarkerOptions()
+						.position(myPosition)
+						.title("La mia posizione")
+						.snippet("Io sono qui!")
+						.icon(BitmapDescriptorFactory
+								.fromResource(R.drawable.myloc_alc));
+			} else {
+				myLocation = new MarkerOptions()
+						.position(myPosition)
+						.title("La mia posizione")
+						.snippet("Io sono qui!")
+						.icon(BitmapDescriptorFactory
+								.fromResource(R.drawable.myloc_rin));
+			}
+
+			googleMap.addMarker(myLocation);
 
 			Connector con = new Connector();
 			listPlaces = con.getLocations();
