@@ -59,25 +59,4 @@
         android:textColor="#ffffff"
         android:textSize="16dp" />
 
-     <View
-         android:id="@+id/divisore2"
-         android:layout_width="200dp"
-         android:layout_height="1dp"
-         android:layout_alignLeft="@+id/divisore1"
-         android:layout_below="@+id/numVittorie"
-         android:layout_marginTop="18dp"
-         android:background="@drawable/gradient" />
-
-     <TextView
-         android:id="@+id/ultimeNotifiche"
-         android:layout_width="fill_parent"
-         android:layout_height="wrap_content"
-         android:layout_alignParentLeft="true"
-         android:layout_below="@+id/divisore2"
-         android:layout_marginTop="15dp"
-         android:gravity="center"
-         android:text="Ultime Notifiche:"
-         android:textColor="#ffffff"
-         android:textSize="16dp" />
-     
 </RelativeLayout>    
