@@ -11,15 +11,9 @@ import android.widget.TextView;
 
 public class NewsSelectedFragment extends Fragment {
 
-	/*
-	 * private String username, userClan; private String namePlace; private
-	 * String azione; private String edificioClan; private String orario;
-	 * private String user; private String prova;
-	 */
-
-	String username = "";
-	Context myContext = (NewsActivity) getActivity();
-	static Bundle args = new Bundle();
+	private String username = "";
+	private Context myContext = (NewsActivity) getActivity();
+	static Bundle args = null;
 
 	public static NewsSelectedFragment newInstance(int index, String username,
 			String userClan, String namePlace, String azione,
@@ -27,6 +21,7 @@ public class NewsSelectedFragment extends Fragment {
 
 		NewsSelectedFragment f = new NewsSelectedFragment();
 		// Supply index input as an argument.
+		args = new Bundle();
 		args.putInt("index", index);
 		args.putString("username", username);
 		args.putString("userClan", userClan);
@@ -72,46 +67,47 @@ public class NewsSelectedFragment extends Fragment {
 		 */
 
 		// ------------------- dynamic strings ----------------------//
+		if (args != null) {
+			String azione = "";
 
-		String azione = "";
-
-		String obiettivo = "OBIETTIVO: " + args.getString("namePlace");
-
-		if (args.getString("azione").equals("attaccare")) {
-			if (args.getString("user").equals(args.getString("username"))) {
-				username = "Tu";
+			String obiettivo = "OBIETTIVO: " + args.getString("namePlace");
+			System.out.println(args.getString("namePlace"));
+			if (args.getString("azione").equals("attaccare")) {
+				if (args.getString("user").equals(args.getString("username"))) {
+					username = "Tu";
+				} else {
+					username = args.getString("username");
+				}
+				azione = "attacco";
 			} else {
-				username = args.getString("username");
+				azione = "difesa";
 			}
-			azione = "attacco";
-		} else {
-			azione = "difesa";
+
+			String utente = "UTENTE: " + username;
+			String act = "AZIONE: " + azione;
+			String giorno = " GIORNO: " + args.getString("orario");
+
+			TextView ob = (TextView) rootView.findViewById(R.id.obiettivo);
+			ob.setText(Html.fromHtml((String) obiettivo));
+
+			TextView us = (TextView) rootView.findViewById(R.id.utente);
+			us.setText(Html.fromHtml((String) utente));
+
+			TextView az = (TextView) rootView.findViewById(R.id.azione);
+			az.setText(Html.fromHtml((String) act));
+
+			TextView t = (TextView) rootView.findViewById(R.id.giorno);
+			t.setText(Html.fromHtml((String) giorno));
+			/*
+			 * ScrollView scroller = new ScrollView(getActivity()); TextView
+			 * text = new TextView(getActivity()); int padding =
+			 * (int)TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 4,
+			 * getActivity().getResources().getDisplayMetrics());
+			 * text.setPadding(padding, padding, padding, padding);
+			 * scroller.addView(text); text.setText("notifica selezionata");
+			 * return scroller;
+			 */
 		}
-
-		String utente = "UTENTE: " + username;
-		String act = "AZIONE: " + azione;
-		String giorno = " GIORNO: " + args.getString("orario");
-
-		TextView ob = (TextView) rootView.findViewById(R.id.obiettivo);
-		ob.setText(Html.fromHtml((String) obiettivo));
-
-		TextView us = (TextView) rootView.findViewById(R.id.utente);
-		us.setText(Html.fromHtml((String) utente));
-
-		TextView az = (TextView) rootView.findViewById(R.id.azione);
-		az.setText(Html.fromHtml((String) act));
-
-		TextView t = (TextView) rootView.findViewById(R.id.giorno);
-		t.setText(Html.fromHtml((String) giorno));
-		/*
-		 * ScrollView scroller = new ScrollView(getActivity()); TextView text =
-		 * new TextView(getActivity()); int padding =
-		 * (int)TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 4,
-		 * getActivity().getResources().getDisplayMetrics());
-		 * text.setPadding(padding, padding, padding, padding);
-		 * scroller.addView(text); text.setText("notifica selezionata"); return
-		 * scroller;
-		 */
 		return rootView;
 
 	}

@@ -4,4 +4,57 @@
     android:layout_height="match_parent"
     >
     
+    <TextView
+        android:id="@+id/notificaAct"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="18dp"
+        android:gravity="center"
+        android:text="@string/notificaAtt"
+        android:textColor="#ffffff"
+        android:textSize="16dp" />
+    
+     <TextView
+        android:id="@+id/obiettivoAct"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/icon"
+        android:layout_marginTop="30dp"
+        android:gravity="center"
+        android:text="@string/testoNotifica"
+        android:textColor="#ffffff" />
+    
+    <TextView
+        android:id="@+id/utenteAct"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/obiettivoAct"
+        android:layout_marginTop="30dp"
+        android:gravity="center"
+        android:textColor="#ffffff" />
+    
+     <TextView
+        android:id="@+id/azioneAct"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/utenteAct"
+        android:layout_marginTop="30dp"
+        android:gravity="center"
+        android:textColor="#ffffff" />
+     
+       <TextView
+        android:id="@+id/giornoAct"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/azioneact"
+        android:layout_marginTop="30dp"
+        android:gravity="center"
+        android:textColor="#ffffff" />
+    
 </FrameLayout>

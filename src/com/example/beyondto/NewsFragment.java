@@ -21,12 +21,15 @@ public class NewsFragment extends ListFragment {
 
 	Context ctx;
 	ListView lista;
+	boolean mDualPane;
 
 	Connector con = new Connector();
 	ArrayList<Notifica> listaNotifiche = con.getAllNotifications();
 
 	Connector con2 = new Connector();
 	String[] user = con2.getUserInfo(Infoton.getInstance().getUserId());
+
+	int mCurCheckPosition = 0;
 
 	public class MyListAdapter extends ArrayAdapter<Notifica> {
 
@@ -65,16 +68,6 @@ public class NewsFragment extends ListFragment {
 				}
 			}
 
-			/*
-			 * if (notifica.getCategory().equals("attaccare")) {
-			 * 
-			 * if (user[1].equals(notifica.getUserName())) { userName = "Tu"; }
-			 * else { userName = notifica.getUserName(); }
-			 * 
-			 * text = userName + ": attacco effettuato il giorno " +
-			 * notifica.getOrario() + "!"; } else { text = userName +
-			 * ": difesa conclusa il giorno " + notifica.getOrario() + "!"; }
-			 */
 			TextView label = (TextView) row.findViewById(R.id.value);
 			label.setText(text);
 
@@ -94,9 +87,6 @@ public class NewsFragment extends ListFragment {
 		}
 
 	}
-
-	boolean mDualPane;
-	int mCurCheckPosition = 0;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -181,11 +171,7 @@ public class NewsFragment extends ListFragment {
 				FragmentTransaction ft = getFragmentManager()
 						.beginTransaction();
 
-				// if (index == 0) {
 				ft.replace(R.id.details, details);
-				// } else {
-				// ft.replace(R.id.a_item, details);
-				// }
 				ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
 				ft.commit();
 			}
@@ -194,23 +180,14 @@ public class NewsFragment extends ListFragment {
 			// Otherwise we need to launch a new activity to display
 			// the dialog fragment with selected text.
 			Intent intent = new Intent();
-			intent.setClass(getActivity(), NewsSelectedActivity.class);
+			intent.setClass((NewsActivity) getActivity(),
+					NewsSelectedActivity.class);
 			intent.putExtra("index", index);
-
-			// listaNotifiche
-			/*
-			 * intent.putExtra("username",
-			 * listaNotifiche.get(index).getUserName());
-			 * intent.putExtra("userClan",
-			 * listaNotifiche.get(index).getUserClan());
-			 * intent.putExtra("namePlace", listaNotifiche.get(index)
-			 * .getEdificio()); intent.putExtra("azione",
-			 * listaNotifiche.get(index).getCategory());
-			 * intent.putExtra("edificioClan", listaNotifiche.get(index)
-			 * .getEdificioClan()); intent.putExtra("orario",
-			 * listaNotifiche.get(index).getOrario()); intent.putExtra("user",
-			 * user[1]);
-			 */
+			intent.putExtra("username", username);
+			intent.putExtra("namePlace", namePlace);
+			intent.putExtra("azione", azione);
+			intent.putExtra("orario", orario);
+			intent.putExtra("user", user[1]);
 
 			startActivity(intent);
 		}
