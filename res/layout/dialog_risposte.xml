@@ -47,10 +47,14 @@
 
     <Button
         android:id="@+id/closeButton"
-        android:layout_width="wrap_content"
+        android:layout_width="96dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/risp3"
         android:background="@drawable/selector_no"
-        android:text="Indietro" />
+        android:layout_centerHorizontal="true"
+        android:text="INDIETRO"
+        android:textColor="#ffffff"
+        android:textSize="15sp"
+         />
 
 </RelativeLayout>
