@@ -172,10 +172,10 @@ public class Connector extends AsyncTask<JSONObject, Void, JSONObject> {
 				JSONObject u = notifications.getJSONObject(i);
 				Notifica n = new Notifica();
 				n.setUserName(u.getString("userNome"));
+				n.setUserClan(u.getString("fazione"));
 				n.setEdificio(u.getString("nomePlace"));
 				n.setCategory(u.getString("azione"));
 				n.setOrario(u.getString("orario"));
-				n.setUserClan(u.getString("fazione"));
 
 				if (u.getString("azione").equals("attaccare")) {
 					n.setImage("sword");

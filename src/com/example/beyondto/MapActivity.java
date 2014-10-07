@@ -9,6 +9,7 @@ import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -57,11 +58,14 @@ public class MapActivity extends Activity implements OnMarkerClickListener {
 	 * Get user info
 	 */
 	public void getUser() {
-		Connector con = new Connector();
-		String info[] = con.getUserInfo(Infoton.getInstance().getUserId());
+		Connector conUser = new Connector();
+		String info[] = conUser.getUserInfo(Infoton.getInstance().getUserId());
 		idFacebook = Infoton.getInstance().getUserId();
+		Log.e("ID FACEBOOK: ", idFacebook);
 		myClan = info[2];
+		Log.e("MY CLAN: ", myClan);
 		otherClan = info[3];
+		Log.e("OTHER CLAN: ", otherClan);
 	}
 
 	/*
@@ -86,6 +90,9 @@ public class MapActivity extends Activity implements OnMarkerClickListener {
 	 * Draw a map in MapActivity
 	 */
 	private void drawMap() {
+
+		getUser();
+
 		if (googleMap == null) {
 
 			googleMap = ((MapFragment) getFragmentManager().findFragmentById(
@@ -94,11 +101,12 @@ public class MapActivity extends Activity implements OnMarkerClickListener {
 			googleMap.setMapType(GoogleMap.MAP_TYPE_NONE);
 
 			// TILE OVERLAY
-			
-			final MapBoxOnlineTileProvider provider = new MapBoxOnlineTileProvider(MAP_ID);
-			final TileOverlayOptions overlay = new TileOverlayOptions().tileProvider(provider);
-			tiles=googleMap.addTileOverlay(overlay);
-			 
+
+			final MapBoxOnlineTileProvider provider = new MapBoxOnlineTileProvider(
+					MAP_ID);
+			final TileOverlayOptions overlay = new TileOverlayOptions()
+					.tileProvider(provider);
+			tiles = googleMap.addTileOverlay(overlay);
 
 			googleMap.getUiSettings().setRotateGesturesEnabled(false);
 			googleMap.setOnMarkerClickListener(this);
