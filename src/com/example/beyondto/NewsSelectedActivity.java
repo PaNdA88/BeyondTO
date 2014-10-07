@@ -44,26 +44,33 @@ public class NewsSelectedActivity extends Activity {
 			} else {
 				nameDisplay = username;
 			}
-			azione = "attacco";
+			azione = "ATTACCO!";
 		} else {
-			azione = "difesa";
+			azione = "DIFESA!";
 		}
 
 		String utente = "UTENTE: " + nameDisplay;
-		String act = "AZIONE: " + azione;
+		String act = azione;
 		String giorno = " GIORNO: " + orario;
+
+		TextView tit = (TextView) findViewById(R.id.notificaTit);
+		tit.setText(Html.fromHtml((String) act));
 
 		TextView ob = (TextView) findViewById(R.id.obiettivoAct);
 		ob.setText(Html.fromHtml((String) obiettivo));
 
-		TextView us = (TextView) findViewById(R.id.utenteAct);
-		us.setText(Html.fromHtml((String) utente));
-
-		TextView az = (TextView) findViewById(R.id.azioneAct);
-		az.setText(Html.fromHtml((String) act));
-
-		TextView t = (TextView) findViewById(R.id.giornoAct);
-		t.setText(Html.fromHtml((String) giorno));
+		/*
+		 * 
+		 * 
+		 * /* TextView us = (TextView) findViewById(R.id.utenteAct);
+		 * us.setText(Html.fromHtml((String) utente));
+		 * 
+		 * TextView az = (TextView) findViewById(R.id.azioneAct);
+		 * az.setText(Html.fromHtml((String) act));
+		 * 
+		 * TextView t = (TextView) findViewById(R.id.giornoAct);
+		 * t.setText(Html.fromHtml((String) giorno));
+		 */
 
 		if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
 			// If the screen is now in landscape mode, we can show the

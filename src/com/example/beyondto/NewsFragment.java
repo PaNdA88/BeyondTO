@@ -23,13 +23,15 @@ public class NewsFragment extends ListFragment {
 	ListView lista;
 	boolean mDualPane;
 
-	Connector con = new Connector();
-	ArrayList<Notifica> listaNotifiche = con.getAllNotifications();
+	// Connector con = new Connector();
+	ArrayList<Notifica> listaNotifiche;
+	// = con.getAllNotifications();
 
-	Connector con2 = new Connector();
-	String[] user = con2.getUserInfo(Infoton.getInstance().getUserId());
+	// Connector con2 = new Connector();
+	String[] user;
+	// = con2.getUserInfo(Infoton.getInstance().getUserId());
 
-	int mCurCheckPosition = 0;
+	int mCurCheckPosition;
 
 	public class MyListAdapter extends ArrayAdapter<Notifica> {
 
@@ -91,6 +93,13 @@ public class NewsFragment extends ListFragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
+
+		mCurCheckPosition = 0;
+		Connector con = new Connector();
+		listaNotifiche = con.getAllNotifications();
+		Connector con2 = new Connector();
+		user = con2.getUserInfo(Infoton.getInstance().getUserId());
+
 		View v = inflater.inflate(R.layout.fragment_news, container, false);
 
 		MyListAdapter myListAdapter = new MyListAdapter(getActivity(),
